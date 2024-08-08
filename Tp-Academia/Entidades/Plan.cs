@@ -2,5 +2,15 @@
 {
     public class Plan
     {
+        public int IdPlan {  get; set; }
+        public string Descripcion { get; set; }
+        public Especialidad Especialidad { get; set; }
+
+        public Plan(int idPlan, string descripcion, Especialidad especialidad)
+        {
+            IdPlan = idPlan;
+            Descripcion = descripcion;
+            Especialidad = especialidad;
+        }
     }
 }
