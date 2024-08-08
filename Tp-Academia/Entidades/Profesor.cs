@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,3 +21,11 @@ namespace Entidades
 
 }
 
+=======
+﻿namespace Entidades
+{
+    public class Profesor
+    {
+    }
+}
+>>>>>>> 6eabc75f807fda598b384883969e69e7aef3d2f0
