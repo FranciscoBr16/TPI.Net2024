@@ -20,11 +20,11 @@ namespace Entidades
 
         public Inscripcion(int idInscripcion, string condicion, string fecha, int nota, Alumno alumno, Curso curso)
         {
-            idInscripcion = idInscripcion;
+            this.idInscripcion = idInscripcion;
             this.condicion = condicion;
             this.fecha = fecha;
             this.nota = nota;
-            Alumno = alumno;
+            this.alumno = alumno;
             Curso = curso;
         }
     }

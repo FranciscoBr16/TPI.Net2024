@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +13,21 @@ namespace Entidades
     {
         public string cargo {  get; set; }
 
-        public Profesor(string cargo)
+        public Profesor(string cargo, int legajo, string nombre, string apellido, string mail, int tel, string clave, string rol, string usuario)
         {
+            this.legajo = legajo;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.mail = mail;
+            this.tel = tel;
+            this.clave = clave;
+            this.rol = rol;
+            this.usuario = usuario;
             this.cargo = cargo;
         }
     }
 
 }
 
-=======
-﻿namespace Entidades
-{
-    public class Profesor
-    {
-    }
-}
->>>>>>> 6eabc75f807fda598b384883969e69e7aef3d2f0
+
+
