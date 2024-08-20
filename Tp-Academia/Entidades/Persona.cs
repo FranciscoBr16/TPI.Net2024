@@ -18,6 +18,7 @@ namespace Entidades
         public string rol { get; set; }
         public string usuario { get; set; }
 
+
        
     }
 }
