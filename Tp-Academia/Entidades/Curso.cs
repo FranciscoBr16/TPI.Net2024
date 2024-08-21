@@ -12,16 +12,14 @@ namespace Entidades
         public int Cupo { get; set; }
         public int Anio { get; set; }
         public Comision Comision { get; set; }
-        public Profesor Profesor { get; set; }
         public Materia Materia { get; set; }
 
-        public Curso (int idCurso, int cupo, int anio, Comision comision, Profesor profesor, Materia materia)
+        public Curso (int idCurso, int cupo, int anio, Comision comision, Materia materia)
         {
             IdCurso = idCurso;
             this.Cupo = cupo;
             this.Anio = anio;
             Comision = comision;
-            Profesor = profesor;
             Materia = materia;
         }
     }
