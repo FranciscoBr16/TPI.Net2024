@@ -35,8 +35,8 @@
             colUsuario = new DataGridViewTextBoxColumn();
             colDireccion = new DataGridViewTextBoxColumn();
             colCorreo = new DataGridViewTextBoxColumn();
-            colBtnModificar = new DataGridViewTextBoxColumn();
-            colBtnEliminar = new DataGridViewTextBoxColumn();
+            colBtnModificar = new DataGridViewButtonColumn();
+            colBtnEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
             SuspendLayout();
             // 
@@ -105,6 +105,8 @@
             colBtnModificar.MinimumWidth = 6;
             colBtnModificar.Name = "colBtnModificar";
             colBtnModificar.ReadOnly = true;
+            colBtnModificar.Text = "Modificar";
+            colBtnModificar.UseColumnTextForButtonValue = true;
             colBtnModificar.Width = 125;
             // 
             // colBtnEliminar
@@ -113,15 +115,17 @@
             colBtnEliminar.MinimumWidth = 6;
             colBtnEliminar.Name = "colBtnEliminar";
             colBtnEliminar.ReadOnly = true;
+            colBtnEliminar.Text = "Eliminar";
+            colBtnEliminar.UseColumnTextForButtonValue = true;
             colBtnEliminar.Width = 125;
             // 
-            // Form1
+            // formListadoAlumnos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1065, 450);
             Controls.Add(dgvAlumnos);
-            Name = "Form1";
+            Name = "formListadoAlumnos";
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).EndInit();
@@ -137,7 +141,7 @@
         private DataGridViewTextBoxColumn colUsuario;
         private DataGridViewTextBoxColumn colDireccion;
         private DataGridViewTextBoxColumn colCorreo;
-        private DataGridViewTextBoxColumn colBtnModificar;
-        private DataGridViewTextBoxColumn colBtnEliminar;
+        private DataGridViewButtonColumn colBtnModificar;
+        private DataGridViewButtonColumn colBtnEliminar;
     }
 }

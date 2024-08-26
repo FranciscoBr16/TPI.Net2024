@@ -23,7 +23,8 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Initial Catalog=Academia;Integrated Security=true");
+            // ver el tema de la cadena de conexion
+            optionsBuilder.UseSqlServer(@"Server=LAPTOP-GCJ3VNP2\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=true");
         }
 
         public AcademiaContext()

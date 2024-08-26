@@ -1,9 +1,11 @@
-﻿using System.Numerics;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Numerics;
 
 namespace Entidades
 {
     public class Materia
     {
+        [Key]
         public int IdMateria { get; set; }
         public int CantHorasSemanales { get; set; }
         public string Nombre { get; set; }
@@ -19,6 +21,12 @@ namespace Entidades
             Descripcion = descripcion;
             Plan = plan;
         }
-
+        public Materia(int idMateria, int cantHorasSemanales, string nombre, string descripcion)
+        {
+            IdMateria = idMateria;
+            CantHorasSemanales = cantHorasSemanales;
+            Nombre = nombre;
+            Descripcion = descripcion;
+        }
     }
 }

@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    using System.ComponentModel.DataAnnotations;
     public class Comision
     {
-        public int IdComision { get; set; }
+        [Key]
+        public int Id { get; set; }
         public string Descripcion { get; set; }
         public string Turno { get; set; }
 
 
-        public Comision(int id, string descripcion, string turn)
+        public Comision(int id, string descripcion, string turno)
         {
-            IdComision = id;
+            Id = id;
             Descripcion = descripcion;
-            Turno = turn;
-
+            Turno = turno;
         }
 
     }

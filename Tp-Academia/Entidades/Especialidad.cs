@@ -1,7 +1,10 @@
-﻿namespace Entidades
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entidades
 {
     public class Especialidad
     {
+        [Key]
         public int IdEspecialidad {  get; set; }
         public string Descripcion { get; set; }
 

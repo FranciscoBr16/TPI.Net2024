@@ -30,7 +30,8 @@ namespace Presentacion
             DataAlumnos dataAlumnos = new DataAlumnos();
 
             List<Alumno> listaAlumnos = dataAlumnos.getAlumnos().ToList();
-            
+
+            dgvAlumnos.DataSource = listaAlumnos;
             // Todavia no se que hacer aca
 
         }
