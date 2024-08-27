@@ -35,6 +35,7 @@
             colUsuario = new DataGridViewTextBoxColumn();
             colDireccion = new DataGridViewTextBoxColumn();
             colCorreo = new DataGridViewTextBoxColumn();
+            colAnioIngreso = new DataGridViewTextBoxColumn();
             colBtnModificar = new DataGridViewButtonColumn();
             colBtnEliminar = new DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
@@ -43,12 +44,13 @@
             // dgvAlumnos
             // 
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colBtnModificar, colBtnEliminar });
+            dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colAnioIngreso, colBtnModificar, colBtnEliminar });
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
+            dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1065, 450);
+            dgvAlumnos.Size = new Size(1050, 338);
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
             // 
@@ -99,6 +101,11 @@
             colCorreo.Name = "colCorreo";
             colCorreo.Width = 125;
             // 
+            // colAnioIngreso
+            // 
+            colAnioIngreso.HeaderText = "Año Ingreso";
+            colAnioIngreso.Name = "colAnioIngreso";
+            // 
             // colBtnModificar
             // 
             colBtnModificar.HeaderText = "";
@@ -121,10 +128,11 @@
             // 
             // formListadoAlumnos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1065, 450);
+            ClientSize = new Size(1050, 338);
             Controls.Add(dgvAlumnos);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "formListadoAlumnos";
             Text = "Form1";
             Load += Form1_Load;
@@ -141,6 +149,7 @@
         private DataGridViewTextBoxColumn colUsuario;
         private DataGridViewTextBoxColumn colDireccion;
         private DataGridViewTextBoxColumn colCorreo;
+        private DataGridViewTextBoxColumn colAnioIngreso;
         private DataGridViewButtonColumn colBtnModificar;
         private DataGridViewButtonColumn colBtnEliminar;
     }
