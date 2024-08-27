@@ -11,31 +11,31 @@ namespace Entidades
     public class Inscripcion
     {
         [Key]
-        public int idInscripcion { get; set; }
-        public string condicion { get; set; }
-        public string fecha { get; set; }
-        public int nota { get; set; }
+        public int IdInscripcion { get; set; }
+        public string Condicion { get; set; }
+        public string Fecha { get; set; }
+        public int Nota { get; set; }
 
-        public Alumno alumno { get; set; }
+        public Alumno Alumno { get; set; }
         public Curso Curso { get; set; }
 
 
         public Inscripcion(int idInscripcion, string condicion, string fecha, int nota, Alumno alumno, Curso curso)
         {
-            this.idInscripcion = idInscripcion;
-            this.condicion = condicion;
-            this.fecha = fecha;
-            this.nota = nota;
-            this.alumno = alumno;
+            this.IdInscripcion = idInscripcion;
+            this.Condicion = condicion;
+            this.Fecha = fecha;
+            this.Nota = nota;
+            this.Alumno = alumno;
             Curso = curso;
         }
 
         public Inscripcion(int idInscripcion, string condicion, string fecha, int nota)
         {
-            this.idInscripcion = idInscripcion;
-            this.condicion = condicion;
-            this.fecha = fecha;
-            this.nota = nota;
+            this.IdInscripcion = idInscripcion;
+            this.Condicion = condicion;
+            this.Fecha = fecha;
+            this.Nota = nota;
         }
     }
 }

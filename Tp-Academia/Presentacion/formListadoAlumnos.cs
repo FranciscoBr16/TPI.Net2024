@@ -32,7 +32,7 @@ namespace Presentacion
             List<Alumno> listaAlumnos = dataAlumnos.getAlumnos();
 
             dgvAlumnos.DataSource = listaAlumnos;
-            // Todavia no se que hacer aca
+            // PREGUNTAR
 
         }
         private void Form1_Load(object sender, EventArgs e)

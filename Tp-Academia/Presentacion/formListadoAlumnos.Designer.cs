@@ -50,7 +50,7 @@
             dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1050, 338);
+            dgvAlumnos.Size = new Size(1153, 338);
             dgvAlumnos.TabIndex = 0;
             dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
             // 
@@ -130,7 +130,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1050, 338);
+            ClientSize = new Size(1153, 338);
             Controls.Add(dgvAlumnos);
             Margin = new Padding(3, 2, 3, 2);
             Name = "formListadoAlumnos";

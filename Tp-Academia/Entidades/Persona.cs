@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,19 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    [Table("Persona")]
     public abstract class Persona
     {
         [Key]
-        public int legajo { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string mail { get; set; }
-        public int tel { get; set; }
-        public string clave { get; set; }
-        public string rol { get; set; }
-        public string usuario { get; set; }
-        public string anioIngreso { get; set; }
+        public int Legajo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Mail { get; set; }
+        public int Tel { get; set; }
+        public string Clave { get; set; }
+        public string Rol { get; set; }
+        public string Usuario { get; set; }
+        public string AnioIngreso { get; set; }
 
 
     }
