@@ -7,6 +7,7 @@ namespace Entidades
         public int IdPlan {  get; set; }
         public string Descripcion { get; set; }
         public Especialidad Especialidad { get; set; }
+        public List<Materia> Materias { get; set; }
 
         public Plan(int idPlan, string descripcion, Especialidad especialidad)
         {

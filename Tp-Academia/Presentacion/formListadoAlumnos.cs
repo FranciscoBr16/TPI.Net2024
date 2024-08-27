@@ -29,10 +29,10 @@ namespace Presentacion
            
             DataAlumnos dataAlumnos = new DataAlumnos();
 
-            List<Alumno> listaAlumnos = dataAlumnos.getAlumnos();
+            List<Persona> listaAlumnos = dataAlumnos.getAlumnos();
 
             dgvAlumnos.DataSource = listaAlumnos;
-            // PREGUNTAR
+            
 
         }
         private void Form1_Load(object sender, EventArgs e)

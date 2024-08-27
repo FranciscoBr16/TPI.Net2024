@@ -10,21 +10,21 @@ namespace Data
 {
     public class DataAlumnos
     {
-        public List<Alumno> getAlumnos() { 
+        public List<Persona> getAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
 
-            var Alumnos = db.Alumnos.ToList(); ;
+            var Alumnos = db.Personas.ToList(); ;
 
             return Alumnos;
             }
         }
 
-        public Alumno getAlumnoByLegajo(int legajo)
+        public Persona getPersonaByLegajo(int legajo)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                Alumno a = db.Alumnos.Find(legajo);
+                Persona a = db.Personas.Find(legajo);
                 return a;
             }
         }

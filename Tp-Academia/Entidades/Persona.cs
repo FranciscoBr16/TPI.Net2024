@@ -1,16 +1,16 @@
+
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace Entidades
 {
-    [Table("Persona")]
-    public abstract class Persona
+    public class Persona
     {
         [Key]
         public int Legajo { get; set; }
@@ -22,9 +22,23 @@ namespace Entidades
         public string Rol { get; set; }
         public string Usuario { get; set; }
         public string AnioIngreso { get; set; }
+        public List<Inscripcion> Inscripcioens { get; set; }
+        public List<Curso> Cursos { get; set; }
 
-
+        public Persona( int legajo, string nombre, string apellido, string mail, int tel, string clave, string rol, string usuario)
+        {
+            this.Legajo = legajo;
+            this.Nombre = nombre;
+            this.Apellido = apellido;
+            this.Mail = mail;
+            this.Tel = tel;
+            this.Clave = clave;
+            this.Rol = rol;
+            this.Usuario = usuario;
+        }
     }
+
 }
+
 
 
