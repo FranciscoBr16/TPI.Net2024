@@ -10,11 +10,11 @@ namespace Data
 {
     public class DataAlumnos
     {
-        public DbSet<Alumno> getAlumnos() { 
+        public List<Alumno> getAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
 
-            var Alumnos = db.Alumnos;
+            var Alumnos = db.Alumnos.ToList(); ;
 
             return Alumnos;
             }
