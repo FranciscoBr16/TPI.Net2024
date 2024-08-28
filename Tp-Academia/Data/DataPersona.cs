@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class DataAlumnos
+    public class DataPersona
     {
         public List<Persona> getAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
@@ -28,5 +28,18 @@ namespace Data
                 return a;
             }
         }
+
+        public Boolean insertPersona(Persona persona) {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+
+                db.Personas.Add(persona);
+                db.SaveChanges();
+                // Verificar si esto puede fallar
+                return true;
+            }
+        }
+
     }
-}
+    }
+

@@ -47,15 +47,14 @@
             dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colAnioIngreso, colBtnModificar, colBtnEliminar });
             dgvAlumnos.Dock = DockStyle.Fill;
             dgvAlumnos.Location = new Point(0, 0);
-            dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1153, 338);
+            dgvAlumnos.Size = new Size(1318, 451);
             dgvAlumnos.TabIndex = 0;
-            dgvAlumnos.CellContentClick += dgvAlumnos_CellContentClick;
             // 
             // colLegajo
             // 
+            colLegajo.DataPropertyName = "Legajo";
             colLegajo.HeaderText = "Legajo";
             colLegajo.MinimumWidth = 6;
             colLegajo.Name = "colLegajo";
@@ -64,6 +63,7 @@
             // 
             // colNombre
             // 
+            colNombre.DataPropertyName = "Nombre";
             colNombre.HeaderText = "Nombre";
             colNombre.MinimumWidth = 6;
             colNombre.Name = "colNombre";
@@ -72,6 +72,7 @@
             // 
             // colApellido
             // 
+            colApellido.DataPropertyName = "Apellido";
             colApellido.HeaderText = "Apellido";
             colApellido.MinimumWidth = 6;
             colApellido.Name = "colApellido";
@@ -80,6 +81,7 @@
             // 
             // colUsuario
             // 
+            colUsuario.DataPropertyName = "Usuario";
             colUsuario.HeaderText = "Usuario";
             colUsuario.MinimumWidth = 6;
             colUsuario.Name = "colUsuario";
@@ -88,6 +90,7 @@
             // 
             // colDireccion
             // 
+            colDireccion.DataPropertyName = "Direccion";
             colDireccion.HeaderText = "Direccion";
             colDireccion.MinimumWidth = 6;
             colDireccion.Name = "colDireccion";
@@ -96,6 +99,7 @@
             // 
             // colCorreo
             // 
+            colCorreo.DataPropertyName = "Mail";
             colCorreo.HeaderText = "Correo";
             colCorreo.MinimumWidth = 6;
             colCorreo.Name = "colCorreo";
@@ -103,8 +107,11 @@
             // 
             // colAnioIngreso
             // 
+            colAnioIngreso.DataPropertyName = "AnioIngreso";
             colAnioIngreso.HeaderText = "Año Ingreso";
+            colAnioIngreso.MinimumWidth = 6;
             colAnioIngreso.Name = "colAnioIngreso";
+            colAnioIngreso.Width = 125;
             // 
             // colBtnModificar
             // 
@@ -128,11 +135,10 @@
             // 
             // formListadoAlumnos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1153, 338);
+            ClientSize = new Size(1318, 451);
             Controls.Add(dgvAlumnos);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "formListadoAlumnos";
             Text = "Form1";
             Load += Form1_Load;

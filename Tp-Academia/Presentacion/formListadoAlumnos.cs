@@ -19,17 +19,16 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void dgvAlumnos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         public void Listar()
         {
            
-            DataAlumnos dataAlumnos = new DataAlumnos();
+            DataPersona dataAlumnos = new DataPersona();
 
             List<Persona> listaAlumnos = dataAlumnos.getAlumnos();
+
+            dgvAlumnos.AutoGenerateColumns = false;
 
             dgvAlumnos.DataSource = listaAlumnos;
             
