@@ -13,6 +13,7 @@ namespace Data
     {
         public DbSet<Comision> Comisiones { get; set; }
         public DbSet<Curso> Cursos { get; set; }
+        public DbSet<Docente_curso> Docente_curso { get; set; }
         public DbSet<Especialidad> Especialidades { get; set; }
         public DbSet<Inscripcion> Inscripciones { get; set; }
         public DbSet<Materia> Materias { get; set; }
@@ -26,6 +27,25 @@ namespace Data
             optionsBuilder.UseSqlServer(@"Server=LAPTOP-GCJ3VNP2\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=true;TrustServerCertificate=True");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+           
+            modelBuilder.Entity<Docente_curso>()
+                .HasKey(dc => new { dc.DocenteId, dc.CursoId, dc.Fecha });
+
+          
+            modelBuilder.Entity<Docente_curso>()
+                .HasOne(dc => dc.Docente)
+                .WithMany()
+                .HasForeignKey(dc => dc.DocenteId);
+
+            modelBuilder.Entity<Docente_curso>()
+                .HasOne(dc => dc.Curso)
+                .WithMany()
+                .HasForeignKey(dc => dc.CursoId);
+        }
         public AcademiaContext()
         {
             this.Database.EnsureCreated();

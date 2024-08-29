@@ -4,20 +4,21 @@ namespace Entidades
     public class Plan
     {
         [Key]
-        public int IdPlan {  get; set; }
+        public int Id {  get; set; }
         public string Descripcion { get; set; }
         public Especialidad Especialidad { get; set; }
         public List<Materia> Materias { get; set; }
+        public List<Persona> Alumnos { get; set; }
 
-        public Plan(int idPlan, string descripcion, Especialidad especialidad)
+        public Plan(int id, string descripcion, Especialidad especialidad)
         {
-            IdPlan = idPlan;
+            Id = id;
             Descripcion = descripcion;
             Especialidad = especialidad;
         }
-        public Plan(int idPlan, string descripcion)
+        public Plan(int id, string descripcion)
         {
-            IdPlan = idPlan;
+            Id= id;
             Descripcion = descripcion;
         }
     }

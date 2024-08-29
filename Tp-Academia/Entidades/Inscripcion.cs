@@ -11,7 +11,7 @@ namespace Entidades
     public class Inscripcion
     {
         [Key]
-        public int IdInscripcion { get; set; }
+        public int Id { get; set; }
         public string Condicion { get; set; }
         public string Fecha { get; set; }
         public int Nota { get; set; }
@@ -20,9 +20,9 @@ namespace Entidades
         public Curso Curso { get; set; }
 
 
-        public Inscripcion(int idInscripcion, string condicion, string fecha, int nota, Persona alumno, Curso curso)
+        public Inscripcion(int id, string condicion, string fecha, int nota, Persona alumno, Curso curso)
         {
-            this.IdInscripcion = idInscripcion;
+            this.Id = id;
             this.Condicion = condicion;
             this.Fecha = fecha;
             this.Nota = nota;
@@ -30,9 +30,9 @@ namespace Entidades
             Curso = curso;
         }
 
-        public Inscripcion(int idInscripcion, string condicion, string fecha, int nota)
+        public Inscripcion(int id, string condicion, string fecha, int nota)
         {
-            this.IdInscripcion = idInscripcion;
+            this.Id = id;
             this.Condicion = condicion;
             this.Fecha = fecha;
             this.Nota = nota;

@@ -48,13 +48,17 @@
             radiobProfesor = new RadioButton();
             label2 = new Label();
             txbTelefono = new TextBox();
+            lblDni = new Label();
+            txbDni = new TextBox();
+            label3 = new Label();
+            dtpFechaNac = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F);
-            label1.Location = new Point(313, 9);
+            label1.Location = new Point(317, 19);
             label1.Name = "label1";
             label1.Size = new Size(172, 32);
             label1.TabIndex = 0;
@@ -111,7 +115,7 @@
             // 
             // txbClave
             // 
-            txbClave.Location = new Point(462, 202);
+            txbClave.Location = new Point(462, 258);
             txbClave.Name = "txbClave";
             txbClave.PasswordChar = '*';
             txbClave.Size = new Size(247, 27);
@@ -120,7 +124,7 @@
             // lblCorreo
             // 
             lblCorreo.AutoSize = true;
-            lblCorreo.Location = new Point(77, 257);
+            lblCorreo.Location = new Point(77, 313);
             lblCorreo.Name = "lblCorreo";
             lblCorreo.Size = new Size(54, 20);
             lblCorreo.TabIndex = 17;
@@ -129,7 +133,7 @@
             // lblClave
             // 
             lblClave.AutoSize = true;
-            lblClave.Location = new Point(411, 204);
+            lblClave.Location = new Point(411, 260);
             lblClave.Name = "lblClave";
             lblClave.Size = new Size(45, 20);
             lblClave.TabIndex = 16;
@@ -138,7 +142,7 @@
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(72, 204);
+            lblUsuario.Location = new Point(72, 260);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(59, 20);
             lblUsuario.TabIndex = 15;
@@ -146,21 +150,21 @@
             // 
             // txbCorreo
             // 
-            txbCorreo.Location = new Point(137, 254);
+            txbCorreo.Location = new Point(137, 310);
             txbCorreo.Name = "txbCorreo";
             txbCorreo.Size = new Size(247, 27);
             txbCorreo.TabIndex = 14;
             // 
             // txbUsuario
             // 
-            txbUsuario.Location = new Point(137, 201);
+            txbUsuario.Location = new Point(137, 257);
             txbUsuario.Name = "txbUsuario";
             txbUsuario.Size = new Size(247, 27);
             txbUsuario.TabIndex = 13;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(439, 373);
+            btnAceptar.Location = new Point(439, 425);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(94, 29);
             btnAceptar.TabIndex = 19;
@@ -171,7 +175,7 @@
             // btnCancelar
             // 
             btnCancelar.BackColor = Color.Red;
-            btnCancelar.Location = new Point(290, 373);
+            btnCancelar.Location = new Point(275, 425);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(94, 29);
             btnCancelar.TabIndex = 20;
@@ -181,7 +185,7 @@
             // lblSoy
             // 
             lblSoy.AutoSize = true;
-            lblSoy.Location = new Point(95, 313);
+            lblSoy.Location = new Point(95, 366);
             lblSoy.Name = "lblSoy";
             lblSoy.Size = new Size(36, 20);
             lblSoy.TabIndex = 21;
@@ -191,7 +195,7 @@
             // 
             radiobAlumno.AutoSize = true;
             radiobAlumno.Checked = true;
-            radiobAlumno.Location = new Point(137, 311);
+            radiobAlumno.Location = new Point(137, 367);
             radiobAlumno.Name = "radiobAlumno";
             radiobAlumno.Size = new Size(82, 24);
             radiobAlumno.TabIndex = 22;
@@ -202,7 +206,7 @@
             // radiobProfesor
             // 
             radiobProfesor.AutoSize = true;
-            radiobProfesor.Location = new Point(225, 311);
+            radiobProfesor.Location = new Point(225, 367);
             radiobProfesor.Name = "radiobProfesor";
             radiobProfesor.Size = new Size(85, 24);
             radiobProfesor.TabIndex = 23;
@@ -213,7 +217,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(428, 150);
+            label2.Location = new Point(428, 316);
             label2.Name = "label2";
             label2.Size = new Size(28, 20);
             label2.TabIndex = 25;
@@ -221,16 +225,54 @@
             // 
             // txbTelefono
             // 
-            txbTelefono.Location = new Point(462, 147);
+            txbTelefono.Location = new Point(462, 313);
             txbTelefono.Name = "txbTelefono";
             txbTelefono.Size = new Size(247, 27);
             txbTelefono.TabIndex = 24;
+            // 
+            // lblDni
+            // 
+            lblDni.AutoSize = true;
+            lblDni.Location = new Point(424, 150);
+            lblDni.Name = "lblDni";
+            lblDni.Size = new Size(32, 20);
+            lblDni.TabIndex = 27;
+            lblDni.Text = "Dni";
+            // 
+            // txbDni
+            // 
+            txbDni.Location = new Point(462, 150);
+            txbDni.Name = "txbDni";
+            txbDni.Size = new Size(247, 27);
+            txbDni.TabIndex = 26;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(59, 205);
+            label3.Name = "label3";
+            label3.Size = new Size(149, 20);
+            label3.TabIndex = 29;
+            label3.Text = "Fecha de Nacimiento";
+            // 
+            // dtpFechaNac
+            // 
+            dtpFechaNac.Location = new Point(214, 200);
+            dtpFechaNac.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtpFechaNac.Name = "dtpFechaNac";
+            dtpFechaNac.Size = new Size(275, 27);
+            dtpFechaNac.TabIndex = 30;
+            dtpFechaNac.Value = new DateTime(2024, 8, 29, 0, 0, 0, 0);
             // 
             // formNuevaPersona
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 481);
+            Controls.Add(dtpFechaNac);
+            Controls.Add(label3);
+            Controls.Add(lblDni);
+            Controls.Add(txbDni);
             Controls.Add(label2);
             Controls.Add(txbTelefono);
             Controls.Add(radiobProfesor);
@@ -279,5 +321,9 @@
         private RadioButton radiobProfesor;
         private Label label2;
         private TextBox txbTelefono;
+        private Label lblDni;
+        private TextBox txbDni;
+        private Label label3;
+        private DateTimePicker dtpFechaNac;
     }
 }

@@ -24,14 +24,14 @@ namespace Presentacion
 
             if (ValidarCampos())
             {
-
+                DateTime fechaHoy = DateTime.Now.Date;
 
                 if (radiobAlumno.Checked)
                 {
                     string rol = "Alumno";
-                   
+                    
 
-                    Persona alumnoNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text);
+                    Persona alumnoNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value , fechaHoy);
 
                     DataPersona dp = new DataPersona();
 
@@ -42,9 +42,9 @@ namespace Presentacion
                 else if (radiobProfesor.Checked)
                 {
                     string rol = "Profesor";
-                    
 
-                    Persona profesorNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text);
+
+                    Persona profesorNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value, fechaHoy);
 
                     DataPersona dp = new DataPersona();
 
@@ -54,7 +54,7 @@ namespace Presentacion
                 }
             }
             else { return; }
-           
+
 
         }
 
@@ -65,13 +65,13 @@ namespace Presentacion
                 string.IsNullOrWhiteSpace(txbTelefono.Text) ||
                 string.IsNullOrWhiteSpace(txbCorreo.Text) ||
                 string.IsNullOrWhiteSpace(txbClave.Text) ||
-                string.IsNullOrWhiteSpace(txbUsuario.Text) )
+                string.IsNullOrWhiteSpace(txbUsuario.Text))
             {
                 MessageBox.Show("Todos los campos deben ser completados.");
                 return false;
             }
 
-  
+
 
             if (!radiobAlumno.Checked && !radiobProfesor.Checked)
             {
@@ -82,7 +82,7 @@ namespace Presentacion
             return true;
         }
 
-
+      
     }
 
 
