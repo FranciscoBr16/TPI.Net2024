@@ -49,7 +49,7 @@
             dgvAlumnos.Location = new Point(0, 0);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1318, 451);
+            dgvAlumnos.Size = new Size(1262, 673);
             dgvAlumnos.TabIndex = 0;
             // 
             // colLegajo
@@ -137,7 +137,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1318, 451);
+            ClientSize = new Size(1262, 673);
             Controls.Add(dgvAlumnos);
             Name = "formListadoAlumnos";
             Text = "Form1";

@@ -29,9 +29,9 @@ namespace Presentacion
                 if (radiobAlumno.Checked)
                 {
                     string rol = "Alumno";
-                    
 
-                    Persona alumnoNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value , fechaHoy);
+
+                    Persona alumnoNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value, fechaHoy);
 
                     DataPersona dp = new DataPersona();
 
@@ -82,7 +82,7 @@ namespace Presentacion
             return true;
         }
 
-      
+        
     }
 
 
