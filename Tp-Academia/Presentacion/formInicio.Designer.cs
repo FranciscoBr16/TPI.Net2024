@@ -174,7 +174,6 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(1259, 207);
             tableLayoutPanel3.TabIndex = 6;
-            tableLayoutPanel3.Paint += this.tableLayoutPanel3_Paint;
             // 
             // lblTextoInicioLargo
             // 
@@ -207,7 +206,6 @@
             button1.TabIndex = 0;
             button1.Text = "Registrarse";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += this.button1_Click;
             // 
             // toolStripLabel3
             // 
