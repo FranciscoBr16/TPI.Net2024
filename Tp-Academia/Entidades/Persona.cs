@@ -2,7 +2,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -77,6 +79,20 @@ namespace Entidades
             Fecha_nac = fecha_nac;
             Fecha_ingreso = fecha_ingreso;
             
+        }
+
+        public Persona(int legajo, string nombre, string apellido, string correo, string tel, string clave, string usuario, string direccion, string dni, DateTime fecha_nac)
+        {
+            Legajo = legajo;
+            Nombre = nombre;
+            Apellido = apellido;
+            Mail = correo;
+            Tel = tel;
+            Clave = clave;
+            Usuario = usuario;
+            Direccion = direccion;
+            DNI = dni;
+            Fecha_nac = fecha_nac;
         }
     }
 
