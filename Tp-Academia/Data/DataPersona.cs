@@ -11,7 +11,7 @@ namespace Data
 {
     public class DataPersona
     {
-        public List<Persona> getAlumnos() { 
+        public List<Persona> GetAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
 
@@ -21,7 +21,7 @@ namespace Data
             }
         }
 
-        public Persona getPersonaByLegajo(int legajo)
+        public Persona GetPersonaByLegajo(int legajo)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -30,7 +30,7 @@ namespace Data
             }
         }
 
-        public bool insertPersona(Persona persona) {
+        public bool InsertPersona(Persona persona) {
             using (AcademiaContext db = new AcademiaContext())
             {
 
@@ -41,7 +41,7 @@ namespace Data
             }
         }
 
-        public bool eliminarPersona(Persona persona)
+        public bool EliminarPersona(Persona persona)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -51,11 +51,11 @@ namespace Data
             }
         }
 
-        public bool modificarPersona(Persona per)
+        public bool ModificarPersona(Persona per)
         {
             using (var context = new AcademiaContext())
             {
-                Persona personaOriginal = getPersonaByLegajo(per.Legajo);
+                Persona personaOriginal = GetPersonaByLegajo(per.Legajo);
                 if (personaOriginal != null)
                 {
                     personaOriginal.Nombre = per.Nombre;

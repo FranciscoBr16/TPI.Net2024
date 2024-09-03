@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panelppal = new Panel();
             tabControl1 = new TabControl();
             tabInicio = new TabPage();
             tableLayoutPanel2 = new TableLayoutPanel();
             button2 = new Button();
-            button1 = new Button();
+            btnRegistrarse = new Button();
             tableLayoutPanel3 = new TableLayoutPanel();
             lblTextoInicioLargo = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -59,6 +59,16 @@
             tabPlanes = new TabPage();
             tabMaterias = new TabPage();
             tabComisiones = new TabPage();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            dgvComisiones = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            Descripcion = new DataGridViewTextBoxColumn();
+            Turno = new DataGridViewTextBoxColumn();
+            colBtnModificarCom = new DataGridViewButtonColumn();
+            colBtnEliminarCom = new DataGridViewButtonColumn();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            label1 = new Label();
+            btnNuevaComision = new Button();
             tabCursos = new TabPage();
             tabPerfil = new TabPage();
             panelppal.SuspendLayout();
@@ -71,6 +81,10 @@
             tabAlumnos.SuspendLayout();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
+            tabComisiones.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvComisiones).BeginInit();
+            tableLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // panelppal
@@ -100,7 +114,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1264, 681);
             tabControl1.TabIndex = 3;
-            tabControl1.Enter += tabControl1_Enter;
+            tabControl1.Enter += tabComisiones_Enter;
             // 
             // tabInicio
             // 
@@ -123,7 +137,7 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Controls.Add(button2, 2, 0);
-            tableLayoutPanel2.Controls.Add(button1, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnRegistrarse, 1, 0);
             tableLayoutPanel2.Location = new Point(0, 371);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -143,16 +157,17 @@
             button2.Text = "Iniciar Sesión";
             button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnRegistrarse
             // 
-            button1.Anchor = AnchorStyles.Top;
-            button1.Location = new Point(411, 2);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(122, 26);
-            button1.TabIndex = 0;
-            button1.Text = "Registrarse";
-            button1.UseVisualStyleBackColor = true;
+            btnRegistrarse.Anchor = AnchorStyles.Top;
+            btnRegistrarse.Location = new Point(411, 2);
+            btnRegistrarse.Margin = new Padding(3, 2, 3, 2);
+            btnRegistrarse.Name = "btnRegistrarse";
+            btnRegistrarse.Size = new Size(122, 26);
+            btnRegistrarse.TabIndex = 0;
+            btnRegistrarse.Text = "Registrarse";
+            btnRegistrarse.UseVisualStyleBackColor = true;
+            btnRegistrarse.Click += button1_Click;
             // 
             // tableLayoutPanel3
             // 
@@ -202,10 +217,10 @@
             // 
             imgUTN.Anchor = AnchorStyles.None;
             imgUTN.Image = Properties.Resources.image;
-            imgUTN.Location = new Point(533, 18);
+            imgUTN.Location = new Point(549, 18);
             imgUTN.Margin = new Padding(3, 2, 3, 2);
             imgUTN.Name = "imgUTN";
-            imgUTN.Size = new Size(194, 54);
+            imgUTN.Size = new Size(162, 54);
             imgUTN.SizeMode = PictureBoxSizeMode.StretchImage;
             imgUTN.TabIndex = 0;
             imgUTN.TabStop = false;
@@ -269,7 +284,7 @@
             dgvAlumnos.RowHeadersWidth = 51;
             dgvAlumnos.Size = new Size(1254, 470);
             dgvAlumnos.TabIndex = 1;
-            dgvAlumnos.CellMouseClick += dgvAlumnos_CellMouseClick_1;
+            dgvAlumnos.CellMouseClick += dgvAlumnos_CellMouseClick;
             // 
             // colLegajo
             // 
@@ -327,8 +342,8 @@
             // colAnioIngreso
             // 
             colAnioIngreso.DataPropertyName = "Fecha_ingreso";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colAnioIngreso.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "dd/MM/yyyy";
+            colAnioIngreso.DefaultCellStyle = dataGridViewCellStyle2;
             colAnioIngreso.HeaderText = "Año Ingreso";
             colAnioIngreso.MinimumWidth = 6;
             colAnioIngreso.Name = "colAnioIngreso";
@@ -395,12 +410,128 @@
             // 
             // tabComisiones
             // 
+            tabComisiones.Controls.Add(tableLayoutPanel6);
+            tabComisiones.Controls.Add(tableLayoutPanel5);
             tabComisiones.Location = new Point(4, 24);
             tabComisiones.Name = "tabComisiones";
             tabComisiones.Size = new Size(1256, 653);
             tabComisiones.TabIndex = 6;
             tabComisiones.Text = "Comisiones";
             tabComisiones.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            tableLayoutPanel6.ColumnCount = 3;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 71.42857F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857141F));
+            tableLayoutPanel6.Controls.Add(dgvComisiones, 1, 0);
+            tableLayoutPanel6.Location = new Point(0, 163);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.Size = new Size(1256, 490);
+            tableLayoutPanel6.TabIndex = 5;
+            // 
+            // dgvComisiones
+            // 
+            dgvComisiones.Anchor = AnchorStyles.Top;
+            dgvComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvComisiones.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, Turno, colBtnModificarCom, colBtnEliminarCom });
+            dgvComisiones.Location = new Point(205, 2);
+            dgvComisiones.Margin = new Padding(3, 2, 3, 2);
+            dgvComisiones.Name = "dgvComisiones";
+            dgvComisiones.RowHeadersWidth = 51;
+            dgvComisiones.Size = new Size(845, 370);
+            dgvComisiones.TabIndex = 3;
+            dgvComisiones.CellContentClick += dgvComisiones_CellContentClick;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id Comision";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 125;
+            // 
+            // Descripcion
+            // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // Turno
+            // 
+            Turno.DataPropertyName = "Turno";
+            Turno.HeaderText = "Turno";
+            Turno.MinimumWidth = 6;
+            Turno.Name = "Turno";
+            Turno.ReadOnly = true;
+            Turno.Width = 125;
+            // 
+            // colBtnModificarCom
+            // 
+            colBtnModificarCom.HeaderText = "";
+            colBtnModificarCom.MinimumWidth = 6;
+            colBtnModificarCom.Name = "colBtnModificarCom";
+            colBtnModificarCom.ReadOnly = true;
+            colBtnModificarCom.Text = "Modificar";
+            colBtnModificarCom.UseColumnTextForButtonValue = true;
+            colBtnModificarCom.Width = 125;
+            // 
+            // colBtnEliminarCom
+            // 
+            colBtnEliminarCom.HeaderText = "";
+            colBtnEliminarCom.MinimumWidth = 6;
+            colBtnEliminarCom.Name = "colBtnEliminarCom";
+            colBtnEliminarCom.ReadOnly = true;
+            colBtnEliminarCom.Text = "Eliminar";
+            colBtnEliminarCom.UseColumnTextForButtonValue = true;
+            colBtnEliminarCom.Width = 125;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(label1, 1, 0);
+            tableLayoutPanel5.Controls.Add(btnNuevaComision, 1, 1);
+            tableLayoutPanel5.Dock = DockStyle.Top;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(1256, 136);
+            tableLayoutPanel5.TabIndex = 4;
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(572, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Comisiones";
+            // 
+            // btnNuevaComision
+            // 
+            btnNuevaComision.Anchor = AnchorStyles.Bottom;
+            btnNuevaComision.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevaComision.Location = new Point(547, 106);
+            btnNuevaComision.Name = "btnNuevaComision";
+            btnNuevaComision.Size = new Size(160, 27);
+            btnNuevaComision.TabIndex = 1;
+            btnNuevaComision.Text = "Agregar Comision";
+            btnNuevaComision.UseVisualStyleBackColor = true;
+            btnNuevaComision.Click += btnNuevaComision_Click;
             // 
             // tabCursos
             // 
@@ -428,7 +559,7 @@
             Controls.Add(panelppal);
             Margin = new Padding(3, 2, 3, 2);
             Name = "FormInicio";
-            Text = "Inicio";
+            Text = "UTN | Sistema de la academia";
             panelppal.ResumeLayout(false);
             tabControl1.ResumeLayout(false);
             tabInicio.ResumeLayout(false);
@@ -442,6 +573,11 @@
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).EndInit();
+            tabComisiones.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvComisiones).EndInit();
+            tableLayoutPanel5.ResumeLayout(false);
+            tableLayoutPanel5.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -454,7 +590,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Label lblTextoInicioLargo;
         private Button button2;
-        private Button button1;
+        private Button btnRegistrarse;
         private TabControl tabControl1;
         private TabPage tabInicio;
         private TabPage tabAlumnos;
@@ -477,5 +613,15 @@
         private DataGridViewButtonColumn colBtnEliminar;
         private TableLayoutPanel tableLayoutPanel4;
         private Label lblAlumnos;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Label label1;
+        private DataGridView dgvComisiones;
+        private TableLayoutPanel tableLayoutPanel6;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn Turno;
+        private DataGridViewButtonColumn colBtnModificarCom;
+        private DataGridViewButtonColumn colBtnEliminarCom;
+        private Button btnNuevaComision;
     }
 }

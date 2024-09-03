@@ -401,7 +401,7 @@ namespace Presentacion
 
             Persona per = new Persona(PersonaForm.Legajo, txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value);
             DataPersona dp = new DataPersona();
-            if (dp.modificarPersona(per))
+            if (dp.ModificarPersona(per))
             {
                 MessageBox.Show("Cambios guardados exitosamente.");
             }

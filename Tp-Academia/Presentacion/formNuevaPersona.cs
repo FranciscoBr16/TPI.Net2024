@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class formNuevaPersona : Form
+    public partial class FormNuevaPersona : Form
     {
-        public formNuevaPersona()
+        public FormNuevaPersona()
         {
             InitializeComponent();
         }
@@ -35,7 +35,7 @@ namespace Presentacion
 
                     DataPersona dp = new DataPersona();
 
-                    dp.insertPersona(alumnoNuevo);
+                    dp.InsertPersona(alumnoNuevo);
 
                     MessageBox.Show("Registrado como Alumno");
                 }
@@ -48,7 +48,7 @@ namespace Presentacion
 
                     DataPersona dp = new DataPersona();
 
-                    dp.insertPersona(profesorNuevo);
+                    dp.InsertPersona(profesorNuevo);
 
                     MessageBox.Show("Registrado como Profesor");
                 }

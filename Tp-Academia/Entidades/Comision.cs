@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entidades
 {
-    using System.ComponentModel.DataAnnotations;
     public class Comision
     {
         [Key]
@@ -23,5 +23,10 @@ namespace Entidades
             Turno = turno;
         }
 
+        public Comision(string dsc, string turno)
+        {
+            Descripcion = dsc;
+            Turno = turno;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class formNuevaPersona
+    partial class FormNuevaPersona
     {
         /// <summary>
         /// Required designer variable.
