@@ -15,9 +15,11 @@ namespace Data
         using (AcademiaContext db= new AcademiaContext())
             {
 
-            var Alumnos = db.Personas.ToList(); ;
+                var alumnos = db.Personas
+                            .Where(p => p.Rol == "Alumno")
+                            .ToList();
 
-            return Alumnos;
+                return alumnos;
             }
         }
 

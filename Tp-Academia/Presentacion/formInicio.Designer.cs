@@ -114,7 +114,7 @@
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(1264, 681);
             tabControl1.TabIndex = 3;
-            tabControl1.Enter += tabComisiones_Enter;
+            tabControl1.SelectedIndexChanged += tabControl1_SelectedIndexChanged;
             // 
             // tabInicio
             // 

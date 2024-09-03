@@ -50,15 +50,8 @@ namespace Presentacion
 
         }
 
-        private void tabControl1_Enter(object sender, EventArgs e)
-        {
-            ListarAlumnos();
-        }
 
-        private void tabComisiones_Enter(object sender, EventArgs e)
-        {
-            ListarComisiones();
-        }
+       
 
         private void dgvAlumnos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -126,6 +119,29 @@ namespace Presentacion
         {
             FormNuevaPersona formNuevo = new FormNuevaPersona();
             formNuevo.ShowDialog();
+        }
+
+
+
+        private void tabControl1_Enter(object sender, EventArgs e)
+        {
+            ListarAlumnos();
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (tabControl1.SelectedIndex)
+            {
+                case 1: 
+                    ListarAlumnos();
+                    break;
+                case 6: 
+                    ListarComisiones();
+                    break;
+               
+                default:
+                    break;
+            }
         }
     }
 }

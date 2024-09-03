@@ -23,12 +23,12 @@ namespace Presentacion
         {
             if (ValidarCampos())
             {
-              
+
                 Comision comNueva = new Comision(txbDescripcion.Text, txbTurno.Text);
                 DataComision dc = new DataComision();
                 dc.InsertComision(comNueva);
                 MessageBox.Show("Nueva Comision Registrada");
-                
+
             }
             else { return; }
         }
@@ -43,6 +43,11 @@ namespace Presentacion
             }
 
             return true;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
