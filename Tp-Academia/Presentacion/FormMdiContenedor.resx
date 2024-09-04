@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblTextoInicioLargo.Text" xml:space="preserve">
-    <value>Este proyecto forma parte de la materia "Tecnologías de Desarrollo de Software IDE", una asignatura electiva de la carrera de Ingeniería en Sistemas de Información. El trabajo es realizado por el grupo compuesto por Facundo Picia y Francisco Bruno. El objetivo es desarrollar un sistema de gestión académica, abarcando la administración de alumnos, profesores, materias, especialidades y cursos, con el fin de replicar los procesos y funcionalidades de la facultad.</value>
-  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
