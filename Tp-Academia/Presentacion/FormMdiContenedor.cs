@@ -16,5 +16,26 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            FormInicio formInicio = new FormInicio();
+            formInicio.MdiParent = this;
+            formInicio.Show();
+        }
+
+        private void toolStripLabel2_Click(object sender, EventArgs e)
+        {
+            FormListadoAlumnos formAlumnos = new FormListadoAlumnos();
+            formAlumnos.MdiParent = this;
+            formAlumnos.Show();
+        }
+
+        private void toolStripLabel5_Click(object sender, EventArgs e)
+        {
+            FormListadoComisiones formComisiones = new FormListadoComisiones();
+            formComisiones.MdiParent = this;
+            formComisiones.Show();
+        }
     }
 }
