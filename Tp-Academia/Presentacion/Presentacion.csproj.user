@@ -28,5 +28,8 @@
     <Compile Update="FormNuevaPersona.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormNuevoPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

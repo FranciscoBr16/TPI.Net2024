@@ -21,5 +21,11 @@ namespace Entidades
             Id= id;
             Descripcion = descripcion;
         }
+
+        public Plan(string descripcion, Especialidad especialidad)
+        {
+            Descripcion = descripcion;
+            Especialidad = especialidad;
+        }
     }
 }

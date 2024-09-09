@@ -37,5 +37,11 @@ namespace Presentacion
         {
             ListarPlanes();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormNuevoPlan formNuevo = new FormNuevoPlan();
+            formNuevo.ShowDialog();
+        }
     }
 }

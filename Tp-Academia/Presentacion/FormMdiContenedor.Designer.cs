@@ -115,6 +115,7 @@
             toolStripLabel6.Name = "toolStripLabel6";
             toolStripLabel6.Size = new Size(51, 22);
             toolStripLabel6.Text = "Planes";
+            toolStripLabel6.Click += toolStripLabel6_Click;
             // 
             // toolStripSeparator5
             // 

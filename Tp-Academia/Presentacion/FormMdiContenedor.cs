@@ -37,5 +37,12 @@ namespace Presentacion
             formComisiones.MdiParent = this;
             formComisiones.Show();
         }
+
+        private void toolStripLabel6_Click(object sender, EventArgs e)
+        {
+            FormListadoPlanes formPlanes = new FormListadoPlanes();
+            formPlanes.MdiParent = this;
+            formPlanes.Show();
+        }
     }
 }
