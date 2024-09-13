@@ -24,8 +24,8 @@ namespace Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // ver el tema de la cadena de conexion
-            optionsBuilder.UseSqlServer(@"Server=LAPTOP-GCJ3VNP2\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=true;TrustServerCertificate=True");
-        }
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-3OGAI9F\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=true;TrustServerCertificate=True");
+        }   //facu -> DESKTOP-3OGAI9F\SQLEXPRESS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

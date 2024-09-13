@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FormListadoAlumnos
+    partial class FormListadoProfesores
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tableLayoutPanel4 = new TableLayoutPanel();
-            lblAlumnos = new Label();
-            dgvAlumnos = new DataGridView();
+            lblProfesor = new Label();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            dgvProfesores = new DataGridView();
             colLegajo = new DataGridViewTextBoxColumn();
             colNombre = new DataGridViewTextBoxColumn();
             colApellido = new DataGridViewTextBoxColumn();
             colUsuario = new DataGridViewTextBoxColumn();
             colDireccion = new DataGridViewTextBoxColumn();
             colCorreo = new DataGridViewTextBoxColumn();
-            colAnioIngreso = new DataGridViewTextBoxColumn();
             colBtnModificar = new DataGridViewButtonColumn();
             colBtnEliminar = new DataGridViewButtonColumn();
-            tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvProfesores).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel4
@@ -53,38 +51,53 @@
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Controls.Add(lblAlumnos, 1, 0);
+            tableLayoutPanel4.Controls.Add(lblProfesor, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Top;
             tableLayoutPanel4.Location = new Point(0, 0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(1330, 62);
-            tableLayoutPanel4.TabIndex = 4;
+            tableLayoutPanel4.Size = new Size(1173, 62);
+            tableLayoutPanel4.TabIndex = 5;
             // 
-            // lblAlumnos
+            // lblProfesor
             // 
-            lblAlumnos.Anchor = AnchorStyles.None;
-            lblAlumnos.AutoSize = true;
-            lblAlumnos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAlumnos.Location = new Point(621, 18);
-            lblAlumnos.Name = "lblAlumnos";
-            lblAlumnos.Size = new Size(86, 25);
-            lblAlumnos.TabIndex = 0;
-            lblAlumnos.Text = "Alumnos";
+            lblProfesor.Anchor = AnchorStyles.None;
+            lblProfesor.AutoSize = true;
+            lblProfesor.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblProfesor.Location = new Point(536, 18);
+            lblProfesor.Name = "lblProfesor";
+            lblProfesor.Size = new Size(101, 25);
+            lblProfesor.TabIndex = 0;
+            lblProfesor.Text = "Profesores";
             // 
-            // dgvAlumnos
+            // tableLayoutPanel1
             // 
-            dgvAlumnos.Anchor = AnchorStyles.Top;
-            dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colAnioIngreso, colBtnModificar, colBtnEliminar });
-            dgvAlumnos.Location = new Point(25, 2);
-            dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
-            dgvAlumnos.Name = "dgvAlumnos";
-            dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1053, 396);
-            dgvAlumnos.TabIndex = 3;
-            dgvAlumnos.CellMouseClick += dgvAlumnos_CellMouseClick;
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 96F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
+            tableLayoutPanel1.Controls.Add(dgvProfesores, 1, 0);
+            tableLayoutPanel1.Location = new Point(0, 67);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(1173, 399);
+            tableLayoutPanel1.TabIndex = 6;
+            // 
+            // dgvProfesores
+            // 
+            dgvProfesores.Anchor = AnchorStyles.Top;
+            dgvProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProfesores.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colBtnModificar, colBtnEliminar });
+            dgvProfesores.Location = new Point(59, 2);
+            dgvProfesores.Margin = new Padding(3, 2, 3, 2);
+            dgvProfesores.Name = "dgvProfesores";
+            dgvProfesores.RowHeadersWidth = 51;
+            dgvProfesores.Size = new Size(1053, 395);
+            dgvProfesores.TabIndex = 3;
+            dgvProfesores.CellContentClick += dgvProfesores_CellMouseClick;
             // 
             // colLegajo
             // 
@@ -139,16 +152,6 @@
             colCorreo.Name = "colCorreo";
             colCorreo.Width = 125;
             // 
-            // colAnioIngreso
-            // 
-            colAnioIngreso.DataPropertyName = "Fecha_ingreso";
-            dataGridViewCellStyle1.Format = "dd/MM/yyyy";
-            colAnioIngreso.DefaultCellStyle = dataGridViewCellStyle1;
-            colAnioIngreso.HeaderText = "Año Ingreso";
-            colAnioIngreso.MinimumWidth = 6;
-            colAnioIngreso.Name = "colAnioIngreso";
-            colAnioIngreso.Width = 125;
-            // 
             // colBtnModificar
             // 
             colBtnModificar.HeaderText = "";
@@ -169,53 +172,37 @@
             colBtnEliminar.UseColumnTextForButtonValue = true;
             colBtnEliminar.Width = 125;
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 96F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
-            tableLayoutPanel1.Controls.Add(dgvAlumnos, 1, 0);
-            tableLayoutPanel1.Location = new Point(0, 69);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1104, 400);
-            tableLayoutPanel1.TabIndex = 5;
-            // 
-            // FormListadoAlumnos
+            // FormListadoProfesores
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1330, 710);
+            ClientSize = new Size(1173, 464);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel4);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "FormListadoAlumnos";
-            Text = "FormListadoAlumnos";
-            Load += FormListadoAlumnos_Load;
+            Name = "FormListadoProfesores";
+            Text = "Form1";
+            Load += FormListadoProfesores_Load;
             tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvAlumnos).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvProfesores).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel4;
-        private Label lblAlumnos;
-        private DataGridView dgvAlumnos;
+        private Label lblProfesor;
+        private TableLayoutPanel tableLayoutPanel1;
+        private DataGridView dgvProfesores;
         private DataGridViewTextBoxColumn colLegajo;
         private DataGridViewTextBoxColumn colNombre;
         private DataGridViewTextBoxColumn colApellido;
         private DataGridViewTextBoxColumn colUsuario;
         private DataGridViewTextBoxColumn colDireccion;
         private DataGridViewTextBoxColumn colCorreo;
-        private DataGridViewTextBoxColumn colAnioIngreso;
         private DataGridViewButtonColumn colBtnModificar;
         private DataGridViewButtonColumn colBtnEliminar;
-        private TableLayoutPanel tableLayoutPanel1;
+
     }
 }

@@ -11,6 +11,19 @@ namespace Data
 {
     public class DataPersona
     {
+        public List<Persona> GetProfesores()
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+
+                var profesores = db.Personas
+                            .Where(p => p.Rol == "Profesor")
+                            .ToList();
+
+                return profesores;
+            }
+        }
+
         public List<Persona> GetAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
