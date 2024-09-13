@@ -78,11 +78,11 @@
             dgvAlumnos.Anchor = AnchorStyles.Top;
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colAnioIngreso, colBtnModificar, colBtnEliminar });
-            dgvAlumnos.Location = new Point(25, 2);
+            dgvAlumnos.Location = new Point(57, 2);
             dgvAlumnos.Margin = new Padding(3, 2, 3, 2);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1053, 396);
+            dgvAlumnos.Size = new Size(1176, 396);
             dgvAlumnos.TabIndex = 3;
             dgvAlumnos.CellMouseClick += dgvAlumnos_CellMouseClick;
             // 
@@ -181,7 +181,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1104, 400);
+            tableLayoutPanel1.Size = new Size(1293, 400);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // FormListadoAlumnos

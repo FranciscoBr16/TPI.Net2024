@@ -32,6 +32,10 @@ namespace Presentacion
 
         }
 
-        
+        private void btnRegistrarse_Click(object sender, EventArgs e)
+        {
+            FormNuevaPersona formNuevo = new FormNuevaPersona();
+            formNuevo.ShowDialog();
+        }
     }
 }
