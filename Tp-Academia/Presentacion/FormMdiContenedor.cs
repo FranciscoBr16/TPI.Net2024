@@ -44,5 +44,12 @@ namespace Presentacion
             formPlanes.MdiParent = this;
             formPlanes.Show();
         }
+
+        private void toolStripLabel3_Click(object sender, EventArgs e)
+        {
+            FormListadoProfesores formProfes = new FormListadoProfesores();
+            formProfes.MdiParent = this;
+            formProfes.Show();
+        }
     }
 }
