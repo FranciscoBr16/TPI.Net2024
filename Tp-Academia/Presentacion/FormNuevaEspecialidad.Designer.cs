@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FormNuevaComision
+    partial class FormNuevaEspecialidad
     {
         /// <summary>
         /// Required designer variable.
@@ -36,8 +36,8 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             lblDescripcion = new Label();
             txbDescripcion = new TextBox();
-            lblTurno = new Label();
-            txbTurno = new TextBox();
+            lblPlan = new Label();
+            txbPlan = new TextBox();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -52,13 +52,13 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Controls.Add(btnCancelar, 1, 0);
             tableLayoutPanel3.Controls.Add(btnAceptar, 2, 0);
-            tableLayoutPanel3.Location = new Point(0, 263);
+            tableLayoutPanel3.Location = new Point(0, 342);
             tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(708, 29);
-            tableLayoutPanel3.TabIndex = 44;
+            tableLayoutPanel3.TabIndex = 47;
             // 
             // btnCancelar
             // 
@@ -98,19 +98,19 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(757, 47);
-            tableLayoutPanel1.TabIndex = 42;
+            tableLayoutPanel1.Size = new Size(760, 47);
+            tableLayoutPanel1.TabIndex = 45;
             // 
             // lblNuevoUsuario
             // 
             lblNuevoUsuario.Anchor = AnchorStyles.Bottom;
             lblNuevoUsuario.AutoSize = true;
             lblNuevoUsuario.Font = new Font("Segoe UI", 14F);
-            lblNuevoUsuario.Location = new Point(303, 22);
+            lblNuevoUsuario.Location = new Point(291, 22);
             lblNuevoUsuario.Name = "lblNuevoUsuario";
-            lblNuevoUsuario.Size = new Size(150, 25);
+            lblNuevoUsuario.Size = new Size(176, 25);
             lblNuevoUsuario.TabIndex = 0;
-            lblNuevoUsuario.Text = "Nueva Comision";
+            lblNuevoUsuario.Text = "Nueva Especialidad";
             lblNuevoUsuario.TextAlign = ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel2
@@ -125,16 +125,16 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Controls.Add(lblDescripcion, 1, 0);
             tableLayoutPanel2.Controls.Add(txbDescripcion, 2, 0);
-            tableLayoutPanel2.Controls.Add(lblTurno, 1, 1);
-            tableLayoutPanel2.Controls.Add(txbTurno, 2, 1);
-            tableLayoutPanel2.Location = new Point(0, 92);
+            tableLayoutPanel2.Controls.Add(lblPlan, 1, 1);
+            tableLayoutPanel2.Controls.Add(txbPlan, 2, 1);
+            tableLayoutPanel2.Location = new Point(0, 171);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.Size = new Size(708, 117);
-            tableLayoutPanel2.TabIndex = 43;
+            tableLayoutPanel2.TabIndex = 46;
             // 
             // lblDescripcion
             // 
@@ -155,35 +155,35 @@
             txbDescripcion.Size = new Size(441, 23);
             txbDescripcion.TabIndex = 1;
             // 
-            // lblTurno
+            // lblPlan
             // 
-            lblTurno.Anchor = AnchorStyles.None;
-            lblTurno.AutoSize = true;
-            lblTurno.Location = new Point(110, 80);
-            lblTurno.Name = "lblTurno";
-            lblTurno.Size = new Size(38, 15);
-            lblTurno.TabIndex = 11;
-            lblTurno.Text = "Turno";
+            lblPlan.Anchor = AnchorStyles.None;
+            lblPlan.AutoSize = true;
+            lblPlan.Location = new Point(114, 80);
+            lblPlan.Name = "lblPlan";
+            lblPlan.Size = new Size(30, 15);
+            lblPlan.TabIndex = 11;
+            lblPlan.Text = "Plan";
             // 
             // txbTurno
             // 
-            txbTurno.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txbTurno.Location = new Point(188, 76);
-            txbTurno.Margin = new Padding(3, 2, 3, 2);
-            txbTurno.Name = "txbTurno";
-            txbTurno.Size = new Size(441, 23);
-            txbTurno.TabIndex = 3;
+            txbPlan.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txbPlan.Location = new Point(188, 76);
+            txbPlan.Margin = new Padding(3, 2, 3, 2);
+            txbPlan.Name = "txbPlan";
+            txbPlan.Size = new Size(441, 23);
+            txbPlan.TabIndex = 3;
             // 
-            // FormNuevaComision
+            // FormNuevaEspecialidad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(757, 388);
+            ClientSize = new Size(760, 381);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
-            Name = "FormNuevaComision";
-            Text = "Nueva Comision";
+            Name = "FormNuevaEspecialidad";
+            Text = "Alta especialidad";
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
@@ -202,7 +202,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Label lblDescripcion;
         private TextBox txbDescripcion;
-        private Label lblTurno;
-        private TextBox txbTurno;
+        private Label lblPlan;
+        private TextBox txbPlan;
     }
 }

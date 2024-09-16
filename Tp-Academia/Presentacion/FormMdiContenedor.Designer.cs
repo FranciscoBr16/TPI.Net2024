@@ -128,6 +128,7 @@
             toolStripLabel7.Name = "toolStripLabel7";
             toolStripLabel7.Size = new Size(83, 22);
             toolStripLabel7.Text = "Especialidades";
+            toolStripLabel7.Click += toolStripLabel7_Click;
             // 
             // toolStripSeparator6
             // 

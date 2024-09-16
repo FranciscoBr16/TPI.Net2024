@@ -15,5 +15,9 @@ namespace Entidades
             Id = id;
             Descripcion = descripcion;
         }
+
+        public Especialidad(string text1, string text2)
+        {
+        }
     }
 }

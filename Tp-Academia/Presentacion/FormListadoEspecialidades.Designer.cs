@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FormListadoComisiones
+    partial class FormListadoEspecialidades
     {
         /// <summary>
         /// Required designer variable.
@@ -30,16 +30,14 @@
         {
             tableLayoutPanel5 = new TableLayoutPanel();
             label1 = new Label();
-            btnNuevaComision = new Button();
-            tableLayoutPanel1 = new TableLayoutPanel();
+            btnNuevaEspecialidad = new Button();
             dgvComisiones = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
-            Turno = new DataGridViewTextBoxColumn();
+            Planes = new DataGridViewTextBoxColumn();
             colBtnModificarCom = new DataGridViewButtonColumn();
             colBtnEliminarCom = new DataGridViewButtonColumn();
             tableLayoutPanel5.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvComisiones).BeginInit();
             SuspendLayout();
             // 
@@ -50,71 +48,55 @@
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.Controls.Add(label1, 1, 0);
-            tableLayoutPanel5.Controls.Add(btnNuevaComision, 1, 1);
+            tableLayoutPanel5.Controls.Add(btnNuevaEspecialidad, 1, 1);
             tableLayoutPanel5.Dock = DockStyle.Top;
             tableLayoutPanel5.Location = new Point(0, 0);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(1229, 107);
-            tableLayoutPanel5.TabIndex = 6;
+            tableLayoutPanel5.Size = new Size(1066, 107);
+            tableLayoutPanel5.TabIndex = 8;
             // 
             // label1
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(559, 14);
+            label1.Location = new Point(465, 14);
             label1.Name = "label1";
-            label1.Size = new Size(109, 25);
+            label1.Size = new Size(135, 25);
             label1.TabIndex = 0;
-            label1.Text = "Comisiones";
+            label1.Text = "Especialidades";
             // 
             // btnNuevaComision
             // 
-            btnNuevaComision.Anchor = AnchorStyles.Bottom;
-            btnNuevaComision.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaComision.Location = new Point(533, 77);
-            btnNuevaComision.Name = "btnNuevaComision";
-            btnNuevaComision.Size = new Size(160, 27);
-            btnNuevaComision.TabIndex = 1;
-            btnNuevaComision.Text = "Agregar Comision";
-            btnNuevaComision.UseVisualStyleBackColor = true;
-            btnNuevaComision.Click += btnNuevaComision_Click;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
-            tableLayoutPanel1.Controls.Add(dgvComisiones, 1, 0);
-            tableLayoutPanel1.Location = new Point(0, 124);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1104, 340);
-            tableLayoutPanel1.TabIndex = 7;
+            btnNuevaEspecialidad.Anchor = AnchorStyles.Bottom;
+            btnNuevaEspecialidad.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevaEspecialidad.Location = new Point(452, 77);
+            btnNuevaEspecialidad.Name = "btnNuevaEspecialidad";
+            btnNuevaEspecialidad.Size = new Size(160, 27);
+            btnNuevaEspecialidad.TabIndex = 1;
+            btnNuevaEspecialidad.Text = "Agregar Especialidad";
+            btnNuevaEspecialidad.UseVisualStyleBackColor = true;
+            btnNuevaEspecialidad.Click += btnNuevaEspecialidad_Click;
             // 
             // dgvComisiones
             // 
             dgvComisiones.Anchor = AnchorStyles.Top;
             dgvComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvComisiones.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, Turno, colBtnModificarCom, colBtnEliminarCom });
-            dgvComisiones.Location = new Point(133, 2);
+            dgvComisiones.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, Planes, colBtnModificarCom, colBtnEliminarCom });
+            dgvComisiones.Location = new Point(120, 112);
             dgvComisiones.Margin = new Padding(3, 2, 3, 2);
             dgvComisiones.Name = "dgvComisiones";
             dgvComisiones.RowHeadersWidth = 51;
-            dgvComisiones.Size = new Size(836, 306);
+            dgvComisiones.Size = new Size(847, 245);
             dgvComisiones.TabIndex = 8;
-            dgvComisiones.CellMouseClick += dgvComisiones_CellMouseClick;
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
-            Id.HeaderText = "Id Comision";
+            Id.HeaderText = "Id Especialidad";
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.ReadOnly = true;
@@ -129,14 +111,14 @@
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
             // 
-            // Turno
+            // Planes
             // 
-            Turno.DataPropertyName = "Turno";
-            Turno.HeaderText = "Turno";
-            Turno.MinimumWidth = 6;
-            Turno.Name = "Turno";
-            Turno.ReadOnly = true;
-            Turno.Width = 125;
+            Planes.DataPropertyName = "Planes";
+            Planes.HeaderText = "Turno";
+            Planes.MinimumWidth = 6;
+            Planes.Name = "Planes";
+            Planes.ReadOnly = true;
+            Planes.Width = 125;
             // 
             // colBtnModificarCom
             // 
@@ -158,20 +140,18 @@
             colBtnEliminarCom.UseColumnTextForButtonValue = true;
             colBtnEliminarCom.Width = 125;
             // 
-            // FormListadoComisiones
+            // FormListadoEspecialidades
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1229, 666);
-            Controls.Add(tableLayoutPanel1);
+            AutoSize = true;
+            ClientSize = new Size(1066, 383);
+            Controls.Add(dgvComisiones);
             Controls.Add(tableLayoutPanel5);
-            Margin = new Padding(3, 2, 3, 2);
-            Name = "FormListadoComisiones";
-            Text = "FormListadoComisiones";
-            Load += FormListadoComisiones_Load;
+            Name = "FormListadoEspecialidades";
+            Text = "Listado especialidades";
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();
-            tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvComisiones).EndInit();
             ResumeLayout(false);
         }
@@ -180,12 +160,11 @@
 
         private TableLayoutPanel tableLayoutPanel5;
         private Label label1;
-        private Button btnNuevaComision;
-        private TableLayoutPanel tableLayoutPanel1;
+        private Button btnNuevaEspecialidad;
         private DataGridView dgvComisiones;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Descripcion;
-        private DataGridViewTextBoxColumn Turno;
+        private DataGridViewTextBoxColumn Planes;
         private DataGridViewButtonColumn colBtnModificarCom;
         private DataGridViewButtonColumn colBtnEliminarCom;
     }

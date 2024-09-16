@@ -51,5 +51,12 @@ namespace Presentacion
             formProfes.MdiParent = this;
             formProfes.Show();
         }
+
+        private void toolStripLabel7_Click(object sender, EventArgs e)
+        {
+            FormListadoEspecialidades formProfes = new FormListadoEspecialidades();
+            formProfes.MdiParent = this;
+            formProfes.Show();
+        }
     }
 }
