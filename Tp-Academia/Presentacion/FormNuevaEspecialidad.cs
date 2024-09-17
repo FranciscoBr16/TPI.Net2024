@@ -25,7 +25,7 @@ namespace Presentacion
             if (ValidarCampos())
             {
 
-                Especialidad EspNueva = new Especialidad(txbDescripcion.Text, txbPlan.Text);
+                Especialidad EspNueva = new Especialidad(txbDescripcion.Text);
                 DataEspecialidad dc = new DataEspecialidad();
                 dc.InsertEspecialidad(EspNueva);
                 MessageBox.Show("Nueva Especialidad Registrada");
@@ -37,8 +37,7 @@ namespace Presentacion
 
         private bool ValidarCampos()
         {
-            if (string.IsNullOrWhiteSpace(txbDescripcion.Text) ||
-                string.IsNullOrWhiteSpace(txbPlan.Text))
+            if (string.IsNullOrWhiteSpace(txbDescripcion.Text) )
             {
                 MessageBox.Show("Todos los campos deben ser completados.");
                 return false;

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +23,25 @@ namespace Presentacion
         {
             FormNuevaEspecialidad formNuevo = new FormNuevaEspecialidad();
             formNuevo.ShowDialog();
+        }
+
+        private void FormListadoEspecialidades_Load(object sender, EventArgs e)
+        {
+            ListarEspecialidades();
+        }
+
+        public void ListarEspecialidades()
+        {
+
+            DataEspecialidad dataEsp = new DataEspecialidad();
+
+            List<Especialidad> listaEsp = dataEsp.GetEspecialidades();
+
+            dgvEspecialidades.AutoGenerateColumns = false;
+
+            dgvEspecialidades.DataSource = listaEsp;
+
+
         }
     }
 }
