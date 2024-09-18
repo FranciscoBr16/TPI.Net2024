@@ -1,11 +1,6 @@
 ﻿using Entidades;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Data
 {
@@ -23,8 +18,15 @@ namespace Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // ver el tema de la cadena de conexion
-            optionsBuilder.UseSqlServer(@"Server=LAPTOP-GCJ3VNP2\SQLEXPRESS;Initial Catalog=Academia;Integrated Security=true;TrustServerCertificate=True");
+            var configuration = new ConfigurationBuilder()
+                  .SetBasePath(Directory.GetCurrentDirectory())
+                  .AddJsonFile("appsettings.json")
+            .Build();
+
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("EFContext"));
+
+
+            base.OnConfiguring(optionsBuilder);
         }   //facu -> DESKTOP-3OGAI9F\SQLEXPRESS
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

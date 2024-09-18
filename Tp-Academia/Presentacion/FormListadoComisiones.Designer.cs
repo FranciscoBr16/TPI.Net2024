@@ -53,11 +53,12 @@
             tableLayoutPanel5.Controls.Add(btnNuevaComision, 1, 1);
             tableLayoutPanel5.Dock = DockStyle.Top;
             tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(1229, 107);
+            tableLayoutPanel5.Size = new Size(1405, 143);
             tableLayoutPanel5.TabIndex = 6;
             // 
             // label1
@@ -65,9 +66,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(559, 14);
+            label1.Location = new Point(633, 19);
             label1.Name = "label1";
-            label1.Size = new Size(109, 25);
+            label1.Size = new Size(137, 32);
             label1.TabIndex = 0;
             label1.Text = "Comisiones";
             // 
@@ -75,9 +76,10 @@
             // 
             btnNuevaComision.Anchor = AnchorStyles.Bottom;
             btnNuevaComision.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaComision.Location = new Point(533, 77);
+            btnNuevaComision.Location = new Point(610, 103);
+            btnNuevaComision.Margin = new Padding(3, 4, 3, 4);
             btnNuevaComision.Name = "btnNuevaComision";
-            btnNuevaComision.Size = new Size(160, 27);
+            btnNuevaComision.Size = new Size(183, 36);
             btnNuevaComision.TabIndex = 1;
             btnNuevaComision.Text = "Agregar Comision";
             btnNuevaComision.UseVisualStyleBackColor = true;
@@ -90,12 +92,12 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.Controls.Add(dgvComisiones, 1, 0);
-            tableLayoutPanel1.Location = new Point(0, 124);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(0, 143);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1104, 340);
+            tableLayoutPanel1.Size = new Size(1405, 453);
             tableLayoutPanel1.TabIndex = 7;
             // 
             // dgvComisiones
@@ -103,11 +105,10 @@
             dgvComisiones.Anchor = AnchorStyles.Top;
             dgvComisiones.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvComisiones.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, Turno, colBtnModificarCom, colBtnEliminarCom });
-            dgvComisiones.Location = new Point(133, 2);
-            dgvComisiones.Margin = new Padding(3, 2, 3, 2);
+            dgvComisiones.Location = new Point(224, 3);
             dgvComisiones.Name = "dgvComisiones";
             dgvComisiones.RowHeadersWidth = 51;
-            dgvComisiones.Size = new Size(836, 306);
+            dgvComisiones.Size = new Size(955, 408);
             dgvComisiones.TabIndex = 8;
             dgvComisiones.CellMouseClick += dgvComisiones_CellMouseClick;
             // 
@@ -160,14 +161,15 @@
             // 
             // FormListadoComisiones
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1229, 666);
+            ClientSize = new Size(1405, 888);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "FormListadoComisiones";
-            Text = "FormListadoComisiones";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Comisiones";
+            WindowState = FormWindowState.Maximized;
             Load += FormListadoComisiones_Load;
             tableLayoutPanel5.ResumeLayout(false);
             tableLayoutPanel5.PerformLayout();

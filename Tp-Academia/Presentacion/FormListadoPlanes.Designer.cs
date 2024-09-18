@@ -88,7 +88,8 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             tableLayoutPanel2.Controls.Add(dgvPlanes, 1, 0);
-            tableLayoutPanel2.Location = new Point(0, 165);
+            tableLayoutPanel2.Dock = DockStyle.Top;
+            tableLayoutPanel2.Location = new Point(0, 125);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -149,7 +150,9 @@
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
             Name = "FormListadoPlanes";
-            Text = "FormListadoPlanes";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Planes";
+            WindowState = FormWindowState.Maximized;
             Load += FormListadoPlanes_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

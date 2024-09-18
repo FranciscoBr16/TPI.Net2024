@@ -58,5 +58,12 @@ namespace Presentacion
             formProfes.MdiParent = this;
             formProfes.Show();
         }
+
+        private void FormMdiContenedor_Load(object sender, EventArgs e)
+        {
+            FormInicio inicio = new FormInicio();
+            inicio.MdiParent = this;
+            inicio.Show();
+        }
     }
 }
