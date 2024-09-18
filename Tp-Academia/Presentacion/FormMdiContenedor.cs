@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Presentacion
 {
     public partial class FormMdiContenedor : Form
     {
+        public static Persona? Usuario { get; set; } = null;
+
         public FormMdiContenedor()
         {
             InitializeComponent();
@@ -61,9 +64,38 @@ namespace Presentacion
 
         private void FormMdiContenedor_Load(object sender, EventArgs e)
         {
+            ActualizarVisibilidad();
             FormInicio inicio = new FormInicio();
             inicio.MdiParent = this;
             inicio.Show();
+        }
+
+        public void ActualizarVisibilidad()
+        {
+            if (Usuario != null)  
+            {
+
+                toolStripLabel1.Visible = true;
+                toolStripLabel2.Visible = true;
+                toolStripLabel3.Visible = true;
+                toolStripLabel4.Visible = true;
+                toolStripLabel5.Visible = true;
+                toolStripLabel6.Visible = true;
+                toolStripLabel7.Visible = true;
+                toolStripLabel8.Visible = true;
+                toolStripLabel9.Visible = true;
+            }
+            else
+            {
+                toolStripLabel2.Visible = false;
+                toolStripLabel3.Visible = false;
+                toolStripLabel4.Visible = false;
+                toolStripLabel5.Visible = false;
+                toolStripLabel6.Visible = false;
+                toolStripLabel7.Visible = false;
+                toolStripLabel8.Visible = false;
+                toolStripLabel9.Visible = false;
+            }
         }
     }
 }

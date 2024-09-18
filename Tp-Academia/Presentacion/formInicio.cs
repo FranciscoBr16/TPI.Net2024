@@ -29,7 +29,8 @@ namespace Presentacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            FormLogIn formLogIn = new FormLogIn();
+            formLogIn.ShowDialog();
         }
 
         private void btnRegistrarse_Click(object sender, EventArgs e)

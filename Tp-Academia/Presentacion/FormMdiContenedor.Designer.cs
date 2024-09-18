@@ -30,20 +30,13 @@
         {
             toolStrip1 = new ToolStrip();
             toolStripLabel1 = new ToolStripLabel();
-            toolStripSeparator1 = new ToolStripSeparator();
             toolStripLabel2 = new ToolStripLabel();
-            toolStripSeparator2 = new ToolStripSeparator();
             toolStripLabel3 = new ToolStripLabel();
-            toolStripSeparator3 = new ToolStripSeparator();
             toolStripLabel4 = new ToolStripLabel();
             toolStripLabel5 = new ToolStripLabel();
-            toolStripSeparator4 = new ToolStripSeparator();
             toolStripLabel6 = new ToolStripLabel();
-            toolStripSeparator5 = new ToolStripSeparator();
             toolStripLabel7 = new ToolStripLabel();
-            toolStripSeparator6 = new ToolStripSeparator();
             toolStripLabel8 = new ToolStripLabel();
-            toolStripSeparator7 = new ToolStripSeparator();
             toolStripLabel9 = new ToolStripLabel();
             toolStrip1.SuspendLayout();
             SuspendLayout();
@@ -51,7 +44,7 @@
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripLabel1, toolStripSeparator1, toolStripLabel2, toolStripSeparator2, toolStripLabel3, toolStripSeparator3, toolStripLabel4, toolStripLabel5, toolStripSeparator4, toolStripLabel6, toolStripSeparator5, toolStripLabel7, toolStripSeparator6, toolStripLabel8, toolStripSeparator7, toolStripLabel9 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripLabel1, toolStripLabel2, toolStripLabel3, toolStripLabel4, toolStripLabel5, toolStripLabel6, toolStripLabel7, toolStripLabel8, toolStripLabel9 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1291, 25);
@@ -65,11 +58,6 @@
             toolStripLabel1.Text = "Inicio";
             toolStripLabel1.Click += toolStripLabel1_Click;
             // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(6, 25);
-            // 
             // toolStripLabel2
             // 
             toolStripLabel2.Name = "toolStripLabel2";
@@ -77,22 +65,12 @@
             toolStripLabel2.Text = "Alumnos";
             toolStripLabel2.Click += toolStripLabel2_Click;
             // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(6, 25);
-            // 
             // toolStripLabel3
             // 
             toolStripLabel3.Name = "toolStripLabel3";
             toolStripLabel3.Size = new Size(78, 22);
             toolStripLabel3.Text = "Profesores";
             toolStripLabel3.Click += toolStripLabel3_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(6, 25);
             // 
             // toolStripLabel4
             // 
@@ -106,22 +84,12 @@
             toolStripLabel5.Text = "Comisiones";
             toolStripLabel5.Click += toolStripLabel5_Click;
             // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            toolStripSeparator4.Size = new Size(6, 25);
-            // 
             // toolStripLabel6
             // 
             toolStripLabel6.Name = "toolStripLabel6";
             toolStripLabel6.Size = new Size(51, 22);
             toolStripLabel6.Text = "Planes";
             toolStripLabel6.Click += toolStripLabel6_Click;
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            toolStripSeparator5.Size = new Size(6, 25);
             // 
             // toolStripLabel7
             // 
@@ -130,21 +98,11 @@
             toolStripLabel7.Text = "Especialidades";
             toolStripLabel7.Click += toolStripLabel7_Click;
             // 
-            // toolStripSeparator6
-            // 
-            toolStripSeparator6.Name = "toolStripSeparator6";
-            toolStripSeparator6.Size = new Size(6, 25);
-            // 
             // toolStripLabel8
             // 
             toolStripLabel8.Name = "toolStripLabel8";
             toolStripLabel8.Size = new Size(66, 22);
             toolStripLabel8.Text = "Materias";
-            // 
-            // toolStripSeparator7
-            // 
-            toolStripSeparator7.Name = "toolStripSeparator7";
-            toolStripSeparator7.Size = new Size(6, 25);
             // 
             // toolStripLabel9
             // 
@@ -173,20 +131,13 @@
 
         private ToolStrip toolStrip1;
         private ToolStripLabel toolStripLabel1;
-        private ToolStripSeparator toolStripSeparator1;
         private ToolStripLabel toolStripLabel2;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripLabel toolStripLabel3;
-        private ToolStripSeparator toolStripSeparator3;
         private ToolStripLabel toolStripLabel4;
         private ToolStripLabel toolStripLabel5;
-        private ToolStripSeparator toolStripSeparator4;
         private ToolStripLabel toolStripLabel6;
-        private ToolStripSeparator toolStripSeparator5;
         private ToolStripLabel toolStripLabel7;
-        private ToolStripSeparator toolStripSeparator6;
         private ToolStripLabel toolStripLabel8;
-        private ToolStripSeparator toolStripSeparator7;
         private ToolStripLabel toolStripLabel9;
     }
 }

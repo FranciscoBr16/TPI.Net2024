@@ -77,19 +77,19 @@ namespace Presentacion
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel4.Controls.Add(btnCancelar, 1, 0);
             tableLayoutPanel4.Controls.Add(btnAceptar, 2, 0);
-            tableLayoutPanel4.Location = new Point(0, 339);
+            tableLayoutPanel4.Location = new Point(0, 325);
             tableLayoutPanel4.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(708, 29);
+            tableLayoutPanel4.Size = new Size(708, 43);
             tableLayoutPanel4.TabIndex = 38;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
             btnCancelar.BackColor = Color.Red;
-            btnCancelar.Location = new Point(224, 3);
+            btnCancelar.Location = new Point(224, 10);
             btnCancelar.Margin = new Padding(3, 2, 3, 2);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(82, 22);
@@ -101,7 +101,7 @@ namespace Presentacion
             // btnAceptar
             // 
             btnAceptar.Anchor = AnchorStyles.None;
-            btnAceptar.Location = new Point(401, 3);
+            btnAceptar.Location = new Point(401, 10);
             btnAceptar.Margin = new Padding(3, 2, 3, 2);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(82, 22);
@@ -131,15 +131,16 @@ namespace Presentacion
             lblNuevoUsuario.Anchor = AnchorStyles.Bottom;
             lblNuevoUsuario.AutoSize = true;
             lblNuevoUsuario.Font = new Font("Segoe UI", 14F);
-            lblNuevoUsuario.Location = new Point(271, 22);
+            lblNuevoUsuario.Location = new Point(251, 15);
             lblNuevoUsuario.Name = "lblNuevoUsuario";
-            lblNuevoUsuario.Size = new Size(165, 25);
+            lblNuevoUsuario.Size = new Size(205, 32);
             lblNuevoUsuario.TabIndex = 0;
             lblNuevoUsuario.Text = "Modificar Persona";
             lblNuevoUsuario.TextAlign = ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel2
             // 
+            tableLayoutPanel2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tableLayoutPanel2.ColumnCount = 7;
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5.050505F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10.10101F));
@@ -166,7 +167,7 @@ namespace Presentacion
             tableLayoutPanel2.Controls.Add(lblCorreo, 1, 3);
             tableLayoutPanel2.Controls.Add(txbDireccion, 2, 1);
             tableLayoutPanel2.Controls.Add(label3, 1, 2);
-            tableLayoutPanel2.Location = new Point(0, 106);
+            tableLayoutPanel2.Location = new Point(0, 86);
             tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
@@ -181,38 +182,38 @@ namespace Presentacion
             // txbTelefono
             // 
             txbTelefono.Anchor = AnchorStyles.None;
-            txbTelefono.Location = new Point(445, 178);
+            txbTelefono.Location = new Point(445, 176);
             txbTelefono.Margin = new Padding(3, 2, 3, 2);
             txbTelefono.Name = "txbTelefono";
-            txbTelefono.Size = new Size(217, 23);
+            txbTelefono.Size = new Size(217, 27);
             txbTelefono.TabIndex = 24;
             // 
             // txbDni
             // 
             txbDni.Anchor = AnchorStyles.None;
-            txbDni.Location = new Point(445, 51);
+            txbDni.Location = new Point(445, 49);
             txbDni.Margin = new Padding(3, 2, 3, 2);
             txbDni.Name = "txbDni";
-            txbDni.Size = new Size(217, 23);
+            txbDni.Size = new Size(217, 27);
             txbDni.TabIndex = 26;
             // 
             // txbClave
             // 
             txbClave.Anchor = AnchorStyles.None;
-            txbClave.Location = new Point(445, 135);
+            txbClave.Location = new Point(445, 133);
             txbClave.Margin = new Padding(3, 2, 3, 2);
             txbClave.Name = "txbClave";
             txbClave.PasswordChar = '*';
-            txbClave.Size = new Size(217, 23);
+            txbClave.Size = new Size(217, 27);
             txbClave.TabIndex = 18;
             // 
             // lblDni
             // 
             lblDni.Anchor = AnchorStyles.None;
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(392, 55);
+            lblDni.Location = new Point(388, 53);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(25, 15);
+            lblDni.Size = new Size(32, 20);
             lblDni.TabIndex = 27;
             lblDni.Text = "Dni";
             // 
@@ -220,29 +221,29 @@ namespace Presentacion
             // 
             lblApellido.Anchor = AnchorStyles.None;
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(379, 13);
+            lblApellido.Location = new Point(376, 1);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(51, 15);
+            lblApellido.Size = new Size(57, 40);
             lblApellido.TabIndex = 10;
             lblApellido.Text = "Apellido";
             // 
             // txbApellido
             // 
             txbApellido.Anchor = AnchorStyles.None;
-            txbApellido.Location = new Point(445, 9);
+            txbApellido.Location = new Point(445, 7);
             txbApellido.Margin = new Padding(3, 2, 3, 2);
             txbApellido.Name = "txbApellido";
-            txbApellido.Size = new Size(217, 23);
+            txbApellido.Size = new Size(217, 27);
             txbApellido.TabIndex = 12;
             // 
             // dtpFechaNac
             // 
             dtpFechaNac.Anchor = AnchorStyles.None;
-            dtpFechaNac.Location = new Point(109, 93);
+            dtpFechaNac.Location = new Point(109, 91);
             dtpFechaNac.Margin = new Padding(3, 2, 3, 2);
             dtpFechaNac.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dtpFechaNac.Name = "dtpFechaNac";
-            dtpFechaNac.Size = new Size(222, 23);
+            dtpFechaNac.Size = new Size(222, 27);
             dtpFechaNac.TabIndex = 30;
             dtpFechaNac.Value = new DateTime(2024, 8, 29, 0, 0, 0, 0);
             // 
@@ -250,9 +251,9 @@ namespace Presentacion
             // 
             lblNombre.Anchor = AnchorStyles.None;
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(45, 13);
+            lblNombre.Location = new Point(38, 11);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(51, 15);
+            lblNombre.Size = new Size(64, 20);
             lblNombre.TabIndex = 9;
             lblNombre.Text = "Nombre";
             // 
@@ -260,9 +261,9 @@ namespace Presentacion
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(394, 182);
+            label2.Location = new Point(390, 180);
             label2.Name = "label2";
-            label2.Size = new Size(21, 15);
+            label2.Size = new Size(28, 20);
             label2.TabIndex = 25;
             label2.Text = "Tel";
             // 
@@ -270,28 +271,28 @@ namespace Presentacion
             // 
             lblClave.Anchor = AnchorStyles.None;
             lblClave.AutoSize = true;
-            lblClave.Location = new Point(386, 139);
+            lblClave.Location = new Point(382, 137);
             lblClave.Name = "lblClave";
-            lblClave.Size = new Size(36, 15);
+            lblClave.Size = new Size(45, 20);
             lblClave.TabIndex = 16;
             lblClave.Text = "Clave";
             // 
             // txbNombre
             // 
             txbNombre.Anchor = AnchorStyles.None;
-            txbNombre.Location = new Point(111, 9);
+            txbNombre.Location = new Point(111, 7);
             txbNombre.Margin = new Padding(3, 2, 3, 2);
             txbNombre.Name = "txbNombre";
-            txbNombre.Size = new Size(217, 23);
+            txbNombre.Size = new Size(217, 27);
             txbNombre.TabIndex = 1;
             // 
             // lblDireccion
             // 
             lblDireccion.Anchor = AnchorStyles.None;
             lblDireccion.AutoSize = true;
-            lblDireccion.Location = new Point(42, 55);
+            lblDireccion.Location = new Point(38, 43);
             lblDireccion.Name = "lblDireccion";
-            lblDireccion.Size = new Size(57, 15);
+            lblDireccion.Size = new Size(64, 40);
             lblDireccion.TabIndex = 11;
             lblDireccion.Text = "Direccion";
             // 
@@ -299,47 +300,47 @@ namespace Presentacion
             // 
             lblUsuario.Anchor = AnchorStyles.None;
             lblUsuario.AutoSize = true;
-            lblUsuario.Location = new Point(47, 182);
+            lblUsuario.Location = new Point(41, 180);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.Size = new Size(59, 20);
             lblUsuario.TabIndex = 15;
             lblUsuario.Text = "Usuario";
             // 
             // txbCorreo
             // 
             txbCorreo.Anchor = AnchorStyles.None;
-            txbCorreo.Location = new Point(111, 178);
+            txbCorreo.Location = new Point(111, 176);
             txbCorreo.Margin = new Padding(3, 2, 3, 2);
             txbCorreo.Name = "txbCorreo";
-            txbCorreo.Size = new Size(217, 23);
+            txbCorreo.Size = new Size(217, 27);
             txbCorreo.TabIndex = 14;
             // 
             // txbUsuario
             // 
             txbUsuario.Anchor = AnchorStyles.None;
-            txbUsuario.Location = new Point(111, 135);
+            txbUsuario.Location = new Point(111, 133);
             txbUsuario.Margin = new Padding(3, 2, 3, 2);
             txbUsuario.Name = "txbUsuario";
-            txbUsuario.Size = new Size(217, 23);
+            txbUsuario.Size = new Size(217, 27);
             txbUsuario.TabIndex = 13;
             // 
             // lblCorreo
             // 
             lblCorreo.Anchor = AnchorStyles.None;
             lblCorreo.AutoSize = true;
-            lblCorreo.Location = new Point(49, 139);
+            lblCorreo.Location = new Point(43, 137);
             lblCorreo.Name = "lblCorreo";
-            lblCorreo.Size = new Size(43, 15);
+            lblCorreo.Size = new Size(54, 20);
             lblCorreo.TabIndex = 17;
             lblCorreo.Text = "Correo";
             // 
             // txbDireccion
             // 
             txbDireccion.Anchor = AnchorStyles.None;
-            txbDireccion.Location = new Point(111, 51);
+            txbDireccion.Location = new Point(111, 49);
             txbDireccion.Margin = new Padding(3, 2, 3, 2);
             txbDireccion.Name = "txbDireccion";
-            txbDireccion.Size = new Size(217, 23);
+            txbDireccion.Size = new Size(217, 27);
             txbDireccion.TabIndex = 3;
             // 
             // label3
@@ -347,9 +348,9 @@ namespace Presentacion
             label3.Anchor = AnchorStyles.None;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(38, 92);
+            label3.Location = new Point(38, 84);
             label3.Name = "label3";
-            label3.Size = new Size(65, 26);
+            label3.Size = new Size(64, 42);
             label3.TabIndex = 29;
             label3.Text = "Fecha de Nacimiento";
             // 

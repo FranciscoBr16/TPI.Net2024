@@ -24,6 +24,18 @@ namespace Data
             }
         }
 
+        public Persona GetPersonaByLegajoYClave(int legajo , string clave)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                
+                var persona = db.Personas
+                                .FirstOrDefault(p => p.Legajo == legajo && p.Clave == clave);
+
+                return persona;  
+            }
+
+        }
         public List<Persona> GetAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
