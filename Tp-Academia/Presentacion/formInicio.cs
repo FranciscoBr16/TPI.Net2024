@@ -99,7 +99,7 @@ namespace Presentacion
             var mdiParent = this.MdiParent as MiFormBase;
             mdiParent.Usuario = null;
             ActualizarVisibilidad();
-            this.Close();
+            this.Close(); // ver como hacer para cerrar todas las ventanas
         }
     }
 }

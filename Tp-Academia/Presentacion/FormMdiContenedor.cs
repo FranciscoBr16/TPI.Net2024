@@ -13,7 +13,7 @@ namespace Presentacion
 {
     public partial class FormMdiContenedor : MiFormBase
     {
-        
+
         public FormMdiContenedor()
         {
             InitializeComponent();
@@ -22,13 +22,13 @@ namespace Presentacion
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             Form formInicio = IsOpen(typeof(FormInicio));
-            if (formInicio == null) 
+            if (formInicio == null)
             {
                 MostrarInicio();
             }
             else
             {
-                formInicio.BringToFront(); 
+                formInicio.BringToFront();
             }
         }
 
@@ -92,7 +92,7 @@ namespace Presentacion
             }
         }
 
-        
+
 
         private void toolStripLabel7_Click(object sender, EventArgs e)
         {
@@ -106,6 +106,22 @@ namespace Presentacion
             else
             {
                 formEspecialidades.BringToFront();
+            }
+        }
+
+        private void toolStripLabel8_Click(object sender, EventArgs e)
+        {
+            Form formListadoMaterias = IsOpen(typeof(FormListadoMaterias));
+            if (formListadoMaterias == null)
+            {
+                FormListadoMaterias formListadoMat = new FormListadoMaterias();
+                formListadoMat.MdiParent = this;
+                formListadoMat.Usuario = this.Usuario;
+                formListadoMat.Show();
+            }
+            else
+            {
+                formListadoMaterias.BringToFront();
             }
         }
 
@@ -126,7 +142,7 @@ namespace Presentacion
         public override void ActualizarVisibilidad()
         {
             if (this.Usuario != null)
-            {// en realidad tendria que ver que la persona sea admin
+            {//  La persona tendria que ser admin?
 
                 toolStripLabel1.Visible = true;
                 toolStripLabel2.Visible = true;
@@ -157,7 +173,7 @@ namespace Presentacion
             {
                 if (form.GetType() == formType)
                 {
-                    return form; 
+                    return form;
                 }
             }
             return null;
@@ -165,8 +181,10 @@ namespace Presentacion
 
         private void FormInicio_FormClosing(object? sender, FormClosingEventArgs e)
         {
-                ActualizarVisibilidad();
-           
+            ActualizarVisibilidad();
+
         }
+
+        
     }
 }

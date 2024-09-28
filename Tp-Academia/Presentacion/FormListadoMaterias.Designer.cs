@@ -30,16 +30,17 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             dgvMaterias = new DataGridView();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            lblMaterias = new Label();
+            btnNuevaMateria = new Button();
             Id_materia = new DataGridViewTextBoxColumn();
             Horas_semanales = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
+            colAnio = new DataGridViewTextBoxColumn();
             Id_Plan = new DataGridViewTextBoxColumn();
-            colBtnModificarCom = new DataGridViewButtonColumn();
-            colBtnEliminarCom = new DataGridViewButtonColumn();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            lblMaterias = new Label();
-            btnNuevaMateria = new Button();
+            colBtnModificar = new DataGridViewButtonColumn();
+            colBtnEliminar = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
             tableLayoutPanel5.SuspendLayout();
@@ -65,68 +66,13 @@
             // 
             dgvMaterias.Anchor = AnchorStyles.Top;
             dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id_materia, Horas_semanales, Nombre, Descripcion, Id_Plan, colBtnModificarCom, colBtnEliminarCom });
-            dgvMaterias.Location = new Point(79, 2);
+            dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id_materia, Horas_semanales, Nombre, Descripcion, colAnio, Id_Plan, colBtnModificar, colBtnEliminar });
+            dgvMaterias.Location = new Point(56, 2);
             dgvMaterias.Margin = new Padding(3, 2, 3, 2);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.RowHeadersWidth = 51;
-            dgvMaterias.Size = new Size(836, 306);
+            dgvMaterias.Size = new Size(881, 306);
             dgvMaterias.TabIndex = 8;
-            // 
-            // Id_materia
-            // 
-            Id_materia.DataPropertyName = "Id";
-            Id_materia.HeaderText = "Id";
-            Id_materia.Name = "Id_materia";
-            Id_materia.ReadOnly = true;
-            // 
-            // Horas_semanales
-            // 
-            Horas_semanales.DataPropertyName = "CantHorasSemanales";
-            Horas_semanales.HeaderText = "Horas semanales";
-            Horas_semanales.Name = "Horas_semanales";
-            Horas_semanales.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            Nombre.DataPropertyName = "Nombre";
-            Nombre.HeaderText = "Nombre";
-            Nombre.Name = "Nombre";
-            Nombre.ReadOnly = true;
-            // 
-            // Descripcion
-            // 
-            Descripcion.DataPropertyName = "Descripcion";
-            Descripcion.HeaderText = "Descripcion";
-            Descripcion.Name = "Descripcion";
-            Descripcion.ReadOnly = true;
-            // 
-            // Id_Plan
-            // 
-            Id_Plan.DataPropertyName = "PlanId";
-            Id_Plan.HeaderText = "Id Plan";
-            Id_Plan.Name = "Id_Plan";
-            Id_Plan.ReadOnly = true;
-            // 
-            // colBtnModificarCom
-            // 
-            colBtnModificarCom.HeaderText = "";
-            colBtnModificarCom.MinimumWidth = 6;
-            colBtnModificarCom.Name = "colBtnModificarCom";
-            colBtnModificarCom.ReadOnly = true;
-            colBtnModificarCom.Text = "Modificar";
-            colBtnModificarCom.UseColumnTextForButtonValue = true;
-            colBtnModificarCom.Width = 125;
-            // 
-            // colBtnEliminarCom
-            // 
-            colBtnEliminarCom.HeaderText = "";
-            colBtnEliminarCom.MinimumWidth = 6;
-            colBtnEliminarCom.Name = "colBtnEliminarCom";
-            colBtnEliminarCom.ReadOnly = true;
-            colBtnEliminarCom.Text = "Eliminar";
-            colBtnEliminarCom.UseColumnTextForButtonValue = true;
-            colBtnEliminarCom.Width = 125;
             // 
             // tableLayoutPanel5
             // 
@@ -168,6 +114,69 @@
             btnNuevaMateria.UseVisualStyleBackColor = true;
             btnNuevaMateria.Click += btnNuevaMateria_Click;
             // 
+            // Id_materia
+            // 
+            Id_materia.DataPropertyName = "Id";
+            Id_materia.HeaderText = "Id";
+            Id_materia.Name = "Id_materia";
+            Id_materia.ReadOnly = true;
+            Id_materia.Resizable = DataGridViewTriState.False;
+            // 
+            // Horas_semanales
+            // 
+            Horas_semanales.DataPropertyName = "CantHorasSemanales";
+            Horas_semanales.HeaderText = "Horas semanales";
+            Horas_semanales.Name = "Horas_semanales";
+            Horas_semanales.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            Nombre.DataPropertyName = "Nombre";
+            Nombre.HeaderText = "Nombre";
+            Nombre.Name = "Nombre";
+            Nombre.ReadOnly = true;
+            // 
+            // Descripcion
+            // 
+            Descripcion.DataPropertyName = "Descripcion";
+            Descripcion.HeaderText = "Descripcion";
+            Descripcion.Name = "Descripcion";
+            Descripcion.ReadOnly = true;
+            // 
+            // colAnio
+            // 
+            colAnio.DataPropertyName = "Anio";
+            colAnio.HeaderText = "Año";
+            colAnio.Name = "colAnio";
+            colAnio.ReadOnly = true;
+            // 
+            // Id_Plan
+            // 
+            Id_Plan.DataPropertyName = "PlanId";
+            Id_Plan.HeaderText = "Id Plan";
+            Id_Plan.Name = "Id_Plan";
+            Id_Plan.ReadOnly = true;
+            // 
+            // colBtnModificar
+            // 
+            colBtnModificar.HeaderText = "";
+            colBtnModificar.MinimumWidth = 6;
+            colBtnModificar.Name = "colBtnModificar";
+            colBtnModificar.ReadOnly = true;
+            colBtnModificar.Text = "Modificar";
+            colBtnModificar.UseColumnTextForButtonValue = true;
+            colBtnModificar.Width = 125;
+            // 
+            // colBtnEliminar
+            // 
+            colBtnEliminar.HeaderText = "";
+            colBtnEliminar.MinimumWidth = 6;
+            colBtnEliminar.Name = "colBtnEliminar";
+            colBtnEliminar.ReadOnly = true;
+            colBtnEliminar.Text = "Eliminar";
+            colBtnEliminar.UseColumnTextForButtonValue = true;
+            colBtnEliminar.Width = 125;
+            // 
             // FormListadoMaterias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -178,6 +187,7 @@
             Name = "FormListadoMaterias";
             Text = "FormListadoMaterias";
             WindowState = FormWindowState.Maximized;
+            Load += FormListadoMaterias_Load;
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvMaterias).EndInit();
             tableLayoutPanel5.ResumeLayout(false);
@@ -196,8 +206,9 @@
         private DataGridViewTextBoxColumn Horas_semanales;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Descripcion;
+        private DataGridViewTextBoxColumn colAnio;
         private DataGridViewTextBoxColumn Id_Plan;
-        private DataGridViewButtonColumn colBtnModificarCom;
-        private DataGridViewButtonColumn colBtnEliminarCom;
+        private DataGridViewButtonColumn colBtnModificar;
+        private DataGridViewButtonColumn colBtnEliminar;
     }
 }

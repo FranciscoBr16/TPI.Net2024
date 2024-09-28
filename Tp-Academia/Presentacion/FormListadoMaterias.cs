@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Data;
+using Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormListadoMaterias : Form
+    public partial class FormListadoMaterias : MiFormBase
     {
         public FormListadoMaterias()
         {
@@ -21,6 +23,35 @@ namespace Presentacion
         {
             FormNuevaMateria formNuevo = new FormNuevaMateria();
             formNuevo.ShowDialog();
+        }
+
+        private void FormListadoMaterias_Load(object sender, EventArgs e)
+        {
+            ListarMaterias();
+            if (Usuario != null && Usuario.Rol == "Admin") 
+            {
+                dgvMaterias.Columns["colBtnModificar"].Visible = true;
+                dgvMaterias.Columns["colBtnEliminar"].Visible = true;
+            }
+            else
+            {
+                dgvMaterias.Columns["colBtnModificar"].Visible = false;
+                dgvMaterias.Columns["colBtnEliminar"].Visible = false;
+            }
+        }
+
+        public void ListarMaterias()
+        {
+
+            DataMaterias dataMaterias = new DataMaterias();
+
+            List<Materia> listaMaterias = dataMaterias.GetMaterias();
+
+            dgvMaterias.AutoGenerateColumns = false;
+
+            dgvMaterias.DataSource = listaMaterias;
+
+
         }
     }
 }

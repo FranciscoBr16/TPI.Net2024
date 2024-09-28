@@ -10,7 +10,7 @@ namespace Entidades
         public int CantHorasSemanales { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public string anio { get; set; }
+        public string Anio { get; set; }
         public Plan Plan { get; set; }
         private List<Curso> Cursos { get; set; }
 
