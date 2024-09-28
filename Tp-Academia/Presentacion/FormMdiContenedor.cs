@@ -163,7 +163,7 @@ namespace Presentacion
             return null;
         }
 
-        private void FormInicio_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormInicio_FormClosing(object? sender, FormClosingEventArgs e)
         {
                 ActualizarVisibilidad();
            
