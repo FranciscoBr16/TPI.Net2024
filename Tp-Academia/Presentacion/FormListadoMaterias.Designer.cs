@@ -30,9 +30,6 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             dgvMaterias = new DataGridView();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            lblMaterias = new Label();
-            btnNuevaMateria = new Button();
             Id_materia = new DataGridViewTextBoxColumn();
             Horas_semanales = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -40,6 +37,9 @@
             Id_Plan = new DataGridViewTextBoxColumn();
             colBtnModificarCom = new DataGridViewButtonColumn();
             colBtnEliminarCom = new DataGridViewButtonColumn();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            lblMaterias = new Label();
+            btnNuevaMateria = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
             tableLayoutPanel5.SuspendLayout();
@@ -72,45 +72,6 @@
             dgvMaterias.RowHeadersWidth = 51;
             dgvMaterias.Size = new Size(836, 306);
             dgvMaterias.TabIndex = 8;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 3;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(lblMaterias, 1, 0);
-            tableLayoutPanel5.Controls.Add(btnNuevaMateria, 1, 1);
-            tableLayoutPanel5.Dock = DockStyle.Top;
-            tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(996, 107);
-            tableLayoutPanel5.TabIndex = 8;
-            // 
-            // lblMaterias
-            // 
-            lblMaterias.Anchor = AnchorStyles.None;
-            lblMaterias.AutoSize = true;
-            lblMaterias.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMaterias.Location = new Point(455, 14);
-            lblMaterias.Name = "lblMaterias";
-            lblMaterias.Size = new Size(85, 25);
-            lblMaterias.TabIndex = 0;
-            lblMaterias.Text = "Materias";
-            // 
-            // btnNuevaMateria
-            // 
-            btnNuevaMateria.Anchor = AnchorStyles.Bottom;
-            btnNuevaMateria.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaMateria.Location = new Point(418, 77);
-            btnNuevaMateria.Name = "btnNuevaMateria";
-            btnNuevaMateria.Size = new Size(160, 27);
-            btnNuevaMateria.TabIndex = 1;
-            btnNuevaMateria.Text = "Agregar Materia";
-            btnNuevaMateria.UseVisualStyleBackColor = true;
             // 
             // Id_materia
             // 
@@ -166,6 +127,46 @@
             colBtnEliminarCom.Text = "Eliminar";
             colBtnEliminarCom.UseColumnTextForButtonValue = true;
             colBtnEliminarCom.Width = 125;
+            // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(lblMaterias, 1, 0);
+            tableLayoutPanel5.Controls.Add(btnNuevaMateria, 1, 1);
+            tableLayoutPanel5.Dock = DockStyle.Top;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(996, 107);
+            tableLayoutPanel5.TabIndex = 8;
+            // 
+            // lblMaterias
+            // 
+            lblMaterias.Anchor = AnchorStyles.None;
+            lblMaterias.AutoSize = true;
+            lblMaterias.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMaterias.Location = new Point(455, 14);
+            lblMaterias.Name = "lblMaterias";
+            lblMaterias.Size = new Size(85, 25);
+            lblMaterias.TabIndex = 0;
+            lblMaterias.Text = "Materias";
+            // 
+            // btnNuevaMateria
+            // 
+            btnNuevaMateria.Anchor = AnchorStyles.Bottom;
+            btnNuevaMateria.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevaMateria.Location = new Point(418, 77);
+            btnNuevaMateria.Name = "btnNuevaMateria";
+            btnNuevaMateria.Size = new Size(160, 27);
+            btnNuevaMateria.TabIndex = 1;
+            btnNuevaMateria.Text = "Agregar Materia";
+            btnNuevaMateria.UseVisualStyleBackColor = true;
+            btnNuevaMateria.Click += btnNuevaMateria_Click;
             // 
             // FormListadoMaterias
             // 

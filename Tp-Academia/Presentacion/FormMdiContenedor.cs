@@ -11,10 +11,9 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormMdiContenedor : Form
+    public partial class FormMdiContenedor : MiFormBase
     {
-        public static Persona? Usuario { get; set; } = null;
-
+        
         public FormMdiContenedor()
         {
             InitializeComponent();
@@ -22,58 +21,112 @@ namespace Presentacion
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
-            FormInicio formInicio = new FormInicio();
-            formInicio.MdiParent = this;
-            formInicio.Show();
+            Form formInicio = IsOpen(typeof(FormInicio));
+            if (formInicio == null) 
+            {
+                MostrarInicio();
+            }
+            else
+            {
+                formInicio.BringToFront(); 
+            }
         }
 
         private void toolStripLabel2_Click(object sender, EventArgs e)
         {
-            FormListadoAlumnos formAlumnos = new FormListadoAlumnos();
-            formAlumnos.MdiParent = this;
-            formAlumnos.Show();
-        }
-
-        private void toolStripLabel5_Click(object sender, EventArgs e)
-        {
-            FormListadoComisiones formComisiones = new FormListadoComisiones();
-            formComisiones.MdiParent = this;
-            formComisiones.Show();
-        }
-
-        private void toolStripLabel6_Click(object sender, EventArgs e)
-        {
-            FormListadoPlanes formPlanes = new FormListadoPlanes();
-            formPlanes.MdiParent = this;
-            formPlanes.Show();
+            Form formAlumnos = IsOpen(typeof(FormListadoAlumnos));
+            if (formAlumnos == null)
+            {
+                formAlumnos = new FormListadoAlumnos();
+                formAlumnos.MdiParent = this;
+                formAlumnos.Show();
+            }
+            else
+            {
+                formAlumnos.BringToFront();
+            }
         }
 
         private void toolStripLabel3_Click(object sender, EventArgs e)
         {
-            FormListadoProfesores formProfes = new FormListadoProfesores();
-            formProfes.MdiParent = this;
-            formProfes.Show();
+            Form formProfes = IsOpen(typeof(FormListadoProfesores));
+            if (formProfes == null)
+            {
+                formProfes = new FormListadoProfesores();
+                formProfes.MdiParent = this;
+                formProfes.Show();
+            }
+            else
+            {
+                formProfes.BringToFront();
+            }
         }
+
+        private void toolStripLabel5_Click(object sender, EventArgs e)
+        {
+            Form formComisiones = IsOpen(typeof(FormListadoComisiones));
+            if (formComisiones == null)
+            {
+                formComisiones = new FormListadoComisiones();
+                formComisiones.MdiParent = this;
+                formComisiones.Show();
+            }
+            else
+            {
+                formComisiones.BringToFront();
+            }
+        }
+
+        private void toolStripLabel6_Click(object sender, EventArgs e)
+        {
+            Form formPlanes = IsOpen(typeof(FormListadoPlanes));
+            if (formPlanes == null)
+            {
+                formPlanes = new FormListadoPlanes();
+                formPlanes.MdiParent = this;
+                formPlanes.Show();
+            }
+            else
+            {
+                formPlanes.BringToFront();
+            }
+        }
+
+        
 
         private void toolStripLabel7_Click(object sender, EventArgs e)
         {
-            FormListadoEspecialidades formProfes = new FormListadoEspecialidades();
-            formProfes.MdiParent = this;
-            formProfes.Show();
+            Form formEspecialidades = IsOpen(typeof(FormListadoEspecialidades));
+            if (formEspecialidades == null)
+            {
+                formEspecialidades = new FormListadoEspecialidades();
+                formEspecialidades.MdiParent = this;
+                formEspecialidades.Show();
+            }
+            else
+            {
+                formEspecialidades.BringToFront();
+            }
         }
 
         private void FormMdiContenedor_Load(object sender, EventArgs e)
         {
-            ActualizarVisibilidad();
+            this.ActualizarVisibilidad();
+            MostrarInicio();
+        }
+        private void MostrarInicio()
+        {
             FormInicio inicio = new FormInicio();
             inicio.MdiParent = this;
+            inicio.Usuario = this.Usuario; //ok?
+            inicio.FormClosing += FormInicio_FormClosing;
             inicio.Show();
         }
 
-        public void ActualizarVisibilidad()
+        public override void ActualizarVisibilidad()
         {
-            if (Usuario != null)  
-            {
+            if (this.Usuario != null)
+            {// en realidad tendria que ver que la persona sea admin
 
                 toolStripLabel1.Visible = true;
                 toolStripLabel2.Visible = true;
@@ -96,6 +149,24 @@ namespace Presentacion
                 toolStripLabel8.Visible = false;
                 toolStripLabel9.Visible = false;
             }
+        }
+
+        private Form IsOpen(Type formType)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form.GetType() == formType)
+                {
+                    return form; 
+                }
+            }
+            return null;
+        }
+
+        private void FormInicio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+                ActualizarVisibilidad();
+           
         }
     }
 }

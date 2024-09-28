@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormInicio : Form
+    public partial class FormInicio : MiFormBase
     {
         public FormInicio()
         {
@@ -30,13 +30,76 @@ namespace Presentacion
         private void button2_Click(object sender, EventArgs e)
         {
             FormLogIn formLogIn = new FormLogIn();
+            formLogIn.FormClosing += FormLogIn_FormClosing;
             formLogIn.ShowDialog();
         }
+        private void FormLogIn_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            /*if (sender != null)
+            {
+                var appcontext = sender as MiFormBase;
+                this.Usuario = appcontext?.Usuario;
 
+                var formContenedor = this.Parent as MiFormBase;
+                if (formContenedor != null)
+                {
+                    formContenedor.Usuario = this.Usuario;
+                    formContenedor.ActualizarLayout();
+                }
+            }*/
+            var formLogIn = sender as MiFormBase;
+            if (formLogIn != null && formLogIn.Usuario != null)
+            {
+
+                this.Usuario = formLogIn.Usuario;
+
+
+                var formContenedor = this.MdiParent as MiFormBase;
+                if (formContenedor != null)
+                {
+                    formContenedor.Usuario = this.Usuario;
+                    formContenedor.ActualizarVisibilidad();
+                    this.Close(); // o quizas redirigir
+                }
+            }
+        }
         private void btnRegistrarse_Click(object sender, EventArgs e)
         {
             FormNuevaPersona formNuevo = new FormNuevaPersona();
             formNuevo.ShowDialog();
+        }
+
+        private void FormInicio_Load(object sender, EventArgs e)
+        {
+            ActualizarVisibilidad();
+        }
+
+        public override void ActualizarVisibilidad()
+        {
+            if (this.Usuario != null)
+            {
+
+                btnCerrarSesion.Visible = true;
+                btnIniciarSesion.Visible = false;
+                btnRegistrarse.Visible = false;
+
+            }
+            else
+            {
+                btnCerrarSesion.Visible = false;
+                btnIniciarSesion.Visible = true;
+                btnRegistrarse.Visible = true;
+
+            }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Usuario = null;
+            var mdiParent = this.MdiParent as MiFormBase;
+            mdiParent.Usuario = null;
+            ActualizarVisibilidad();
+            this.Close();
         }
     }
 }

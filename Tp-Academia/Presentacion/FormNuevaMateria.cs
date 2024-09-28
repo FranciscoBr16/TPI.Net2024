@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormListadoMaterias : Form
+    public partial class FormNuevaMateria : Form
     {
-        public FormListadoMaterias()
+        public FormNuevaMateria()
         {
             InitializeComponent();
-        }
-
-        private void btnNuevaMateria_Click(object sender, EventArgs e)
-        {
-            FormNuevaMateria formNuevo = new FormNuevaMateria();
-            formNuevo.ShowDialog();
         }
     }
 }

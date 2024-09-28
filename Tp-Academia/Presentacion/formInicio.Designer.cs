@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInicio));
             panelppal = new Panel();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            btnCerrarSesion = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             btnIniciarSesion = new Button();
             btnRegistrarse = new Button();
@@ -39,6 +41,7 @@
             imgUTN = new PictureBox();
             lblBienvenida = new Label();
             panelppal.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -47,14 +50,42 @@
             // 
             // panelppal
             // 
+            panelppal.Controls.Add(tableLayoutPanel4);
             panelppal.Controls.Add(tableLayoutPanel2);
             panelppal.Controls.Add(tableLayoutPanel3);
             panelppal.Controls.Add(tableLayoutPanel1);
             panelppal.Dock = DockStyle.Fill;
             panelppal.Location = new Point(0, 0);
+            panelppal.Margin = new Padding(3, 2, 3, 2);
             panelppal.Name = "panelppal";
-            panelppal.Size = new Size(1262, 673);
+            panelppal.Size = new Size(1104, 505);
             panelppal.TabIndex = 2;
+            // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 3;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel4.Controls.Add(btnCerrarSesion, 1, 0);
+            tableLayoutPanel4.Dock = DockStyle.Top;
+            tableLayoutPanel4.Location = new Point(0, 386);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(1104, 61);
+            tableLayoutPanel4.TabIndex = 10;
+            // 
+            // btnCerrarSesion
+            // 
+            btnCerrarSesion.Anchor = AnchorStyles.None;
+            btnCerrarSesion.Location = new Point(492, 14);
+            btnCerrarSesion.Name = "btnCerrarSesion";
+            btnCerrarSesion.Size = new Size(119, 33);
+            btnCerrarSesion.TabIndex = 0;
+            btnCerrarSesion.Text = "Cerrar Sesión";
+            btnCerrarSesion.UseVisualStyleBackColor = true;
+            btnCerrarSesion.Click += btnCerrarSesion_Click;
             // 
             // tableLayoutPanel2
             // 
@@ -66,19 +97,21 @@
             tableLayoutPanel2.Controls.Add(btnIniciarSesion, 2, 0);
             tableLayoutPanel2.Controls.Add(btnRegistrarse, 1, 0);
             tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 450);
+            tableLayoutPanel2.Location = new Point(0, 337);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50.4F));
-            tableLayoutPanel2.Size = new Size(1262, 65);
+            tableLayoutPanel2.Size = new Size(1104, 49);
             tableLayoutPanel2.TabIndex = 8;
             // 
             // btnIniciarSesion
             // 
             btnIniciarSesion.Anchor = AnchorStyles.Top;
-            btnIniciarSesion.Location = new Point(718, 3);
+            btnIniciarSesion.Location = new Point(629, 2);
+            btnIniciarSesion.Margin = new Padding(3, 2, 3, 2);
             btnIniciarSesion.Name = "btnIniciarSesion";
-            btnIniciarSesion.Size = new Size(139, 35);
+            btnIniciarSesion.Size = new Size(122, 30);
             btnIniciarSesion.TabIndex = 1;
             btnIniciarSesion.Text = "Iniciar Sesión";
             btnIniciarSesion.UseVisualStyleBackColor = true;
@@ -87,9 +120,10 @@
             // btnRegistrarse
             // 
             btnRegistrarse.Anchor = AnchorStyles.Top;
-            btnRegistrarse.Location = new Point(403, 3);
+            btnRegistrarse.Location = new Point(353, 2);
+            btnRegistrarse.Margin = new Padding(3, 2, 3, 2);
             btnRegistrarse.Name = "btnRegistrarse";
-            btnRegistrarse.Size = new Size(139, 35);
+            btnRegistrarse.Size = new Size(122, 30);
             btnRegistrarse.TabIndex = 0;
             btnRegistrarse.Text = "Registrarse";
             btnRegistrarse.UseVisualStyleBackColor = true;
@@ -103,11 +137,12 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel3.Controls.Add(lblTextoInicioLargo, 1, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 243);
+            tableLayoutPanel3.Location = new Point(0, 182);
+            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(1262, 207);
+            tableLayoutPanel3.Size = new Size(1104, 155);
             tableLayoutPanel3.TabIndex = 9;
             // 
             // lblTextoInicioLargo
@@ -115,9 +150,9 @@
             lblTextoInicioLargo.Anchor = AnchorStyles.Top;
             lblTextoInicioLargo.AutoSize = true;
             lblTextoInicioLargo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblTextoInicioLargo.Location = new Point(256, 0);
+            lblTextoInicioLargo.Location = new Point(239, 0);
             lblTextoInicioLargo.Name = "lblTextoInicioLargo";
-            lblTextoInicioLargo.Size = new Size(749, 168);
+            lblTextoInicioLargo.Size = new Size(623, 126);
             lblTextoInicioLargo.TabIndex = 0;
             lblTextoInicioLargo.Text = resources.GetString("lblTextoInicioLargo.Text");
             lblTextoInicioLargo.TextAlign = ContentAlignment.MiddleCenter;
@@ -132,20 +167,22 @@
             tableLayoutPanel1.Controls.Add(lblBienvenida, 1, 1);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(1262, 243);
+            tableLayoutPanel1.Size = new Size(1104, 182);
             tableLayoutPanel1.TabIndex = 7;
             // 
             // imgUTN
             // 
             imgUTN.Anchor = AnchorStyles.None;
             imgUTN.Image = Properties.Resources.image;
-            imgUTN.Location = new Point(537, 24);
+            imgUTN.Location = new Point(471, 18);
+            imgUTN.Margin = new Padding(3, 2, 3, 2);
             imgUTN.Name = "imgUTN";
-            imgUTN.Size = new Size(185, 72);
+            imgUTN.Size = new Size(162, 54);
             imgUTN.SizeMode = PictureBoxSizeMode.StretchImage;
             imgUTN.TabIndex = 0;
             imgUTN.TabStop = false;
@@ -155,23 +192,26 @@
             lblBienvenida.Anchor = AnchorStyles.None;
             lblBienvenida.AutoSize = true;
             lblBienvenida.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblBienvenida.Location = new Point(477, 151);
+            lblBienvenida.Location = new Point(429, 111);
             lblBienvenida.Name = "lblBienvenida";
-            lblBienvenida.Size = new Size(305, 62);
+            lblBienvenida.Size = new Size(246, 51);
             lblBienvenida.TabIndex = 2;
             lblBienvenida.Text = "¡Bienvenidos!";
             // 
             // FormInicio
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 673);
+            ClientSize = new Size(1104, 505);
             Controls.Add(panelppal);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormInicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UTN | Sistema de la academia";
             WindowState = FormWindowState.Maximized;
+            Load += FormInicio_Load;
             panelppal.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
@@ -191,5 +231,7 @@
         private TableLayoutPanel tableLayoutPanel1;
         private PictureBox imgUTN;
         private Label lblBienvenida;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Button btnCerrarSesion;
     }
 }

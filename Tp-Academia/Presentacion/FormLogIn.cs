@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormLogIn : Form
+    public partial class FormLogIn : MiFormBase
     {
         public FormLogIn()
         {
@@ -32,12 +32,8 @@ namespace Presentacion
             if (persona != null)
             {
 
-                FormMdiContenedor.Usuario = persona;
-
+                this.Usuario = persona;
                 MessageBox.Show("Login exitoso");
-                FormMdiContenedor mdiForm = (FormMdiContenedor)this.MdiParent;
-                mdiForm.ActualizarVisibilidad();
-                //redirigir quizas
                 this.Close();
 
                 
