@@ -47,6 +47,11 @@ namespace Data
                 .HasOne(dc => dc.Curso)
                 .WithMany()
                 .HasForeignKey(dc => dc.CursoId);
+
+            modelBuilder.Entity<Plan>()
+                .HasOne(a => a.Especialidad)
+                .WithMany()
+                .HasForeignKey(a => a.EspecialidadId);
         }
         public AcademiaContext()
         {

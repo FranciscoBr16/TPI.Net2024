@@ -29,9 +29,8 @@ namespace Entidades
         public DateTime Fecha_ingreso { get; set; }
         public Plan Plan { get; set; }
         public List<Inscripcion> Inscripcioens { get; set; }
-        public List<Curso> Cursos { get; set; }
-
-        public Persona(int legajo, string nombre, string apellido, string mail, string tel, string clave, string rol, string usuario, string direccion, string dNI, DateTime fecha_nac, DateTime fecha_ingreso, Plan plan, List<Inscripcion> inscripcioens, List<Curso> cursos)
+        
+        public Persona(int legajo, string nombre, string apellido, string mail, string tel, string clave, string rol, string usuario, string direccion, string dNI, DateTime fecha_nac, DateTime fecha_ingreso, Plan plan, List<Inscripcion> inscripcioens)
         {
             Legajo = legajo;
             Nombre = nombre;
@@ -47,7 +46,6 @@ namespace Entidades
             Fecha_ingreso = fecha_ingreso;
             Plan = plan;
             Inscripcioens = inscripcioens;
-            Cursos = cursos;
         }
         public Persona(string nombre, string apellido, string mail, string tel, string clave, string rol, string usuario, string direccion, string dni, DateTime fecha_nac, DateTime fecha_ingreso)
         {

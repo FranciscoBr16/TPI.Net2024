@@ -35,8 +35,9 @@ namespace Presentacion
             {
 
                 DataEspecialidad de = new DataEspecialidad();
+                Especialidad esp = de.GetEspecialidadById((int)cbEspecialidades.SelectedItem);
 
-                Plan planNuevo = new Plan(txbDescripcion.Text, de.GetEspecialidadById((int)cbEspecialidades.SelectedItem));
+                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = (int)cbEspecialidades.SelectedItem }; // VER
 
                 DataPlan dp = new DataPlan();
 
