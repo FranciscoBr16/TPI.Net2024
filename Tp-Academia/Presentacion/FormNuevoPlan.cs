@@ -25,13 +25,19 @@ namespace Presentacion
             List<Especialidad> especialidades = de.GetEspecialidades();
             foreach (var unaEspecialidad in especialidades)
             {
+<<<<<<< HEAD
                 
                 cbEspecialidades.Items.Add(unaEspecialidad);
                 cbEspecialidades.DisplayMember = "Descripcion";
                 cbEspecialidades.ValueMember = "Id";
 
 
+=======
+                cbEspecialidades.Items.Add(unaEspecialidad);
+>>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
             }
+            cbEspecialidades.DisplayMember = "Descripcion";
+            cbEspecialidades.ValueMember = "Id";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -40,14 +46,20 @@ namespace Presentacion
             {
 
                 DataEspecialidad de = new DataEspecialidad();
+<<<<<<< HEAD
 
                 Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id }; // VER
 
+=======
+                Plan planNuevo = new Plan { Descripcion = txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
+>>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
                 DataPlan dp = new DataPlan();
 
                 dp.InsertPlan(planNuevo);
 
                 MessageBox.Show("Nuevo Plan registrado");
+
+                this.Close();
             }
             else { return; }
 

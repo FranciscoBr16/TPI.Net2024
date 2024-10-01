@@ -13,7 +13,7 @@ namespace Entidades
         public List<Materia> Materias { get; set; }
         public List<Persona> Alumnos { get; set; }
 
-        /*
+     
         public Plan(int id, string descripcion, int espId )
         {
             Id = id;
@@ -28,7 +28,7 @@ namespace Entidades
             Descripcion = descripcion;
             EspecialidadId = id;
         } 
-        */
+       
 
         public Plan() { }
 

@@ -48,7 +48,16 @@ namespace Data
                 .WithMany()
                 .HasForeignKey(dc => dc.CursoId);
 
+<<<<<<< HEAD
           
+=======
+            modelBuilder.Entity<Plan>()
+                .HasOne(a => a.Especialidad)
+                .WithMany(a => a.Planes)
+                .HasForeignKey(a => a.EspecialidadId)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
+>>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
         }
         public AcademiaContext()
         {
