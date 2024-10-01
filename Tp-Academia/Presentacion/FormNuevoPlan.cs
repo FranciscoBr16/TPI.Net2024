@@ -25,8 +25,10 @@ namespace Presentacion
             List<Especialidad> especialidades = de.GetEspecialidades();
             foreach (var unaEspecialidad in especialidades)
             {
-                cbEspecialidades.Items.Add(unaEspecialidad.Id);
+                cbEspecialidades.Items.Add(unaEspecialidad);
             }
+            cbEspecialidades.DisplayMember = "Descripcion";
+            cbEspecialidades.ValueMember = "Id";
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -35,15 +37,14 @@ namespace Presentacion
             {
 
                 DataEspecialidad de = new DataEspecialidad();
-                Especialidad esp = de.GetEspecialidadById((int)cbEspecialidades.SelectedItem);
-
-                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = (int)cbEspecialidades.SelectedItem }; // VER
-
+                Plan planNuevo = new Plan { Descripcion = txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
                 DataPlan dp = new DataPlan();
 
                 dp.InsertPlan(planNuevo);
 
                 MessageBox.Show("Nuevo Plan registrado");
+
+                this.Close();
             }
             else { return; }
 

@@ -50,8 +50,10 @@ namespace Data
 
             modelBuilder.Entity<Plan>()
                 .HasOne(a => a.Especialidad)
-                .WithMany()
-                .HasForeignKey(a => a.EspecialidadId);
+                .WithMany(a => a.Planes)
+                .HasForeignKey(a => a.EspecialidadId)
+                .OnDelete(DeleteBehavior.Cascade)
+                ;
         }
         public AcademiaContext()
         {
