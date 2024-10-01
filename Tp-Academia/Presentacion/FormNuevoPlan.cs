@@ -25,7 +25,12 @@ namespace Presentacion
             List<Especialidad> especialidades = de.GetEspecialidades();
             foreach (var unaEspecialidad in especialidades)
             {
-                cbEspecialidades.Items.Add(unaEspecialidad.Id);
+                
+                cbEspecialidades.Items.Add(unaEspecialidad);
+                cbEspecialidades.DisplayMember = "Descripcion";
+                cbEspecialidades.ValueMember = "Id";
+
+
             }
         }
 
@@ -35,9 +40,8 @@ namespace Presentacion
             {
 
                 DataEspecialidad de = new DataEspecialidad();
-                Especialidad esp = de.GetEspecialidadById((int)cbEspecialidades.SelectedItem);
 
-                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = (int)cbEspecialidades.SelectedItem }; // VER
+                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id }; // VER
 
                 DataPlan dp = new DataPlan();
 

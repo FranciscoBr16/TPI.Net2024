@@ -43,5 +43,40 @@ namespace Presentacion
 
 
         }
+
+        private void dgvEspecialidades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtiene el nombre de la columna en la que se hizo clic
+                string columnName = dgvEspecialidades.Columns[e.ColumnIndex].Name;
+
+                // Validar que el valor de la celda no sea nulo antes de convertir
+                var cellValue = dgvEspecialidades.Rows[e.RowIndex].Cells["Id"].Value;
+                if (cellValue != null && int.TryParse(cellValue.ToString(), out int idEsp))
+                {
+                    DataEspecialidad desp = new DataEspecialidad();
+
+                    if (columnName == "colBtnEliminarEsp")
+                    {
+                        // Acción para eliminar
+                        DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            desp.EliminarEspecialidad(desp.GetEspecialidadById(idEsp)); 
+                        }
+                    }
+                    else if (columnName == "colBtnModificarEsp")
+                    {
+                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad(desp.GetEspecialidadById(idEsp)); 
+                        formModificar.ShowDialog();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El valor de la celda 'id' no es válido.", "Error de conversión");
+                }
+            }
+        }
     }
 }
