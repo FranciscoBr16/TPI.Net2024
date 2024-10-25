@@ -185,6 +185,21 @@ namespace Presentacion
 
         }
 
-        
+        private void toolStripLabel9_Click(object sender, EventArgs e)
+        {
+            Form formPerfil = IsOpen(typeof(FormPerfil));
+            if (formPerfil == null)
+            {
+                FormPerfil formPer = new FormPerfil();
+                formPer.MdiParent = this;
+                formPer.Usuario = this.Usuario;
+                formPer.Show();
+            }
+            else
+            {
+                formPerfil.BringToFront();
+            }
+
+        }
     }
 }

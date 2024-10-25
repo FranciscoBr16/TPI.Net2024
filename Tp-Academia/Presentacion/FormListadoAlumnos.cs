@@ -61,9 +61,15 @@ namespace Presentacion
                 else if (columnName == "colBtnModificar")
                 {
                     FormModificarPersona formModificar = new FormModificarPersona(dp.GetPersonaByLegajo(legajo));
+                    formModificar.FormClosing += formModificar_FormClosing;
                     formModificar.ShowDialog();
                 }
             }
+        }
+
+        private void formModificar_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            ListarAlumnos();
         }
     }
 }

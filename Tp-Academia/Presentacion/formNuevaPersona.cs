@@ -30,25 +30,44 @@ namespace Presentacion
                 {
                     string rol = "Alumno";
 
+                    Persona alumnoNuevo = new Persona
+                    {
+                        Nombre = txbNombre.Text,
+                        Apellido = txbApellido.Text,
+                        Mail = txbCorreo.Text,
+                        Tel = txbTelefono.Text,
+                        Clave = txbClave.Text,
+                        Rol = rol,
+                        Usuario = txbUsuario.Text,
+                        Direccion = txbDireccion.Text,
+                        DNI = txbDni.Text,
+                        Fecha_nac = dtpFechaNac.Value,
+                        Fecha_ingreso = fechaHoy
+                    };
 
-                    Persona alumnoNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value, fechaHoy);
-
-                    DataPersona dp = new DataPersona();
-
-                    dp.InsertPersona(alumnoNuevo);
-
+                    Negocio.Persona.AgregarPersona(alumnoNuevo);
+                            
                     MessageBox.Show("Registrado como Alumno");
                 }
                 else if (radiobProfesor.Checked)
                 {
                     string rol = "Profesor";
 
-
-                    Persona profesorNuevo = new Persona(txbNombre.Text, txbApellido.Text, txbCorreo.Text, txbTelefono.Text, txbClave.Text, rol, txbUsuario.Text, txbDireccion.Text, txbDni.Text, dtpFechaNac.Value, fechaHoy);
-
-                    DataPersona dp = new DataPersona();
-
-                    dp.InsertPersona(profesorNuevo);
+                    Persona profesorNuevo = new Persona
+                    {
+                        Nombre = txbNombre.Text,
+                        Apellido = txbApellido.Text,
+                        Mail = txbCorreo.Text,
+                        Tel = txbTelefono.Text,
+                        Clave = txbClave.Text,
+                        Rol = rol,
+                        Usuario = txbUsuario.Text,
+                        Direccion = txbDireccion.Text,
+                        DNI = txbDni.Text,
+                        Fecha_nac = dtpFechaNac.Value,
+                        Fecha_ingreso = fechaHoy
+                    };
+                    Negocio.Persona.AgregarPersona(profesorNuevo);
 
                     MessageBox.Show("Registrado como Profesor");
                 }

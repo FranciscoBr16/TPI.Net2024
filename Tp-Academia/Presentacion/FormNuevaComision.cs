@@ -25,8 +25,8 @@ namespace Presentacion
             {
 
                 Comision comNueva = new Comision(txbDescripcion.Text, txbTurno.Text);
-                DataComision dc = new DataComision();
-                dc.InsertComision(comNueva);
+
+                Negocio.Comision.AgregarComision(comNueva);
                 MessageBox.Show("Nueva Comision Registrada");
 
             }

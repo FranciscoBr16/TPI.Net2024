@@ -64,7 +64,7 @@ namespace Presentacion
 
                 int id = Convert.ToInt32(dgvPlanes.Rows[e.RowIndex].Cells["colId"].Value);
 
-                DataPlan dp = new DataPlan();
+              
 
                 if (columnName == "colBtnEliminarPlan")
                 {
@@ -72,13 +72,13 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        dp.EliminarPlan(dp.GetPlanById(id));
+                        Negocio.Plan.EliminarPlan(Negocio.Plan.GetPlanById(id));
                         ListarPlanes();
                     }
                 }
                 else if (columnName == "colBtnModificarPlan")
                 {
-                    FormModificarPlan formModificar = new FormModificarPlan(dp.GetPlanById(id));
+                    FormModificarPlan formModificar = new FormModificarPlan(Negocio.Plan.GetPlanById(id));
                     formModificar.FormClosing += FormModificarPlan_FormClosing;
                     formModificar.ShowDialog();
                 }

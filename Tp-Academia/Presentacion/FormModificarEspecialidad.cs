@@ -39,15 +39,28 @@ namespace Presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            //VALIDAR LOS CAMPOS
+            if (ValidarCampos()) { 
 
             Especialidad esp = new Especialidad(txbDescripcion.Name);
-            DataEspecialidad dEsp = new DataEspecialidad();
-            if (dEsp.ModificarEspecialidad(esp))
+            
+            if (Negocio.Especialidad.ModificarEspecialidad(esp))
             {
                 MessageBox.Show("Cambios guardados exitosamente.");
             }
             else { MessageBox.Show("Ups! Ocurrio un error"); }
+
+            }
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txbDescripcion.Text))
+            {
+                MessageBox.Show("Ingresa una descripcion valida");
+                return false;
+            }
+
+            return true;
         }
     }
 }

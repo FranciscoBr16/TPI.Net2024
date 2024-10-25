@@ -28,7 +28,6 @@ namespace Presentacion
 
                 int legajo = Convert.ToInt32(dgvProfesores.Rows[e.RowIndex].Cells["colLegajo"].Value);
 
-                DataPersona dp = new DataPersona();
 
                 if (columnName == "colBtnEliminar")
                 {
@@ -36,12 +35,12 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        dp.EliminarPersona(dp.GetPersonaByLegajo(legajo));
+                        Negocio.Persona.EliminarPersona(Negocio.Persona.GetPersonaByLegajo(legajo));
                     }
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarPersona formModificar = new FormModificarPersona(dp.GetPersonaByLegajo(legajo));
+                    FormModificarPersona formModificar = new FormModificarPersona(Negocio.Persona.GetPersonaByLegajo(legajo));
                     formModificar.ShowDialog();
                 }
             }

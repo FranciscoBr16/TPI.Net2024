@@ -26,8 +26,7 @@ namespace Presentacion
             {
 
                 Especialidad EspNueva = new Especialidad(txbDescripcion.Text);
-                DataEspecialidad dc = new DataEspecialidad();
-                dc.InsertEspecialidad(EspNueva);
+                Negocio.Especialidad.AgregarEspecialidad(EspNueva); 
                 MessageBox.Show("Nueva Especialidad Registrada");
 
             }

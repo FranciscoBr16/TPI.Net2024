@@ -21,22 +21,11 @@ namespace Presentacion
 
         private void FormNuevoPlan_Load(object sender, EventArgs e)
         {
-            DataEspecialidad de = new DataEspecialidad();
-            List<Especialidad> especialidades = de.GetEspecialidades();
-            foreach (var unaEspecialidad in especialidades)
-            {
-<<<<<<< HEAD
-                
-                cbEspecialidades.Items.Add(unaEspecialidad);
-                cbEspecialidades.DisplayMember = "Descripcion";
-                cbEspecialidades.ValueMember = "Id";
-
-
-=======
-                cbEspecialidades.Items.Add(unaEspecialidad);
->>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
-            }
+            
+            cbEspecialidades.DataSource = Negocio.Especialidad.GetEspecialidades();
+               
             cbEspecialidades.DisplayMember = "Descripcion";
+
             cbEspecialidades.ValueMember = "Id";
         }
 
@@ -45,17 +34,9 @@ namespace Presentacion
             if (ValidarCampos())
             {
 
-                DataEspecialidad de = new DataEspecialidad();
-<<<<<<< HEAD
-
                 Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id }; // VER
 
-=======
-                Plan planNuevo = new Plan { Descripcion = txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
->>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
-                DataPlan dp = new DataPlan();
-
-                dp.InsertPlan(planNuevo);
+                Negocio.Plan.AgregarPlan(planNuevo);
 
                 MessageBox.Show("Nuevo Plan registrado");
 
@@ -64,8 +45,6 @@ namespace Presentacion
             else { return; }
 
         }
-
-
 
 
         private bool ValidarCampos()
@@ -79,7 +58,6 @@ namespace Presentacion
 
             return true;
         }
-
 
         private void btnCancelar_Click_1(object sender, EventArgs e)
         {

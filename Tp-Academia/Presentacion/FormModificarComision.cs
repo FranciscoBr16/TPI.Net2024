@@ -17,6 +17,7 @@ namespace Presentacion
     {
         public FormModificarComision()
         {
+            InitializeComponent();
         }
 
         public FormModificarComision(Comision comision)
@@ -220,8 +221,7 @@ namespace Presentacion
         {
             //Validar que los campos no sean nulos
             Comision com = new Comision(ComisionForm.Id, txbDescripcion.Text, txbTurno.Text);
-            DataComision dc = new DataComision();
-            if (dc.ModificarComision(com))
+            if (Negocio.Comision.ModificarComision(com))
             {
                 MessageBox.Show("Cambios guardados exitosamente.");
             }

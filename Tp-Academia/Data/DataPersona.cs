@@ -29,8 +29,7 @@ namespace Data
             using (AcademiaContext db = new AcademiaContext())
             {
                 
-                var persona = db.Personas
-                                .FirstOrDefault(p => p.Legajo == legajo && p.Clave == clave);
+                var persona = db.Personas.FirstOrDefault(p => p.Legajo == legajo && p.Clave == clave);
 
                 return persona;  
             }
@@ -95,7 +94,6 @@ namespace Data
                     personaOriginal.Direccion = per.Direccion;
                     personaOriginal.DNI = per.DNI;
                    
-                    // Marca el estado de la entidad como modificado
                     context.Entry(personaOriginal).State = EntityState.Modified;
 
                     try

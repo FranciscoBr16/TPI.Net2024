@@ -22,25 +22,29 @@ namespace Presentacion
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            int legajo = int.Parse(tbUsuario.Text);
-            string clave = tbClave.Text;
-
-            DataPersona dp = new DataPersona();
-            Persona persona = dp.GetPersonaByLegajoYClave(legajo, clave);
-
-            
-            if (persona != null)
+            if (int.TryParse(tbUsuario.Text, out int legajo))
             {
+                string clave = tbClave.Text;
 
-                this.Usuario = persona;
-                MessageBox.Show("Login exitoso");
-                this.Close();
+                Persona persona = Negocio.Persona.GetPersonaByLegajoYClave(legajo, clave);
 
-                
+
+                if (persona != null)
+                {
+
+                    this.Usuario = persona;
+                    MessageBox.Show("Login exitoso");
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Legajo o clave incorrectos.");
+                }
             }
             else
             {
-                MessageBox.Show("Legajo o clave incorrectos.");
+                MessageBox.Show("El legajo debe ser un valor numerico");
             }
         }
     }

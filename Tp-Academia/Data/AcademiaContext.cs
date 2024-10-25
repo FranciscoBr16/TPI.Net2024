@@ -14,7 +14,7 @@ namespace Data
         public DbSet<Materia> Materias { get; set; }
         public DbSet<Persona> Personas { get; set; }
         public DbSet<Plan> Planes { get; set; }
-        
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -33,11 +33,11 @@ namespace Data
         {
             base.OnModelCreating(modelBuilder);
 
-           
+
             modelBuilder.Entity<Docente_curso>()
                 .HasKey(dc => new { dc.DocenteId, dc.CursoId, dc.Fecha });
 
-          
+
             modelBuilder.Entity<Docente_curso>()
                 .HasOne(dc => dc.Docente)
                 .WithMany()
@@ -48,16 +48,19 @@ namespace Data
                 .WithMany()
                 .HasForeignKey(dc => dc.CursoId);
 
-<<<<<<< HEAD
-          
-=======
             modelBuilder.Entity<Plan>()
                 .HasOne(a => a.Especialidad)
                 .WithMany(a => a.Planes)
                 .HasForeignKey(a => a.EspecialidadId)
                 .OnDelete(DeleteBehavior.Cascade)
                 ;
->>>>>>> f137153eb6b554db6db99fe70be28c13dcd4785b
+
+            modelBuilder.Entity<Persona>()
+               .HasOne(a => a.Plan)
+               .WithMany(a => a.Alumnos)
+               .HasForeignKey(a => a.PlanId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
         }
         public AcademiaContext()
         {

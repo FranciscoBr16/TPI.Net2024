@@ -27,9 +27,8 @@ namespace Presentacion
         public void ListarComisiones()
         {
 
-            DataComision dataComisiones = new DataComision();
 
-            List<Comision> listaComisiones = dataComisiones.GetComisiones();
+            List<Comision> listaComisiones = Negocio.Comision.GetComisiones();
 
             dgvComisiones.AutoGenerateColumns = false;
 
@@ -47,20 +46,18 @@ namespace Presentacion
 
                 int id = Convert.ToInt32(dgvComisiones.Rows[e.RowIndex].Cells["Id"].Value);
 
-                DataComision dc = new DataComision();
-
                 if (columnName == "colBtnEliminarCom")
                 {
                     // Acción para eliminar
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        dc.EliminarComision(dc.GetComisionById(id));
+                        Negocio.Comision.EliminarComision(Negocio.Comision.GetComisionById(id));
                     }
                 }
                 else if (columnName == "colBtnModificarCom")
                 {
-                    FormModificarComision formModificar = new FormModificarComision(dc.GetComisionById(id));
+                    FormModificarComision formModificar = new FormModificarComision(Negocio.Comision.GetComisionById(id));
                     formModificar.ShowDialog();
                 }
             }

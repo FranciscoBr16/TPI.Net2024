@@ -33,9 +33,7 @@ namespace Presentacion
         public void ListarEspecialidades()
         {
 
-            DataEspecialidad dataEsp = new DataEspecialidad();
-
-            List<Especialidad> listaEsp = dataEsp.GetEspecialidades();
+            List<Especialidad> listaEsp = Negocio.Especialidad.GetEspecialidades();
 
             dgvEspecialidades.AutoGenerateColumns = false;
 
@@ -55,7 +53,7 @@ namespace Presentacion
                 var cellValue = dgvEspecialidades.Rows[e.RowIndex].Cells["Id"].Value;
                 if (cellValue != null && int.TryParse(cellValue.ToString(), out int idEsp))
                 {
-                    DataEspecialidad desp = new DataEspecialidad();
+                    
 
                     if (columnName == "colBtnEliminarEsp")
                     {
@@ -63,12 +61,12 @@ namespace Presentacion
                         DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            desp.EliminarEspecialidad(desp.GetEspecialidadById(idEsp)); 
+                            Negocio.Especialidad.EliminarEspecialidad(Negocio.Especialidad.GetEspecialidadById(idEsp)); 
                         }
                     }
                     else if (columnName == "colBtnModificarEsp")
                     {
-                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad(desp.GetEspecialidadById(idEsp)); 
+                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad(Negocio.Especialidad.GetEspecialidadById(idEsp)); 
                         formModificar.ShowDialog();
                     }
                 }

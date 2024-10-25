@@ -110,6 +110,7 @@
             toolStripLabel9.Name = "toolStripLabel9";
             toolStripLabel9.Size = new Size(34, 22);
             toolStripLabel9.Text = "Perfil";
+            toolStripLabel9.Click += toolStripLabel9_Click;
             // 
             // FormMdiContenedor
             // 

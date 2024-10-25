@@ -15,6 +15,7 @@ namespace Presentacion
     public partial class FormModificarPlan : Form
     {
         public Plan PlanPropio{ get; set; }
+
         /*public FormModificarPlan()
         {
             InitializeComponent();
@@ -35,8 +36,7 @@ namespace Presentacion
         {
             //Validar que los campos no sean nulos
             Plan plan = new Plan { Id=PlanPropio.Id , Descripcion= txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
-            DataPlan dp = new DataPlan();
-            if (dp.ModificarPlan(plan))
+            if (Negocio.Plan.ModificarPlan(plan))
             {
                 MessageBox.Show("Cambios guardados exitosamente.");
             }
@@ -48,15 +48,10 @@ namespace Presentacion
         {
             
             txbDescripcion.Text = PlanPropio.Descripcion;
-            DataEspecialidad de = new DataEspecialidad();
-            List<Especialidad> especialidades = de.GetEspecialidades();
+            cbEspecialidades.DataSource = Negocio.Especialidad.GetEspecialidades();
             cbEspecialidades.DisplayMember = "Descripcion";
             cbEspecialidades.ValueMember = "Id";
-            foreach (var unaEspecialidad in especialidades)
-            {
-                cbEspecialidades.Items.Add(unaEspecialidad);
-            }
-            
+
             cbEspecialidades.SelectedValue = PlanPropio.EspecialidadId;
         }
 
