@@ -41,5 +41,12 @@ namespace Negocio
             DataPersona dp = new DataPersona();
             return dp.GetPersonaByLegajo(legajo);
         }
+
+        public static List<Entidades.Persona> GetProfesoresDelCurso(int idCurso)
+        {
+            DataProfesorYCurso dpyc = new DataProfesorYCurso();
+            return dpyc.GetProfesoresDelCurso(idCurso);
+        }
+
     }
 }

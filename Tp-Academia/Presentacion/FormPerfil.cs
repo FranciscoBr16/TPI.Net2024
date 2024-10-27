@@ -20,7 +20,7 @@ namespace Presentacion
         private void FormPerfil_Load(object sender, EventArgs e)
         {
             CargarDatos();
-            
+
         }
 
         public void CargarDatos()
@@ -35,6 +35,17 @@ namespace Presentacion
             txbDireccion.Text = Usuario.Direccion;
             txbPlan.Text = Convert.ToString(Usuario.PlanId);
         }
-       
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            FormModificarPersona modificar = new FormModificarPersona(this.Usuario);
+            modificar.FormClosing += FormInicio_FormClosing;
+            modificar.Show();
+        }
+
+        private void FormInicio_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            CargarDatos();
+        }
     }
 }

@@ -61,6 +61,20 @@ namespace Data
                .HasForeignKey(a => a.PlanId)
                .OnDelete(DeleteBehavior.Cascade)
                ;
+
+            modelBuilder.Entity<Curso>()
+               .HasOne(c => c.Comision)
+               .WithMany(c => c.Cursos)
+               .HasForeignKey(c => c.ComisionId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
+
+            modelBuilder.Entity<Curso>()
+               .HasOne(c => c.Materia)
+               .WithMany(c => c.Cursos)
+               .HasForeignKey(c => c.MateriaId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
         }
         public AcademiaContext()
         {

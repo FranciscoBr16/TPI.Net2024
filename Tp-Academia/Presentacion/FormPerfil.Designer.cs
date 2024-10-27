@@ -348,6 +348,7 @@
             btnModificar.TabIndex = 4;
             btnModificar.Text = "Modificar Perfil";
             btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
             // 
             // FormPerfil
             // 

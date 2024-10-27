@@ -32,12 +32,12 @@
             toolStripLabel1 = new ToolStripLabel();
             toolStripLabel2 = new ToolStripLabel();
             toolStripLabel3 = new ToolStripLabel();
-            toolStripLabel4 = new ToolStripLabel();
             toolStripLabel5 = new ToolStripLabel();
             toolStripLabel6 = new ToolStripLabel();
             toolStripLabel7 = new ToolStripLabel();
             toolStripLabel8 = new ToolStripLabel();
             toolStripLabel9 = new ToolStripLabel();
+            toolStripLabel4 = new ToolStripLabel();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,11 +71,6 @@
             toolStripLabel3.Size = new Size(62, 22);
             toolStripLabel3.Text = "Profesores";
             toolStripLabel3.Click += toolStripLabel3_Click;
-            // 
-            // toolStripLabel4
-            // 
-            toolStripLabel4.Name = "toolStripLabel4";
-            toolStripLabel4.Size = new Size(0, 22);
             // 
             // toolStripLabel5
             // 
@@ -112,6 +107,13 @@
             toolStripLabel9.Text = "Perfil";
             toolStripLabel9.Click += toolStripLabel9_Click;
             // 
+            // toolStripLabel4
+            // 
+            toolStripLabel4.Name = "toolStripLabel4";
+            toolStripLabel4.Size = new Size(43, 22);
+            toolStripLabel4.Text = "Cursos";
+            toolStripLabel4.Click += toolStripLabel4_Click;
+            // 
             // FormMdiContenedor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -136,11 +138,11 @@
         private ToolStripLabel toolStripLabel1;
         private ToolStripLabel toolStripLabel2;
         private ToolStripLabel toolStripLabel3;
-        private ToolStripLabel toolStripLabel4;
         private ToolStripLabel toolStripLabel5;
         private ToolStripLabel toolStripLabel6;
         private ToolStripLabel toolStripLabel7;
         private ToolStripLabel toolStripLabel8;
         private ToolStripLabel toolStripLabel9;
+        private ToolStripLabel toolStripLabel4;
     }
 }

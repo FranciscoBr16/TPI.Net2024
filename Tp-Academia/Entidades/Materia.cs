@@ -12,7 +12,7 @@ namespace Entidades
         public string Descripcion { get; set; }
         public string Anio { get; set; }
         public Plan Plan { get; set; }
-        private List<Curso> Cursos { get; set; }
+        public List<Curso> Cursos { get; set; }
 
         public Materia (int id, int cantHorasSemanales, string nombre, string descripcion, Plan plan)
         {

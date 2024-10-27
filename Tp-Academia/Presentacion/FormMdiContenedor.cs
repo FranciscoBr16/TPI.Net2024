@@ -142,17 +142,24 @@ namespace Presentacion
         public override void ActualizarVisibilidad()
         {
             if (this.Usuario != null)
-            {//  La persona tendria que ser admin?
+            {
+                if (this.Usuario.Rol == "Admin")
+                {
 
-                toolStripLabel1.Visible = true;
-                toolStripLabel2.Visible = true;
-                toolStripLabel3.Visible = true;
-                toolStripLabel4.Visible = true;
-                toolStripLabel5.Visible = true;
-                toolStripLabel6.Visible = true;
-                toolStripLabel7.Visible = true;
-                toolStripLabel8.Visible = true;
-                toolStripLabel9.Visible = true;
+                    toolStripLabel1.Visible = true;
+                    toolStripLabel2.Visible = true;
+                    toolStripLabel3.Visible = true;
+                    toolStripLabel4.Visible = true;
+                    toolStripLabel5.Visible = true;
+                    toolStripLabel6.Visible = true;
+                    toolStripLabel7.Visible = true;
+                    toolStripLabel8.Visible = true;
+                    toolStripLabel9.Visible = true;
+                }
+                else
+                {
+                    toolStripLabel9.Visible = true; //perfil
+                }
             }
             else
             {
@@ -165,6 +172,9 @@ namespace Presentacion
                 toolStripLabel8.Visible = false;
                 toolStripLabel9.Visible = false;
             }
+
+
+
         }
 
         private Form IsOpen(Type formType)
@@ -200,6 +210,22 @@ namespace Presentacion
                 formPerfil.BringToFront();
             }
 
+        }
+
+        private void toolStripLabel4_Click(object sender, EventArgs e)
+        {
+            Form formListado = IsOpen(typeof(FormListadoCursos));
+            if (formListado == null)
+            {
+                FormListadoCursos formListadoC = new FormListadoCursos();
+                formListadoC.MdiParent = this;
+                formListadoC.Usuario = this.Usuario;
+                formListadoC.Show();
+            }
+            else
+            {
+                formListado.BringToFront();
+            }
         }
     }
 }

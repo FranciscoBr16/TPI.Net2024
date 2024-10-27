@@ -13,6 +13,10 @@ namespace Entidades
         public int Id { get; set; }
         public int Cupo { get; set; }
         public int Anio { get; set; }
+
+        public int ComisionId { get; set; }
+        public int MateriaId { get; set; }
+        
         public Comision Comision { get; set; }
         public Materia Materia { get; set; }
 

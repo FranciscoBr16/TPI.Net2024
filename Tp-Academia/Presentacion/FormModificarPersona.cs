@@ -6,10 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Presentacion
 {
@@ -54,6 +56,7 @@ namespace Presentacion
             txbTelefono = new TextBox();
             txbDni = new TextBox();
             txbClave = new TextBox();
+            txbUsuario = new TextBox();
             lblDni = new Label();
             lblApellido = new Label();
             txbApellido = new TextBox();
@@ -64,13 +67,12 @@ namespace Presentacion
             txbNombre = new TextBox();
             lblDireccion = new Label();
             lblUsuario = new Label();
-            txbCorreo = new TextBox();
-            txbUsuario = new TextBox();
             lblCorreo = new Label();
             txbDireccion = new TextBox();
-            label3 = new Label();
+            lblFechaNac = new Label();
             lblPlan = new Label();
             cbIdPlan = new ComboBox();
+            txbCorreo = new TextBox();
             tableLayoutPanel4.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -173,7 +175,7 @@ namespace Presentacion
             tableLayoutPanel2.Controls.Add(lblUsuario, 1, 4);
             tableLayoutPanel2.Controls.Add(lblCorreo, 1, 3);
             tableLayoutPanel2.Controls.Add(txbDireccion, 2, 1);
-            tableLayoutPanel2.Controls.Add(label3, 1, 2);
+            tableLayoutPanel2.Controls.Add(lblFechaNac, 1, 2);
             tableLayoutPanel2.Controls.Add(lblPlan, 4, 2);
             tableLayoutPanel2.Controls.Add(cbIdPlan, 5, 2);
             tableLayoutPanel2.Controls.Add(txbCorreo, 2, 3);
@@ -216,6 +218,15 @@ namespace Presentacion
             txbClave.PasswordChar = '*';
             txbClave.Size = new Size(217, 23);
             txbClave.TabIndex = 18;
+            // 
+            // txbUsuario
+            // 
+            txbUsuario.Anchor = AnchorStyles.None;
+            txbUsuario.Location = new Point(111, 178);
+            txbUsuario.Margin = new Padding(3, 2, 3, 2);
+            txbUsuario.Name = "txbUsuario";
+            txbUsuario.Size = new Size(217, 23);
+            txbUsuario.TabIndex = 13;
             // 
             // lblDni
             // 
@@ -316,24 +327,6 @@ namespace Presentacion
             lblUsuario.TabIndex = 15;
             lblUsuario.Text = "Usuario";
             // 
-            // txbCorreo
-            // 
-            txbCorreo.Anchor = AnchorStyles.None;
-            txbCorreo.Location = new Point(111, 135);
-            txbCorreo.Margin = new Padding(3, 2, 3, 2);
-            txbCorreo.Name = "txbCorreo";
-            txbCorreo.Size = new Size(217, 23);
-            txbCorreo.TabIndex = 14;
-            // 
-            // txbUsuario
-            // 
-            txbUsuario.Anchor = AnchorStyles.None;
-            txbUsuario.Location = new Point(111, 178);
-            txbUsuario.Margin = new Padding(3, 2, 3, 2);
-            txbUsuario.Name = "txbUsuario";
-            txbUsuario.Size = new Size(217, 23);
-            txbUsuario.TabIndex = 13;
-            // 
             // lblCorreo
             // 
             lblCorreo.Anchor = AnchorStyles.None;
@@ -353,16 +346,16 @@ namespace Presentacion
             txbDireccion.Size = new Size(217, 23);
             txbDireccion.TabIndex = 3;
             // 
-            // label3
+            // lblFechaNac
             // 
-            label3.Anchor = AnchorStyles.None;
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(38, 92);
-            label3.Name = "label3";
-            label3.Size = new Size(65, 26);
-            label3.TabIndex = 29;
-            label3.Text = "Fecha de Nacimiento";
+            lblFechaNac.Anchor = AnchorStyles.None;
+            lblFechaNac.AutoSize = true;
+            lblFechaNac.Font = new Font("Segoe UI", 7.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblFechaNac.Location = new Point(38, 92);
+            lblFechaNac.Name = "lblFechaNac";
+            lblFechaNac.Size = new Size(65, 26);
+            lblFechaNac.TabIndex = 29;
+            lblFechaNac.Text = "Fecha de Nacimiento";
             // 
             // lblPlan
             // 
@@ -382,6 +375,15 @@ namespace Presentacion
             cbIdPlan.Name = "cbIdPlan";
             cbIdPlan.Size = new Size(216, 23);
             cbIdPlan.TabIndex = 32;
+            // 
+            // txbCorreo
+            // 
+            txbCorreo.Anchor = AnchorStyles.None;
+            txbCorreo.Location = new Point(111, 135);
+            txbCorreo.Margin = new Padding(3, 2, 3, 2);
+            txbCorreo.Name = "txbCorreo";
+            txbCorreo.Size = new Size(217, 23);
+            txbCorreo.TabIndex = 14;
             // 
             // FormModificarPersona
             // 
@@ -426,7 +428,7 @@ namespace Presentacion
         private TextBox txbDireccion;
         private Label lblPlan;
         private ComboBox cbIdPlan;
-        private Label label3;
+        private Label lblFechaNac;
 
         private void btnAceptar_MouseClick(object sender, MouseEventArgs e)
         {
@@ -458,6 +460,19 @@ namespace Presentacion
         private void FormModificarPersona_Load(object sender, EventArgs e)
         {
             CargarDatos();
+            ActualizarVisibilidad(); 
+        }
+
+        private void ActualizarVisibilidad()
+        {
+                if (this.PersonaForm.Rol != "Admin") { 
+                txbDni.Visible = false;
+                dtpFechaNac.Visible = false;
+                cbIdPlan.Visible = false;
+                lblDni.Visible = false;
+                lblFechaNac.Visible= false;
+                lblPlan.Visible = false;
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

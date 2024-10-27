@@ -43,7 +43,7 @@ namespace Presentacion
         public void ListarMaterias()
         {
 
-            DataMaterias dataMaterias = new DataMaterias();
+            DataMateria dataMaterias = new DataMateria();
 
             List<Materia> listaMaterias = dataMaterias.GetMaterias();
 
