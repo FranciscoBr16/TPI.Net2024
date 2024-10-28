@@ -19,18 +19,25 @@ namespace Presentacion
             InitializeComponent();
         }
 
+
         private void FormListadoCursos_Load(object sender, EventArgs e)
         {
-            ListarCursos();
+            
             if (Usuario != null && Usuario.Rol == "Admin")
             {
+                ListarCursos();
+                btnNuevoCurso.Visible = true;
                 dgvCursos.Columns["colBtnModificar"].Visible = true;
                 dgvCursos.Columns["colBtnEliminar"].Visible = true;
+                dgvCursos.Columns["ColBtnInscripcion"].Visible = true;
+
             }
-            else
+            else if (Usuario != null && Usuario.Rol == "Alumno")
             {
+                btnNuevoCurso.Visible = false;
                 dgvCursos.Columns["colBtnModificar"].Visible = false;
                 dgvCursos.Columns["colBtnEliminar"].Visible = false;
+                dgvCursos.Columns["ColBtnInscripcion"].Visible = true;
             }
         }
 
@@ -66,7 +73,13 @@ namespace Presentacion
             dgvCursos.AutoGenerateColumns = false;
             dgvCursos.DataSource = cursosParaMostrar;
 
+        }
 
+        public void ListarCursosDisponibles()
+        {
+            List<Curso> cursos = Negocio.Curso.GetCursos().Where(c=> c.Cupo > 0).ToList();
+            dgvCursos.AutoGenerateColumns = false;
+            dgvCursos.DataSource = cursos;
         }
 
         private void btnNuevoCurso_Click(object sender, EventArgs e)
@@ -101,6 +114,14 @@ namespace Presentacion
                     FormModificarCurso formModificar = new FormModificarCurso(id);
                     formModificar.FormClosing += FormModificarCurso_FormClosing;
                     formModificar.ShowDialog();
+                } else if (columnName == "colBtnInscripcion")
+                {
+                    DialogResult result = MessageBox.Show("¿Estás seguro de que quiere inscribirse a este curso?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        Negocio.Curso.InscripcionAlumnoCurso(Usuario.Legajo, id);
+                        
+                    }
                 }
             }
         }

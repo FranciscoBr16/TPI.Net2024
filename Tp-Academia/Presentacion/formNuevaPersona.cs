@@ -42,7 +42,8 @@ namespace Presentacion
                         Direccion = txbDireccion.Text,
                         DNI = txbDni.Text,
                         Fecha_nac = dtpFechaNac.Value,
-                        Fecha_ingreso = fechaHoy
+                        Fecha_ingreso = fechaHoy,
+                        PlanId = 1 // Ver este tema
                     };
 
                     Negocio.Persona.AgregarPersona(alumnoNuevo);

@@ -16,6 +16,8 @@ namespace Entidades
 
         public int ComisionId { get; set; }
         public int MateriaId { get; set; }
+
+        public List<Inscripcion> Inscripciones { get; set; }
         
         public Comision Comision { get; set; }
         public Materia Materia { get; set; }

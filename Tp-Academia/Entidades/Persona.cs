@@ -29,8 +29,8 @@ namespace Entidades
         public DateTime Fecha_ingreso { get; set; }
         public Plan Plan { get; set; }
 
-        public int PlanId {  get; set; }
-        public List<Inscripcion> Inscripcioens { get; set; }
+        public int? PlanId {  get; set; }
+        public List<Inscripcion> Inscripciones { get; set; }
         
  
         public Persona() { }

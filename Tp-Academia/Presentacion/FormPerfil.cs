@@ -47,5 +47,12 @@ namespace Presentacion
         {
             CargarDatos();
         }
+
+        private void btnInscripciones_Click(object sender, EventArgs e)
+        {
+            FormListadoCursos formListadoCursos = new FormListadoCursos();
+            formListadoCursos.Usuario = this.Usuario;
+            formListadoCursos.ShowDialog();
+        }
     }
 }

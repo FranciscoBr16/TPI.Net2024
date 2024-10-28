@@ -82,5 +82,37 @@ namespace Data
                 }
             }
         }
+
+        public bool InscripcionAlumnoCurso(int legajoAlumno, int idCurso)
+        {
+            Curso curso = GetCursoById(idCurso);
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                if (curso != null)
+                {
+
+                    curso.Cupo--;
+
+                    Inscripcion inscripcion = new Inscripcion {CursoId = idCurso, AlumnoLegajo = legajoAlumno, Fecha = DateTime.Now, Condicion = "Inscripto" };
+                    db.Inscripciones.Add(inscripcion);
+
+                    db.Entry(curso).State = EntityState.Modified;
+
+                    try
+                    {
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+
+                
+                db.SaveChanges();
+                return true;
+            }
+        }
     }
 }

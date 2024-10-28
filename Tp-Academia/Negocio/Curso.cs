@@ -40,5 +40,11 @@ namespace Negocio
             DataCurso dc = new DataCurso();
             return dc.GetCursos();
         }
+
+        public static bool InscripcionAlumnoCurso (int legajoAlumno , int idCurso) {
+
+            DataCurso dc = new DataCurso();
+            return dc.InscripcionAlumnoCurso(legajoAlumno, idCurso);
+        }
     }
 }

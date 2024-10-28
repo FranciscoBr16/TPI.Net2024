@@ -13,14 +13,16 @@ namespace Entidades
         [Key]
         public int Id { get; set; }
         public string Condicion { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public int Nota { get; set; }
+        public int AlumnoLegajo { get; set; }
+        public int CursoId {  get; set; }
 
         public Persona Alumno { get; set; }
         public Curso Curso { get; set; }
 
 
-        public Inscripcion(int id, string condicion, string fecha, int nota, Persona alumno, Curso curso)
+        public Inscripcion(int id, string condicion, DateTime fecha, int nota, Persona alumno, Curso curso)
         {
             this.Id = id;
             this.Condicion = condicion;
@@ -30,13 +32,15 @@ namespace Entidades
             Curso = curso;
         }
 
-        public Inscripcion(int id, string condicion, string fecha, int nota)
+        public Inscripcion(int id, string condicion, DateTime fecha, int nota)
         {
             this.Id = id;
             this.Condicion = condicion;
             this.Fecha = fecha;
             this.Nota = nota;
         }
+
+        public Inscripcion() { }
     }
 }
 
