@@ -12,39 +12,39 @@ namespace Negocio
     {
         public static Entidades.Persona GetPersonaByLegajoYClave(int legajo, string clave)
         {
-            DataPersona dp = new DataPersona();
+            PersonaService dp = new PersonaService();
             return dp.GetPersonaByLegajoYClave(legajo, clave);
 
         }
 
         public static bool ModificarPersona(Entidades.Persona per)
         {
-            DataPersona dp = new DataPersona();
+            PersonaService dp = new PersonaService();
             return dp.ModificarPersona(per);
         }
 
         public static bool AgregarPersona(Entidades.Persona per)
         {
-            DataPersona dp = new DataPersona();
+            PersonaService dp = new PersonaService();
             return dp.InsertPersona(per);
         }
 
         public static bool EliminarPersona(Entidades.Persona persona)
         {
-            DataPersona dp = new DataPersona();
+            PersonaService dp = new PersonaService();
             return dp.EliminarPersona(persona);
             
         }
 
         public static Entidades.Persona GetPersonaByLegajo(int legajo)
         {
-            DataPersona dp = new DataPersona();
+            PersonaService dp = new PersonaService();
             return dp.GetPersonaByLegajo(legajo);
         }
 
         public static List<Entidades.Persona> GetProfesoresDelCurso(int idCurso)
         {
-            DataProfesorYCurso dpyc = new DataProfesorYCurso();
+            ProfesorYCursoService dpyc = new ProfesorYCursoService();
             return dpyc.GetProfesoresDelCurso(idCurso);
         }
 

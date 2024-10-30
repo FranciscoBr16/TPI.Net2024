@@ -8,63 +8,67 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DataPlan
+    public class MateriaService
     {
-        public List<Plan> GetPlanes()
+        public List<Materia> GetMaterias()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                var planes = db.Planes.ToList();
+                var Materias = db.Materias.ToList(); ;
 
-                return planes;
+                return Materias;
             }
         }
 
-        public Plan GetPlanById(int id)
+        public Materia GetMateriaById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                Plan p = db.Planes.Find(id);
-                return p;
+                Materia mat = db.Materias.Find(id);
+                return mat;
             }
         }
 
-        public bool InsertPlan(Plan plan)
+        public bool InsertMateria(Materia mat)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                db.Planes.Add(plan);
+                db.Materias.Add(mat);
                 db.SaveChanges();
                 // Verificar si esto puede fallar
                 return true;
             }
         }
 
-        public bool EliminarPlan(Plan plan)
+        public bool EliminarMateria(Materia mat)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                db.Planes.Remove(plan);
+                db.Materias.Remove(mat);
                 db.SaveChanges();
                 return true;
             }
         }
 
-        public bool ModificarPlan(Plan plan)
+        public bool ModificarMateria(Materia mat)
         {
             using (var context = new AcademiaContext())
             {
-                Plan planOriginal = GetPlanById(plan.Id);
-                if (planOriginal != null)
+                Materia matOriginal = GetMateriaById(mat.Id);
+                if (matOriginal != null)
                 {
-                    planOriginal.Descripcion = plan.Descripcion;
-                    // por ahora solo se podra modificar la descripcion
-                    
+
+                    matOriginal.Descripcion = mat.Descripcion;
+                    matOriginal.CantHorasSemanales = mat.CantHorasSemanales;
+                    matOriginal.Nombre = mat.Nombre;
+                    matOriginal.Anio = mat.Anio;
+                    matOriginal.Plan = mat.Plan;
+
 
                     // Marca el estado de la entidad como modificado
-                    context.Entry(planOriginal).State = EntityState.Modified;
+                    context.Entry(matOriginal).State = EntityState.Modified;
 
                     try
                     {

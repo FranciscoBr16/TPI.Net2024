@@ -11,32 +11,32 @@ namespace Negocio
     {
         public static bool ModificarEspecialidad(Entidades.Especialidad per)
         {
-            DataEspecialidad de = new DataEspecialidad();
+            EspecialidadService de = new EspecialidadService();
             return de.ModificarEspecialidad(per);
         }
 
         public static bool AgregarEspecialidad(Entidades.Especialidad per)
         {
-            DataEspecialidad de = new DataEspecialidad();
+            EspecialidadService de = new EspecialidadService();
             return de.InsertEspecialidad(per);
         }
 
         public static bool EliminarEspecialidad(Entidades.Especialidad Especialidad)
         {
-            DataEspecialidad de = new DataEspecialidad();
+            EspecialidadService de = new EspecialidadService();
             return de.EliminarEspecialidad(Especialidad);
 
         }
 
         public static Entidades.Especialidad GetEspecialidadById(int id)
         {
-            DataEspecialidad de = new DataEspecialidad();
+            EspecialidadService de = new EspecialidadService();
             return de.GetEspecialidadById(id);
         }
 
         public static List<Entidades.Especialidad> GetEspecialidades()
         {
-            DataEspecialidad de = new DataEspecialidad();
+            EspecialidadService de = new EspecialidadService();
             return de.GetEspecialidades();
         }
     }

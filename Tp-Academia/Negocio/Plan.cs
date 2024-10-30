@@ -11,32 +11,32 @@ namespace Negocio
     {
         public static bool ModificarPlan(Entidades.Plan plan)
         {
-            DataPlan dp = new DataPlan();
+            PlanService dp = new PlanService();
             return dp.ModificarPlan(plan);
         }
 
         public static bool AgregarPlan(Entidades.Plan plan)
         {
-            DataPlan dp = new DataPlan();
+            PlanService dp = new PlanService();
             return dp.InsertPlan(plan);
         }
 
         public static bool EliminarPlan(Entidades.Plan Plan)
         {
-            DataPlan dp = new DataPlan();
+            PlanService dp = new PlanService();
             return dp.EliminarPlan(Plan);
 
         }
 
         public static Entidades.Plan GetPlanById(int id)
         {
-            DataPlan dp = new DataPlan();
+            PlanService dp = new PlanService();
             return dp.GetPlanById(id);
         }
 
         public static List<Entidades.Plan> GetPlanes()
         {
-            DataPlan dp = new DataPlan();
+            PlanService dp = new PlanService();
             return dp.GetPlanes();
         }
     }

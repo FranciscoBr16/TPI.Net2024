@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DataProfesorYCurso
+    public class ProfesorYCursoService
     {
         public List<Docente_curso> GetProfesoresYCursos()
         {
@@ -27,7 +27,7 @@ namespace Data
             {
                 List<Docente_curso> profedelcurso = db.Docente_curso.Where(p => p.CursoId == idCurso).ToList();
                
-                DataPersona dp = new DataPersona();
+                PersonaService dp = new PersonaService();
                     foreach (Docente_curso docentecurso in profedelcurso){
 
                     Persona unprofe = dp.GetPersonaByLegajo(docentecurso.DocenteId);

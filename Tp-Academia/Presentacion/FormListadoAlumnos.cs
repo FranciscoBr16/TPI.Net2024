@@ -27,7 +27,7 @@ namespace Presentacion
         public void ListarAlumnos()
         {
 
-            DataPersona dataAlumnos = new DataPersona();
+            PersonaService dataAlumnos = new PersonaService();
 
             List<Persona> listaAlumnos = dataAlumnos.GetAlumnos();
 
@@ -47,7 +47,7 @@ namespace Presentacion
 
                 int legajo = Convert.ToInt32(dgvAlumnos.Rows[e.RowIndex].Cells["colLegajo"].Value);
 
-                DataPersona dp = new DataPersona();
+                PersonaService dp = new PersonaService();
 
                 if (columnName == "colBtnEliminar")
                 {

@@ -8,67 +8,61 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DataMateria
+    public class ComisionService
     {
-        public List<Materia> GetMaterias()
+        public static List<Comision> GetComisiones()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                var Materias = db.Materias.ToList(); ;
+                var Comisiones = db.Comisiones.ToList(); ;
 
-                return Materias;
+                return Comisiones;
             }
         }
 
-        public Materia GetMateriaById(int id)
+        public static Comision GetComisionById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                Materia mat = db.Materias.Find(id);
-                return mat;
+                return db.Comisiones.Find(id);
+               
             }
         }
 
-        public bool InsertMateria(Materia mat)
+        public static bool InsertComision(Comision com)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                db.Materias.Add(mat);
-                db.SaveChanges();
-                // Verificar si esto puede fallar
-                return true;
-            }
-        }
-
-        public bool EliminarMateria(Materia mat)
-        {
-            using (AcademiaContext db = new AcademiaContext())
-            {
-                db.Materias.Remove(mat);
+                db.Comisiones.Add(com);
                 db.SaveChanges();
                 return true;
             }
         }
 
-        public bool ModificarMateria(Materia mat)
+        public static bool EliminarComision(Comision com)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                db.Comisiones.Remove(com);
+                db.SaveChanges();
+                return true;
+            }
+        }
+
+        public static bool ModificarComision(Comision com)
         {
             using (var context = new AcademiaContext())
             {
-                Materia matOriginal = GetMateriaById(mat.Id);
-                if (matOriginal != null)
-                {
+                Comision comOriginal = GetComisionById(com.Id);
+                if (comOriginal != null) { 
+             
+                    comOriginal.Descripcion = com.Descripcion;
+                    comOriginal.Turno = com.Turno;
+                    
 
-                    matOriginal.Descripcion = mat.Descripcion;
-                    matOriginal.CantHorasSemanales = mat.CantHorasSemanales;
-                    matOriginal.Nombre = mat.Nombre;
-                    matOriginal.Anio = mat.Anio;
-                    matOriginal.Plan = mat.Plan;
-
-
-                    // Marca el estado de la entidad como modificado
-                    context.Entry(matOriginal).State = EntityState.Modified;
+                    context.Entry(comOriginal).State = EntityState.Modified;
 
                     try
                     {

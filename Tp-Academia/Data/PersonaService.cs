@@ -9,7 +9,7 @@ using System.Net;
 
 namespace Data
 {
-    public class DataPersona
+    public class PersonaService
     {
         public List<Persona> GetProfesores()
         {

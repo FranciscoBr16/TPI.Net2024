@@ -22,7 +22,7 @@ namespace Presentacion
         public void ListarPlanes()
         {
 
-            DataPlan dataPlanes = new DataPlan();
+            PlanService dataPlanes = new PlanService();
 
             List<Plan> listaPlanes = dataPlanes.GetPlanes();
 

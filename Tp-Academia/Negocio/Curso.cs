@@ -12,38 +12,38 @@ namespace Negocio
 
         public static bool ModificarCurso(Entidades.Curso per)
         {
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.ModificarCurso(per);
         }
 
         public static bool AgregarCurso(Entidades.Curso per)
         {
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.InsertCurso(per);
         }
 
         public static bool EliminarCurso(Entidades.Curso Curso)
         {
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.EliminarCurso(Curso);
 
         }
 
         public static Entidades.Curso GetCursoById(int id)
         {
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.GetCursoById(id);
         }
 
         public static List<Entidades.Curso> GetCursos()
         {
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.GetCursos();
         }
 
         public static bool InscripcionAlumnoCurso (int legajoAlumno , int idCurso) {
 
-            DataCurso dc = new DataCurso();
+            CursoService dc = new CursoService();
             return dc.InscripcionAlumnoCurso(legajoAlumno, idCurso);
         }
     }

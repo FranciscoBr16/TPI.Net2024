@@ -11,32 +11,32 @@ namespace Negocio
     {
         public static bool ModificarMateria(Entidades.Materia mate)
         {
-            DataMateria dm = new DataMateria();
+            MateriaService dm = new MateriaService();
             return dm.ModificarMateria(mate);
         }
 
         public static bool AgregarMateria(Entidades.Materia mate)
         {
-            DataMateria dm = new DataMateria();
+            MateriaService dm = new MateriaService();
             return dm.InsertMateria(mate);
         }
 
         public static bool EliminarMateria(Entidades.Materia Materia)
         {
-            DataMateria dm = new DataMateria();
+            MateriaService dm = new MateriaService();
             return dm.EliminarMateria(Materia);
 
         }
 
         public static Entidades.Materia GetMateriaById(int id)
         {
-            DataMateria dm= new DataMateria();
+            MateriaService dm= new MateriaService();
             return dm.GetMateriaById(id);
         }
 
         public static List<Entidades.Materia> GetMaterias()
         {
-            DataMateria dm= new DataMateria();
+            MateriaService dm= new MateriaService();
             return dm.GetMaterias();
         }
     }

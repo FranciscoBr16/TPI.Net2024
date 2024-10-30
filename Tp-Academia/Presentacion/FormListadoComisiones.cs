@@ -24,11 +24,11 @@ namespace Presentacion
             ListarComisiones();
         }
 
-        public void ListarComisiones()
+        public async void ListarComisiones()
         {
 
 
-            List<Comision> listaComisiones = Negocio.Comision.GetComisiones();
+            IEnumerable<Comision> listaComisiones = await ComisionApiClient.GetAllAsync();
 
             dgvComisiones.AutoGenerateColumns = false;
 
@@ -37,7 +37,7 @@ namespace Presentacion
 
         }
 
-        private void dgvComisiones_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void dgvComisiones_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -52,12 +52,12 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Negocio.Comision.EliminarComision(Negocio.Comision.GetComisionById(id));
+                        await ComisionApiClient.DeleteAsync(id);
                     }
                 }
                 else if (columnName == "colBtnModificarCom")
                 {
-                    FormModificarComision formModificar = new FormModificarComision(Negocio.Comision.GetComisionById(id));
+                    FormModificarComision formModificar = new FormModificarComision(ComisionService.GetComisionById(id));
                     formModificar.ShowDialog();
                 }
             }

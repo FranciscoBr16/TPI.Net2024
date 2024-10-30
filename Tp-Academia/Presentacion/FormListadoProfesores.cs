@@ -54,7 +54,7 @@ namespace Presentacion
         public void ListarProfesores()
         {
 
-            DataPersona dataProfesores = new DataPersona();
+            PersonaService dataProfesores = new PersonaService();
 
             List<Persona> listaProfesores = dataProfesores.GetProfesores();
 

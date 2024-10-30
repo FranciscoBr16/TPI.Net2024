@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class DataEspecialidad
+    public class EspecialidadService
     {
         public List<Especialidad> GetEspecialidades()
         {
