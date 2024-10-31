@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,24 +20,24 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void FormNuevoPlan_Load(object sender, EventArgs e)
+        private async void FormNuevoPlan_Load(object sender, EventArgs e)
         {
-            
-            cbEspecialidades.DataSource = Negocio.Especialidad.GetEspecialidades();
+
+            cbEspecialidades.DataSource = await PlanApiClient.GetAllAsync() ;
                
             cbEspecialidades.DisplayMember = "Descripcion";
 
             cbEspecialidades.ValueMember = "Id";
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos())
             {
 
                 Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id }; // VER
 
-                Negocio.Plan.AgregarPlan(planNuevo);
+                await PlanApiClient.AddAsync(planNuevo);
 
                 MessageBox.Show("Nuevo Plan registrado");
 

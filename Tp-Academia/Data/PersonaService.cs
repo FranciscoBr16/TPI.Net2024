@@ -11,7 +11,7 @@ namespace Data
 {
     public class PersonaService
     {
-        public List<Persona> GetProfesores()
+        static public List<Persona> GetProfesores()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -24,7 +24,7 @@ namespace Data
             }
         }
 
-        public Persona GetPersonaByLegajoYClave(int legajo , string clave)
+        static public Persona GetPersonaByLegajoYClave(int legajo , string clave)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -35,7 +35,7 @@ namespace Data
             }
 
         }
-        public List<Persona> GetAlumnos() { 
+        static public List<Persona> GetAlumnos() { 
         using (AcademiaContext db= new AcademiaContext())
             {
 
@@ -47,7 +47,7 @@ namespace Data
             }
         }
 
-        public Persona GetPersonaByLegajo(int legajo)
+        static public Persona GetPersonaByLegajo(int legajo)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -56,18 +56,17 @@ namespace Data
             }
         }
 
-        public bool InsertPersona(Persona persona) {
+        static public bool InsertPersona(Persona persona) {
             using (AcademiaContext db = new AcademiaContext())
             {
 
                 db.Personas.Add(persona);
                 db.SaveChanges();
-                // Verificar si esto puede fallar
                 return true;
             }
         }
 
-        public bool EliminarPersona(Persona persona)
+        static public bool EliminarPersona(Persona persona)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -77,7 +76,7 @@ namespace Data
             }
         }
 
-        public bool ModificarPersona(Persona per)
+        static public bool ModificarPersona(Persona per)
         {
             using (var context = new AcademiaContext())
             {

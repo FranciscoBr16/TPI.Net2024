@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,16 +41,14 @@ namespace Presentacion
             }
         }
 
-        public void ListarMaterias()
+        public async void ListarMaterias()
         {
 
-            MateriaService dataMaterias = new MateriaService();
-
-            List<Materia> listaMaterias = dataMaterias.GetMaterias();
+            dgvMaterias.DataSource = null;
 
             dgvMaterias.AutoGenerateColumns = false;
 
-            dgvMaterias.DataSource = listaMaterias;
+            dgvMaterias.DataSource = await MateriaApiClient.GetAllAsync();
 
 
         }

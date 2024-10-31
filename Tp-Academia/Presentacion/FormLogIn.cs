@@ -25,7 +25,7 @@ namespace Presentacion
             if (int.TryParse(tbUsuario.Text, out int legajo))
             {
                 string clave = tbClave.Text;
-
+                // PREGUNTAR COMO MANEJAR EL LOGIN
                 Persona persona = Negocio.Persona.GetPersonaByLegajoYClave(legajo, clave);
 
 

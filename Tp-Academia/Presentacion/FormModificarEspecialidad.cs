@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,18 +15,12 @@ namespace Presentacion
 {
     public partial class FormModificarEspecialidad : Form
     {
-        private Especialidad Especialidad { get; set; }
+        public Especialidad? Especialidad { get; set; }
         public FormModificarEspecialidad()
         {
             InitializeComponent();
         }
 
-        public FormModificarEspecialidad(Especialidad especialidad)
-        {
-            InitializeComponent();
-            Especialidad = especialidad;
-
-        }
 
         public void FormModificarEspecialidad_Load(object sender, EventArgs e)
         {
@@ -37,17 +32,15 @@ namespace Presentacion
             this.Close();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos()) { 
 
             Especialidad esp = new Especialidad(txbDescripcion.Name);
-            
-            if (Negocio.Especialidad.ModificarEspecialidad(esp))
-            {
+
+                 await EspecialidadApiClient.UpdateAsync(esp);
+
                 MessageBox.Show("Cambios guardados exitosamente.");
-            }
-            else { MessageBox.Show("Ups! Ocurrio un error"); }
 
             }
         }

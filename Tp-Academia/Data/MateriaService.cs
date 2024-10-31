@@ -10,7 +10,7 @@ namespace Data
 {
     public class MateriaService
     {
-        public List<Materia> GetMaterias()
+        static public List<Materia> GetMaterias()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -21,7 +21,7 @@ namespace Data
             }
         }
 
-        public Materia GetMateriaById(int id)
+        static public Materia GetMateriaById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -30,7 +30,7 @@ namespace Data
             }
         }
 
-        public bool InsertMateria(Materia mat)
+        static public bool InsertMateria(Materia mat)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -42,7 +42,7 @@ namespace Data
             }
         }
 
-        public bool EliminarMateria(Materia mat)
+        static public bool EliminarMateria(Materia mat)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -52,7 +52,7 @@ namespace Data
             }
         }
 
-        public bool ModificarMateria(Materia mat)
+        static public bool ModificarMateria(Materia mat)
         {
             using (var context = new AcademiaContext())
             {
@@ -66,8 +66,6 @@ namespace Data
                     matOriginal.Anio = mat.Anio;
                     matOriginal.Plan = mat.Plan;
 
-
-                    // Marca el estado de la entidad como modificado
                     context.Entry(matOriginal).State = EntityState.Modified;
 
                     try

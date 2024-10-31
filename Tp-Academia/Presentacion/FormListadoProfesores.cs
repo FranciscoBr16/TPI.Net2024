@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void dgvProfesores_CellMouseClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvProfesores_CellMouseClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -35,12 +36,12 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Negocio.Persona.EliminarPersona(Negocio.Persona.GetPersonaByLegajo(legajo));
+                        await PersonaApiClient.DeleteAsync(legajo); 
                     }
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarPersona formModificar = new FormModificarPersona(Negocio.Persona.GetPersonaByLegajo(legajo));
+                    FormModificarPersona formModificar = new FormModificarPersona { PersonaForm = await PersonaApiClient.GetAsync(legajo)};
                     formModificar.ShowDialog();
                 }
             }
@@ -51,22 +52,18 @@ namespace Presentacion
            ListarProfesores();
         }
 
-        public void ListarProfesores()
+        public async void ListarProfesores()
         {
 
-            PersonaService dataProfesores = new PersonaService();
 
-            List<Persona> listaProfesores = dataProfesores.GetProfesores();
+            dgvProfesores.DataSource = null;
 
             dgvProfesores.AutoGenerateColumns = false;
 
-            dgvProfesores.DataSource = listaProfesores;
-
+            dgvProfesores.DataSource = await PersonaApiClient.GetProfesoresAsync();
 
         }
 
-
     }
-    
 
 }

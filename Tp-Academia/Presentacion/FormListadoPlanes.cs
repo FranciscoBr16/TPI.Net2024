@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,16 +20,13 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        public void ListarPlanes()
+        public async void ListarPlanes()
         {
-
-            PlanService dataPlanes = new PlanService();
-
-            List<Plan> listaPlanes = dataPlanes.GetPlanes();
+            dgvPlanes.DataSource = null;
 
             dgvPlanes.AutoGenerateColumns = false;
 
-            dgvPlanes.DataSource = listaPlanes;
+            dgvPlanes.DataSource = await PlanApiClient.GetAllAsync() ;
 
 
         }
@@ -55,7 +53,7 @@ namespace Presentacion
             ListarPlanes();
 
         }
-        private void dgvPlanes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void dgvPlanes_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -72,13 +70,13 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Negocio.Plan.EliminarPlan(Negocio.Plan.GetPlanById(id));
+                        await PlanApiClient.DeleteAsync(id);
                         ListarPlanes();
                     }
                 }
                 else if (columnName == "colBtnModificarPlan")
                 {
-                    FormModificarPlan formModificar = new FormModificarPlan(Negocio.Plan.GetPlanById(id));
+                    FormModificarPlan formModificar = new FormModificarPlan { PlanPropio = await PlanApiClient.GetAsync(id) };
                     formModificar.FormClosing += FormModificarPlan_FormClosing;
                     formModificar.ShowDialog();
                 }

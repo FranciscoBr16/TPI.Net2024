@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presentacion.ApiClients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,10 +19,6 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        public FormModificarCurso(int id)
-        {
-            Curso = Negocio.Curso.GetCursoById(id);
-            InitializeComponent();
-        }
+
     }
 }

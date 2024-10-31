@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,14 +20,14 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnAceptar_MouseClick(object sender, MouseEventArgs e)
+        private async void btnAceptar_MouseClick(object sender, MouseEventArgs e)
         {
 
             if (ValidarCampos())
             {
 
-                Especialidad EspNueva = new Especialidad(txbDescripcion.Text);
-                Negocio.Especialidad.AgregarEspecialidad(EspNueva); 
+                Especialidad espNueva = new Especialidad(txbDescripcion.Text);
+                await EspecialidadApiClient.AddAsync(espNueva);
                 MessageBox.Show("Nueva Especialidad Registrada");
 
             }

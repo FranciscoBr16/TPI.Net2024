@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,14 @@ namespace Presentacion
 {
     public partial class FormModificarPersona : Form
     {
+        public Persona PersonaForm { get; set; }
 
-
-        public FormModificarPersona(Persona per)
+        public FormModificarPersona()
         {
             InitializeComponent();
-            this.PersonaForm = per;
         }
 
-        private void CargarDatos()
+        private async void CargarDatos()
         {
             txbTelefono.Text = PersonaForm.Tel;
             txbDni.Text = PersonaForm.DNI;
@@ -36,7 +36,7 @@ namespace Presentacion
             txbCorreo.Text = PersonaForm.Mail;
             txbUsuario.Text = PersonaForm.Usuario;
             txbDireccion.Text = PersonaForm.Direccion;
-            List<Entidades.Plan> planes = Negocio.Plan.GetPlanes();
+            IEnumerable<Entidades.Plan> planes = await PlanApiClient.GetAllAsync();
             cbIdPlan.DisplayMember = "Descripcion";
             cbIdPlan.ValueMember = "Id";
             cbIdPlan.DataSource = planes;
@@ -430,47 +430,48 @@ namespace Presentacion
         private ComboBox cbIdPlan;
         private Label lblFechaNac;
 
-        private void btnAceptar_MouseClick(object sender, MouseEventArgs e)
+        private async void btnAceptar_MouseClick(object sender, MouseEventArgs e)
         {
-            if (ValidarCampos()) { 
-
-            Persona per = new Persona{
-                Legajo = PersonaForm.Legajo, 
-                Nombre = txbNombre.Text, 
-                Apellido = txbApellido.Text, 
-                Mail = txbCorreo.Text, 
-                Tel = txbTelefono.Text, 
-                Clave = txbClave.Text, 
-                Usuario = txbUsuario.Text, 
-                Direccion = txbDireccion.Text, 
-                DNI = txbDni.Text, 
-                Fecha_nac = dtpFechaNac.Value,
-                PlanId = ((Plan)cbIdPlan.SelectedItem).Id
-            };
-            
-            if (Negocio.Persona.ModificarPersona(per))
+            if (ValidarCampos())
             {
+
+                Persona per = new Persona
+                {
+                    Legajo = PersonaForm.Legajo,
+                    Nombre = txbNombre.Text,
+                    Apellido = txbApellido.Text,
+                    Mail = txbCorreo.Text,
+                    Tel = txbTelefono.Text,
+                    Clave = txbClave.Text,
+                    Usuario = txbUsuario.Text,
+                    Direccion = txbDireccion.Text,
+                    DNI = txbDni.Text,
+                    Fecha_nac = dtpFechaNac.Value,
+                    PlanId = ((Plan)cbIdPlan.SelectedItem).Id
+                };
+
+                await PersonaApiClient.UpdateAsync(per);
                 MessageBox.Show("Cambios guardados exitosamente.");
                 this.Close();
-            }
-            else { MessageBox.Show("Ups! Ocurrio un error"); }
+                
             }
         }
 
         private void FormModificarPersona_Load(object sender, EventArgs e)
         {
             CargarDatos();
-            ActualizarVisibilidad(); 
+            ActualizarVisibilidad();
         }
 
         private void ActualizarVisibilidad()
         {
-                if (this.PersonaForm.Rol != "Admin") { 
+            if (this.PersonaForm.Rol != "Admin")
+            {
                 txbDni.Visible = false;
                 dtpFechaNac.Visible = false;
                 cbIdPlan.Visible = false;
                 lblDni.Visible = false;
-                lblFechaNac.Visible= false;
+                lblFechaNac.Visible = false;
                 lblPlan.Visible = false;
             }
         }
@@ -492,7 +493,7 @@ namespace Presentacion
             {
                 MessageBox.Show("El Apellido no puede estar vacío.");
                 return false;
-            }
+            } //FALTAN VALIDACIONES
             if (string.IsNullOrWhiteSpace(txbCorreo.Text) || !Negocio.Validaciones.EsMailValido(txbCorreo.Text))
             {
                 MessageBox.Show("Ingrese un correo valido");
@@ -537,11 +538,11 @@ namespace Presentacion
             }
 
 
-           
+
             return true;
         }
 
 
-    private Persona PersonaForm { get; set; }
+
     }
 }

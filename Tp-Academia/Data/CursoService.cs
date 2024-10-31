@@ -10,7 +10,7 @@ namespace Data
 {
     public class CursoService
     {
-        public List<Curso> GetCursos()
+        static public List<Curso> GetCursos()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -21,7 +21,7 @@ namespace Data
             }
         }
 
-        public Curso GetCursoById(int id)
+        static public Curso GetCursoById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -30,7 +30,7 @@ namespace Data
             }
         }
 
-        public bool InsertCurso(Curso curso)
+        static public bool InsertCurso(Curso curso)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -41,7 +41,7 @@ namespace Data
             }
         }
 
-        public bool EliminarCurso(Curso curso)
+        static public bool EliminarCurso(Curso curso)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -51,7 +51,7 @@ namespace Data
             }
         }
 
-        public bool ModificarCurso(Curso curso)
+        static public bool ModificarCurso(Curso curso)
         {
             using (var context = new AcademiaContext())
             {
@@ -83,7 +83,7 @@ namespace Data
             }
         }
 
-        public bool InscripcionAlumnoCurso(int legajoAlumno, int idCurso)
+        static public bool InscripcionAlumnoCurso(int legajoAlumno, int idCurso)
         {
             Curso curso = GetCursoById(idCurso);
             using (AcademiaContext db = new AcademiaContext())

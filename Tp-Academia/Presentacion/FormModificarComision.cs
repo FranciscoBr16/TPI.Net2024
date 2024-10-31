@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,16 +16,14 @@ namespace Presentacion
 {
     public partial class FormModificarComision : Form
     {
+        public Comision ComisionForm { get; set; }
+
         public FormModificarComision()
         {
             InitializeComponent();
         }
 
-        public FormModificarComision(Comision comision)
-        {
-            InitializeComponent();
-            ComisionForm = comision;
-        }
+
         private void CargarDatos()
         {
             txbDescripcion.Text = ComisionForm.Descripcion;
@@ -217,17 +216,15 @@ namespace Presentacion
             CargarDatos();
         }
 
-        private void btnAceptar_MouseClick(object sender, MouseEventArgs e)
+        private async void btnAceptar_MouseClick(object sender, MouseEventArgs e)
         {
             //Validar que los campos no sean nulos
             Comision com = new Comision(ComisionForm.Id, txbDescripcion.Text, txbTurno.Text);
-            if (Negocio.Comision.ModificarComision(com))
-            {
-                MessageBox.Show("Cambios guardados exitosamente.");
-            }
-            else { MessageBox.Show("Ups! Ocurrio un error"); }
+            await ComisionApiClient.UpdateAsync(com);
+            MessageBox.Show("Cambios guardados exitosamente.");
+         
+            // else { MessageBox.Show("Ups! Ocurrio un error"); }
         }
 
-        public Comision ComisionForm { get; set; }
     }
 }

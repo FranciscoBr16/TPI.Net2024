@@ -10,7 +10,7 @@ namespace Data
 {
     public class PlanService
     {
-        public List<Plan> GetPlanes()
+        static public List<Plan> GetPlanes()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -21,7 +21,7 @@ namespace Data
             }
         }
 
-        public Plan GetPlanById(int id)
+        static public Plan GetPlanById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -30,7 +30,7 @@ namespace Data
             }
         }
 
-        public bool InsertPlan(Plan plan)
+        static public bool InsertPlan(Plan plan)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -42,7 +42,7 @@ namespace Data
             }
         }
 
-        public bool EliminarPlan(Plan plan)
+        static public bool EliminarPlan(Plan plan)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -52,7 +52,7 @@ namespace Data
             }
         }
 
-        public bool ModificarPlan(Plan plan)
+        static public bool ModificarPlan(Plan plan)
         {
             using (var context = new AcademiaContext())
             {
@@ -63,7 +63,6 @@ namespace Data
                     // por ahora solo se podra modificar la descripcion
                     
 
-                    // Marca el estado de la entidad como modificado
                     context.Entry(planOriginal).State = EntityState.Modified;
 
                     try

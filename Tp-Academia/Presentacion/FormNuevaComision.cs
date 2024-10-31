@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,14 +20,14 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnAceptar_MouseClick(object sender, MouseEventArgs e)
+        private async void btnAceptar_MouseClick(object sender, MouseEventArgs e)
         {
             if (ValidarCampos())
             {
 
                 Comision comNueva = new Comision(txbDescripcion.Text, txbTurno.Text);
 
-                Negocio.Comision.AgregarComision(comNueva);
+                await ComisionApiClient.AddAsync(comNueva); 
                 MessageBox.Show("Nueva Comision Registrada");
 
             }

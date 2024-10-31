@@ -1,5 +1,7 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,31 +43,25 @@ namespace Presentacion
             }
         }
 
-        public void ListarCursos()
+        public async void ListarCursos()
         {
-            /*
-            List<Entidades.Curso> cursos = Negocio.Curso.GetCursos();
 
-            dgvCursos.AutoGenerateColumns = false;
-
-            dgvCursos.DataSource = cursos; */
-
-            List<Curso> cursos = Negocio.Curso.GetCursos();
+            IEnumerable<Curso> cursos = await CursoApiClient.GetAllAsync();
 
             // Construccion del curso para mostrar los campos deseados
-            var cursosParaMostrar = cursos.Select(curso =>
+            var cursosParaMostrar = cursos.Select(async curso =>
             {
-                var profesor = Negocio.Persona.GetProfesoresDelCurso(curso.Id).FirstOrDefault();
+                var profesor = (await PersonaApiClient.GetProfesoresDelCursoAsync(curso.Id)).FirstOrDefault();
                 return new
                 {
                     curso.Id,
-                    MateriaDescripcion = Negocio.Materia.GetMateriaById(curso.MateriaId)?.Nombre ?? "Descripción de la materia no disponible",
+                    MateriaDescripcion = (await MateriaApiClient.GetAsync(curso.MateriaId))?.Nombre ?? "Descripción de la materia no disponible",
                     curso.Anio,
                     curso.Cupo,
                     curso.ComisionId,
                     curso.MateriaId,
                     NombreProfesorTeoria = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
-                    ComisionDescripcion = Negocio.Comision.GetComisionById(curso.ComisionId)?.Descripcion ?? "Descripcion de la comision no disponible"
+                    ComisionDescripcion = ( await ComisionApiClient.GetAsync(curso.ComisionId))?.Descripcion ?? "Descripcion de la comision no disponible"
                 };
             }).ToList();
 
@@ -75,12 +71,16 @@ namespace Presentacion
 
         }
 
-        public void ListarCursosDisponibles()
+        public async Task ListarCursosDisponibles()
         {
-            List<Curso> cursos = Negocio.Curso.GetCursos().Where(c=> c.Cupo > 0).ToList();
+            List<Curso> cursos = (await CursoApiClient.GetAllAsync())
+                                 .Where(c => c.Cupo > 0)
+                                 .ToList();
             dgvCursos.AutoGenerateColumns = false;
             dgvCursos.DataSource = cursos;
+            // Podrian faltar mas filtros
         }
+
 
         private void btnNuevoCurso_Click(object sender, EventArgs e)
         {
@@ -88,7 +88,7 @@ namespace Presentacion
             form.ShowDialog();
         }
 
-        private void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -105,13 +105,13 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Negocio.Curso.EliminarCurso(Negocio.Curso.GetCursoById(id));
+                        await CursoApiClient.DeleteAsync((id));
                         ListarCursos();
                     }
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarCurso formModificar = new FormModificarCurso(id);
+                    FormModificarCurso formModificar = new FormModificarCurso { Curso = await CursoApiClient.GetAsync(id)};
                     formModificar.FormClosing += FormModificarCurso_FormClosing;
                     formModificar.ShowDialog();
                 } else if (columnName == "colBtnInscripcion")
@@ -119,7 +119,8 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de que quiere inscribirse a este curso?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Negocio.Curso.InscripcionAlumnoCurso(Usuario.Legajo, id);
+                        Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = id, Fecha = DateTime.Now };
+                        await CursoApiClient.InscripcionAsync(ins);
                         
                     }
                 }

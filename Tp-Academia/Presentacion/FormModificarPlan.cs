@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,16 +15,10 @@ namespace Presentacion
 {
     public partial class FormModificarPlan : Form
     {
-        public Plan PlanPropio{ get; set; }
+        public Plan? PlanPropio{ get; set; }
 
-        /*public FormModificarPlan()
+        public FormModificarPlan()
         {
-            InitializeComponent();
-        }*/
-
-        public FormModificarPlan(Plan plan)
-        {
-            PlanPropio = plan;
             InitializeComponent();
         }
 
@@ -32,23 +27,21 @@ namespace Presentacion
             this.Close();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
             //Validar que los campos no sean nulos
             Plan plan = new Plan { Id=PlanPropio.Id , Descripcion= txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
-            if (Negocio.Plan.ModificarPlan(plan))
-            {
-                MessageBox.Show("Cambios guardados exitosamente.");
-            }
-            else { MessageBox.Show("Ups! Ocurrio un error"); }
+            await PlanApiClient.UpdateAsync(plan);
+            MessageBox.Show("Cambios guardados exitosamente.");
+            // else { MessageBox.Show("Ups! Ocurrio un error"); }
 
         }
 
-        private void FormModificarPlan_Load(object sender, EventArgs e)
+        private async void FormModificarPlan_Load(object sender, EventArgs e)
         {
             
             txbDescripcion.Text = PlanPropio.Descripcion;
-            cbEspecialidades.DataSource = Negocio.Especialidad.GetEspecialidades();
+            cbEspecialidades.DataSource = await EspecialidadApiClient.GetAllAsync();
             cbEspecialidades.DisplayMember = "Descripcion";
             cbEspecialidades.ValueMember = "Id";
 

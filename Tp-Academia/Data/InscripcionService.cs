@@ -8,63 +8,62 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class EspecialidadService
+    public class InscripcionService
     {
-        static public List<Especialidad> GetEspecialidades()
+        static public List<Inscripcion> GetInscripciones()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                var esp = db.Especialidades.ToList();
+                var inscripciones = db.Inscripciones.ToList(); ;
 
-                return esp;
+                return inscripciones;
             }
         }
 
-        static public Especialidad GetEspecialidadById(int id)
+        static public Inscripcion GetInscripcionById(int id)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                Especialidad e = db.Especialidades.Find(id);
-                return e;
+                Inscripcion insc = db.Inscripciones.Find(id);
+                return insc;
             }
         }
 
-        static public bool InsertEspecialidad(Especialidad esp)
+        static public bool InsertInscripcion(Inscripcion insc)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
-                db.Especialidades.Add(esp);
-                db.SaveChanges();
-                // Verificar si esto puede fallar
-                return true;
-            }
-        }
-
-        static public bool EliminarEspecialidad(Especialidad esp)
-        {
-            using (AcademiaContext db = new AcademiaContext())
-            {
-                db.Especialidades.Remove(esp);
+                db.Inscripciones.Add(insc);
                 db.SaveChanges();
                 return true;
             }
         }
 
-        static public bool ModificarEspecialidad(Especialidad esp)
+        static public bool EliminarInscripcion(Inscripcion insc)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                db.Inscripciones.Remove(insc);
+                db.SaveChanges();
+                return true;
+            }
+        }
+
+        static public bool ModificarInscripcion(Inscripcion insc)
         {
             using (var context = new AcademiaContext())
             {
-                Especialidad espOriginal = GetEspecialidadById(esp.Id);
-                if (espOriginal != null)
+                Inscripcion inscripcionOriginal = GetInscripcionById(insc.Id);
+                if (inscripcionOriginal != null)
                 {
-                    espOriginal.Descripcion = esp.Descripcion;
-                    // por ahora solo se podra modificar la descripcion
 
-
-                    // Marca el estado de la entidad como modificado
-                    context.Entry(espOriginal).State = EntityState.Modified;
+                    inscripcionOriginal.Condicion = insc.Condicion;
+                    inscripcionOriginal.Fecha = insc.Fecha;
+                    inscripcionOriginal.Nota = insc.Nota;
+                    
+                    context.Entry(inscripcionOriginal).State = EntityState.Modified;
 
                     try
                     {

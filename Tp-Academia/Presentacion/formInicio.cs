@@ -35,18 +35,7 @@ namespace Presentacion
         }
         private void FormLogIn_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            /*if (sender != null)
-            {
-                var appcontext = sender as MiFormBase;
-                this.Usuario = appcontext?.Usuario;
-
-                var formContenedor = this.Parent as MiFormBase;
-                if (formContenedor != null)
-                {
-                    formContenedor.Usuario = this.Usuario;
-                    formContenedor.ActualizarLayout();
-                }
-            }*/
+            
             var formLogIn = sender as MiFormBase;
             if (formLogIn != null && formLogIn.Usuario != null)
             {
@@ -97,9 +86,19 @@ namespace Presentacion
         {
             this.Usuario = null;
             var mdiParent = this.MdiParent as MiFormBase;
-            mdiParent.Usuario = null;
+            if(mdiParent != null)
+            {
+                mdiParent.Usuario = null;
+                mdiParent.Usuario = null;
+
+                foreach (Form childForm in mdiParent.MdiChildren)
+                {
+                    childForm.Close();
+                }
+            }
+            
             ActualizarVisibilidad();
-            this.Close(); // ver como hacer para cerrar todas las ventanas
+            this.Close(); 
         }
     }
 }

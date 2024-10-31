@@ -38,7 +38,7 @@ namespace Presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            FormModificarPersona modificar = new FormModificarPersona(this.Usuario);
+            FormModificarPersona modificar = new FormModificarPersona {PersonaForm = this.Usuario};
             modificar.FormClosing += FormInicio_FormClosing;
             modificar.Show();
         }

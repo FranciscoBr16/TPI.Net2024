@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,7 +20,7 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
 
             if (ValidarCampos())
@@ -46,7 +47,7 @@ namespace Presentacion
                         PlanId = 1 // Ver este tema
                     };
 
-                    Negocio.Persona.AgregarPersona(alumnoNuevo);
+                    await PersonaApiClient.AddAsync(alumnoNuevo);
                             
                     MessageBox.Show("Registrado como Alumno");
                 }
@@ -68,7 +69,7 @@ namespace Presentacion
                         Fecha_nac = dtpFechaNac.Value,
                         Fecha_ingreso = fechaHoy
                     };
-                    Negocio.Persona.AgregarPersona(profesorNuevo);
+                    await PersonaApiClient.AddAsync(profesorNuevo);
 
                     MessageBox.Show("Registrado como Profesor");
                 }

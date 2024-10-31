@@ -9,7 +9,7 @@ namespace Data
 {
     public class ProfesorYCursoService
     {
-        public List<Docente_curso> GetProfesoresYCursos()
+        static public List<Docente_curso> GetProfesoresYCursos()
         {
             using (AcademiaContext db = new AcademiaContext())
             {
@@ -20,17 +20,16 @@ namespace Data
             }
         }
 
-        public List<Persona> GetProfesoresDelCurso(int idCurso)
+        static public List<Persona> GetProfesoresDelCurso(int idCurso)
         {
             List<Persona> profes = new List<Persona>();
             using (AcademiaContext db = new AcademiaContext())
             {
                 List<Docente_curso> profedelcurso = db.Docente_curso.Where(p => p.CursoId == idCurso).ToList();
                
-                PersonaService dp = new PersonaService();
                     foreach (Docente_curso docentecurso in profedelcurso){
 
-                    Persona unprofe = dp.GetPersonaByLegajo(docentecurso.DocenteId);
+                    Persona unprofe = PersonaService.GetPersonaByLegajo(docentecurso.DocenteId);
                     if (unprofe != null) { profes.Add(unprofe); }
                     }
             }

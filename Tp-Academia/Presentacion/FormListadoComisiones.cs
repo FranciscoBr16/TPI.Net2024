@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +58,7 @@ namespace Presentacion
                 }
                 else if (columnName == "colBtnModificarCom")
                 {
-                    FormModificarComision formModificar = new FormModificarComision(ComisionService.GetComisionById(id));
+                    FormModificarComision formModificar = new FormModificarComision { ComisionForm = await ComisionApiClient.GetAsync(id) };
                     formModificar.ShowDialog();
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,51 +31,44 @@ namespace Presentacion
             ListarEspecialidades();
         }
 
-        public void ListarEspecialidades()
+        public async void ListarEspecialidades()
         {
 
-            List<Especialidad> listaEsp = Negocio.Especialidad.GetEspecialidades();
+            dgvEspecialidades.DataSource = null;
 
             dgvEspecialidades.AutoGenerateColumns = false;
 
-            dgvEspecialidades.DataSource = listaEsp;
+            dgvEspecialidades.DataSource = await EspecialidadApiClient.GetAllAsync();
 
 
         }
 
-        private void dgvEspecialidades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void dgvEspecialidades_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                // Obtiene el nombre de la columna en la que se hizo clic
+
                 string columnName = dgvEspecialidades.Columns[e.ColumnIndex].Name;
+                int id = Convert.ToInt32(dgvEspecialidades.Rows[e.RowIndex].Cells["Id"].Value);
 
-                // Validar que el valor de la celda no sea nulo antes de convertir
                 var cellValue = dgvEspecialidades.Rows[e.RowIndex].Cells["Id"].Value;
-                if (cellValue != null && int.TryParse(cellValue.ToString(), out int idEsp))
-                {
-                    
-
+                    if (id != 0) { 
                     if (columnName == "colBtnEliminarEsp")
                     {
                         // Acción para eliminar
                         DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                            Negocio.Especialidad.EliminarEspecialidad(Negocio.Especialidad.GetEspecialidadById(idEsp)); 
+                           await EspecialidadApiClient.DeleteAsync(id);  
                         }
                     }
                     else if (columnName == "colBtnModificarEsp")
                     {
-                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad(Negocio.Especialidad.GetEspecialidadById(idEsp)); 
+                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad { Especialidad = await EspecialidadApiClient.GetAsync(id)}; 
                         formModificar.ShowDialog();
                     }
-                }
-                else
-                {
-                    MessageBox.Show("El valor de la celda 'id' no es válido.", "Error de conversión");
-                }
             }
+        }
         }
     }
 }

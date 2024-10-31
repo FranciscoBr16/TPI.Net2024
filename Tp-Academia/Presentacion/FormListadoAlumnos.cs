@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,12 +25,10 @@ namespace Presentacion
             ListarAlumnos();
         }
 
-        public void ListarAlumnos()
+        public async void ListarAlumnos()
         {
 
-            PersonaService dataAlumnos = new PersonaService();
-
-            List<Persona> listaAlumnos = dataAlumnos.GetAlumnos();
+            List<Persona> listaAlumnos = await PersonaApiClient.GetAlumnosAsync();
 
             dgvAlumnos.AutoGenerateColumns = false;
 
@@ -38,7 +37,7 @@ namespace Presentacion
 
         }
 
-        private void dgvAlumnos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private async void dgvAlumnos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -47,7 +46,6 @@ namespace Presentacion
 
                 int legajo = Convert.ToInt32(dgvAlumnos.Rows[e.RowIndex].Cells["colLegajo"].Value);
 
-                PersonaService dp = new PersonaService();
 
                 if (columnName == "colBtnEliminar")
                 {
@@ -55,12 +53,12 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        dp.EliminarPersona(dp.GetPersonaByLegajo(legajo));
+                        await PersonaApiClient.DeleteAsync(legajo);
                     }
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarPersona formModificar = new FormModificarPersona(dp.GetPersonaByLegajo(legajo));
+                    FormModificarPersona formModificar = new FormModificarPersona{ PersonaForm = await PersonaApiClient.GetAsync(legajo) };
                     formModificar.FormClosing += formModificar_FormClosing;
                     formModificar.ShowDialog();
                 }
