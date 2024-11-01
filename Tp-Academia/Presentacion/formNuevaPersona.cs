@@ -50,6 +50,7 @@ namespace Presentacion
                     await PersonaApiClient.AddAsync(alumnoNuevo);
                             
                     MessageBox.Show("Registrado como Alumno");
+                    this.Close();
                 }
                 else if (radiobProfesor.Checked)
                 {
@@ -72,6 +73,7 @@ namespace Presentacion
                     await PersonaApiClient.AddAsync(profesorNuevo);
 
                     MessageBox.Show("Registrado como Profesor");
+                    this.Close();
                 }
             }
             else { return; }

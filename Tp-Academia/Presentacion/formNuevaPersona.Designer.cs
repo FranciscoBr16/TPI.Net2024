@@ -403,7 +403,7 @@
             tableLayoutPanel4.Size = new Size(708, 29);
             tableLayoutPanel4.TabIndex = 34;
             // 
-            // formNuevaPersona
+            // FormNuevaPersona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -413,7 +413,8 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "formNuevaPersona";
+            Name = "FormNuevaPersona";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo Usuario";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

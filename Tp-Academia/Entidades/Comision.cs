@@ -15,7 +15,7 @@ namespace Entidades
         public string Turno { get; set; }
         public List<Curso> Cursos { get; set; }
 
-
+        public Comision() {}
         public Comision(int id, string descripcion, string turno)
         {
             Id = id;

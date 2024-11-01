@@ -23,12 +23,19 @@ namespace Data
                 return profesores;
             }
         }
+        static public List<Persona> GetPersonas()
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
 
+                return db.Personas.ToList();
+            }
+        }
         static public Persona GetPersonaByLegajoYClave(Persona per)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                
+
                 var persona = db.Personas.FirstOrDefault(p => p.Legajo == per.Legajo && p.Clave == per.Clave);
 
                 return persona;  

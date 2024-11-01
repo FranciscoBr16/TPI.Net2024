@@ -22,6 +22,7 @@ namespace Entidades
         public Comision Comision { get; set; }
         public Materia Materia { get; set; }
 
+        public Curso() { }
         public Curso (int id, int cupo, int anio, Comision comision, Materia materia)
         {
             this.Id = id;

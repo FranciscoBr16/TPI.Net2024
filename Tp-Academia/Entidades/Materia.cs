@@ -14,6 +14,8 @@ namespace Entidades
         public Plan Plan { get; set; }
         public List<Curso> Cursos { get; set; }
 
+        public Materia() { }
+
         public Materia (int id, int cantHorasSemanales, string nombre, string descripcion, Plan plan)
         {
             Id = id;

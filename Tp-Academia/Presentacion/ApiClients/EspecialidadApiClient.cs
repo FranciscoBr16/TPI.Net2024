@@ -8,24 +8,29 @@ using Entidades;
 
 namespace Presentacion.ApiClients
 {
-    internal class EspecialidadApiClient : Client
+    internal class EspecialidadApiClient
     {
+        private static HttpClient client = new HttpClient();
 
-        public static async Task<Especialidad> GetAsync(int id)
+        static EspecialidadApiClient()
         {
-            Especialidad esp = null;
-            HttpResponseMessage response = await HttpClient.GetAsync("especialidades/" + id);
-            if (response.IsSuccessStatusCode)
-            {
-                esp = await response.Content.ReadAsAsync<Especialidad>();
-            }
-            return esp;
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string baseUrl = configuration["ApiSettings:BaseUrl"];
+            client.BaseAddress = new Uri(baseUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public static async Task<IEnumerable<Especialidad>> GetAllAsync()
         {
             IEnumerable<Especialidad> especialidades = null;
-            HttpResponseMessage response = await HttpClient.GetAsync("especialidades");
+            HttpResponseMessage response = await client.GetAsync("especialidades");
             if (response.IsSuccessStatusCode)
             {
                 especialidades = await response.Content.ReadAsAsync<IEnumerable<Especialidad>>();
@@ -33,21 +38,32 @@ namespace Presentacion.ApiClients
             return especialidades;
         }
 
+        public static async Task<Especialidad> GetAsync(int id)
+        {
+            Especialidad esp = null;
+            HttpResponseMessage response = await client.GetAsync("especialidades/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                esp = await response.Content.ReadAsAsync<Especialidad>();
+            }
+            return esp;
+        }
+
         public static async Task AddAsync(Especialidad esp)
         {
-            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("especialidades", esp);
+            HttpResponseMessage response = await client.PostAsJsonAsync("especialidades", esp);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task DeleteAsync(int id)
         {
-            HttpResponseMessage response = await HttpClient.DeleteAsync("especialidades/" + id);
+            HttpResponseMessage response = await client.DeleteAsync("especialidades/" + id);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task UpdateAsync(Especialidad esp)
         {
-            HttpResponseMessage response = await HttpClient.PutAsJsonAsync("especialidades", esp);
+            HttpResponseMessage response = await client.PutAsJsonAsync("especialidades", esp);
             response.EnsureSuccessStatusCode();
         }
     }

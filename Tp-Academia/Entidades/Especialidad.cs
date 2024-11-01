@@ -10,6 +10,7 @@ namespace Entidades
 
         public List<Plan> Planes { get; set; }
 
+        public Especialidad() { }
         public Especialidad(int id, string descripcion)
         {
             Id = id;

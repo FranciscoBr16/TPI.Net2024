@@ -8,24 +8,40 @@ using Entidades;
 
 namespace Presentacion.ApiClients
 {
-    internal class MateriaApiClient : Client
+    internal class MateriaApiClient 
     {
+
+        private static HttpClient client = new HttpClient();
+        static MateriaApiClient()
+        {
+
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            string baseUrl = configuration["ApiSettings:BaseUrl"];
+            client.BaseAddress = new Uri(baseUrl);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
 
         public static async Task<Materia> GetAsync(int id)
         {
             Materia mat = null;
-            HttpResponseMessage response = await HttpClient.GetAsync("materias/" + id);
+            HttpResponseMessage response = await client.GetAsync("meterias/" + id);
             if (response.IsSuccessStatusCode)
             {
                 mat = await response.Content.ReadAsAsync<Materia>();
             }
             return mat;
         }
-
         public static async Task<IEnumerable<Materia>> GetAllAsync()
         {
             IEnumerable<Materia> materias = null;
-            HttpResponseMessage response = await HttpClient.GetAsync("materias");
+            HttpResponseMessage response = await client.GetAsync("materias");
             if (response.IsSuccessStatusCode)
             {
                 materias = await response.Content.ReadAsAsync<IEnumerable<Materia>>();
@@ -35,19 +51,19 @@ namespace Presentacion.ApiClients
 
         public static async Task AddAsync(Materia esp)
         {
-            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("materias", esp);
+            HttpResponseMessage response = await client.PostAsJsonAsync("materias", esp);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task DeleteAsync(int id)
         {
-            HttpResponseMessage response = await HttpClient.DeleteAsync("materias/" + id);
+            HttpResponseMessage response = await client.DeleteAsync("materias/" + id);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task UpdateAsync(Materia com)
         {
-            HttpResponseMessage response = await HttpClient.PutAsJsonAsync("materias", com);
+            HttpResponseMessage response = await client.PutAsJsonAsync("materias", com);
             response.EnsureSuccessStatusCode();
         }
     }

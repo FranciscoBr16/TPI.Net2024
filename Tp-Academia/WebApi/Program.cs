@@ -21,6 +21,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.MapGet("/", () => "Hello, World!");
+
 #region Comisiones
 
 app.MapGet("/comisiones", () => 
@@ -148,6 +150,11 @@ app.MapGet("/profesores", () =>
     return PersonaService.GetProfesores();
 });
 
+app.MapGet("/personas", () =>
+{
+    return PersonaService.GetPersonas();
+});
+
 app.MapGet("/personas/{id}", (int legajo) =>
 {
     return PersonaService.GetPersonaByLegajo(legajo);
@@ -161,7 +168,15 @@ app.MapPost("/personas", (Persona per) =>
 
 app.MapPost("/login", (Persona per) =>
 {
-    PersonaService.GetPersonaByLegajoYClave(per);
+    Persona persona = PersonaService.GetPersonaByLegajoYClave(per);
+    if (persona != null)
+    {
+        return Results.Ok(persona); 
+    }
+    else
+    {
+        return Results.Unauthorized(); 
+    }
 });
 
 app.MapPut("/personas/{id}", (Persona per) =>

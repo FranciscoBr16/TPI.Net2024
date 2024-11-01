@@ -27,9 +27,8 @@ namespace Presentacion
             {
                 string clave = tbClave.Text;
                 // PREGUNTAR COMO MANEJAR EL LOGIN
-
-                Persona persona = await PersonaApiClient.LogInAsync(legajo,clave);
-               
+                Persona per = new Persona { Legajo = legajo, Clave = clave };
+                Persona persona = await PersonaApiClient.LogInAsync(per);
 
                 if (persona != null)
                 {
