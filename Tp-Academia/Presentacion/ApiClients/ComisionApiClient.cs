@@ -11,14 +11,10 @@ namespace Presentacion.ApiClients
     internal class ComisionApiClient : Client
     {
 
-        public ComisionApiClient() : base()
-        {
-        }
-
-        public static async Task<Comision> GetAsync(int id)
+         public static async Task<Comision> GetAsync(int id)
         {
             Comision com = null;
-            HttpResponseMessage response = await client.GetAsync("comisiones/" + id);
+            HttpResponseMessage response = await HttpClient.GetAsync("comisiones/" + id);
             if (response.IsSuccessStatusCode)
             {
                 com = await response.Content.ReadAsAsync<Comision>();
@@ -29,7 +25,7 @@ namespace Presentacion.ApiClients
         public static async Task<IEnumerable<Comision>> GetAllAsync()
         {
             IEnumerable<Comision> comisiones = null;
-            HttpResponseMessage response = await client.GetAsync("comisiones");
+            HttpResponseMessage response = await HttpClient.GetAsync("comisiones");
             if (response.IsSuccessStatusCode)
             {
                 comisiones = await response.Content.ReadAsAsync<IEnumerable<Comision>>();
@@ -39,19 +35,19 @@ namespace Presentacion.ApiClients
 
         public static async Task AddAsync(Comision com)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("Comisiones", com);
+            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("Comisiones", com);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task DeleteAsync(int id)
         {
-            HttpResponseMessage response = await client.DeleteAsync("comisiones/" + id);
+            HttpResponseMessage response = await HttpClient.DeleteAsync("comisiones/" + id);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task UpdateAsync(Comision com)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync("comisiones", com);
+            HttpResponseMessage response = await HttpClient.PutAsJsonAsync("comisiones", com);
             response.EnsureSuccessStatusCode();
         }
     }

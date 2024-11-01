@@ -1,5 +1,6 @@
 ﻿using Data;
 using Entidades;
+using Presentacion.ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,14 +21,15 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+        private async void btnAceptar_Click(object sender, EventArgs e)
         {
             if (int.TryParse(tbUsuario.Text, out int legajo))
             {
                 string clave = tbClave.Text;
                 // PREGUNTAR COMO MANEJAR EL LOGIN
-                Persona persona = Negocio.Persona.GetPersonaByLegajoYClave(legajo, clave);
 
+                Persona persona = await PersonaApiClient.LogInAsync(legajo,clave);
+               
 
                 if (persona != null)
                 {
@@ -47,5 +49,6 @@ namespace Presentacion
                 MessageBox.Show("El legajo debe ser un valor numerico");
             }
         }
-    }
-}
+        }
+ }
+

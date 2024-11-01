@@ -28,11 +28,11 @@ namespace Presentacion
         public async void ListarAlumnos()
         {
 
-            List<Persona> listaAlumnos = await PersonaApiClient.GetAlumnosAsync();
+            dgvAlumnos.DataSource = null;
 
             dgvAlumnos.AutoGenerateColumns = false;
 
-            dgvAlumnos.DataSource = listaAlumnos;
+            dgvAlumnos.DataSource = await PersonaApiClient.GetAlumnosAsync();
 
 
         }

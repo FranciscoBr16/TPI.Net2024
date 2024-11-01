@@ -7,11 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // builder.Services.AddDbContext<AcademiaContext>();
 builder.Services.AddEndpointsApiExplorer(); 
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpLogging(o => { });
 
 var app = builder.Build();
 
-app.UseSwagger();
-app.UseSwaggerUI();
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.UseHttpLogging();
+}
+
+app.UseHttpsRedirection();
 
 #region Comisiones
 
@@ -149,6 +157,11 @@ app.MapGet("/personas/{id}", (int legajo) =>
 app.MapPost("/personas", (Persona per) =>
 {
     PersonaService.InsertPersona(per);
+});
+
+app.MapPost("/login", (Persona per) =>
+{
+    PersonaService.GetPersonaByLegajoYClave(per);
 });
 
 app.MapPut("/personas/{id}", (Persona per) =>

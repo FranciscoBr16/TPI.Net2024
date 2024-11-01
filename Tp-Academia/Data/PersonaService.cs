@@ -24,12 +24,12 @@ namespace Data
             }
         }
 
-        static public Persona GetPersonaByLegajoYClave(int legajo , string clave)
+        static public Persona GetPersonaByLegajoYClave(Persona per)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
                 
-                var persona = db.Personas.FirstOrDefault(p => p.Legajo == legajo && p.Clave == clave);
+                var persona = db.Personas.FirstOrDefault(p => p.Legajo == per.Legajo && p.Clave == per.Clave);
 
                 return persona;  
             }

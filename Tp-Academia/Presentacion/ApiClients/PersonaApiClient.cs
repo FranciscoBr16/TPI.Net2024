@@ -11,14 +11,20 @@ namespace Presentacion.ApiClients
     internal class PersonaApiClient : Client
     {
 
-        public PersonaApiClient() : base()
-        { 
-        }
-
         public static async Task<Persona> GetAsync(int id)
         {
             Persona per = null;
-            HttpResponseMessage response = await client.GetAsync("personas/" + id);
+            HttpResponseMessage response = await HttpClient.GetAsync("personas/" + id);
+            if (response.IsSuccessStatusCode)
+            {
+                per = await response.Content.ReadAsAsync<Persona>();
+            }
+            return per;
+        }
+        public static async Task<Persona> LogInAsync(int legajo, string clave)
+        {
+            Persona per = new Persona { Legajo = legajo, Clave = clave } ;
+            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("login", per);
             if (response.IsSuccessStatusCode)
             {
                 per = await response.Content.ReadAsAsync<Persona>();
@@ -29,7 +35,7 @@ namespace Presentacion.ApiClients
         public static async Task<IEnumerable<Persona>> GetAllAsync()
         {
             IEnumerable<Persona> personas = null;
-            HttpResponseMessage response = await client.GetAsync("personas");
+            HttpResponseMessage response = await HttpClient.GetAsync("personas");
             if (response.IsSuccessStatusCode)
             {
                 personas = await response.Content.ReadAsAsync<IEnumerable<Persona>>();
@@ -39,26 +45,26 @@ namespace Presentacion.ApiClients
 
         public static async Task AddAsync(Persona per)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("personas", per);
+            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("personas", per);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task DeleteAsync(int legajo)
         {
-            HttpResponseMessage response = await client.DeleteAsync("personas/" + legajo);
+            HttpResponseMessage response = await HttpClient.DeleteAsync("personas/" + legajo);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task UpdateAsync(Persona per)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync("personas", per);
+            HttpResponseMessage response = await HttpClient.PutAsJsonAsync("personas", per);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task<IEnumerable<Persona>> GetAlumnosAsync()
         {
             IEnumerable<Persona> personas = null;
-            HttpResponseMessage response = await client.GetAsync("alumnos");
+            HttpResponseMessage response = await HttpClient.GetAsync("alumnos");
             if (response.IsSuccessStatusCode)
             {
                 personas = await response.Content.ReadAsAsync<IEnumerable<Persona>>();
@@ -69,7 +75,7 @@ namespace Presentacion.ApiClients
         public static async Task<IEnumerable<Persona>> GetProfesoresDelCursoAsync(int id)
         {
             IEnumerable<Persona> profes = null;
-            HttpResponseMessage response = await client.GetAsync("profesoresdelcurso/" + id);
+            HttpResponseMessage response = await HttpClient.GetAsync("profesoresdelcurso/" + id);
             if (response.IsSuccessStatusCode)
             {
                 profes = await response.Content.ReadAsAsync<IEnumerable<Persona>>();
@@ -80,7 +86,7 @@ namespace Presentacion.ApiClients
         internal static async Task<object?> GetProfesoresAsync()
         {
             IEnumerable<Persona> personas = null;
-            HttpResponseMessage response = await client.GetAsync("profesores");
+            HttpResponseMessage response = await HttpClient.GetAsync("profesores");
             if (response.IsSuccessStatusCode)
             {
                 personas = await response.Content.ReadAsAsync<IEnumerable<Persona>>();

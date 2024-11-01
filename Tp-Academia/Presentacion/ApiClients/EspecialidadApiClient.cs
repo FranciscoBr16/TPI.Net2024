@@ -11,14 +11,10 @@ namespace Presentacion.ApiClients
     internal class EspecialidadApiClient : Client
     {
 
-        public EspecialidadApiClient() : base()
-        { 
-        }
-
         public static async Task<Especialidad> GetAsync(int id)
         {
             Especialidad esp = null;
-            HttpResponseMessage response = await client.GetAsync("especialidades/" + id);
+            HttpResponseMessage response = await HttpClient.GetAsync("especialidades/" + id);
             if (response.IsSuccessStatusCode)
             {
                 esp = await response.Content.ReadAsAsync<Especialidad>();
@@ -29,7 +25,7 @@ namespace Presentacion.ApiClients
         public static async Task<IEnumerable<Especialidad>> GetAllAsync()
         {
             IEnumerable<Especialidad> especialidades = null;
-            HttpResponseMessage response = await client.GetAsync("especialidades");
+            HttpResponseMessage response = await HttpClient.GetAsync("especialidades");
             if (response.IsSuccessStatusCode)
             {
                 especialidades = await response.Content.ReadAsAsync<IEnumerable<Especialidad>>();
@@ -39,19 +35,19 @@ namespace Presentacion.ApiClients
 
         public static async Task AddAsync(Especialidad esp)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync("especialidades", esp);
+            HttpResponseMessage response = await HttpClient.PostAsJsonAsync("especialidades", esp);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task DeleteAsync(int id)
         {
-            HttpResponseMessage response = await client.DeleteAsync("especialidades/" + id);
+            HttpResponseMessage response = await HttpClient.DeleteAsync("especialidades/" + id);
             response.EnsureSuccessStatusCode();
         }
 
         public static async Task UpdateAsync(Especialidad esp)
         {
-            HttpResponseMessage response = await client.PutAsJsonAsync("especialidades", esp);
+            HttpResponseMessage response = await HttpClient.PutAsJsonAsync("especialidades", esp);
             response.EnsureSuccessStatusCode();
         }
     }

@@ -493,7 +493,7 @@ namespace Presentacion
             {
                 MessageBox.Show("El Apellido no puede estar vacío.");
                 return false;
-            } //FALTAN VALIDACIONES
+            } 
             if (string.IsNullOrWhiteSpace(txbCorreo.Text) || !Negocio.Validaciones.EsMailValido(txbCorreo.Text))
             {
                 MessageBox.Show("Ingrese un correo valido");
