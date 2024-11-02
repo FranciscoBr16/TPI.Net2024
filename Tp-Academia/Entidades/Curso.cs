@@ -12,7 +12,7 @@ namespace Entidades
         [Key]
         public int Id { get; set; }
         public int Cupo { get; set; }
-        public int Anio { get; set; }
+        public DateTime Fecha_Vencimiento_Inscripcion { get; set; }
 
         public int ComisionId { get; set; }
         public int MateriaId { get; set; }
@@ -23,20 +23,5 @@ namespace Entidades
         public Materia Materia { get; set; }
 
         public Curso() { }
-        public Curso (int id, int cupo, int anio, Comision comision, Materia materia)
-        {
-            this.Id = id;
-            this.Cupo = cupo;
-            this.Anio = anio;
-            Comision = comision;
-            Materia = materia;
-        }
-
-        public Curso(int id, int cupo, int anio)
-        {
-            this.Id= id;
-            this.Cupo = cupo;
-            this.Anio = anio;
-        }
     }
 }

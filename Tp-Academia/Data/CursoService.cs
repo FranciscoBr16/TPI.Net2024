@@ -59,7 +59,7 @@ namespace Data
                 if (cursoOriginal != null)
                 {
 
-                    cursoOriginal.Anio = curso.Anio;
+                    cursoOriginal.Fecha_Vencimiento_Inscripcion = curso.Fecha_Vencimiento_Inscripcion;
                     // VER COMO HACER PARA MODIFICAR LOS PORFESORES, LA MATERIA Y LA COMISION
 
 

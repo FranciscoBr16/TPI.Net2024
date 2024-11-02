@@ -42,33 +42,34 @@ namespace Presentacion
             }
         }
 
-        public async void ListarCursos()
+        public async Task ListarCursos()
         {
-
             IEnumerable<Curso> cursos = await CursoApiClient.GetAllAsync();
 
-            // Construccion del curso para mostrar los campos deseados
-            var cursosParaMostrar = cursos.Select(async curso =>
+            // Construcción de la lista de cursos para mostrar los campos deseados
+            var tareasCursosParaMostrar = cursos.Select(async curso =>
             {
                 var profesor = (await PersonaApiClient.GetProfesoresDelCursoAsync(curso.Id)).FirstOrDefault();
                 return new
                 {
                     curso.Id,
                     MateriaDescripcion = (await MateriaApiClient.GetAsync(curso.MateriaId))?.Nombre ?? "Descripción de la materia no disponible",
-                    curso.Anio,
+                    curso.Fecha_Vencimiento_Inscripcion,
                     curso.Cupo,
                     curso.ComisionId,
                     curso.MateriaId,
                     NombreProfesorTeoria = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
-                    ComisionDescripcion = ( await ComisionApiClient.GetAsync(curso.ComisionId))?.Descripcion ?? "Descripcion de la comision no disponible"
+                    ComisionDescripcion = (await ComisionApiClient.GetAsync(curso.ComisionId))?.Descripcion ?? "Descripcion de la comision no disponible"
                 };
-            }).ToList();
+            });
 
+            // Esperar a que todas las tareas se completen
+            var cursosParaMostrar = await Task.WhenAll(tareasCursosParaMostrar);
 
             dgvCursos.AutoGenerateColumns = false;
-            dgvCursos.DataSource = cursosParaMostrar;
-
+            dgvCursos.DataSource = cursosParaMostrar.ToList();
         }
+
 
         public async Task ListarCursosDisponibles()
         {
@@ -83,8 +84,14 @@ namespace Presentacion
 
         private void btnNuevoCurso_Click(object sender, EventArgs e)
         {
-            FormAltaCursos form = new FormAltaCursos();
+            FormNuevoCurso form = new FormNuevoCurso();
+            form.FormClosing += FormNuevoCurso_FormClosing;
             form.ShowDialog();
+        }
+
+        private void FormNuevoCurso_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            ListarCursos();
         }
 
         private async void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -26,7 +26,7 @@ namespace Presentacion
             if (int.TryParse(tbUsuario.Text, out int legajo))
             {
                 string clave = tbClave.Text;
-                // PREGUNTAR COMO MANEJAR EL LOGIN
+                // ok ?
                 Persona per = new Persona { Legajo = legajo, Clave = clave };
                 Persona persona = await PersonaApiClient.LogInAsync(per);
 
