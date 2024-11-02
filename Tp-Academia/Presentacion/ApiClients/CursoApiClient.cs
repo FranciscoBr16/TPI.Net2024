@@ -48,9 +48,16 @@ namespace Presentacion.ApiClients
             return cursos;
         }
 
-        public static async Task AddAsync(Curso cur)
+        public static async Task<Curso> AddAsync(Curso cur)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync("cursos", cur);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsAsync<Curso>();
+        }
+
+        public static async Task AddProfesAsync(Docente_curso dc)
+        {
+            HttpResponseMessage response = await client.PostAsJsonAsync("profesoresycursos", dc);
             response.EnsureSuccessStatusCode();
         }
 
@@ -69,6 +76,24 @@ namespace Presentacion.ApiClients
         public static async Task InscripcionAsync(Inscripcion insc)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync("inscripciones", insc);
+            response.EnsureSuccessStatusCode();
+        }
+
+        public static async Task<IEnumerable<Persona>> GetProfesDelCursoAsync(int id)
+        {
+            IEnumerable<Persona> profes = null;
+            HttpResponseMessage response = await client.GetAsync("profesoresdelcurso/" + id );
+            if (response.IsSuccessStatusCode)
+            {
+                profes = await response.Content.ReadAsAsync<IEnumerable<Persona>>();
+            }
+            return profes;
+        }
+
+        public static async Task DeleteProfeyCursoAsync(int idCurso, int legajoProfesor)
+        {
+            string url = $"profesoresycursos/{idCurso}/{legajoProfesor}";
+            HttpResponseMessage response = await client.DeleteAsync(url);
             response.EnsureSuccessStatusCode();
         }
     }

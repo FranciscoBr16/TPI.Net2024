@@ -60,10 +60,10 @@ namespace Data
                 {
 
                     cursoOriginal.Fecha_Vencimiento_Inscripcion = curso.Fecha_Vencimiento_Inscripcion;
-                    // VER COMO HACER PARA MODIFICAR LOS PORFESORES, LA MATERIA Y LA COMISION
+                    cursoOriginal.MateriaId = curso.MateriaId;
+                    cursoOriginal.ComisionId = curso.ComisionId;   
+                    cursoOriginal.Cupo = curso.Cupo;
 
-
-                    // Marca el estado de la entidad como modificado
                     context.Entry(cursoOriginal).State = EntityState.Modified;
 
                     try

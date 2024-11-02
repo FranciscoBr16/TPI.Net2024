@@ -35,7 +35,7 @@ namespace Data
 
 
             modelBuilder.Entity<Docente_curso>()
-                .HasKey(dc => new { dc.DocenteId, dc.CursoId, dc.Fecha });
+                .HasKey(dc => new { dc.DocenteId, dc.CursoId});
 
 
             modelBuilder.Entity<Docente_curso>()

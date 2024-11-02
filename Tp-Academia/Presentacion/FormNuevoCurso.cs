@@ -44,10 +44,17 @@ namespace Presentacion
                     ComisionId = (int)cbComision.SelectedValue,
                     MateriaId = (int)cbMateria.SelectedValue
                 };
-                await CursoApiClient.AddAsync(cursoNuevo);
+                Curso cursoCreado = await CursoApiClient.AddAsync(cursoNuevo);
+
+                foreach (Persona unProfe in Profesores)
+                {
+                    Docente_curso dc = new Docente_curso { DocenteId= unProfe.Legajo , CursoId = cursoCreado.Id, Fecha= DateTime.Now };
+                    await CursoApiClient.AddProfesAsync(dc);
+                }
                 MessageBox.Show("Nuevo Curso Registrado");
 
             }
+            this.Close();
         }
 
         private bool ValidarCampos()

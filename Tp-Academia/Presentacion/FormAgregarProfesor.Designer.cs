@@ -31,8 +31,9 @@
             dgvProfesores = new DataGridView();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            btnAgregar = new Button();
             btnAceptar = new Button();
+            btnAgregar = new Button();
+            btnQuitar = new Button();
             Legajo = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Apellido = new DataGridViewTextBoxColumn();
@@ -79,8 +80,9 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Controls.Add(btnAgregar, 2, 0);
             tableLayoutPanel2.Controls.Add(btnAceptar, 2, 1);
+            tableLayoutPanel2.Controls.Add(btnAgregar, 1, 0);
+            tableLayoutPanel2.Controls.Add(btnQuitar, 3, 0);
             tableLayoutPanel2.Dock = DockStyle.Top;
             tableLayoutPanel2.Location = new Point(0, 377);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -89,17 +91,6 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.Size = new Size(800, 70);
             tableLayoutPanel2.TabIndex = 2;
-            // 
-            // btnAgregar
-            // 
-            btnAgregar.Anchor = AnchorStyles.None;
-            btnAgregar.Location = new Point(339, 3);
-            btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(121, 29);
-            btnAgregar.TabIndex = 0;
-            btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
-            btnAgregar.Click += btnAgregar_Click;
             // 
             // btnAceptar
             // 
@@ -111,6 +102,28 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += button3_Click;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.Anchor = AnchorStyles.None;
+            btnAgregar.Location = new Point(179, 3);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(121, 29);
+            btnAgregar.TabIndex = 0;
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.Click += btnAgregar_Click;
+            // 
+            // btnQuitar
+            // 
+            btnQuitar.Anchor = AnchorStyles.None;
+            btnQuitar.Location = new Point(499, 3);
+            btnQuitar.Name = "btnQuitar";
+            btnQuitar.Size = new Size(121, 29);
+            btnQuitar.TabIndex = 5;
+            btnQuitar.Text = "Quitar";
+            btnQuitar.UseVisualStyleBackColor = true;
+            btnQuitar.Click += btnQuitar_Click;
             // 
             // Legajo
             // 
@@ -135,7 +148,7 @@
             // 
             // Correo
             // 
-            Correo.DataPropertyName = "Correo";
+            Correo.DataPropertyName = "Mail";
             Correo.HeaderText = "Correo";
             Correo.Name = "Correo";
             Correo.ReadOnly = true;
@@ -171,6 +184,7 @@
         private TableLayoutPanel tableLayoutPanel2;
         private Button btnAgregar;
         private Button btnAceptar;
+        private Button btnQuitar;
         private DataGridViewTextBoxColumn Legajo;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Apellido;

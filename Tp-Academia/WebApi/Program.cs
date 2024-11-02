@@ -69,7 +69,7 @@ app.MapPost("/cursos", (Curso cur) =>
     CursoService.InsertCurso(cur);
 });
 
-app.MapPut("/cursos/{id}", (Curso cur) =>
+app.MapPut("/cursos", (Curso cur) =>
 {
     CursoService.ModificarCurso(cur);
 
@@ -229,23 +229,23 @@ app.MapGet("/profesoresdelcurso/{id}", (int id) =>
     return ProfesorYCursoService.GetProfesoresDelCurso(id);
 });
 
-/*
 
-app.MapPost("/profesoresycursos", (ProfesorYCurso pyc) =>
+app.MapPost("/profesoresycursos", (Docente_curso pyc) =>
 {
-    ProfesorYCursoService.InsertProfesorYCurso(pyc);
+    ProfesorYCursoService.Insert(pyc);
 });
-
+/*
 app.MapPut("/profesoresycursos/{id}", (ProfesorYCurso pyc) =>
 {
     ProfesorYCursoService.ModificarProfesorYCurso(pyc);
 
 });
-
-app.MapDelete("/profesoresycursos/{id}", (int id) =>
+*/
+app.MapDelete("/profesoresycursos/{idCurso}/{legajoProfesor}", (int idCurso, int legajoProfesor) =>
 {
-    ProfesorYCursoService.EliminarProfesorYCurso(ProfesorYCursoService.GetProfesorYCursoById(id));
-}); */
+    ProfesorYCursoService.EliminarProfesorYCurso(idCurso, legajoProfesor);
+    return Results.Ok();
+});
 #endregion
 # region Inscripciones
 app.MapGet("/inscripciones", () =>

@@ -35,7 +35,37 @@ namespace Data
             }
 
             return profes;
+        }
+        static public bool Insert(Docente_curso dc)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                db.Docente_curso.Add(dc);
+                db.SaveChanges();
+                return true;
             }
         }
+
+        public static void EliminarProfesorYCurso(int idCurso, int legajoProfesor)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                var registroAEliminar = db.Docente_curso
+                                          .FirstOrDefault(d => d.CursoId == idCurso && d.DocenteId == legajoProfesor);
+
+                if (registroAEliminar != null)
+                {
+                    db.Docente_curso.Remove(registroAEliminar);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("No se encontró el registro para eliminar.");
+                }
+            }
+
+        }
+    }
+
     }
 

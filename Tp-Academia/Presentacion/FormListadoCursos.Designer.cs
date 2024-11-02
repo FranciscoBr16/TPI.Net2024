@@ -35,7 +35,7 @@
             btnNuevoCurso = new Button();
             Id = new DataGridViewTextBoxColumn();
             cupo = new DataGridViewTextBoxColumn();
-            Anio = new DataGridViewTextBoxColumn();
+            Fecha = new DataGridViewTextBoxColumn();
             IdMateria = new DataGridViewTextBoxColumn();
             Materia = new DataGridViewTextBoxColumn();
             Profesor = new DataGridViewTextBoxColumn();
@@ -56,24 +56,26 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.Controls.Add(dgvCursos, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 151);
+            tableLayoutPanel1.Location = new Point(0, 113);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1152, 499);
+            tableLayoutPanel1.Size = new Size(1008, 374);
             tableLayoutPanel1.TabIndex = 11;
             // 
             // dgvCursos
             // 
-            dgvCursos.Anchor = AnchorStyles.Top;
             dgvCursos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCursos.Columns.AddRange(new DataGridViewColumn[] { Id, cupo, Anio, IdMateria, Materia, Profesor, Comision, colBtnModificar, colBtnEliminar, ColBtnInscripcion });
-            dgvCursos.Location = new Point(140, 3);
+            dgvCursos.Columns.AddRange(new DataGridViewColumn[] { Id, cupo, Fecha, IdMateria, Materia, Profesor, Comision, colBtnModificar, colBtnEliminar, ColBtnInscripcion });
+            dgvCursos.Dock = DockStyle.Top;
+            dgvCursos.Location = new Point(53, 2);
+            dgvCursos.Margin = new Padding(3, 2, 3, 2);
             dgvCursos.Name = "dgvCursos";
             dgvCursos.ReadOnly = true;
             dgvCursos.RowHeadersWidth = 51;
-            dgvCursos.Size = new Size(869, 456);
+            dgvCursos.Size = new Size(901, 342);
             dgvCursos.TabIndex = 8;
             dgvCursos.CellClick += dgvCursos_CellClick;
             // 
@@ -87,12 +89,11 @@
             tableLayoutPanel5.Controls.Add(btnNuevoCurso, 1, 1);
             tableLayoutPanel5.Dock = DockStyle.Top;
             tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 2;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(1152, 151);
+            tableLayoutPanel5.Size = new Size(1008, 113);
             tableLayoutPanel5.TabIndex = 10;
             // 
             // lblCursos
@@ -100,9 +101,9 @@
             lblCursos.Anchor = AnchorStyles.None;
             lblCursos.AutoSize = true;
             lblCursos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCursos.Location = new Point(533, 21);
+            lblCursos.Location = new Point(469, 15);
             lblCursos.Name = "lblCursos";
-            lblCursos.Size = new Size(85, 32);
+            lblCursos.Size = new Size(69, 25);
             lblCursos.TabIndex = 0;
             lblCursos.Text = "Cursos";
             // 
@@ -110,10 +111,9 @@
             // 
             btnNuevoCurso.Anchor = AnchorStyles.None;
             btnNuevoCurso.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevoCurso.Location = new Point(484, 95);
-            btnNuevoCurso.Margin = new Padding(3, 4, 3, 4);
+            btnNuevoCurso.Location = new Point(424, 71);
             btnNuevoCurso.Name = "btnNuevoCurso";
-            btnNuevoCurso.Size = new Size(183, 36);
+            btnNuevoCurso.Size = new Size(160, 27);
             btnNuevoCurso.TabIndex = 1;
             btnNuevoCurso.Text = "Agregar Curso";
             btnNuevoCurso.UseVisualStyleBackColor = true;
@@ -136,13 +136,13 @@
             cupo.Name = "cupo";
             cupo.ReadOnly = true;
             // 
-            // Anio
+            // Fecha
             // 
-            Anio.DataPropertyName = "Anio";
-            Anio.HeaderText = "Año";
-            Anio.MinimumWidth = 6;
-            Anio.Name = "Anio";
-            Anio.ReadOnly = true;
+            Fecha.DataPropertyName = "Fecha_Vencimiento_Inscripcion";
+            Fecha.HeaderText = "Fecha Vencimiento";
+            Fecha.MinimumWidth = 6;
+            Fecha.Name = "Fecha";
+            Fecha.ReadOnly = true;
             // 
             // IdMateria
             // 
@@ -160,7 +160,7 @@
             Materia.MinimumWidth = 6;
             Materia.Name = "Materia";
             Materia.ReadOnly = true;
-            Materia.Width = 89;
+            Materia.Width = 72;
             // 
             // Profesor
             // 
@@ -170,7 +170,7 @@
             Profesor.MinimumWidth = 6;
             Profesor.Name = "Profesor";
             Profesor.ReadOnly = true;
-            Profesor.Width = 93;
+            Profesor.Width = 76;
             // 
             // Comision
             // 
@@ -180,6 +180,7 @@
             Comision.MinimumWidth = 6;
             Comision.Name = "Comision";
             Comision.ReadOnly = true;
+            Comision.Width = 83;
             // 
             // colBtnModificar
             // 
@@ -209,12 +210,11 @@
             // 
             // FormListadoCursos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1152, 908);
+            ClientSize = new Size(1008, 681);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormListadoCursos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Cursos";
@@ -236,7 +236,7 @@
         private Button btnNuevoCurso;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn cupo;
-        private DataGridViewTextBoxColumn Anio;
+        private DataGridViewTextBoxColumn Fecha;
         private DataGridViewTextBoxColumn IdMateria;
         private DataGridViewTextBoxColumn Materia;
         private DataGridViewTextBoxColumn Profesor;

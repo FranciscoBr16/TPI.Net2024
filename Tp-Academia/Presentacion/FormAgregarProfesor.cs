@@ -67,5 +67,19 @@ namespace Presentacion
             this.Close();
 
         }
+
+        private async void btnQuitar_Click(object sender, EventArgs e)
+        {
+            int legajo;
+            if (this.SelectedItem == null)
+            {
+                return;
+            }
+
+            legajo = this.SelectedItem().Legajo;
+            Persona per = await PersonaApiClient.GetAsync(legajo);
+            if (Profesores.Contains(per)) { Profesores.Remove(per); MessageBox.Show("Se quito el profesor del curso"); } else { MessageBox.Show("Este profesor no se encontraba en el curso"); }
+
+        }
     }
 }
