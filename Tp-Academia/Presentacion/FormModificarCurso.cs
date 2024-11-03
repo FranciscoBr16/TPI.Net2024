@@ -25,11 +25,12 @@ namespace Presentacion
         {
             await CargarComisionesAsync();
             await CargarMateriasAsync();
+            Profesores = (await CursoApiClient.GetProfesDelCursoAsync(Curso.Id)).ToList();
             tbCupo.Text = Curso.Cupo.ToString();
             dtpFecha.Value = Curso.Fecha_Vencimiento_Inscripcion;
             cbComision.SelectedValue = Curso.ComisionId;
             cbMateria.SelectedValue = Curso.MateriaId;
-            Profesores = (await CursoApiClient.GetProfesDelCursoAsync(Curso.Id)).ToList();
+            
 
         }
 
@@ -71,46 +72,45 @@ namespace Presentacion
 
             if (ValidarCampos())
             {
-                Curso cursoNuevo = new Curso
+                try
                 {
-                    Id = Curso.Id,
-                    Cupo = int.Parse(tbCupo.Text),
-                    Fecha_Vencimiento_Inscripcion = dtpFecha.Value,
-                    ComisionId = (int)cbComision.SelectedValue,
-                    MateriaId = (int)cbMateria.SelectedValue
-                };
-                await CursoApiClient.UpdateAsync(cursoNuevo);
-
-                List<Persona> profesAntiguos = (await CursoApiClient.GetProfesDelCursoAsync(Curso.Id)).ToList();
-
-                List<Persona> diferencia = profesAntiguos.Except(Profesores).ToList();
-                if (diferencia.Count > 0)
-                {
-                    foreach (Persona unProfe in diferencia)
+                    Curso cursoNuevo = new Curso
                     {
-                        if (unProfe != null)
-                        {
-                            await CursoApiClient.DeleteProfeyCursoAsync(Curso.Id, unProfe.Legajo);
-                        }
-                    }
-                }
-                List<Persona> diferencia2 = Profesores.Except(profesAntiguos).ToList();
-                if (diferencia2.Count > 0)
-                {
-                    foreach (Persona unProfe in diferencia2)
+                        Id = Curso.Id,
+                        Cupo = int.Parse(tbCupo.Text),
+                        Fecha_Vencimiento_Inscripcion = dtpFecha.Value,
+                        ComisionId = (int)cbComision.SelectedValue,
+                        MateriaId = (int)cbMateria.SelectedValue
+                    };
+                    await CursoApiClient.UpdateAsync(cursoNuevo);
+                   
+
+                    var profesAntiguos = (await CursoApiClient.GetProfesDelCursoAsync(Curso.Id)).ToList();
+                    var profesoresAEliminar = profesAntiguos.Except(Profesores).ToList();
+                    var profesoresAAgregar = Profesores.Except(profesAntiguos).ToList();
+
+                    foreach (var profesor in profesoresAEliminar)
                     {
-                        if (unProfe != null)
-                        {
-                            Docente_curso dc = new Docente_curso { DocenteId = unProfe.Legajo, CursoId = Curso.Id, Fecha = DateTime.Now };
-                            await CursoApiClient.AddProfesAsync(dc);
-                        }
+                        await CursoApiClient.DeleteProfeyCursoAsync(Curso.Id, profesor.Legajo);
                     }
+
+                    foreach (var profesor in profesoresAAgregar)
+                    {
+                        Docente_curso dc = new Docente_curso
+                        {
+                            DocenteId = profesor.Legajo,
+                            CursoId = Curso.Id,
+                            Fecha = DateTime.Now
+                        };
+                        await CursoApiClient.AddProfesAsync(dc);
+                    }
+
+                    MessageBox.Show("Curso Modificado con exito");
+
                 }
-
-                MessageBox.Show("Nuevo Curso Registrado");
-
+                catch (Exception ex) { MessageBox.Show($"Error al modificar el curso: {ex.Message}"); }
+                this.Close();
             }
-            this.Close();
         }
 
         private bool ValidarCampos()
@@ -126,6 +126,7 @@ namespace Presentacion
             if (Profesores.Count == 0)
             {
                 MessageBox.Show("Debe asignar un profesor");
+                return false;
             }
 
             if (!dtpFecha.Checked)

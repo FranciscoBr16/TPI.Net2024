@@ -34,6 +34,20 @@ namespace Entidades
         
  
         public Persona() { }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Persona other)
+            {
+                return this.Legajo == other.Legajo;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return Legajo.GetHashCode();
+        }
     }
 
 }
