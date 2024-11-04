@@ -32,14 +32,14 @@
             label1 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
             lblDescripcion = new Label();
-            lblEspecialidad = new Label();
             txbDescripcion = new TextBox();
+            lblEspecialidad = new Label();
             cbEspecialidades = new ComboBox();
+            dtpFecha = new DateTimePicker();
+            lblFecha = new Label();
             tableLayoutPanel3 = new TableLayoutPanel();
             btnCancelar = new Button();
             btnAceptar = new Button();
-            lblFecha = new Label();
-            dtpFecha = new DateTimePicker();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -63,10 +63,10 @@
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Bottom;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(362, 52);
+            label1.Location = new Point(362, 26);
             label1.Name = "label1";
             label1.Size = new Size(188, 37);
             label1.TabIndex = 0;
@@ -106,6 +106,14 @@
             lblDescripcion.TabIndex = 0;
             lblDescripcion.Text = "Descripcion";
             // 
+            // txbDescripcion
+            // 
+            txbDescripcion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txbDescripcion.Location = new Point(368, 22);
+            txbDescripcion.Name = "txbDescripcion";
+            txbDescripcion.Size = new Size(451, 27);
+            txbDescripcion.TabIndex = 49;
+            // 
             // lblEspecialidad
             // 
             lblEspecialidad.Anchor = AnchorStyles.None;
@@ -116,14 +124,6 @@
             lblEspecialidad.TabIndex = 1;
             lblEspecialidad.Text = "Especialidad";
             // 
-            // txbDescripcion
-            // 
-            txbDescripcion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txbDescripcion.Location = new Point(368, 22);
-            txbDescripcion.Name = "txbDescripcion";
-            txbDescripcion.Size = new Size(451, 27);
-            txbDescripcion.TabIndex = 49;
-            // 
             // cbEspecialidades
             // 
             cbEspecialidades.Anchor = AnchorStyles.Left;
@@ -132,6 +132,24 @@
             cbEspecialidades.Name = "cbEspecialidades";
             cbEspecialidades.Size = new Size(217, 28);
             cbEspecialidades.TabIndex = 50;
+            // 
+            // dtpFecha
+            // 
+            dtpFecha.Anchor = AnchorStyles.Left;
+            dtpFecha.Location = new Point(368, 168);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(250, 27);
+            dtpFecha.TabIndex = 52;
+            // 
+            // lblFecha
+            // 
+            lblFecha.Anchor = AnchorStyles.None;
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(204, 171);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(47, 20);
+            lblFecha.TabIndex = 51;
+            lblFecha.Text = "Fecha";
             // 
             // tableLayoutPanel3
             // 
@@ -172,24 +190,6 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
-            // 
-            // lblFecha
-            // 
-            lblFecha.Anchor = AnchorStyles.None;
-            lblFecha.AutoSize = true;
-            lblFecha.Location = new Point(204, 171);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(47, 20);
-            lblFecha.TabIndex = 51;
-            lblFecha.Text = "Fecha";
-            // 
-            // dtpFecha
-            // 
-            dtpFecha.Anchor = AnchorStyles.Left;
-            dtpFecha.Location = new Point(368, 168);
-            dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(250, 27);
-            dtpFecha.TabIndex = 52;
             // 
             // FormModificarPlan
             // 

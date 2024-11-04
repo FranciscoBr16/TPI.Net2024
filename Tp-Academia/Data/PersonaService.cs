@@ -58,8 +58,8 @@ namespace Data
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-                Persona a = db.Personas.Find(legajo);
-                return a;
+                var persona = db.Personas.FirstOrDefault(p => p.Legajo == legajo);
+                return persona;
             }
         }
 

@@ -58,7 +58,10 @@ namespace Presentacion
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarPersona formModificar = new FormModificarPersona{ PersonaForm = await PersonaApiClient.GetAsync(legajo) };
+                    FormModificarPersona formModificar = new FormModificarPersona();
+                  
+                    formModificar.PersonaForm = await PersonaApiClient.GetAsync(legajo);
+                    
                     formModificar.FormClosing += formModificar_FormClosing;
                     formModificar.ShowDialog();
                 }

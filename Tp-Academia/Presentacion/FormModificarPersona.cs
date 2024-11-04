@@ -40,7 +40,9 @@ namespace Presentacion
             cbIdPlan.DisplayMember = "Descripcion";
             cbIdPlan.ValueMember = "Id";
             cbIdPlan.DataSource = planes;
+            if (PersonaForm.PlanId != null) { 
             cbIdPlan.SelectedValue = PersonaForm.PlanId;
+            }
 
 
         }

@@ -182,7 +182,7 @@ app.MapPost("/login", (Persona per) =>
     }
 });
 
-app.MapPut("/personas/{id}", (Persona per) =>
+app.MapPut("/personas", (Persona per) =>
 {
     PersonaService.ModificarPersona(per);
 

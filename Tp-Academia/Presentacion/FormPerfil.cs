@@ -38,7 +38,7 @@ namespace Presentacion
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            FormModificarPersona modificar = new FormModificarPersona {PersonaForm = this.Usuario};
+            FormModificarPersona modificar = new FormModificarPersona { PersonaForm = this.Usuario };
             modificar.FormClosing += FormInicio_FormClosing;
             modificar.Show();
         }
@@ -53,6 +53,24 @@ namespace Presentacion
             FormListadoCursos formListadoCursos = new FormListadoCursos();
             formListadoCursos.Usuario = this.Usuario;
             formListadoCursos.ShowDialog();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Usuario = null;
+            var mdiParent = this.MdiParent as MiFormBase;
+            if (mdiParent != null)
+            {
+                mdiParent.Usuario = null;
+
+                foreach (Form childForm in mdiParent.MdiChildren)
+                {
+                    childForm.Close();
+                }
+            }
+
+            ActualizarVisibilidad();
+            this.Close();
         }
     }
 }

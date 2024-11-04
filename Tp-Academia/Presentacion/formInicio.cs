@@ -89,7 +89,6 @@ namespace Presentacion
             if(mdiParent != null)
             {
                 mdiParent.Usuario = null;
-                mdiParent.Usuario = null;
 
                 foreach (Form childForm in mdiParent.MdiChildren)
                 {
