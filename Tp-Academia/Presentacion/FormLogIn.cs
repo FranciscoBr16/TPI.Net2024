@@ -48,6 +48,11 @@ namespace Presentacion
                 MessageBox.Show("El legajo debe ser un valor numerico");
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
- }
+    }
+}
 

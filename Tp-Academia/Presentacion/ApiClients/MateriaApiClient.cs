@@ -31,7 +31,7 @@ namespace Presentacion.ApiClients
         public static async Task<Materia> GetAsync(int id)
         {
             Materia mat = null;
-            HttpResponseMessage response = await client.GetAsync("meterias/" + id);
+            HttpResponseMessage response = await client.GetAsync("materias/" + id);
             if (response.IsSuccessStatusCode)
             {
                 mat = await response.Content.ReadAsAsync<Materia>();

@@ -29,11 +29,11 @@ namespace Presentacion
 
         private async void btnAceptar_Click(object sender, EventArgs e)
         {
-            //Validar que los campos no sean nulos
-            Plan plan = new Plan { Id=PlanPropio.Id , Descripcion= txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id };
+            if (ValidarCampos()) { 
+            Plan plan = new Plan { Id=PlanPropio.Id , Descripcion= txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id, Fecha = dtpFecha.Value };
             await PlanApiClient.UpdateAsync(plan);
             MessageBox.Show("Cambios guardados exitosamente.");
-            // else { MessageBox.Show("Ups! Ocurrio un error"); }
+            }
 
         }
 
@@ -44,10 +44,22 @@ namespace Presentacion
             cbEspecialidades.DataSource = await EspecialidadApiClient.GetAllAsync();
             cbEspecialidades.DisplayMember = "Descripcion";
             cbEspecialidades.ValueMember = "Id";
-
+            dtpFecha.Value = PlanPropio.Fecha;
             cbEspecialidades.SelectedValue = PlanPropio.EspecialidadId;
         }
 
-       
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrWhiteSpace(txbDescripcion.Text) ||
+                cbEspecialidades.SelectedIndex == -1)
+            {
+                MessageBox.Show("Todos los campos deben ser completados.");
+                return false;
+            }
+
+            return true;
+        }
+
+
     }
 }

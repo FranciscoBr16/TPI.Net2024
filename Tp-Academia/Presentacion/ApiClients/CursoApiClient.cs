@@ -96,6 +96,17 @@ namespace Presentacion.ApiClients
             HttpResponseMessage response = await client.DeleteAsync(url);
             response.EnsureSuccessStatusCode();
         }
+
+        public static async Task<IEnumerable<Curso>> GetCursosDisponiblesAsync(int legajo)
+        {
+            IEnumerable<Curso> cur = null;
+            HttpResponseMessage response = await client.GetAsync("cursos/disponiblesparaalumno/" + legajo);
+            if (response.IsSuccessStatusCode)
+            {
+                cur = await response.Content.ReadAsAsync<IEnumerable<Curso>>();
+            }
+            return cur;
+        }
     }
 }
 

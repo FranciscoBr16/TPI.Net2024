@@ -30,6 +30,8 @@ namespace Presentacion
                 if (radiobAlumno.Checked)
                 {
                     string rol = "Alumno";
+                    int especialidadId = Convert.ToInt32(cbEspecialidades.SelectedValue);
+                    Plan pl = await PlanApiClient.GetPlanNuevoDeLaEspecialidad(especialidadId);
 
                     Persona alumnoNuevo = new Persona
                     {
@@ -44,12 +46,12 @@ namespace Presentacion
                         DNI = txbDni.Text,
                         Fecha_nac = dtpFechaNac.Value,
                         Fecha_ingreso = fechaHoy,
-                        PlanId = 1 // Ver este tema
+                        PlanId = pl.Id
                     };
 
-                    await PersonaApiClient.AddAsync(alumnoNuevo);
-                            
-                    MessageBox.Show("Registrado como Alumno");
+                    int legajo = await PersonaApiClient.AddAsync(alumnoNuevo);
+
+                    MessageBox.Show("Registrado como Alumno - Legajo: " + legajo) ;
                     this.Close();
                 }
                 else if (radiobProfesor.Checked)
@@ -70,9 +72,9 @@ namespace Presentacion
                         Fecha_nac = dtpFechaNac.Value,
                         Fecha_ingreso = fechaHoy
                     };
-                    await PersonaApiClient.AddAsync(profesorNuevo);
+                    int legajo = await PersonaApiClient.AddAsync(profesorNuevo);
 
-                    MessageBox.Show("Registrado como Profesor");
+                    MessageBox.Show("Registrado como Profesor - Legajo: "+ legajo);
                     this.Close();
                 }
             }
@@ -94,6 +96,11 @@ namespace Presentacion
                 return false;
             }
 
+            if (cbEspecialidades.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una especialidad");
+                return false;
+            }
 
 
             if (!radiobAlumno.Checked && !radiobProfesor.Checked)
@@ -108,6 +115,15 @@ namespace Presentacion
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private async void FormNuevaPersona_Load(object sender, EventArgs e)
+        {
+            cbEspecialidades.DataSource = await EspecialidadApiClient.GetAllAsync();
+
+            cbEspecialidades.DisplayMember = "Descripcion";
+
+            cbEspecialidades.ValueMember = "Id";
         }
     }
 

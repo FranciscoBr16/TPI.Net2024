@@ -81,5 +81,18 @@ namespace Data
                 }
             }
         }
+
+        public static Plan GetPlanNuevoDeLaEspecialidad(int especialidadId)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                var planNuevo = db.Planes
+                    .Where(p => p.EspecialidadId == especialidadId)
+                    .OrderByDescending(p => p.Fecha) 
+                    .FirstOrDefault();
+
+                return planNuevo;
+            }
+        }
     }
 }

@@ -72,10 +72,14 @@ namespace Presentacion.ApiClients
             return personas;
         }
 
-        public static async Task AddAsync(Persona per)
+        public static async Task<int> AddAsync(Persona per)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync("personas", per);
             response.EnsureSuccessStatusCode();
+
+            var createdPersona = await response.Content.ReadAsAsync<Persona>();
+
+            return createdPersona.Legajo;
         }
 
         public static async Task DeleteAsync(int legajo)

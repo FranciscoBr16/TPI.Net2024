@@ -62,6 +62,13 @@ namespace Data
                .OnDelete(DeleteBehavior.Cascade)
                ;
 
+            modelBuilder.Entity<Materia>()
+               .HasOne(a => a.Plan)
+               .WithMany(a => a.Materias)
+               .HasForeignKey(a => a.PlanId)
+               .OnDelete(DeleteBehavior.Cascade)
+               ;
+
             modelBuilder.Entity<Curso>()
                .HasOne(c => c.Comision)
                .WithMany(c => c.Cursos)

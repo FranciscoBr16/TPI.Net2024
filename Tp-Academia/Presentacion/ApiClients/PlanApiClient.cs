@@ -66,6 +66,17 @@ namespace Presentacion.ApiClients
             HttpResponseMessage response = await client.PutAsJsonAsync("planes", plan);
             response.EnsureSuccessStatusCode();
         }
+
+        public static async Task<Plan> GetPlanNuevoDeLaEspecialidad(int idEspecialidad)
+        {
+            Plan plan = null;
+            HttpResponseMessage response = await client.GetAsync("plannuevodelaespecialidad/" + idEspecialidad);
+            if (response.IsSuccessStatusCode)
+            {
+                plan = await response.Content.ReadAsAsync<Plan>();
+            }
+            return plan;
+        }
     }
 }
 

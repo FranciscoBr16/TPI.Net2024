@@ -9,6 +9,7 @@ namespace Entidades
         public int Id {  get; set; }
         public string Descripcion { get; set; }
         public int EspecialidadId { get; set; }
+        public DateTime Fecha { get; set; }
         public Especialidad Especialidad { get; set; }
         public List<Materia> Materias { get; set; }
         public List<Persona> Alumnos { get; set; }

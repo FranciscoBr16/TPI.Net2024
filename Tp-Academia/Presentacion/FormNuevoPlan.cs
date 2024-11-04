@@ -35,7 +35,7 @@ namespace Presentacion
             if (ValidarCampos())
             {
 
-                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id }; // VER
+                Plan planNuevo = new Plan { Descripcion= txbDescripcion.Text , EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id, Fecha= dtpFecha.Value }; 
 
                 await PlanApiClient.AddAsync(planNuevo);
 

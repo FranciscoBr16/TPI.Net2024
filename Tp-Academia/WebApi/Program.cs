@@ -62,7 +62,10 @@ app.MapGet("/cursos/{id}", (int id) =>
 {
     return CursoService.GetCursoById(id);
 });
-
+app.MapGet("/cursos/disponiblesparaalumno/{idAlumno}", (int idAlumno) =>
+{
+    return CursoService.GetCursosDisponiblesParaAlumno(idAlumno);
+});
 
 app.MapPost("/cursos", (Curso cur) =>
 {
@@ -216,6 +219,11 @@ app.MapPut("/planes/{id}", (Plan plan) =>
 app.MapDelete("/planes/{id}", (int id) =>
 {
     PlanService.EliminarPlan(PlanService.GetPlanById(id));
+});
+
+app.MapGet("/plannuevodelaespecialidad/{id}", (int id) =>
+{
+    return PlanService.GetPlanNuevoDeLaEspecialidad(id);
 });
 #endregion
 #region ProfesorYCurso

@@ -33,11 +33,13 @@
             tableLayoutPanel2 = new TableLayoutPanel();
             lblDescripcion = new Label();
             lblEspecialidad = new Label();
+            txbDescripcion = new TextBox();
+            cbEspecialidades = new ComboBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             btnCancelar = new Button();
             btnAceptar = new Button();
-            txbDescripcion = new TextBox();
-            cbEspecialidades = new ComboBox();
+            lblFecha = new Label();
+            dtpFecha = new DateTimePicker();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -52,10 +54,11 @@
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(800, 67);
+            tableLayoutPanel1.Size = new Size(914, 89);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -63,9 +66,9 @@
             label1.Anchor = AnchorStyles.Bottom;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(323, 37);
+            label1.Location = new Point(362, 52);
             label1.Name = "label1";
-            label1.Size = new Size(151, 30);
+            label1.Size = new Size(188, 37);
             label1.TabIndex = 0;
             label1.Text = "Modificar Plan";
             // 
@@ -76,27 +79,30 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tableLayoutPanel2.Controls.Add(lblDescripcion, 1, 1);
-            tableLayoutPanel2.Controls.Add(lblEspecialidad, 1, 2);
-            tableLayoutPanel2.Controls.Add(txbDescripcion, 2, 1);
-            tableLayoutPanel2.Controls.Add(cbEspecialidades, 2, 2);
+            tableLayoutPanel2.Controls.Add(lblDescripcion, 1, 0);
+            tableLayoutPanel2.Controls.Add(txbDescripcion, 2, 0);
+            tableLayoutPanel2.Controls.Add(lblEspecialidad, 1, 1);
+            tableLayoutPanel2.Controls.Add(cbEspecialidades, 2, 1);
+            tableLayoutPanel2.Controls.Add(dtpFecha, 2, 2);
+            tableLayoutPanel2.Controls.Add(lblFecha, 1, 2);
             tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 67);
+            tableLayoutPanel2.Location = new Point(0, 89);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel2.Size = new Size(800, 204);
+            tableLayoutPanel2.Size = new Size(914, 219);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // lblDescripcion
             // 
             lblDescripcion.Anchor = AnchorStyles.None;
             lblDescripcion.AutoSize = true;
-            lblDescripcion.Location = new Point(165, 93);
+            lblDescripcion.Location = new Point(184, 26);
             lblDescripcion.Name = "lblDescripcion";
-            lblDescripcion.Size = new Size(69, 15);
+            lblDescripcion.Size = new Size(87, 20);
             lblDescripcion.TabIndex = 0;
             lblDescripcion.Text = "Descripcion";
             // 
@@ -104,11 +110,28 @@
             // 
             lblEspecialidad.Anchor = AnchorStyles.None;
             lblEspecialidad.AutoSize = true;
-            lblEspecialidad.Location = new Point(164, 161);
+            lblEspecialidad.Location = new Point(181, 98);
             lblEspecialidad.Name = "lblEspecialidad";
-            lblEspecialidad.Size = new Size(72, 15);
+            lblEspecialidad.Size = new Size(93, 20);
             lblEspecialidad.TabIndex = 1;
             lblEspecialidad.Text = "Especialidad";
+            // 
+            // txbDescripcion
+            // 
+            txbDescripcion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            txbDescripcion.Location = new Point(368, 22);
+            txbDescripcion.Name = "txbDescripcion";
+            txbDescripcion.Size = new Size(451, 27);
+            txbDescripcion.TabIndex = 49;
+            // 
+            // cbEspecialidades
+            // 
+            cbEspecialidades.Anchor = AnchorStyles.Left;
+            cbEspecialidades.FormattingEnabled = true;
+            cbEspecialidades.Location = new Point(368, 94);
+            cbEspecialidades.Name = "cbEspecialidades";
+            cbEspecialidades.Size = new Size(217, 28);
+            cbEspecialidades.TabIndex = 50;
             // 
             // tableLayoutPanel3
             // 
@@ -120,22 +143,20 @@
             tableLayoutPanel3.Controls.Add(btnCancelar, 1, 0);
             tableLayoutPanel3.Controls.Add(btnAceptar, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 271);
-            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel3.Location = new Point(0, 308);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(800, 115);
+            tableLayoutPanel3.Size = new Size(914, 94);
             tableLayoutPanel3.TabIndex = 42;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
             btnCancelar.BackColor = Color.Red;
-            btnCancelar.Location = new Point(259, 46);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Location = new Point(295, 32);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(82, 22);
+            btnCancelar.Size = new Size(94, 29);
             btnCancelar.TabIndex = 20;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -144,42 +165,41 @@
             // btnAceptar
             // 
             btnAceptar.Anchor = AnchorStyles.None;
-            btnAceptar.Location = new Point(459, 46);
-            btnAceptar.Margin = new Padding(3, 2, 3, 2);
+            btnAceptar.Location = new Point(523, 32);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(82, 22);
+            btnAceptar.Size = new Size(94, 29);
             btnAceptar.TabIndex = 19;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
             // 
-            // txbDescripcion
+            // lblFecha
             // 
-            txbDescripcion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txbDescripcion.Location = new Point(323, 89);
-            txbDescripcion.Margin = new Padding(3, 2, 3, 2);
-            txbDescripcion.Name = "txbDescripcion";
-            txbDescripcion.Size = new Size(394, 23);
-            txbDescripcion.TabIndex = 49;
+            lblFecha.Anchor = AnchorStyles.None;
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(204, 171);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(47, 20);
+            lblFecha.TabIndex = 51;
+            lblFecha.Text = "Fecha";
             // 
-            // cbEspecialidades
+            // dtpFecha
             // 
-            cbEspecialidades.Anchor = AnchorStyles.Left;
-            cbEspecialidades.FormattingEnabled = true;
-            cbEspecialidades.Location = new Point(323, 157);
-            cbEspecialidades.Margin = new Padding(3, 2, 3, 2);
-            cbEspecialidades.Name = "cbEspecialidades";
-            cbEspecialidades.Size = new Size(190, 23);
-            cbEspecialidades.TabIndex = 50;
+            dtpFecha.Anchor = AnchorStyles.Left;
+            dtpFecha.Location = new Point(368, 168);
+            dtpFecha.Name = "dtpFecha";
+            dtpFecha.Size = new Size(250, 27);
+            dtpFecha.TabIndex = 52;
             // 
             // FormModificarPlan
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 474);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormModificarPlan";
             Text = "FormModificarPlan";
             Load += FormModificarPlan_Load;
@@ -203,5 +223,7 @@
         private Button btnAceptar;
         private TextBox txbDescripcion;
         private ComboBox cbEspecialidades;
+        private Label lblFecha;
+        private DateTimePicker dtpFecha;
     }
 }

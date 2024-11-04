@@ -34,7 +34,9 @@ namespace Data
         {
             using (AcademiaContext db = new AcademiaContext())
             {
-
+                Curso cur = db.Cursos.Find(insc.CursoId);
+                cur.Cupo--;
+                CursoService.ModificarCurso(cur);
                 db.Inscripciones.Add(insc);
                 db.SaveChanges();
                 return true;

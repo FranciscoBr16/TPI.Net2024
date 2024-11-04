@@ -114,5 +114,33 @@ namespace Data
                 return true;
             }
         }
+
+        public static IEnumerable<Curso> GetCursosDisponiblesParaAlumno(int legajoAlumno)
+        {
+            using (var context = new AcademiaContext())
+            {
+                var alumno = context.Personas.Find(legajoAlumno);
+                if (alumno == null)
+                {
+                    throw new ArgumentException("El alumno no existe.");
+                }
+                var idPlanAlumno = alumno.PlanId;
+
+                var cursosInscritos = context.Inscripciones
+                    .Where(insc => insc.AlumnoLegajo == legajoAlumno)
+                    .Select(insc => insc.CursoId);
+
+                var cursosDisponibles = context.Cursos
+                    .Where(curso =>
+                        !cursosInscritos.Contains(curso.Id) &&         
+                        curso.Cupo > 0 &&                               
+                        curso.Materia.PlanId == idPlanAlumno             
+                    )
+                    .ToList();
+
+                return cursosDisponibles;
+            }
+        }
+
     }
 }

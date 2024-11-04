@@ -15,6 +15,7 @@ namespace Presentacion
 {
     public partial class FormListadoCursos : MiFormBase
     {
+        //public Persona Usuario { get; set; }
         public FormListadoCursos()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Presentacion
             
             if (Usuario != null && Usuario.Rol == "Admin")
             {
-                await ListarCursos();
+                await ListarTodosLosCursos();
                 btnNuevoCurso.Visible = true;
                 dgvCursos.Columns["colBtnModificar"].Visible = true;
                 dgvCursos.Columns["colBtnEliminar"].Visible = true;
@@ -35,6 +36,7 @@ namespace Presentacion
             }
             else if (Usuario != null && Usuario.Rol == "Alumno")
             {
+                await ListarCursos();
                 btnNuevoCurso.Visible = false;
                 dgvCursos.Columns["colBtnModificar"].Visible = false;
                 dgvCursos.Columns["colBtnEliminar"].Visible = false;
@@ -42,9 +44,44 @@ namespace Presentacion
             }
         }
 
-        public async Task ListarCursos()
+        private async Task ListarTodosLosCursos()
         {
             IEnumerable<Curso> cursos = await CursoApiClient.GetAllAsync();
+
+
+            var cursosParaMostrar = new List<object>();
+
+            foreach (var curso in cursos)
+            {
+                var profesor = (await PersonaApiClient.GetProfesoresDelCursoAsync(curso.Id)).FirstOrDefault();
+                var materia = await MateriaApiClient.GetAsync(curso.MateriaId);
+                var materiaDescripcion = materia?.Nombre ?? "Descripción de la materia no disponible";
+
+                var comision = await ComisionApiClient.GetAsync(curso.ComisionId);
+                var comisionDescripcion = comision?.Descripcion ?? "Descripcion de la comision no disponible";
+
+
+                cursosParaMostrar.Add(new
+                {
+                    curso.Id,
+                    MateriaDescripcion = materiaDescripcion,
+                    curso.Fecha_Vencimiento_Inscripcion,
+                    curso.Cupo,
+                    curso.ComisionId,
+                    curso.MateriaId,
+                    NombreProfesorTeoria = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
+                    ComisionDescripcion = comisionDescripcion
+                });
+            }
+
+            dgvCursos.AutoGenerateColumns = false;
+            dgvCursos.DataSource = cursosParaMostrar.ToList();
+        }
+
+        public async Task ListarCursos()
+        {
+            IEnumerable<Curso> cursos = await CursoApiClient.GetCursosDisponiblesAsync(Usuario.Legajo);
+
 
             var cursosParaMostrar = new List<object>();
 

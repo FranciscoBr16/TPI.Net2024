@@ -11,25 +11,11 @@ namespace Entidades
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public string Anio { get; set; }
+        public int PlanId { get; set; }
         public Plan Plan { get; set; }
         public List<Curso> Cursos { get; set; }
 
         public Materia() { }
 
-        public Materia (int id, int cantHorasSemanales, string nombre, string descripcion, Plan plan)
-        {
-            Id = id;
-            CantHorasSemanales = cantHorasSemanales;
-            Nombre = nombre;
-            Descripcion = descripcion;
-            Plan = plan;
-        }
-        public Materia(int id, int cantHorasSemanales, string nombre, string descripcion)
-        {
-            Id = id;
-            CantHorasSemanales = cantHorasSemanales;
-            Nombre = nombre;
-            Descripcion = descripcion;
-        }
     }
 }
