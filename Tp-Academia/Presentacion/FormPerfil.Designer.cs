@@ -48,7 +48,6 @@
             txbTelefono = new TextBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             btnInscripciones = new Button();
-            btnNotas = new Button();
             btnCursos = new Button();
             btnCerrarSesion = new Button();
             btnModificar = new Button();
@@ -283,10 +282,9 @@
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
             tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
             tableLayoutPanel3.Controls.Add(btnInscripciones, 1, 0);
-            tableLayoutPanel3.Controls.Add(btnNotas, 1, 1);
-            tableLayoutPanel3.Controls.Add(btnCursos, 1, 2);
-            tableLayoutPanel3.Controls.Add(btnCerrarSesion, 1, 4);
-            tableLayoutPanel3.Controls.Add(btnModificar, 1, 3);
+            tableLayoutPanel3.Controls.Add(btnCursos, 1, 1);
+            tableLayoutPanel3.Controls.Add(btnModificar, 1, 2);
+            tableLayoutPanel3.Controls.Add(btnCerrarSesion, 1, 3);
             tableLayoutPanel3.Dock = DockStyle.Top;
             tableLayoutPanel3.Location = new Point(0, 372);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -310,30 +308,21 @@
             btnInscripciones.UseVisualStyleBackColor = true;
             btnInscripciones.Click += btnInscripciones_Click;
             // 
-            // btnNotas
-            // 
-            btnNotas.Anchor = AnchorStyles.None;
-            btnNotas.Location = new Point(472, 40);
-            btnNotas.Name = "btnNotas";
-            btnNotas.Size = new Size(157, 28);
-            btnNotas.TabIndex = 1;
-            btnNotas.Text = "Mis Notas";
-            btnNotas.UseVisualStyleBackColor = true;
-            // 
             // btnCursos
             // 
             btnCursos.Anchor = AnchorStyles.None;
-            btnCursos.Location = new Point(472, 76);
+            btnCursos.Location = new Point(472, 40);
             btnCursos.Name = "btnCursos";
             btnCursos.Size = new Size(157, 28);
             btnCursos.TabIndex = 2;
             btnCursos.Text = "Mis Cursos";
             btnCursos.UseVisualStyleBackColor = true;
+            btnCursos.Click += btnCursos_Click;
             // 
             // btnCerrarSesion
             // 
             btnCerrarSesion.Anchor = AnchorStyles.None;
-            btnCerrarSesion.Location = new Point(472, 148);
+            btnCerrarSesion.Location = new Point(472, 112);
             btnCerrarSesion.Name = "btnCerrarSesion";
             btnCerrarSesion.Size = new Size(157, 28);
             btnCerrarSesion.TabIndex = 3;
@@ -344,7 +333,7 @@
             // btnModificar
             // 
             btnModificar.Anchor = AnchorStyles.None;
-            btnModificar.Location = new Point(472, 112);
+            btnModificar.Location = new Point(472, 76);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(157, 28);
             btnModificar.TabIndex = 4;
@@ -395,7 +384,6 @@
         private TextBox txbPlan;
         private TableLayoutPanel tableLayoutPanel3;
         private Button btnInscripciones;
-        private Button btnNotas;
         private Button btnCursos;
         private Button btnCerrarSesion;
         private Button btnModificar;

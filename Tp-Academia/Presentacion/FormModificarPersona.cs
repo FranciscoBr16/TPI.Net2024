@@ -16,7 +16,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Presentacion
 {
-    public partial class FormModificarPersona : Form
+    public partial class FormModificarPersona : MiFormBase
     {
         public Persona PersonaForm { get; set; }
 
@@ -37,10 +37,11 @@ namespace Presentacion
             txbUsuario.Text = PersonaForm.Usuario;
             txbDireccion.Text = PersonaForm.Direccion;
             IEnumerable<Entidades.Plan> planes = await PlanApiClient.GetAllAsync();
+            if (PersonaForm.PlanId.HasValue)
+            {
             cbIdPlan.DisplayMember = "Descripcion";
             cbIdPlan.ValueMember = "Id";
             cbIdPlan.DataSource = planes;
-            if (PersonaForm.PlanId.HasValue) { 
             cbIdPlan.SelectedValue = PersonaForm.PlanId;
             }
 
@@ -466,7 +467,7 @@ namespace Presentacion
 
         private void ActualizarVisibilidad()
         {
-            if (this.PersonaForm.Rol != "Admin")
+            if (this.Usuario.Rol != "Admin")
             {
                 txbDni.Visible = false;
                 dtpFechaNac.Visible = false;

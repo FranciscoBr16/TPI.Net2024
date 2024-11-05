@@ -155,8 +155,8 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de que quiere inscribirse a este curso?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = id, Fecha = DateTime.Now };
-                        await CursoApiClient.InscripcionAsync(ins);
+                        Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = id, Fecha = DateTime.Now, Condicion = "Inscripto" };
+                        await InscripcionApiClient.InscripcionAsync(ins);
                         MessageBox.Show("Inscripcion realizada con exito!");
                         if(Usuario.Rol == "Admin") { await ListarTodosLosCursos();} 
                         else if (Usuario.Rol == "Alumno") { await ListarCursos(); }

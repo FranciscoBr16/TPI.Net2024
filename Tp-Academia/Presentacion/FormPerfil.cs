@@ -92,5 +92,12 @@ namespace Presentacion
             }
             this.Close();
         }
+
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            FormMisCursos formListadoCursos = new FormMisCursos();
+            formListadoCursos.Usuario = this.Usuario;
+            formListadoCursos.ShowDialog();
+        }
     }
 }

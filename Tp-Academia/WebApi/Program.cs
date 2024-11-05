@@ -67,6 +67,7 @@ app.MapGet("/cursos/disponiblesparaalumno/{idAlumno}", (int idAlumno) =>
     return CursoService.GetCursosDisponiblesParaAlumno(idAlumno);
 });
 
+
 app.MapPost("/cursos", (Curso cur) =>
 {
     var cursoCreado = CursoService.InsertCurso(cur);
@@ -272,7 +273,7 @@ app.MapGet("/inscripciones/{id}", (int id) =>
 
 app.MapPost("/inscripciones", (Inscripcion inscripcion) =>
 {
-    InscripcionService.InsertInscripcion(inscripcion);
+    InscripcionService.InscripcionAlumnoCurso(inscripcion);
 });
 
 app.MapPut("/inscripciones/{id}", (Inscripcion inscripcion) =>
@@ -284,6 +285,22 @@ app.MapPut("/inscripciones/{id}", (Inscripcion inscripcion) =>
 app.MapDelete("/inscripciones/{id}", (int id) =>
 {
     InscripcionService.EliminarInscripcion(InscripcionService.GetInscripcionById(id));
+});
+
+app.MapGet("/inscripcionesdelalumno/{legajo}", (int legajo) =>
+{
+    try
+    {
+        return Results.Ok(InscripcionService.GetInscripcionesDelAlumno(legajo));
+    }
+    catch (ArgumentException ex)
+    {
+        return Results.BadRequest(new { Message = ex.Message });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem("Ocurrió un error al obtener las inscripciones.");
+    }
 });
 #endregion
 app.Run();

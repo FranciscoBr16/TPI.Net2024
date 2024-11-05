@@ -35,6 +35,7 @@
             dgvPlanes = new DataGridView();
             colId = new DataGridViewTextBoxColumn();
             colDescripcion = new DataGridViewTextBoxColumn();
+            IdEspecialidad = new DataGridViewTextBoxColumn();
             colBtnModificarPlan = new DataGridViewButtonColumn();
             colBtnEliminarPlan = new DataGridViewButtonColumn();
             tableLayoutPanel1.SuspendLayout();
@@ -103,7 +104,7 @@
             // 
             dgvPlanes.Anchor = AnchorStyles.None;
             dgvPlanes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPlanes.Columns.AddRange(new DataGridViewColumn[] { colId, colDescripcion, colBtnModificarPlan, colBtnEliminarPlan });
+            dgvPlanes.Columns.AddRange(new DataGridViewColumn[] { colId, colDescripcion, IdEspecialidad, colBtnModificarPlan, colBtnEliminarPlan });
             dgvPlanes.Location = new Point(290, 2);
             dgvPlanes.Margin = new Padding(3, 2, 3, 2);
             dgvPlanes.Name = "dgvPlanes";
@@ -130,6 +131,13 @@
             colDescripcion.Name = "colDescripcion";
             colDescripcion.ReadOnly = true;
             colDescripcion.Width = 94;
+            // 
+            // IdEspecialidad
+            // 
+            IdEspecialidad.DataPropertyName = "EspecialidadId";
+            IdEspecialidad.HeaderText = "Id Especialidad";
+            IdEspecialidad.Name = "IdEspecialidad";
+            IdEspecialidad.ReadOnly = true;
             // 
             // colBtnModificarPlan
             // 
@@ -180,6 +188,7 @@
         private Button button1;
         private DataGridViewTextBoxColumn colId;
         private DataGridViewTextBoxColumn colDescripcion;
+        private DataGridViewTextBoxColumn IdEspecialidad;
         private DataGridViewButtonColumn colBtnModificarPlan;
         private DataGridViewButtonColumn colBtnEliminarPlan;
     }

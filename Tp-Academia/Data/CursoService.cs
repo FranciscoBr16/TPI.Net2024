@@ -83,37 +83,7 @@ namespace Data
             }
         }
 
-        static public bool InscripcionAlumnoCurso(int legajoAlumno, int idCurso)
-        {
-            Curso curso = GetCursoById(idCurso);
-            using (AcademiaContext db = new AcademiaContext())
-            {
-                if (curso != null)
-                {
-
-                    curso.Cupo--;
-
-                    Inscripcion inscripcion = new Inscripcion {CursoId = idCurso, AlumnoLegajo = legajoAlumno, Fecha = DateTime.Now, Condicion = "Inscripto" };
-                    db.Inscripciones.Add(inscripcion);
-
-                    db.Entry(curso).State = EntityState.Modified;
-
-                    try
-                    {
-                        db.SaveChanges();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        return false;
-                    }
-                }
-
-                
-                db.SaveChanges();
-                return true;
-            }
-        }
+        
 
         public static IEnumerable<Curso> GetCursosDisponiblesParaAlumno(int legajoAlumno)
         {
@@ -126,13 +96,15 @@ namespace Data
                 }
                 var idPlanAlumno = alumno.PlanId;
 
-                var cursosInscritos = context.Inscripciones
-                    .Where(insc => insc.AlumnoLegajo == legajoAlumno)
-                    .Select(insc => insc.CursoId);
+                var materiasInscritas = context.Inscripciones
+                .Where(insc => insc.AlumnoLegajo == legajoAlumno)
+                .Select(insc => insc.Curso.MateriaId)
+                .Distinct() 
+                .ToList();
 
                 var cursosDisponibles = context.Cursos
                     .Where(curso =>
-                        !cursosInscritos.Contains(curso.Id) &&         
+                        !materiasInscritas.Contains(curso.MateriaId) &&         
                         curso.Cupo > 0 &&                               
                         curso.Materia.PlanId == idPlanAlumno             
                     )
@@ -142,5 +114,7 @@ namespace Data
             }
         }
 
+        
     }
+    
 }

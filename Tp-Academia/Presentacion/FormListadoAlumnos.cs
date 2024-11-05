@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FormListadoAlumnos : Form
+    public partial class FormListadoAlumnos : MiFormBase
     {
         public FormListadoAlumnos()
         {
@@ -60,6 +60,7 @@ namespace Presentacion
                 else if (columnName == "colBtnModificar")
                 {
                     FormModificarPersona formModificar = new FormModificarPersona{ PersonaForm = await PersonaApiClient.GetAsync(legajo) };
+                    formModificar.Usuario = this.Usuario;
                     formModificar.FormClosing += formModificar_FormClosing;
                     formModificar.ShowDialog();
                 }

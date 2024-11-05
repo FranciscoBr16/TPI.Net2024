@@ -76,11 +76,6 @@ namespace Presentacion.ApiClients
             response.EnsureSuccessStatusCode();
         }
 
-        public static async Task InscripcionAsync(Inscripcion insc)
-        {
-            HttpResponseMessage response = await client.PostAsJsonAsync("inscripciones", insc);
-            response.EnsureSuccessStatusCode();
-        }
 
         public static async Task<IEnumerable<Persona>> GetProfesDelCursoAsync(int id)
         {
@@ -92,6 +87,7 @@ namespace Presentacion.ApiClients
             }
             return profes;
         }
+
 
         public static async Task DeleteProfeyCursoAsync(int idCurso, int legajoProfesor)
         {

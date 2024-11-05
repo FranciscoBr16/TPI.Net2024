@@ -37,9 +37,10 @@ namespace Presentacion
             Form formAlumnos = IsOpen(typeof(FormListadoAlumnos));
             if (formAlumnos == null)
             {
-                formAlumnos = new FormListadoAlumnos();
-                formAlumnos.MdiParent = this;
-                formAlumnos.Show();
+                FormListadoAlumnos formAlumno = new FormListadoAlumnos();
+                formAlumno.MdiParent = this;
+                formAlumno.Usuario = this.Usuario;
+                formAlumno.Show();
             }
             else
             {
