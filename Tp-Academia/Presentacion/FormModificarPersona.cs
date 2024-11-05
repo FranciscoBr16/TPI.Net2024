@@ -40,7 +40,9 @@ namespace Presentacion
             cbIdPlan.DisplayMember = "Descripcion";
             cbIdPlan.ValueMember = "Id";
             cbIdPlan.DataSource = planes;
+            if (PersonaForm.PlanId.HasValue) { 
             cbIdPlan.SelectedValue = PersonaForm.PlanId;
+            }
 
 
         }
@@ -434,7 +436,6 @@ namespace Presentacion
         {
             if (ValidarCampos())
             {
-
                 Persona per = new Persona
                 {
                     Legajo = PersonaForm.Legajo,
@@ -530,11 +531,12 @@ namespace Presentacion
                 MessageBox.Show("Seleccione una fecha de nacimiento válida.");
                 return false;
             }
-
+            if (PersonaForm.Rol == "Alumno") { 
             if (cbIdPlan.SelectedItem == null || ((Plan)cbIdPlan.SelectedItem).Id == 0)
             {
                 MessageBox.Show("Seleccione un plan válido.");
                 return false;
+            }
             }
 
 

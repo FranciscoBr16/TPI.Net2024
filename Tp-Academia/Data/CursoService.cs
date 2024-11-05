@@ -30,14 +30,14 @@ namespace Data
             }
         }
 
-        static public bool InsertCurso(Curso curso)
+        static public Curso InsertCurso(Curso curso)
         {
             using (AcademiaContext db = new AcademiaContext())
             {
 
                 db.Cursos.Add(curso);
                 db.SaveChanges();
-                return true;
+                return curso;
             }
         }
 

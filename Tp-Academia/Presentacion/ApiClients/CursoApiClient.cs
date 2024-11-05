@@ -48,11 +48,14 @@ namespace Presentacion.ApiClients
             return cursos;
         }
 
-        public static async Task<Curso> AddAsync(Curso cur)
+        public static async Task<int> AddAsync(Curso cur)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync("cursos", cur);
             response.EnsureSuccessStatusCode();
-            return await response.Content.ReadAsAsync<Curso>();
+
+            var createdCurso = await response.Content.ReadAsAsync<Curso>();
+
+            return createdCurso.Id;
         }
 
         public static async Task AddProfesAsync(Docente_curso dc)

@@ -48,7 +48,6 @@ namespace Presentacion
         {
             IEnumerable<Curso> cursos = await CursoApiClient.GetAllAsync();
 
-
             var cursosParaMostrar = new List<object>();
 
             foreach (var curso in cursos)
@@ -114,18 +113,6 @@ namespace Presentacion
         }
 
 
-
-        public async Task ListarCursosDisponibles()
-        {
-            List<Curso> cursos = (await CursoApiClient.GetAllAsync())
-                                 .Where(c => c.Cupo > 0)
-                                 .ToList();
-            dgvCursos.AutoGenerateColumns = false;
-            dgvCursos.DataSource = cursos;
-            // Podrian faltar mas filtros
-        }
-
-
         private void btnNuevoCurso_Click(object sender, EventArgs e)
         {
             FormNuevoCurso form = new FormNuevoCurso();
@@ -133,9 +120,9 @@ namespace Presentacion
             form.ShowDialog();
         }
 
-        private void FormNuevoCurso_FormClosing(object? sender, FormClosingEventArgs e)
+        private async void FormNuevoCurso_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            ListarCursos();
+            await ListarTodosLosCursos();
         }
 
         private async void dgvCursos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -151,12 +138,11 @@ namespace Presentacion
 
                 if (columnName == "colBtnEliminar")
                 {
-                    // Acción para eliminar
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         await CursoApiClient.DeleteAsync((id));
-                        ListarCursos();
+                        await ListarTodosLosCursos();
                     }
                 }
                 else if (columnName == "colBtnModificar")
@@ -164,22 +150,24 @@ namespace Presentacion
                     FormModificarCurso formModificar = new FormModificarCurso { Curso = await CursoApiClient.GetAsync(id)};
                     formModificar.FormClosing += FormModificarCurso_FormClosing;
                     formModificar.ShowDialog();
-                } else if (columnName == "colBtnInscripcion")
+                } else if (columnName == "ColBtnInscripcion")
                 {
                     DialogResult result = MessageBox.Show("¿Estás seguro de que quiere inscribirse a este curso?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
                         Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = id, Fecha = DateTime.Now };
                         await CursoApiClient.InscripcionAsync(ins);
-                        
+                        MessageBox.Show("Inscripcion realizada con exito!");
+                        if(Usuario.Rol == "Admin") { await ListarTodosLosCursos();} 
+                        else if (Usuario.Rol == "Alumno") { await ListarCursos(); }
                     }
                 }
             }
         }
 
-        private void FormModificarCurso_FormClosing(object? sender, FormClosingEventArgs e)
+        private async void FormModificarCurso_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            ListarCursos() ;
+            await ListarTodosLosCursos() ;
         }
     }
 

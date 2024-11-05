@@ -54,6 +54,7 @@ namespace Presentacion
                     if (result == DialogResult.Yes)
                     {
                         await PersonaApiClient.DeleteAsync(legajo);
+                        ListarAlumnos();
                     }
                 }
                 else if (columnName == "colBtnModificar")

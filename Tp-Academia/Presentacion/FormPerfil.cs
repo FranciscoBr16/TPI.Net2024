@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presentacion.ApiClients;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace Presentacion
 
         }
 
-        public void CargarDatos()
+        public async void CargarDatos()
         {
             txbTelefono.Text = Usuario.Tel;
             txbDni.Text = Usuario.DNI;
@@ -33,19 +34,39 @@ namespace Presentacion
             txbCorreo.Text = Usuario.Mail;
             txbUsuario.Text = Usuario.Usuario;
             txbDireccion.Text = Usuario.Direccion;
-            txbPlan.Text = Convert.ToString(Usuario.PlanId);
+            if (Usuario != null && Usuario.PlanId.HasValue)
+            {
+                txbPlan.Text = (await PlanApiClient.GetAsync(Usuario.PlanId.Value)).Descripcion;
+            }
+            else
+            {
+                txbPlan.Text = "N/A";
+            }
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            FormModificarPersona modificar = new FormModificarPersona {PersonaForm = this.Usuario};
+            FormModificarPersona modificar = new FormModificarPersona { PersonaForm = this.Usuario };
             modificar.FormClosing += FormInicio_FormClosing;
             modificar.Show();
         }
 
-        private void FormInicio_FormClosing(object? sender, FormClosingEventArgs e)
+        private async void FormInicio_FormClosing(object? sender, FormClosingEventArgs e)
         {
-            CargarDatos();
+            if (Usuario != null)
+            {
+                int legajo = Usuario.Legajo;
+                var usuarioActualizado = await PersonaApiClient.GetAsync(legajo);
+                if (usuarioActualizado != null)
+                {
+                    Usuario = usuarioActualizado;
+                    CargarDatos();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo obtener la información del usuario.");
+                }
+            }
         }
 
         private void btnInscripciones_Click(object sender, EventArgs e)
@@ -53,6 +74,23 @@ namespace Presentacion
             FormListadoCursos formListadoCursos = new FormListadoCursos();
             formListadoCursos.Usuario = this.Usuario;
             formListadoCursos.ShowDialog();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Usuario = null;
+            var mdiParent = this.MdiParent as MiFormBase;
+            if (mdiParent != null)
+            {
+                mdiParent.Usuario = null;
+                mdiParent.Usuario = null;
+
+                foreach (Form childForm in mdiParent.MdiChildren)
+                {
+                    childForm.Close();
+                }
+            }
+            this.Close();
         }
     }
 }

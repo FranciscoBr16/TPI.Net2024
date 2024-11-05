@@ -27,10 +27,10 @@ namespace Presentacion.ApiClients
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public static async Task<Persona> GetAsync(int id)
+        public static async Task<Persona> GetAsync(int legajo)
         {
             Persona per = null;
-            HttpResponseMessage response = await client.GetAsync("personas/" + id);
+            HttpResponseMessage response = await client.GetAsync("personas/" + legajo);
             if (response.IsSuccessStatusCode)
             {
                 per = await response.Content.ReadAsAsync<Persona>();

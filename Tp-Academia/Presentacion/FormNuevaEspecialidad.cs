@@ -29,6 +29,7 @@ namespace Presentacion
                 Especialidad espNueva = new Especialidad(txbDescripcion.Text);
                 await EspecialidadApiClient.AddAsync(espNueva);
                 MessageBox.Show("Nueva Especialidad Registrada");
+                this.Close();
 
             }
             else { return; }

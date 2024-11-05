@@ -36,11 +36,12 @@ namespace Presentacion
         {
             if (ValidarCampos()) { 
 
-            Especialidad esp = new Especialidad(txbDescripcion.Name);
+            Especialidad esp = new Especialidad{Id = Especialidad.Id, Descripcion = txbDescripcion.Text};
 
                  await EspecialidadApiClient.UpdateAsync(esp);
 
                 MessageBox.Show("Cambios guardados exitosamente.");
+                this.Close(); 
 
             }
         }
