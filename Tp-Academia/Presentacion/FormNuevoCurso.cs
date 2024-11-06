@@ -44,11 +44,11 @@ namespace Presentacion
                     ComisionId = (int)cbComision.SelectedValue,
                     MateriaId = (int)cbMateria.SelectedValue
                 };
-                Curso cursoCreado = await CursoApiClient.AddAsync(cursoNuevo);
+                int idCursoCreado = await CursoApiClient.AddAsync(cursoNuevo);
 
                 foreach (Persona unProfe in Profesores)
                 {
-                    Docente_curso dc = new Docente_curso { DocenteId= unProfe.Legajo , CursoId = cursoCreado.Id, Fecha= DateTime.Now };
+                    Docente_curso dc = new Docente_curso { DocenteId= unProfe.Legajo , CursoId = idCursoCreado, Fecha= DateTime.Now };
                     await CursoApiClient.AddProfesAsync(dc);
                 }
                 MessageBox.Show("Nuevo Curso Registrado");
@@ -69,6 +69,7 @@ namespace Presentacion
 
             if (Profesores.Count == 0) {
                 MessageBox.Show("Debe asignar un profesor");
+                return false;
             }
 
             if (!dtpFecha.Checked)

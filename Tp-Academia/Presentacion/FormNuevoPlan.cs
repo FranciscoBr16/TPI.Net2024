@@ -23,7 +23,7 @@ namespace Presentacion
         private async void FormNuevoPlan_Load(object sender, EventArgs e)
         {
 
-            cbEspecialidades.DataSource = await PlanApiClient.GetAllAsync() ;
+            cbEspecialidades.DataSource = await EspecialidadApiClient.GetAllAsync() ;
                
             cbEspecialidades.DisplayMember = "Descripcion";
 

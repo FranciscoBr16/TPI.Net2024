@@ -37,9 +37,10 @@ namespace Presentacion
             Form formAlumnos = IsOpen(typeof(FormListadoAlumnos));
             if (formAlumnos == null)
             {
-                formAlumnos = new FormListadoAlumnos();
-                formAlumnos.MdiParent = this;
-                formAlumnos.Show();
+                FormListadoAlumnos formAlumno = new FormListadoAlumnos();
+                formAlumno.MdiParent = this;
+                formAlumno.Usuario = this.Usuario;
+                formAlumno.Show();
             }
             else
             {
@@ -203,6 +204,7 @@ namespace Presentacion
                 FormPerfil formPer = new FormPerfil();
                 formPer.MdiParent = this;
                 formPer.Usuario = this.Usuario;
+                formPer.FormClosing += FormPerfil_FormClosing;
                 formPer.Show();
             }
             else
@@ -210,6 +212,11 @@ namespace Presentacion
                 formPerfil.BringToFront();
             }
 
+        }
+
+        private void FormPerfil_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            ActualizarVisibilidad();
         }
 
         private void toolStripLabel4_Click(object sender, EventArgs e)

@@ -16,7 +16,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Presentacion
 {
-    public partial class FormModificarPersona : Form
+    public partial class FormModificarPersona : MiFormBase
     {
         public Persona PersonaForm { get; set; }
 
@@ -37,6 +37,8 @@ namespace Presentacion
             txbUsuario.Text = PersonaForm.Usuario;
             txbDireccion.Text = PersonaForm.Direccion;
             IEnumerable<Entidades.Plan> planes = await PlanApiClient.GetAllAsync();
+            if (PersonaForm.PlanId.HasValue)
+            {
             cbIdPlan.DisplayMember = "Descripcion";
             cbIdPlan.ValueMember = "Id";
             cbIdPlan.DataSource = planes;
@@ -436,7 +438,6 @@ namespace Presentacion
         {
             if (ValidarCampos())
             {
-
                 Persona per = new Persona
                 {
                     Legajo = PersonaForm.Legajo,
@@ -467,7 +468,7 @@ namespace Presentacion
 
         private void ActualizarVisibilidad()
         {
-            if (this.PersonaForm.Rol != "Admin")
+            if (this.Usuario.Rol != "Admin")
             {
                 txbDni.Visible = false;
                 dtpFechaNac.Visible = false;
@@ -532,11 +533,12 @@ namespace Presentacion
                 MessageBox.Show("Seleccione una fecha de nacimiento válida.");
                 return false;
             }
-
+            if (PersonaForm.Rol == "Alumno") { 
             if (cbIdPlan.SelectedItem == null || ((Plan)cbIdPlan.SelectedItem).Id == 0)
             {
                 MessageBox.Show("Seleccione un plan válido.");
                 return false;
+            }
             }
 
 

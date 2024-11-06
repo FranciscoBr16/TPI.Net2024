@@ -54,19 +54,27 @@ namespace Presentacion
                     if (result == DialogResult.Yes)
                     {
                         await ComisionApiClient.DeleteAsync(id);
+                        ListarComisiones();
                     }
                 }
                 else if (columnName == "colBtnModificarCom")
                 {
                     FormModificarComision formModificar = new FormModificarComision { ComisionForm = await ComisionApiClient.GetAsync(id) };
+                    formModificar.FormClosing += formModificar_FormClosing; 
                     formModificar.ShowDialog();
                 }
             }
         }
 
+        private void formModificar_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+           ListarComisiones();
+        }
+
         private void btnNuevaComision_Click(object sender, EventArgs e)
         {
             FormNuevaComision formNuevo = new FormNuevaComision();
+            formNuevo.FormClosing += formModificar_FormClosing;
             formNuevo.ShowDialog();
         }
     }

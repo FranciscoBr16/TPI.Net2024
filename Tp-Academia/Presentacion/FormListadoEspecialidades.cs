@@ -59,16 +59,23 @@ namespace Presentacion
                         DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                         if (result == DialogResult.Yes)
                         {
-                           await EspecialidadApiClient.DeleteAsync(id);  
+                           await EspecialidadApiClient.DeleteAsync(id);
+                            ListarEspecialidades();
                         }
                     }
                     else if (columnName == "colBtnModificarEsp")
                     {
-                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad { Especialidad = await EspecialidadApiClient.GetAsync(id)}; 
+                        FormModificarEspecialidad formModificar = new FormModificarEspecialidad { Especialidad = await EspecialidadApiClient.GetAsync(id)};
+                        formModificar.FormClosing += formModificar_FormClosing; 
                         formModificar.ShowDialog();
                     }
             }
         }
+        }
+
+        private void formModificar_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            ListarEspecialidades();
         }
     }
 }

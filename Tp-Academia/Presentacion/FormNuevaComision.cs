@@ -29,6 +29,7 @@ namespace Presentacion
 
                 await ComisionApiClient.AddAsync(comNueva); 
                 MessageBox.Show("Nueva Comision Registrada");
+                this.Close();
 
             }
             else { return; }

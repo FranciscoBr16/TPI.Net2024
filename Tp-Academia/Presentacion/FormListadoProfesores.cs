@@ -36,16 +36,22 @@ namespace Presentacion
                     DialogResult result = MessageBox.Show("¿Estás seguro de eliminar este registro?", "Confirmar Eliminación", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
-                        await PersonaApiClient.DeleteAsync(legajo); 
+                        await PersonaApiClient.DeleteAsync(legajo);
+                        ListarProfesores();
                     }
                 }
                 else if (columnName == "colBtnModificar")
                 {
-                    FormModificarPersona formModificar = new FormModificarPersona();
-                    formModificar.PersonaForm = await PersonaApiClient.GetAsync(legajo);
+                    FormModificarPersona formModificar = new FormModificarPersona { PersonaForm = await PersonaApiClient.GetAsync(legajo)};
+                    formModificar.FormClosing += formModificar_FormClosing;
                     formModificar.ShowDialog();
                 }
             }
+        }
+
+        private void formModificar_FormClosing(object? sender, FormClosingEventArgs e)
+        {
+            ListarProfesores();
         }
 
         private void FormListadoProfesores_Load(object sender, EventArgs e)

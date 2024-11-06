@@ -37,9 +37,9 @@ namespace Entidades
 
         public override bool Equals(object obj)
         {
-            if (obj is Persona other)
+            if (obj is Persona otraPersona)
             {
-                return this.Legajo == other.Legajo;
+                return this.Legajo == otraPersona.Legajo;
             }
             return false;
         }

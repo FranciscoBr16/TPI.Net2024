@@ -67,10 +67,13 @@ app.MapGet("/cursos/disponiblesparaalumno/{idAlumno}", (int idAlumno) =>
     return CursoService.GetCursosDisponiblesParaAlumno(idAlumno);
 });
 
+
 app.MapPost("/cursos", (Curso cur) =>
 {
-    CursoService.InsertCurso(cur);
+    var cursoCreado = CursoService.InsertCurso(cur);
+    return Results.Ok(cursoCreado);
 });
+
 
 app.MapPut("/cursos", (Curso cur) =>
 {
@@ -102,7 +105,7 @@ app.MapPost("/especialidades", (Especialidad cur) =>
     EspecialidadService.InsertEspecialidad(cur);
 });
 
-app.MapPut("/especialidades/{id}", (Especialidad esp) =>
+app.MapPut("/especialidades", (Especialidad esp) =>
 {
     EspecialidadService.ModificarEspecialidad(esp);
 
@@ -158,7 +161,7 @@ app.MapGet("/personas", () =>
     return PersonaService.GetPersonas();
 });
 
-app.MapGet("/personas/{id}", (int legajo) =>
+app.MapGet("/personas/{legajo}", (int legajo) =>
 {
     return PersonaService.GetPersonaByLegajo(legajo);
 });
@@ -167,6 +170,7 @@ app.MapGet("/personas/{id}", (int legajo) =>
 app.MapPost("/personas", (Persona per) =>
 {
     PersonaService.InsertPersona(per);
+    return Results.Ok(per);
 });
 
 app.MapPost("/login", (Persona per) =>
@@ -188,7 +192,7 @@ app.MapPut("/personas", (Persona per) =>
 
 });
 
-app.MapDelete("/personas/{id}", (int legajo) =>
+app.MapDelete("/personas/{legajo}", (int legajo) =>
 {
     PersonaService.EliminarPersona(PersonaService.GetPersonaByLegajo(legajo));
 });
@@ -210,7 +214,7 @@ app.MapPost("/planes", (Plan plan) =>
     PlanService.InsertPlan(plan);
 });
 
-app.MapPut("/planes/{id}", (Plan plan) =>
+app.MapPut("/planes", (Plan plan) =>
 {
     PlanService.ModificarPlan(plan);
 
@@ -269,7 +273,7 @@ app.MapGet("/inscripciones/{id}", (int id) =>
 
 app.MapPost("/inscripciones", (Inscripcion inscripcion) =>
 {
-    InscripcionService.InsertInscripcion(inscripcion);
+    InscripcionService.InscripcionAlumnoCurso(inscripcion);
 });
 
 app.MapPut("/inscripciones/{id}", (Inscripcion inscripcion) =>
@@ -281,6 +285,22 @@ app.MapPut("/inscripciones/{id}", (Inscripcion inscripcion) =>
 app.MapDelete("/inscripciones/{id}", (int id) =>
 {
     InscripcionService.EliminarInscripcion(InscripcionService.GetInscripcionById(id));
+});
+
+app.MapGet("/inscripcionesdelalumno/{legajo}", (int legajo) =>
+{
+    try
+    {
+        return Results.Ok(InscripcionService.GetInscripcionesDelAlumno(legajo));
+    }
+    catch (ArgumentException ex)
+    {
+        return Results.BadRequest(new { Message = ex.Message });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem("Ocurrió un error al obtener las inscripciones.");
+    }
 });
 #endregion
 app.Run();

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Presentacion
 {
@@ -33,6 +34,7 @@ namespace Presentacion
             Plan plan = new Plan { Id=PlanPropio.Id , Descripcion= txbDescripcion.Text, EspecialidadId = ((Especialidad)cbEspecialidades.SelectedItem).Id, Fecha = dtpFecha.Value };
             await PlanApiClient.UpdateAsync(plan);
             MessageBox.Show("Cambios guardados exitosamente.");
+            this.Close();
             }
 
         }

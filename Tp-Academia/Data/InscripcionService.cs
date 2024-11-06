@@ -10,6 +10,49 @@ namespace Data
 {
     public class InscripcionService
     {
+        public static IEnumerable<Inscripcion> GetInscripcionesDelAlumno(int legajo)
+        {
+            using (var context = new AcademiaContext())
+            {
+                var inscripciones = context.Inscripciones
+                    .Where(insc => insc.AlumnoLegajo == legajo)
+                    .ToList();
+
+                if (!inscripciones.Any())
+                {
+                    throw new ArgumentException("El alumno no tiene inscripciones o no existe.");
+                }
+
+                return inscripciones;
+            }
+        }
+        static public bool InscripcionAlumnoCurso(Inscripcion insc)
+        {
+            using (AcademiaContext db = new AcademiaContext())
+            {
+                var curso = db.Cursos.Find(insc.CursoId);
+                if (curso != null)
+                {
+                    curso.Cupo--;
+                    db.Inscripciones.Add(insc);
+
+                    db.Entry(curso).State = EntityState.Modified;
+
+                    try
+                    {
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        return false;
+                    }
+                }
+                db.SaveChanges();
+                return true;
+            }
+        }
+
         static public List<Inscripcion> GetInscripciones()
         {
             using (AcademiaContext db = new AcademiaContext())
@@ -35,7 +78,7 @@ namespace Data
             using (AcademiaContext db = new AcademiaContext())
             {
                 Curso cur = db.Cursos.Find(insc.CursoId);
-                cur.Cupo--;
+                
                 CursoService.ModificarCurso(cur);
                 db.Inscripciones.Add(insc);
                 db.SaveChanges();
@@ -47,6 +90,8 @@ namespace Data
         {
             using (AcademiaContext db = new AcademiaContext())
             {
+                Curso cur = db.Cursos.Find(insc.CursoId);
+                cur.Cupo++;
                 db.Inscripciones.Remove(insc);
                 db.SaveChanges();
                 return true;

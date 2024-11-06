@@ -49,7 +49,7 @@ namespace Presentacion
                 return;
             }
 
-            if (Profesores.Any(p => p.Legajo == profesorSeleccionado.Legajo))
+            if (Profesores.Contains(profesorSeleccionado))
             {
                 MessageBox.Show("Ya agregaste a este Profesor");
             }
@@ -70,7 +70,7 @@ namespace Presentacion
                 return;
             }
 
-            if (Profesores.Any(p => p.Legajo == profesorSeleccionado.Legajo))
+            if (Profesores.Contains(profesorSeleccionado))
             {
                 Profesores.Remove(profesorSeleccionado);
                 MessageBox.Show("Se quitó el profesor del curso");
