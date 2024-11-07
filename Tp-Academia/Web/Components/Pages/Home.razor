@@ -1,7 +1,45 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager NavigationManager
 
-<h1>Hello, world!</h1>
+<PageTitle>Inicio</PageTitle>
 
-Welcome to your new app.
+@if (Usuario == null)
+{
+    <div class="contenedor">
+        <div class="tarjetaLogin">
+            <div class="inicia">
+                <p>Bienvenido, por favor inicie sesión.</p>
+                <a href="login"><button class="btn btn-primary" @onclick="NavigateToLogin">Iniciar Sesión</button></a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="contenedor">
+        <p>¡Bienvenido, @Usuario.Nombre!</p>
+        <button class="btn btn-primary" @onclick="NavigateToLogin" >Ir a Login</button>
+    </div>
+}
+
+@code {
+    Persona? Usuario { get; set; }
+    private bool isInitialized = false;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var result = await ProtectedSessionStore.GetAsync<Persona>("Usuario");
+            Usuario = result.Success ? result.Value : null;
+            isInitialized = true;
+            StateHasChanged();
+        }
+    }
+    private void NavigateToLogin()
+    {
+        NavigationManager.NavigateTo("/login");
+    }
+}
+

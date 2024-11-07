@@ -1,0 +1,67 @@
+﻿@page "/login"
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@code {
+    Persona? Usuario { get; set; }
+    private int legajo;
+    private string? password;
+    private string? ErrorMessage=null;
+}
+@if (Usuario == null)
+{
+    <div class="contenedor">
+        <div class="tarjetaLogin">
+            <div class="inicia">
+                <p>Iniciar Sesión</p>
+            </div>
+            <form>
+                <div class="inputs">
+                    <label for="legajo">Legajo</label>
+                    <input type="number" id="legajo" @bind="legajo" required class="form-control no-spinner" />
+                </div>
+                <div class="inputs">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" @bind="password" required class="form-control" />
+                </div>
+                @if (!string.IsNullOrEmpty(ErrorMessage))
+                {
+                    <div class="alert alert-danger">@ErrorMessage</div>
+                }
+                <div class="final">
+                    <button class="btn btn-primary" @onclick="IniciarSesion">Iniciar Sesión</button>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+
+@code {
+    private async void IniciarSesion()
+    {
+        try
+        {
+            var personaParaLogin = new Persona { Legajo = legajo, Clave = password };
+
+            var response = await Http.PostAsJsonAsync("/login", personaParaLogin);
+
+            if (response.IsSuccessStatusCode)
+            {
+                Usuario = await response.Content.ReadFromJsonAsync<Persona>();
+
+                await ProtectedSessionStore.SetAsync("Usuario", Usuario);
+
+                NavigationManager.NavigateTo("/home");
+            }
+            else
+            {
+                ErrorMessage = "Credenciales incorrectas, intente nuevamente.";
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = "Error de conexión con el servidor.";
+        }
+    }
+}

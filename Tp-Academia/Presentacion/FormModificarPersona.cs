@@ -39,14 +39,16 @@ namespace Presentacion
             IEnumerable<Entidades.Plan> planes = await PlanApiClient.GetAllAsync();
             if (PersonaForm.PlanId.HasValue)
             {
-            cbIdPlan.DisplayMember = "Descripcion";
-            cbIdPlan.ValueMember = "Id";
-            cbIdPlan.DataSource = planes;
-            if (PersonaForm.PlanId != null) { 
-            cbIdPlan.SelectedValue = PersonaForm.PlanId;
+                cbIdPlan.DisplayMember = "Descripcion";
+                cbIdPlan.ValueMember = "Id";
+                cbIdPlan.DataSource = planes;
+                if (PersonaForm.PlanId != null)
+                {
+                    cbIdPlan.SelectedValue = PersonaForm.PlanId;
+                }
+
+
             }
-
-
         }
 
         private void InitializeComponent()
