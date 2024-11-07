@@ -6,9 +6,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using Entidades;
 
-namespace Presentacion.ApiClients
+namespace ApiClients
 {
-    internal class PersonaApiClient 
+    public class PersonaApiClient 
     {
         private static HttpClient client = new HttpClient();
 
@@ -116,7 +116,7 @@ namespace Presentacion.ApiClients
             return profes;
         }
 
-        internal static async Task<object?> GetProfesoresAsync()
+        public static async Task<object?> GetProfesoresAsync()
         {
             IEnumerable<Persona> personas = null;
             HttpResponseMessage response = await client.GetAsync("profesores");

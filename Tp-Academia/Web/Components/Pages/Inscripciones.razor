@@ -1,0 +1,81 @@
+﻿@page "/mis_incripciones"
+@inject ProtectedSessionStorage ProtectedSessionStore
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@code {
+    Persona Usuario { get; set; }
+}
+
+@code {
+    public async Task ListarCursos()
+    {
+        IEnumerable<Curso> cursos = await ApiClients.CursoApiClient.GetCursosDisponiblesAsync(Usuario.Legajo);
+
+        var cursosParaMostrar = new List<CursoParaMostrar>();
+
+        foreach (var curso in cursos)
+        {
+            var profesor = (await ApiClients.PersonaApiClient.GetProfesoresDelCursoAsync(curso.Id)).FirstOrDefault();
+
+            var materia = await ApiClients.MateriaApiClient.GetAsync(curso.MateriaId);
+            var materiaDescripcion = materia?.Nombre ?? "Descripción de la materia no disponible";
+
+            var comision = await ApiClients.ComisionApiClient.GetAsync(curso.ComisionId);
+            var comisionDescripcion = comision?.Descripcion ?? "Descripcion de la comision no disponible";
+
+
+            cursosParaMostrar.Add(new CursoParaMostrar
+            {
+                Id = curso.Id,
+                MateriaDescripcion = materiaDescripcion,
+                Fecha_Vencimiento_Inscripcion = curso.Fecha_Vencimiento_Inscripcion,
+                Cupo = curso.Cupo,
+                IdComision = curso.ComisionId,
+                MateriaId = curso.MateriaId,
+                NombreProfesor = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
+                ComisionDescripcion = comisionDescripcion
+            });
+        }
+
+    }
+
+    public class CursoParaMostrar
+    {
+        public int Id { get; set; }
+        public string MateriaDescripcion { get; set; }
+        public DateTime Fecha_Vencimiento_Inscripcion { get; set; }
+        public int Cupo { get; set; }
+        public int IdComision { get; set; }
+        public int MateriaId { get; set; }
+        public string NombreProfesor { get; set; }
+        public string ComisionDescripcion { get; set; }
+
+    }
+}
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var curso in cursosParaMostrar)
+            {
+                <tr>
+                    <td>@curso.Id</td>
+                    <td>@curso.MateriaDescripcion</td>
+                    <td>@curso.Fecha_Vencimiento_Inscripcion</td>
+                    <td>@curso.Cupo</td>
+                    <td>@curso.IdComision</td>
+                    <td>@curso.MateriaId</td>
+                    <td>@curso.NombreProfesor</td>
+                        <td>@curso.ComisionDescripcion</td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>

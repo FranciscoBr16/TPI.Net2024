@@ -7,9 +7,9 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentacion.ApiClients
+namespace ApiClients
 {
-    internal class InscripcionApiClient
+    public class InscripcionApiClient
     {
         private static HttpClient client = new HttpClient();
 
@@ -56,7 +56,7 @@ namespace Presentacion.ApiClients
             return ins;
         }
 
-        internal static async Task DeleteAsync(int id)
+        public static async Task DeleteAsync(int id)
         {
             HttpResponseMessage response = await client.DeleteAsync("inscripciones/" + id);
             response.EnsureSuccessStatusCode();

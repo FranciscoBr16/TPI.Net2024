@@ -1,6 +1,5 @@
-﻿using Data;
-using Entidades;
-using Presentacion.ApiClients;
+﻿using Entidades;
+using ApiClients;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

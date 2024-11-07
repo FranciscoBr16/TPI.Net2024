@@ -6,9 +6,9 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using Entidades;
 
-namespace Presentacion.ApiClients
+namespace ApiClients
 {
-    internal class PlanApiClient 
+    public class PlanApiClient 
     {
        private static HttpClient client = new HttpClient();
 

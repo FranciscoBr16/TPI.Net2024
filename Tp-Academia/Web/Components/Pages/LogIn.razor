@@ -15,7 +15,7 @@
             <div class="inicia">
                 <p>Iniciar Sesión</p>
             </div>
-            <form>
+            <form method="post" @onsubmit=IniciarSesion data-enhance="false">
                 <div class="inputs">
                     <label for="legajo">Legajo</label>
                     <input type="number" id="legajo" @bind="legajo" required class="form-control no-spinner" />
@@ -29,7 +29,7 @@
                     <div class="alert alert-danger">@ErrorMessage</div>
                 }
                 <div class="final">
-                    <button class="btn btn-primary" @onclick="IniciarSesion">Iniciar Sesión</button>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </div>
             </form>
         </div>
@@ -42,13 +42,14 @@
     {
         try
         {
+
             var personaParaLogin = new Persona { Legajo = legajo, Clave = password };
 
-            var response = await Http.PostAsJsonAsync("/login", personaParaLogin);
+            var persona = await ApiClients.PersonaApiClient.LogInAsync(personaParaLogin);
 
-            if (response.IsSuccessStatusCode)
+            if (persona != null)
             {
-                Usuario = await response.Content.ReadFromJsonAsync<Persona>();
+                Usuario = persona;
 
                 await ProtectedSessionStore.SetAsync("Usuario", Usuario);
 

@@ -1,5 +1,5 @@
 ﻿using Entidades;
-using Presentacion.ApiClients;
+using ApiClients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Presentacion
             dgvProfesores.DataSource = null;
             dgvProfesores.AutoGenerateColumns = false;
 
-            dgvProfesores.DataSource = await PersonaApiClient.GetProfesoresAsync();
+            dgvProfesores.DataSource = await ApiClients.PersonaApiClient.GetProfesoresAsync();
 
             if (dgvProfesores.Rows.Count > 0)
             {
