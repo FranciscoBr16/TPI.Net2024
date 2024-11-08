@@ -1,75 +1,50 @@
 ﻿@page "/login"
-@inject ProtectedSessionStorage ProtectedSessionStore
-@inject NavigationManager NavigationManager
-@inject HttpClient Http
+@inject NavigationManager Navigation
 
-@if (Usuario == null)
-{
-    <div class="contenedor">
-        <div class="tarjetaLogin">
-            <div class="inicia">
-                <p>Iniciar Sesión</p>
-            </div>
-            <EditForm Model="@this" OnValidSubmit="IniciarSesion" FormName="Logeo">
-                <div class="inputs">
-                    <label for="legajo">Legajo</label>
-                    <InputNumber type="number" id="legajo" @bind-Value="Model.Legajo" required class="form-control no-spinner" />
-                </div>
-                <div class="inputs">
-                    <label for="password">Contraseña</label>
-                    <InputText type="password" id="password" @bind-Value="Model.Clave" required class="form-control" />
-                </div>
-                @if (!string.IsNullOrEmpty(ErrorMessage))
-                {
-                    <div class="alert alert-danger">@ErrorMessage</div>
-                }
-                <div class="final">
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                </div>
-            </EditForm>
-        </div>
+<h3>Login</h3>
+
+<EditForm Model="Model" OnValidSubmit="HandleLogin" FormName="miformulario">
+
+    <div class="form-group">
+        <label for="legajo">Legajo</label>
+        <InputNumber id="legajo" class="form-control no-spinner" required @bind-Value="Model.Legajo" />
     </div>
-}
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <InputText id="password" type="password" class="form-control" required @bind-Value="Model.Password" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Login</button>
+</EditForm>
+
 @code {
-    Persona? Usuario { get; set; }
-    private string? ErrorMessage = null;
-    private async Task IniciarSesion()
-    {
-        ErrorMessage = null; 
-        try
-        {
-            var personaParaLogin = new Persona { Legajo = Model.Legajo, Clave = Model.Clave };
-
-            var persona = await PersonaApiClient.LogInAsync(personaParaLogin);
-
-            if (persona != null)
-            {
-                Usuario = persona;
-
-                await ProtectedSessionStore.SetAsync("Usuario", Usuario);
-
-                NavigationManager.NavigateTo("/");
-            }
-            else
-            {
-                ErrorMessage = "Credenciales incorrectas, intente nuevamente.";
-            }
-        }
-        catch (Exception ex)
-        {
-            ErrorMessage = "Error de conexión con el servidor.";
-        }
-    }
 
     [SupplyParameterFromForm]
-    private InicioDeSesion Model { get; set; }
+    private LoginModel Model { get; set; }
 
     protected override void OnInitialized() => Model ??= new();
 
-
-    public class InicioDeSesion
+    public class LoginModel
     {
         public int Legajo { get; set; }
-        public string? Clave { get; set; }
+
+        public string Password { get; set; }
+    }
+
+    private async Task HandleLogin()
+    {
+        var personaParaLogin = new Persona { Legajo = Model.Legajo, Clave = Model.Password };
+        var persona = await PersonaApiClient.LogInAsync(personaParaLogin);
+        if (persona != null)
+        {
+            CustomAppContext.Usuario = persona;
+            Navigation.NavigateTo("/");
+        }
+        else
+        {
+
+            Console.WriteLine("Invalid credentials");
+        }
     }
 }

@@ -1,22 +1,20 @@
 ﻿@page "/mis_incripciones"
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
-@inject HttpClient Http
 
 @code {
-    Persona? Usuario { get; set; }
+    //Persona? Usuario { get; set; }
     private List<CursoParaMostrar> cursosParaMostrar = new List<CursoParaMostrar>();
 
     protected override async Task OnInitializedAsync()
     {
-        var result = await ProtectedSessionStore.GetAsync<Persona>("Usuario");
-        Usuario = result.Success ? result.Value : null;
+        
 
-        if (Usuario == null)
+        if (CustomAppContext.Usuario == null)
         {
             NavigationManager.NavigateTo("/login");
         }
-        else if (Usuario.Rol == "Alumno")
+        else if (CustomAppContext.Usuario.Rol == "Alumno")
         {
             await ListarCursos();
         }
@@ -24,7 +22,7 @@
 
     public async Task ListarCursos()
     {
-        IEnumerable<Curso> cursos = await ApiClients.CursoApiClient.GetCursosDisponiblesAsync(Usuario.Legajo);
+        IEnumerable<Curso> cursos = await ApiClients.CursoApiClient.GetCursosDisponiblesAsync(CustomAppContext.Usuario.Legajo);
 
         cursosParaMostrar.Clear();
 
@@ -64,7 +62,7 @@
     }
 }
 
-@if (Usuario != null)
+@if (CustomAppContext.Usuario != null)
 {
     <table class="table">
         <thead>
@@ -106,9 +104,9 @@ else
 @code {
     private async Task InscribirseEnCurso(int cursoId)
     {
-        Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = cursoId, Fecha = DateTime.Now, Condicion = "Inscripto" };
+        Inscripcion ins = new Inscripcion { AlumnoLegajo = CustomAppContext.Usuario.Legajo, CursoId = cursoId, Fecha = DateTime.Now, Condicion = "Inscripto" };
         await ApiClients.InscripcionApiClient.InscripcionAsync(ins);
 
-        if (Usuario.Rol == "Alumno") { await ListarCursos(); }
+        if (CustomAppContext.Usuario.Rol == "Alumno") { await ListarCursos(); }
     }
 }

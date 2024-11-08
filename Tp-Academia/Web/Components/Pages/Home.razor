@@ -1,11 +1,10 @@
 ﻿@page "/"
-
-@inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
 <PageTitle>Inicio</PageTitle>
 
-@if (Usuario == null)
+@if (CustomAppContext.Usuario == null)
 {
     <div class="contenedor">
         <div class="tarjetaLogin">
@@ -19,27 +18,23 @@
 else
 {
     <div class="contenedor">
-        <p>¡Bienvenido, @Usuario.Nombre!</p>
-        <button class="btn btn-primary" @onclick="NavigateToLogin" >Ir a Login</button>
+        <p>¡Bienvenido, @CustomAppContext.Usuario.Nombre!</p>
+        <button class="btn btn-primary" @onclick="CerrarSesion" >Cerrar Sesión</button>
     </div>
 }
 
 @code {
     Persona? Usuario { get; set; }
-    private bool isInitialized = false;
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            var result = await ProtectedSessionStore.GetAsync<Persona>("Usuario");
-            Usuario = result.Success ? result.Value : null;
-            isInitialized = true;
-            StateHasChanged();
-        }
-    }
+   
     private void NavigateToLogin()
     {
         NavigationManager.NavigateTo("/login");
     }
+    protected void CerrarSesion(EventArgs args)
+    {
+        CustomAppContext.Usuario = null;
+        NavigationManager.Refresh();
+    }
+    
 }
 
