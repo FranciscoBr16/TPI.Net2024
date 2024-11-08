@@ -48,9 +48,7 @@
 
                 await ProtectedSessionStore.SetAsync("Usuario", Usuario);
 
-                StateHasChanged();
-
-                NavigationManager.NavigateTo("/", forceLoad: true);
+                NavigationManager.NavigateTo("/");
             }
             else
             {
