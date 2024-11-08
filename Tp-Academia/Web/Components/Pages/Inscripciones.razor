@@ -2,41 +2,53 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
-@code {
-    Persona Usuario { get; set; }
-}
 
 @code {
+    Persona? Usuario { get; set; }
+    private List<CursoParaMostrar> cursosParaMostrar = new List<CursoParaMostrar>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var result = await ProtectedSessionStore.GetAsync<Persona>("Usuario");
+        Usuario = result.Success ? result.Value : null;
+
+        if (Usuario == null)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+        else if (Usuario.Rol == "Alumno")
+        {
+            await ListarCursos();
+        }
+    }
+
     public async Task ListarCursos()
     {
         IEnumerable<Curso> cursos = await ApiClients.CursoApiClient.GetCursosDisponiblesAsync(Usuario.Legajo);
 
-        var cursosParaMostrar = new List<CursoParaMostrar>();
+        cursosParaMostrar.Clear();
 
         foreach (var curso in cursos)
         {
             var profesor = (await ApiClients.PersonaApiClient.GetProfesoresDelCursoAsync(curso.Id)).FirstOrDefault();
-
             var materia = await ApiClients.MateriaApiClient.GetAsync(curso.MateriaId);
             var materiaDescripcion = materia?.Nombre ?? "Descripción de la materia no disponible";
 
             var comision = await ApiClients.ComisionApiClient.GetAsync(curso.ComisionId);
             var comisionDescripcion = comision?.Descripcion ?? "Descripcion de la comision no disponible";
 
-
             cursosParaMostrar.Add(new CursoParaMostrar
-            {
-                Id = curso.Id,
-                MateriaDescripcion = materiaDescripcion,
-                Fecha_Vencimiento_Inscripcion = curso.Fecha_Vencimiento_Inscripcion,
-                Cupo = curso.Cupo,
-                IdComision = curso.ComisionId,
-                MateriaId = curso.MateriaId,
-                NombreProfesor = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
-                ComisionDescripcion = comisionDescripcion
-            });
+                {
+                    Id = curso.Id,
+                    MateriaDescripcion = materiaDescripcion,
+                    Fecha_Vencimiento_Inscripcion = curso.Fecha_Vencimiento_Inscripcion,
+                    Cupo = curso.Cupo,
+                    IdComision = curso.ComisionId,
+                    MateriaId = curso.MateriaId,
+                    NombreProfesor = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
+                    ComisionDescripcion = comisionDescripcion
+                });
         }
-
     }
 
     public class CursoParaMostrar
@@ -49,17 +61,23 @@
         public int MateriaId { get; set; }
         public string NombreProfesor { get; set; }
         public string ComisionDescripcion { get; set; }
-
     }
 }
 
-<table class="table">
+@if (Usuario != null)
+{
+    <table class="table">
         <thead>
             <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
+                <th>Id Curso</th>
+                <th>Id Materia</th>
+                <th>Materia</th>
+                <th>Fecha Vencimiento</th>
+                <th>Cupo</th>
+                <th>Id Comision</th>
+                <th>Comision</th>
+                <th>Profesor</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -67,15 +85,30 @@
             {
                 <tr>
                     <td>@curso.Id</td>
+                    <td>@curso.MateriaId</td>
                     <td>@curso.MateriaDescripcion</td>
                     <td>@curso.Fecha_Vencimiento_Inscripcion</td>
                     <td>@curso.Cupo</td>
                     <td>@curso.IdComision</td>
-                    <td>@curso.MateriaId</td>
+                    <td>@curso.ComisionDescripcion</td>
                     <td>@curso.NombreProfesor</td>
-                        <td>@curso.ComisionDescripcion</td>
-                    
+                    <td><button @onclick="() => InscribirseEnCurso(curso.Id)">Inscribirse</button></td>
                 </tr>
             }
         </tbody>
     </table>
+}
+else
+{
+    <p>Cargando...</p>
+}
+
+@code {
+    private async Task InscribirseEnCurso(int cursoId)
+    {
+        Inscripcion ins = new Inscripcion { AlumnoLegajo = Usuario.Legajo, CursoId = cursoId, Fecha = DateTime.Now, Condicion = "Inscripto" };
+        await ApiClients.InscripcionApiClient.InscripcionAsync(ins);
+
+        if (Usuario.Rol == "Alumno") { await ListarCursos(); }
+    }
+}

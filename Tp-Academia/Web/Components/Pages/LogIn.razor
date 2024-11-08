@@ -2,12 +2,7 @@
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
 @inject HttpClient Http
-@code {
-    Persona? Usuario { get; set; }
-    private int legajo;
-    private string? password;
-    private string? ErrorMessage=null;
-}
+
 @if (Usuario == null)
 {
     <div class="contenedor">
@@ -15,14 +10,14 @@
             <div class="inicia">
                 <p>Iniciar Sesión</p>
             </div>
-            <form method="post" @onsubmit=IniciarSesion data-enhance="false">
+            <EditForm Model="@this" OnValidSubmit="IniciarSesion" FormName="Logeo">
                 <div class="inputs">
                     <label for="legajo">Legajo</label>
-                    <input type="number" id="legajo" @bind="legajo" required class="form-control no-spinner" />
+                    <InputNumber type="number" id="legajo" @bind-Value="Model.Legajo" required class="form-control no-spinner" />
                 </div>
                 <div class="inputs">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" @bind="password" required class="form-control" />
+                    <InputText type="password" id="password" @bind-Value="Model.Clave" required class="form-control" />
                 </div>
                 @if (!string.IsNullOrEmpty(ErrorMessage))
                 {
@@ -31,21 +26,21 @@
                 <div class="final">
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </div>
-            </form>
+            </EditForm>
         </div>
     </div>
 }
-
-
 @code {
-    private async void IniciarSesion()
+    Persona? Usuario { get; set; }
+    private string? ErrorMessage = null;
+    private async Task IniciarSesion()
     {
+        ErrorMessage = null; 
         try
         {
+            var personaParaLogin = new Persona { Legajo = Model.Legajo, Clave = Model.Clave };
 
-            var personaParaLogin = new Persona { Legajo = legajo, Clave = password };
-
-            var persona = await ApiClients.PersonaApiClient.LogInAsync(personaParaLogin);
+            var persona = await PersonaApiClient.LogInAsync(personaParaLogin);
 
             if (persona != null)
             {
@@ -53,7 +48,9 @@
 
                 await ProtectedSessionStore.SetAsync("Usuario", Usuario);
 
-                NavigationManager.NavigateTo("/home");
+                StateHasChanged();
+
+                NavigationManager.NavigateTo("/", forceLoad: true);
             }
             else
             {
@@ -64,5 +61,17 @@
         {
             ErrorMessage = "Error de conexión con el servidor.";
         }
+    }
+
+    [SupplyParameterFromForm]
+    private InicioDeSesion Model { get; set; }
+
+    protected override void OnInitialized() => Model ??= new();
+
+
+    public class InicioDeSesion
+    {
+        public int Legajo { get; set; }
+        public string? Clave { get; set; }
     }
 }
