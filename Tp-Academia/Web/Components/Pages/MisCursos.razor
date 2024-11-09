@@ -1,0 +1,132 @@
+﻿@page "/mis_cursos"
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+<h3>Mis Cursos</h3>
+
+@if (CustomAppContext.Usuario != null)
+{
+    @if (errorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @errorMessage
+        </div>
+    }
+    @if (cursosParaMostrar.Count == 0)
+    {
+        <h5>No te inscribiste en ningún curso</h5>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id Inscripcion</th>
+                    <th>Id Materia</th>
+                    <th>Materia</th>
+                    <th>Profesor</th>
+                    <th>Comision</th>
+                    <th>Fecha Inscripcion</th>
+                    <th>Condicion</th>
+                    <th>Nota</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var curso in cursosParaMostrar)
+                {
+                    <tr>
+                        <td>@curso.Id</td>
+                        <td>@curso.MateriaId</td>
+                        <td>@curso.MateriaDescripcion</td>
+                        <td>@curso.NombreProfesor</td>
+                        <td>@curso.ComisionDescripcion</td>
+                        <td>@curso.Fecha</td>
+                        <td>@curso.Condicion</td>
+                        <td>@curso.Nota</td>
+                        <td><button class="btn btn-secondary" @onclick="() => DarseDeBaja(curso.Id)">Darse de baja</button></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <p>Cargando...</p>
+}
+
+@code {
+    List<CursoMostrado> cursosParaMostrar = new List<CursoMostrado>();
+    private string errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (CustomAppContext.Usuario == null)
+        {
+            Navigation.NavigateTo("/login");
+        }
+        else if (CustomAppContext.Usuario.Rol == "Alumno")
+        {
+            await ListarCursos();
+        }
+    }
+
+    public async Task ListarCursos()
+    {
+        IEnumerable<Inscripcion> ins = await InscripcionApiClient.GetInscripcionesDelAlumnoAsync(CustomAppContext.Usuario.Legajo);
+
+        cursosParaMostrar.Clear();
+        foreach (var i in ins)
+        {
+            var profesor = (await PersonaApiClient.GetProfesoresDelCursoAsync(i.CursoId)).FirstOrDefault();
+            var curso = await CursoApiClient.GetAsync(i.CursoId);
+            var materia = await MateriaApiClient.GetAsync(curso.MateriaId);
+            var materiaDescripcion = materia?.Nombre ?? "Descripción de la materia no disponible";
+
+            var comision = await ComisionApiClient.GetAsync(curso.ComisionId);
+            var comisionDescripcion = comision?.Descripcion ?? "Descripcion de la comision no disponible";
+
+            cursosParaMostrar.Add(new CursoMostrado
+                {
+                    Id = i.Id,
+                    MateriaId = curso.MateriaId,
+                    MateriaDescripcion = materiaDescripcion,
+                    NombreProfesor = profesor != null ? profesor.Nombre + " " + profesor.Apellido : "Profesor no disponible",
+                    ComisionDescripcion = comisionDescripcion,
+                    Fecha = i.Fecha,
+                    Condicion = i.Condicion,
+                    Nota = i.Nota
+                });
+        }
+    }
+
+    private async Task DarseDeBaja(int id)
+    {
+        Inscripcion ins = await InscripcionApiClient.GetAsync(id);
+        DateTime f = ins.Fecha.AddDays(15);
+        if (f > DateTime.Now)
+        {
+            await InscripcionApiClient.DeleteAsync(id);
+            if (CustomAppContext.Usuario.Rol == "Alumno")
+            {
+                await ListarCursos();
+            }
+        }
+        else
+        {
+            errorMessage = "No puedes darte de baja de ese curso, la fecha ya expiró.";
+        }
+    }
+
+    public class CursoMostrado
+    {
+        public int Id { get; set; }
+        public int MateriaId { get; set; }
+        public string MateriaDescripcion { get; set; }
+        public string NombreProfesor { get; set; }
+        public string ComisionDescripcion { get; set; }
+        public DateTime Fecha { get; set; }
+        public string Condicion { get; set; }
+        public int Nota { get; set; }
+    }
+}
