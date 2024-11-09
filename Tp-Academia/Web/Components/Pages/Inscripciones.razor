@@ -1,9 +1,9 @@
 ﻿@page "/mis_incripciones"
 @inject ProtectedSessionStorage ProtectedSessionStore
 @inject NavigationManager NavigationManager
+@rendermode InteractiveServer
 
 @code {
-    //Persona? Usuario { get; set; }
     private List<CursoParaMostrar> cursosParaMostrar = new List<CursoParaMostrar>();
 
     protected override async Task OnInitializedAsync()
@@ -64,6 +64,14 @@
 
 @if (CustomAppContext.Usuario != null)
 {
+    <h3>Inscripciones Disponibles</h3>
+    @if (cursosParaMostrar.Count() == 0)
+    {
+        <h5>No existen cursos para mostrar</h5>
+    } else
+    {
+        
+   
     <table class="table">
         <thead>
             <tr>
@@ -79,6 +87,7 @@
             </tr>
         </thead>
         <tbody>
+              
             @foreach (var curso in cursosParaMostrar)
             {
                 <tr>
@@ -90,12 +99,12 @@
                     <td>@curso.IdComision</td>
                     <td>@curso.ComisionDescripcion</td>
                     <td>@curso.NombreProfesor</td>
-                    <td><button @onclick="() => InscribirseEnCurso(curso.Id)">Inscribirse</button></td>
+                    <td><button class="btn btn-secondary" @onclick="() => InscribirseEnCurso(curso.Id)">Inscribirse</button></td>
                 </tr>
             }
         </tbody>
     </table>
-}
+}}
 else
 {
     <p>Cargando...</p>
@@ -107,6 +116,7 @@ else
         Inscripcion ins = new Inscripcion { AlumnoLegajo = CustomAppContext.Usuario.Legajo, CursoId = cursoId, Fecha = DateTime.Now, Condicion = "Inscripto" };
         await ApiClients.InscripcionApiClient.InscripcionAsync(ins);
 
-        if (CustomAppContext.Usuario.Rol == "Alumno") { await ListarCursos(); }
+        if (CustomAppContext.Usuario.Rol == "Alumno") { await ListarCursos(); //se hace asi por si se quiere implementar al admin
+            }
     }
 }
