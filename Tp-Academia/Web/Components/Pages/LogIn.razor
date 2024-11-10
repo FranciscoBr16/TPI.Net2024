@@ -1,8 +1,10 @@
 ﻿@page "/login"
 @inject NavigationManager Navigation
 
-<h3>Login</h3>
 
+<div class="contenedor">
+    <div class="tarjetaLogin"
+        <h3 class="titulo">Iniciar Sesión</h3>
 <EditForm Model="Model" OnValidSubmit="HandleLogin" FormName="miformulario">
 
     <div class="form-group">
@@ -15,9 +17,10 @@
         <InputText id="password" type="password" class="form-control" required @bind-Value="Model.Password" />
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
-</EditForm>
-
+    <button type="submit" class="btn btn-primary botonFinal">Iniciar Sesión</button>
+    </EditForm>
+    </div>
+</div>
 @code {
 
     [SupplyParameterFromForm]

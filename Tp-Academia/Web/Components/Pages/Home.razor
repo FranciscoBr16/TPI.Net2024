@@ -6,20 +6,17 @@
 
 @if (CustomAppContext.Usuario == null)
 {
-    <div class="contenedor">
-        <div class="tarjetaLogin">
-            <div class="inicia">
-                <p>Bienvenido, por favor inicie sesión.</p>
-                <a href="login"><button class="btn btn-primary" @onclick="NavigateToLogin">Iniciar Sesión</button></a>
-            </div>
-        </div>
+    <div class="container">
+                <h3>¡Bienvenidos!</h3>
+                <p class="parrafo">Este proyecto forma parte de la materia "Tecnologías de Desarrollo de Software IDE", una asignatura electiva de la carrera de Ingeniería en Sistemas de Información. El trabajo es realizado por el grupo compuesto por Francisco Bruno y Facundo Picia. El objetivo es desarrollar un sistema de gestión académica, abarcando la administración de alumnos, profesores, materias, especialidades y cursos, con el fin de replicar los procesos y funcionalidades de la facultad.</p>
+                <a href="login"><button class="btn btn-primary botonFinal" @onclick="NavigateToLogin">Iniciar Sesión</button></a>
     </div>
 }
 else
 {
     <div class="contenedor">
         <p>¡Bienvenido, @CustomAppContext.Usuario.Nombre!</p>
-        <button class="btn btn-primary" @onclick="CerrarSesion" >Cerrar Sesión</button>
+        <button class="btn btn-primary botonFinal" @onclick="CerrarSesion" >Cerrar Sesión</button>
     </div>
 }
 

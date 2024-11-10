@@ -1,6 +1,7 @@
 ﻿@page "/mis_cursos"
 @inject NavigationManager Navigation
 @rendermode InteractiveServer
+<div class="container">
 <h3>Mis Cursos</h3>
 
 @if (CustomAppContext.Usuario != null)
@@ -54,6 +55,7 @@ else
 {
     <p>Cargando...</p>
 }
+</div>
 
 @code {
     List<CursoMostrado> cursosParaMostrar = new List<CursoMostrado>();
