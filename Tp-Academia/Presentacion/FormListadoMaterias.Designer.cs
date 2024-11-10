@@ -33,7 +33,7 @@
             tableLayoutPanel5 = new TableLayoutPanel();
             lblMaterias = new Label();
             btnNuevaMateria = new Button();
-            Id_materia = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
             Horas_semanales = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
             Descripcion = new DataGridViewTextBoxColumn();
@@ -66,13 +66,14 @@
             // 
             dgvMaterias.Anchor = AnchorStyles.Top;
             dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id_materia, Horas_semanales, Nombre, Descripcion, colAnio, Id_Plan, colBtnModificar, colBtnEliminar });
+            dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id, Horas_semanales, Nombre, Descripcion, colAnio, Id_Plan, colBtnModificar, colBtnEliminar });
             dgvMaterias.Location = new Point(56, 2);
             dgvMaterias.Margin = new Padding(3, 2, 3, 2);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.RowHeadersWidth = 51;
             dgvMaterias.Size = new Size(881, 306);
             dgvMaterias.TabIndex = 8;
+            dgvMaterias.CellMouseClick += dgvMaterias_CellMouseClick;
             // 
             // tableLayoutPanel5
             // 
@@ -114,13 +115,13 @@
             btnNuevaMateria.UseVisualStyleBackColor = true;
             btnNuevaMateria.Click += btnNuevaMateria_Click;
             // 
-            // Id_materia
+            // Id
             // 
-            Id_materia.DataPropertyName = "Id";
-            Id_materia.HeaderText = "Id";
-            Id_materia.Name = "Id_materia";
-            Id_materia.ReadOnly = true;
-            Id_materia.Resizable = DataGridViewTriState.False;
+            Id.DataPropertyName = "Id";
+            Id.HeaderText = "Id";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Resizable = DataGridViewTriState.False;
             // 
             // Horas_semanales
             // 
@@ -202,7 +203,7 @@
         private TableLayoutPanel tableLayoutPanel5;
         private Label lblMaterias;
         private Button btnNuevaMateria;
-        private DataGridViewTextBoxColumn Id_materia;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Horas_semanales;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn Descripcion;

@@ -16,6 +16,9 @@
     <Compile Update="FormModificarEspecialidad.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormModificarMateria.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormModificarPlan.cs">
       <SubType>Form</SubType>
     </Compile>

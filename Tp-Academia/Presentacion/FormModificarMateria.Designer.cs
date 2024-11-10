@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class FormNuevaMateria
+    partial class FormModificarMateria
     {
         /// <summary>
         /// Required designer variable.
@@ -66,7 +66,7 @@
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel3.Size = new Size(800, 64);
-            tableLayoutPanel3.TabIndex = 50;
+            tableLayoutPanel3.TabIndex = 53;
             // 
             // btnCancelar
             // 
@@ -108,18 +108,18 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(800, 47);
-            tableLayoutPanel1.TabIndex = 48;
+            tableLayoutPanel1.TabIndex = 51;
             // 
             // lblNuevaMateria
             // 
             lblNuevaMateria.Anchor = AnchorStyles.Bottom;
             lblNuevaMateria.AutoSize = true;
             lblNuevaMateria.Font = new Font("Segoe UI", 14F);
-            lblNuevaMateria.Location = new Point(331, 22);
+            lblNuevaMateria.Location = new Point(317, 22);
             lblNuevaMateria.Name = "lblNuevaMateria";
-            lblNuevaMateria.Size = new Size(136, 25);
+            lblNuevaMateria.Size = new Size(163, 25);
             lblNuevaMateria.TabIndex = 0;
-            lblNuevaMateria.Text = "Nueva Materia";
+            lblNuevaMateria.Text = "Modificar Materia";
             lblNuevaMateria.TextAlign = ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel2
@@ -149,7 +149,7 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.Size = new Size(800, 259);
-            tableLayoutPanel2.TabIndex = 49;
+            tableLayoutPanel2.TabIndex = 52;
             // 
             // lblNombre
             // 
@@ -248,7 +248,7 @@
             cbPlanes.Size = new Size(190, 23);
             cbPlanes.TabIndex = 49;
             // 
-            // FormNuevaMateria
+            // FormModificarMateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -256,9 +256,9 @@
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel2);
-            Name = "FormNuevaMateria";
-            Text = "Nueva Materia";
-            Load += FormNuevaMateria_Load;
+            Name = "FormModificarMateria";
+            Text = "Modificar Materia";
+            Load += FormModificarMateria_Load;
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
