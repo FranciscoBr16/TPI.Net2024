@@ -14,6 +14,8 @@ namespace Presentacion
 {
     public partial class FormListadoMaterias : MiFormBase
     {
+        private FormClosingEventHandler formModificar_FormClosing;
+
         public FormListadoMaterias()
         {
             InitializeComponent();
@@ -22,12 +24,14 @@ namespace Presentacion
         private void btnNuevaMateria_Click(object sender, EventArgs e)
         {
             FormNuevaMateria formNuevo = new FormNuevaMateria();
+            ListarMaterias();
             formNuevo.ShowDialog();
         }
 
         private void FormListadoMaterias_Load(object sender, EventArgs e)
         {
             ListarMaterias();
+
             if (Usuario != null && Usuario.Rol == "Admin")
             {
                 dgvMaterias.Columns["colBtnModificar"].Visible = true;
@@ -48,8 +52,6 @@ namespace Presentacion
             dgvMaterias.AutoGenerateColumns = false;
 
             dgvMaterias.DataSource = await MateriaApiClient.GetAllAsync();
-
-
         }
 
         private async void dgvMaterias_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -74,10 +76,16 @@ namespace Presentacion
                     }
                     else if (columnName == "colBtnModificar")
                     {
-                       
+                        // Acción para modificar
+                        FormModificarMateria formModificar = new FormModificarMateria { Materia = await MateriaApiClient.GetAsync(id) };
+                        formModificar.FormClosing += formModificar_FormClosing;
+                        formModificar.ShowDialog();
                     }
                 }   
             }
         }
+
+
+
     }
 }
