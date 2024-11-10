@@ -4,10 +4,19 @@
     <Compile Update="FormAgregarProfesor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormAlumnosDelCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAsignarNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormListadoCursos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormMisCursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormMisMaterias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormModificarCurso.cs">

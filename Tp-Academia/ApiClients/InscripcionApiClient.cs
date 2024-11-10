@@ -61,5 +61,22 @@ namespace ApiClients
             HttpResponseMessage response = await client.DeleteAsync("inscripciones/" + id);
             response.EnsureSuccessStatusCode();
         }
+
+        public static async Task<IEnumerable<Inscripcion>> GetInscripcionesDelCurso(object idCurso)
+        {
+            HttpResponseMessage response = await client.GetAsync("inscripcionesdelcurso/" + idCurso);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsAsync<IEnumerable<Inscripcion>>();
+            }
+            return Enumerable.Empty<Inscripcion>();
+        }
+
+        public static async Task UpdateAsync(Inscripcion ins)
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync("inscripciones", ins);
+            response.EnsureSuccessStatusCode();
+        }
     }
 }

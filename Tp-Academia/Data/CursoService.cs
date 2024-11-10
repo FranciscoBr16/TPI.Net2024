@@ -114,7 +114,26 @@ namespace Data
             }
         }
 
-        
+        public static List<Curso> GetCursosDelProfesor(int legajoProfesor)
+        {
+                using (AcademiaContext db = new AcademiaContext())
+                {
+                    List<Curso> cursos = new List<Curso>();
+
+                    var profe_Curso = db.Docente_curso
+                                .Where(p => p.DocenteId == legajoProfesor)
+                                .ToList();
+
+                    foreach (Docente_curso dc in profe_Curso)
+                    {
+                        cursos.Add(db.Cursos.Find(dc.CursoId));
+                    }
+                return cursos;
+            }
+
+            
+
+        }
     }
     
 }

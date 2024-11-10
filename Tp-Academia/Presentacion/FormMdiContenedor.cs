@@ -156,10 +156,15 @@ namespace Presentacion
                     toolStripLabel7.Visible = true;
                     toolStripLabel8.Visible = true;
                     toolStripLabel9.Visible = true;
+                    toolStripLabel10.Visible = true; // Mis cursos
                 }
                 else
                 {
                     toolStripLabel9.Visible = true; //perfil
+                    if (this.Usuario.Rol == "Profesor")
+                    {
+                        toolStripLabel10.Visible = true; // Mis cursos
+                    }
                 }
             }
             else
@@ -172,6 +177,7 @@ namespace Presentacion
                 toolStripLabel7.Visible = false;
                 toolStripLabel8.Visible = false;
                 toolStripLabel9.Visible = false;
+                toolStripLabel10.Visible = false; // Mis cursos
             }
 
 
@@ -232,6 +238,22 @@ namespace Presentacion
             else
             {
                 formListado.BringToFront();
+            }
+        }
+
+        private void toolStripLabel10_Click(object sender, EventArgs e)
+        {
+            Form formListadoMaterias = IsOpen(typeof(FormMisMaterias));
+            if (formListadoMaterias == null)
+            {
+                FormMisMaterias formListadoMat = new FormMisMaterias();
+                formListadoMat.MdiParent = this;
+                formListadoMat.Usuario = this.Usuario;
+                formListadoMat.Show();
+            }
+            else
+            {
+                formListadoMaterias.BringToFront();
             }
         }
     }

@@ -98,7 +98,7 @@ namespace Data
             }
         }
 
-        static public bool ModificarInscripcion(Inscripcion insc)
+        static public void ModificarInscripcion(Inscripcion insc)
         {
             using (var context = new AcademiaContext())
             {
@@ -107,25 +107,24 @@ namespace Data
                 {
 
                     inscripcionOriginal.Condicion = insc.Condicion;
-                    inscripcionOriginal.Fecha = insc.Fecha;
                     inscripcionOriginal.Nota = insc.Nota;
-                    
+
                     context.Entry(inscripcionOriginal).State = EntityState.Modified;
 
-                    try
-                    {
-                        context.SaveChanges();
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        return false;
-                    }
+                    context.SaveChanges();
                 }
-                else
-                {
-                    return false;
-                }
+            }
+        }
+
+        public static object GetInscripcionesByIdCurso(int id)
+        {
+            using (var context = new AcademiaContext())
+            {
+                var inscripciones = context.Inscripciones
+                    .Where(insc => insc.CursoId == id)
+                    .ToList();
+
+                return inscripciones;
             }
         }
     }

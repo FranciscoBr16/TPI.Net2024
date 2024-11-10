@@ -106,6 +106,17 @@ namespace ApiClients
             }
             return cur;
         }
+
+        public static async Task<IEnumerable<Curso>> GetCursosDelProfesorAsync(int legajoProfesor)
+        {
+            IEnumerable<Curso> cur = null;
+            HttpResponseMessage response = await client.GetAsync("cursosdelprofesor/" + legajoProfesor);
+            if (response.IsSuccessStatusCode)
+            {
+                cur = await response.Content.ReadAsAsync<IEnumerable<Curso>>();
+            }
+            return cur;
+        }
     }
 }
 

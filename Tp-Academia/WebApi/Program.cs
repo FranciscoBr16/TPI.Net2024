@@ -86,6 +86,10 @@ app.MapDelete("/Cursos/{id}", (int id) =>
     CursoService.EliminarCurso(CursoService.GetCursoById(id));
 });
 
+app.MapGet("/cursosdelprofesor/{legajoProfesor}", (int legajoProfesor) =>
+{
+    return CursoService.GetCursosDelProfesor(legajoProfesor);
+});
 
 #endregion
 #region Especialidad
@@ -276,7 +280,7 @@ app.MapPost("/inscripciones", (Inscripcion inscripcion) =>
     InscripcionService.InscripcionAlumnoCurso(inscripcion);
 });
 
-app.MapPut("/inscripciones/{id}", (Inscripcion inscripcion) =>
+app.MapPut("/inscripciones", (Inscripcion inscripcion) =>
 {
     InscripcionService.ModificarInscripcion(inscripcion);
 
@@ -301,6 +305,11 @@ app.MapGet("/inscripcionesdelalumno/{legajo}", (int legajo) =>
     {
         return Results.Problem("Ocurrió un error al obtener las inscripciones.");
     }
+});
+
+app.MapGet("/inscripcionesdelcurso/{id}", (int id) =>
+{
+    return InscripcionService.GetInscripcionesByIdCurso(id);
 });
 #endregion
 app.Run();

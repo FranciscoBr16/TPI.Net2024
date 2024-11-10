@@ -32,19 +32,20 @@
             toolStripLabel1 = new ToolStripLabel();
             toolStripLabel2 = new ToolStripLabel();
             toolStripLabel3 = new ToolStripLabel();
+            toolStripLabel4 = new ToolStripLabel();
             toolStripLabel5 = new ToolStripLabel();
             toolStripLabel6 = new ToolStripLabel();
             toolStripLabel7 = new ToolStripLabel();
             toolStripLabel8 = new ToolStripLabel();
             toolStripLabel9 = new ToolStripLabel();
-            toolStripLabel4 = new ToolStripLabel();
+            toolStripLabel10 = new ToolStripLabel();
             toolStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripLabel1, toolStripLabel2, toolStripLabel3, toolStripLabel4, toolStripLabel5, toolStripLabel6, toolStripLabel7, toolStripLabel8, toolStripLabel9 });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { toolStripLabel1, toolStripLabel2, toolStripLabel3, toolStripLabel4, toolStripLabel5, toolStripLabel6, toolStripLabel7, toolStripLabel8, toolStripLabel9, toolStripLabel10 });
             toolStrip1.Location = new Point(0, 0);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(1130, 25);
@@ -71,6 +72,13 @@
             toolStripLabel3.Size = new Size(62, 22);
             toolStripLabel3.Text = "Profesores";
             toolStripLabel3.Click += toolStripLabel3_Click;
+            // 
+            // toolStripLabel4
+            // 
+            toolStripLabel4.Name = "toolStripLabel4";
+            toolStripLabel4.Size = new Size(43, 22);
+            toolStripLabel4.Text = "Cursos";
+            toolStripLabel4.Click += toolStripLabel4_Click;
             // 
             // toolStripLabel5
             // 
@@ -107,12 +115,12 @@
             toolStripLabel9.Text = "Perfil";
             toolStripLabel9.Click += toolStripLabel9_Click;
             // 
-            // toolStripLabel4
+            // toolStripLabel10
             // 
-            toolStripLabel4.Name = "toolStripLabel4";
-            toolStripLabel4.Size = new Size(43, 22);
-            toolStripLabel4.Text = "Cursos";
-            toolStripLabel4.Click += toolStripLabel4_Click;
+            toolStripLabel10.Name = "toolStripLabel10";
+            toolStripLabel10.Size = new Size(74, 22);
+            toolStripLabel10.Text = "Mis Materias";
+            toolStripLabel10.Click += toolStripLabel10_Click;
             // 
             // FormMdiContenedor
             // 
@@ -144,5 +152,6 @@
         private ToolStripLabel toolStripLabel8;
         private ToolStripLabel toolStripLabel9;
         private ToolStripLabel toolStripLabel4;
+        private ToolStripLabel toolStripLabel10;
     }
 }
