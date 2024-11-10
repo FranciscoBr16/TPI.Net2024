@@ -134,7 +134,7 @@ app.MapPost("/materias", (Materia mat) =>
     MateriaService.InsertMateria(mat);
 });
 
-app.MapPut("/materias/{id}", (Materia mat) =>
+app.MapPut("/materias", (Materia mat) =>
 {
     MateriaService.ModificarMateria(mat);
 

@@ -78,12 +78,17 @@ namespace Presentacion
                     {
                         // Acción para modificar
                         FormModificarMateria formModificar = new FormModificarMateria { Materia = await MateriaApiClient.GetAsync(id) };
-                        formModificar.FormClosing += formModificar_FormClosing;
+                        formModificar.FormClosing += FormModificar_FormClosing;
                         formModificar.ShowDialog();
                     }
                 }   
             }
         }
+
+        private void FormModificar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ListarMaterias();
+        }   
 
 
 
