@@ -30,8 +30,6 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             dgvCursos = new DataGridView();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            lblCursos = new Label();
             Id = new DataGridViewTextBoxColumn();
             cupo = new DataGridViewTextBoxColumn();
             Fecha = new DataGridViewTextBoxColumn();
@@ -40,6 +38,8 @@
             Comision = new DataGridViewTextBoxColumn();
             Contador = new DataGridViewTextBoxColumn();
             colBtnAlumnos = new DataGridViewButtonColumn();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            lblCursos = new Label();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCursos).BeginInit();
             tableLayoutPanel5.SuspendLayout();
@@ -53,12 +53,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.Controls.Add(dgvCursos, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 113);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Location = new Point(0, 151);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1008, 374);
+            tableLayoutPanel1.Size = new Size(1152, 499);
             tableLayoutPanel1.TabIndex = 13;
             // 
             // dgvCursos
@@ -67,41 +66,13 @@
             dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCursos.Columns.AddRange(new DataGridViewColumn[] { Id, cupo, Fecha, IdMateria, Materia, Comision, Contador, colBtnAlumnos });
             dgvCursos.Dock = DockStyle.Top;
-            dgvCursos.Location = new Point(53, 2);
-            dgvCursos.Margin = new Padding(3, 2, 3, 2);
+            dgvCursos.Location = new Point(60, 3);
             dgvCursos.Name = "dgvCursos";
             dgvCursos.ReadOnly = true;
             dgvCursos.RowHeadersWidth = 51;
-            dgvCursos.Size = new Size(901, 342);
+            dgvCursos.Size = new Size(1030, 456);
             dgvCursos.TabIndex = 8;
             dgvCursos.CellMouseClick += dgvCursos_CellMouseClick;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 3;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(lblCursos, 1, 0);
-            tableLayoutPanel5.Dock = DockStyle.Top;
-            tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(1008, 113);
-            tableLayoutPanel5.TabIndex = 12;
-            // 
-            // lblCursos
-            // 
-            lblCursos.Anchor = AnchorStyles.None;
-            lblCursos.AutoSize = true;
-            lblCursos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCursos.Location = new Point(452, 15);
-            lblCursos.Name = "lblCursos";
-            lblCursos.Size = new Size(104, 25);
-            lblCursos.TabIndex = 0;
-            lblCursos.Text = "Mis Cursos";
             // 
             // Id
             // 
@@ -144,7 +115,7 @@
             Materia.MinimumWidth = 6;
             Materia.Name = "Materia";
             Materia.ReadOnly = true;
-            Materia.Width = 72;
+            Materia.Width = 89;
             // 
             // Comision
             // 
@@ -154,12 +125,12 @@
             Comision.MinimumWidth = 6;
             Comision.Name = "Comision";
             Comision.ReadOnly = true;
-            Comision.Width = 83;
             // 
             // Contador
             // 
             Contador.DataPropertyName = "contador";
             Contador.HeaderText = "Cantidad de Alumnos Inscriptos";
+            Contador.MinimumWidth = 6;
             Contador.Name = "Contador";
             Contador.ReadOnly = true;
             // 
@@ -172,15 +143,44 @@
             colBtnAlumnos.Text = "Ver Alumnos";
             colBtnAlumnos.UseColumnTextForButtonValue = true;
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(lblCursos, 1, 0);
+            tableLayoutPanel5.Dock = DockStyle.Top;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(1152, 151);
+            tableLayoutPanel5.TabIndex = 12;
+            // 
+            // lblCursos
+            // 
+            lblCursos.Anchor = AnchorStyles.None;
+            lblCursos.AutoSize = true;
+            lblCursos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCursos.Location = new Point(511, 21);
+            lblCursos.Name = "lblCursos";
+            lblCursos.Size = new Size(130, 32);
+            lblCursos.TabIndex = 0;
+            lblCursos.Text = "Mis Cursos";
+            // 
             // FormMisMaterias
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 681);
+            ClientSize = new Size(1152, 908);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormMisMaterias";
-            Text = "FormMisMaterias";
+            Text = "Mis Materias";
             WindowState = FormWindowState.Maximized;
             Load += FormMisMaterias_Load;
             tableLayoutPanel1.ResumeLayout(false);

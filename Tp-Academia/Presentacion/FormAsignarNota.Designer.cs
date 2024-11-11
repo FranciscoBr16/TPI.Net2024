@@ -53,22 +53,20 @@
             tableLayoutPanel3.Controls.Add(btnCancelar, 1, 0);
             tableLayoutPanel3.Controls.Add(btnAceptar, 2, 0);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 321);
-            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel3.Location = new Point(0, 428);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 1;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(800, 47);
+            tableLayoutPanel3.Size = new Size(914, 63);
             tableLayoutPanel3.TabIndex = 51;
             // 
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.None;
             btnCancelar.BackColor = Color.Red;
-            btnCancelar.Location = new Point(259, 12);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Location = new Point(295, 17);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(82, 22);
+            btnCancelar.Size = new Size(94, 29);
             btnCancelar.TabIndex = 20;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -77,10 +75,9 @@
             // btnAceptar
             // 
             btnAceptar.Anchor = AnchorStyles.None;
-            btnAceptar.Location = new Point(459, 12);
-            btnAceptar.Margin = new Padding(3, 2, 3, 2);
+            btnAceptar.Location = new Point(523, 17);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(82, 22);
+            btnAceptar.Size = new Size(94, 29);
             btnAceptar.TabIndex = 19;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -98,23 +95,22 @@
             tableLayoutPanel2.Controls.Add(tbNota, 2, 1);
             tableLayoutPanel2.Controls.Add(tbCondicion, 2, 2);
             tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 106);
-            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel2.Location = new Point(0, 141);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(800, 215);
+            tableLayoutPanel2.Size = new Size(914, 287);
             tableLayoutPanel2.TabIndex = 50;
             // 
             // lblNota
             // 
             lblNota.Anchor = AnchorStyles.None;
             lblNota.AutoSize = true;
-            lblNota.Location = new Point(123, 57);
+            lblNota.Location = new Point(138, 76);
             lblNota.Name = "lblNota";
-            lblNota.Size = new Size(33, 15);
+            lblNota.Size = new Size(42, 20);
             lblNota.TabIndex = 0;
             lblNota.Text = "Nota";
             // 
@@ -122,28 +118,26 @@
             // 
             lblCondicion.Anchor = AnchorStyles.None;
             lblCondicion.AutoSize = true;
-            lblCondicion.Location = new Point(109, 157);
+            lblCondicion.Location = new Point(121, 210);
             lblCondicion.Name = "lblCondicion";
-            lblCondicion.Size = new Size(62, 15);
+            lblCondicion.Size = new Size(76, 20);
             lblCondicion.TabIndex = 1;
             lblCondicion.Text = "Condicion";
             // 
             // tbNota
             // 
             tbNota.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tbNota.Location = new Point(203, 53);
-            tbNota.Margin = new Padding(3, 2, 3, 2);
+            tbNota.Location = new Point(231, 73);
             tbNota.Name = "tbNota";
-            tbNota.Size = new Size(514, 23);
+            tbNota.Size = new Size(588, 27);
             tbNota.TabIndex = 2;
             // 
             // tbCondicion
             // 
             tbCondicion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            tbCondicion.Location = new Point(203, 153);
-            tbCondicion.Margin = new Padding(3, 2, 3, 2);
+            tbCondicion.Location = new Point(231, 206);
             tbCondicion.Name = "tbCondicion";
-            tbCondicion.Size = new Size(514, 23);
+            tbCondicion.Size = new Size(588, 27);
             tbCondicion.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -155,12 +149,11 @@
             tableLayoutPanel1.Controls.Add(label1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(800, 106);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            tableLayoutPanel1.Size = new Size(914, 141);
             tableLayoutPanel1.TabIndex = 49;
             // 
             // label1
@@ -168,22 +161,23 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(299, 24);
+            label1.Location = new Point(331, 34);
             label1.Name = "label1";
-            label1.Size = new Size(200, 37);
+            label1.Size = new Size(249, 46);
             label1.TabIndex = 0;
             label1.Text = "Asignar la Nota";
             // 
             // FormAsignarNota
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormAsignarNota";
-            Text = "FormAsignarNota";
+            Text = "Asignar Nota";
             Load += FormAsignarNota_Load;
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);

@@ -30,9 +30,6 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             dgvMaterias = new DataGridView();
-            tableLayoutPanel5 = new TableLayoutPanel();
-            lblMaterias = new Label();
-            btnNuevaMateria = new Button();
             Id = new DataGridViewTextBoxColumn();
             Horas_semanales = new DataGridViewTextBoxColumn();
             Nombre = new DataGridViewTextBoxColumn();
@@ -41,6 +38,9 @@
             Id_Plan = new DataGridViewTextBoxColumn();
             colBtnModificar = new DataGridViewButtonColumn();
             colBtnEliminar = new DataGridViewButtonColumn();
+            tableLayoutPanel5 = new TableLayoutPanel();
+            lblMaterias = new Label();
+            btnNuevaMateria = new Button();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvMaterias).BeginInit();
             tableLayoutPanel5.SuspendLayout();
@@ -54,12 +54,11 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.Controls.Add(dgvMaterias, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 107);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
+            tableLayoutPanel1.Location = new Point(0, 143);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(996, 340);
+            tableLayoutPanel1.Size = new Size(1138, 453);
             tableLayoutPanel1.TabIndex = 9;
             // 
             // dgvMaterias
@@ -67,96 +66,67 @@
             dgvMaterias.Anchor = AnchorStyles.Top;
             dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id, Horas_semanales, Nombre, Descripcion, colAnio, Id_Plan, colBtnModificar, colBtnEliminar });
-            dgvMaterias.Location = new Point(56, 2);
-            dgvMaterias.Margin = new Padding(3, 2, 3, 2);
+            dgvMaterias.Location = new Point(64, 3);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.RowHeadersWidth = 51;
-            dgvMaterias.Size = new Size(881, 306);
+            dgvMaterias.Size = new Size(1007, 408);
             dgvMaterias.TabIndex = 8;
             dgvMaterias.CellMouseClick += dgvMaterias_CellMouseClick;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 3;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(lblMaterias, 1, 0);
-            tableLayoutPanel5.Controls.Add(btnNuevaMateria, 1, 1);
-            tableLayoutPanel5.Dock = DockStyle.Top;
-            tableLayoutPanel5.Location = new Point(0, 0);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 2;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(996, 107);
-            tableLayoutPanel5.TabIndex = 8;
-            // 
-            // lblMaterias
-            // 
-            lblMaterias.Anchor = AnchorStyles.None;
-            lblMaterias.AutoSize = true;
-            lblMaterias.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblMaterias.Location = new Point(455, 14);
-            lblMaterias.Name = "lblMaterias";
-            lblMaterias.Size = new Size(85, 25);
-            lblMaterias.TabIndex = 0;
-            lblMaterias.Text = "Materias";
-            // 
-            // btnNuevaMateria
-            // 
-            btnNuevaMateria.Anchor = AnchorStyles.Bottom;
-            btnNuevaMateria.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNuevaMateria.Location = new Point(418, 77);
-            btnNuevaMateria.Name = "btnNuevaMateria";
-            btnNuevaMateria.Size = new Size(160, 27);
-            btnNuevaMateria.TabIndex = 1;
-            btnNuevaMateria.Text = "Agregar Materia";
-            btnNuevaMateria.UseVisualStyleBackColor = true;
-            btnNuevaMateria.Click += btnNuevaMateria_Click;
             // 
             // Id
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.ReadOnly = true;
             Id.Resizable = DataGridViewTriState.False;
+            Id.Width = 125;
             // 
             // Horas_semanales
             // 
             Horas_semanales.DataPropertyName = "CantHorasSemanales";
             Horas_semanales.HeaderText = "Horas semanales";
+            Horas_semanales.MinimumWidth = 6;
             Horas_semanales.Name = "Horas_semanales";
             Horas_semanales.ReadOnly = true;
+            Horas_semanales.Width = 125;
             // 
             // Nombre
             // 
             Nombre.DataPropertyName = "Nombre";
             Nombre.HeaderText = "Nombre";
+            Nombre.MinimumWidth = 6;
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
+            Nombre.Width = 125;
             // 
             // Descripcion
             // 
             Descripcion.DataPropertyName = "Descripcion";
             Descripcion.HeaderText = "Descripcion";
+            Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
+            Descripcion.Width = 125;
             // 
             // colAnio
             // 
             colAnio.DataPropertyName = "Anio";
             colAnio.HeaderText = "Año";
+            colAnio.MinimumWidth = 6;
             colAnio.Name = "colAnio";
             colAnio.ReadOnly = true;
+            colAnio.Width = 125;
             // 
             // Id_Plan
             // 
             Id_Plan.DataPropertyName = "PlanId";
             Id_Plan.HeaderText = "Id Plan";
+            Id_Plan.MinimumWidth = 6;
             Id_Plan.Name = "Id_Plan";
             Id_Plan.ReadOnly = true;
+            Id_Plan.Width = 125;
             // 
             // colBtnModificar
             // 
@@ -178,15 +148,58 @@
             colBtnEliminar.UseColumnTextForButtonValue = true;
             colBtnEliminar.Width = 125;
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Controls.Add(lblMaterias, 1, 0);
+            tableLayoutPanel5.Controls.Add(btnNuevaMateria, 1, 1);
+            tableLayoutPanel5.Dock = DockStyle.Top;
+            tableLayoutPanel5.Location = new Point(0, 0);
+            tableLayoutPanel5.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 2;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel5.Size = new Size(1138, 143);
+            tableLayoutPanel5.TabIndex = 8;
+            // 
+            // lblMaterias
+            // 
+            lblMaterias.Anchor = AnchorStyles.None;
+            lblMaterias.AutoSize = true;
+            lblMaterias.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMaterias.Location = new Point(516, 19);
+            lblMaterias.Name = "lblMaterias";
+            lblMaterias.Size = new Size(105, 32);
+            lblMaterias.TabIndex = 0;
+            lblMaterias.Text = "Materias";
+            // 
+            // btnNuevaMateria
+            // 
+            btnNuevaMateria.Anchor = AnchorStyles.Bottom;
+            btnNuevaMateria.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNuevaMateria.Location = new Point(477, 103);
+            btnNuevaMateria.Margin = new Padding(3, 4, 3, 4);
+            btnNuevaMateria.Name = "btnNuevaMateria";
+            btnNuevaMateria.Size = new Size(183, 36);
+            btnNuevaMateria.TabIndex = 1;
+            btnNuevaMateria.Text = "Agregar Materia";
+            btnNuevaMateria.UseVisualStyleBackColor = true;
+            btnNuevaMateria.Click += btnNuevaMateria_Click;
+            // 
             // FormListadoMaterias
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(996, 590);
+            ClientSize = new Size(1138, 787);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormListadoMaterias";
-            Text = "FormListadoMaterias";
+            Text = "Materias";
             WindowState = FormWindowState.Maximized;
             Load += FormListadoMaterias_Load;
             tableLayoutPanel1.ResumeLayout(false);

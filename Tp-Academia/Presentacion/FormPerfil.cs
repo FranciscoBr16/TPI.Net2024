@@ -69,12 +69,7 @@ namespace Presentacion
             }
         }
 
-        private void btnInscripciones_Click(object sender, EventArgs e)
-        {
-            FormListadoCursos formListadoCursos = new FormListadoCursos();
-            formListadoCursos.Usuario = this.Usuario;
-            formListadoCursos.ShowDialog();
-        }
+
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -93,11 +88,6 @@ namespace Presentacion
             this.Close();
         }
 
-        private void btnCursos_Click(object sender, EventArgs e)
-        {
-            FormMisCursos formListadoCursos = new FormMisCursos();
-            formListadoCursos.Usuario = this.Usuario;
-            formListadoCursos.ShowDialog();
-        }
+
     }
 }

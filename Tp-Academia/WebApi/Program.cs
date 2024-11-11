@@ -21,7 +21,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/", () => "Hello, World!");
+app.MapGet("/", () => "ok");
 
 #region Comisiones
 
@@ -41,7 +41,7 @@ app.MapPost("/comisiones",  (Comision com) =>
     ComisionService.InsertComision(com);
 });
 
-app.MapPut("/comisiones/{id}", (Comision com) =>
+app.MapPut("/comisiones/", (Comision com) =>
 {
     ComisionService.ModificarComision(com);
  

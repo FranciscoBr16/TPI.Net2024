@@ -57,11 +57,12 @@
             tableLayoutPanel1.Controls.Add(label1, 1, 1);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(800, 100);
+            tableLayoutPanel1.Size = new Size(914, 133);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // label1
@@ -69,9 +70,9 @@
             label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(329, 50);
+            label1.Location = new Point(371, 66);
             label1.Name = "label1";
-            label1.Size = new Size(139, 30);
+            label1.Size = new Size(170, 37);
             label1.TabIndex = 0;
             label1.Text = "Nuevo Curso";
             // 
@@ -94,13 +95,14 @@
             tableLayoutPanel2.Controls.Add(dtpFecha, 5, 1);
             tableLayoutPanel2.Controls.Add(cbComision, 2, 2);
             tableLayoutPanel2.Dock = DockStyle.Top;
-            tableLayoutPanel2.Location = new Point(0, 100);
+            tableLayoutPanel2.Location = new Point(0, 133);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 3;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel2.Size = new Size(800, 203);
+            tableLayoutPanel2.Size = new Size(914, 271);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // lblMateria
@@ -108,9 +110,9 @@
             lblMateria.Anchor = AnchorStyles.None;
             lblMateria.AutoSize = true;
             lblMateria.Font = new Font("Segoe UI", 10F);
-            lblMateria.Location = new Point(472, 152);
+            lblMateria.Location = new Point(535, 205);
             lblMateria.Name = "lblMateria";
-            lblMateria.Size = new Size(56, 19);
+            lblMateria.Size = new Size(68, 23);
             lblMateria.TabIndex = 3;
             lblMateria.Text = "Materia";
             // 
@@ -119,9 +121,9 @@
             lblComision.Anchor = AnchorStyles.None;
             lblComision.AutoSize = true;
             lblComision.Font = new Font("Segoe UI", 10F);
-            lblComision.Location = new Point(67, 152);
+            lblComision.Location = new Point(73, 205);
             lblComision.Name = "lblComision";
-            lblComision.Size = new Size(66, 19);
+            lblComision.Size = new Size(81, 23);
             lblComision.TabIndex = 2;
             lblComision.Text = "Comision";
             // 
@@ -130,9 +132,10 @@
             cbMateria.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbMateria.Font = new Font("Segoe UI", 10F);
             cbMateria.FormattingEnabled = true;
-            cbMateria.Location = new Point(563, 148);
+            cbMateria.Location = new Point(641, 201);
+            cbMateria.Margin = new Padding(3, 4, 3, 4);
             cbMateria.Name = "cbMateria";
-            cbMateria.Size = new Size(194, 25);
+            cbMateria.Size = new Size(222, 31);
             cbMateria.TabIndex = 5;
             // 
             // lblCupo
@@ -140,9 +143,9 @@
             lblCupo.Anchor = AnchorStyles.None;
             lblCupo.AutoSize = true;
             lblCupo.Font = new Font("Segoe UI", 10F);
-            lblCupo.Location = new Point(79, 71);
+            lblCupo.Location = new Point(88, 96);
             lblCupo.Name = "lblCupo";
-            lblCupo.Size = new Size(42, 19);
+            lblCupo.Size = new Size(51, 23);
             lblCupo.TabIndex = 0;
             lblCupo.Text = "Cupo";
             // 
@@ -151,9 +154,9 @@
             lblFecha.Anchor = AnchorStyles.None;
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Segoe UI", 10F);
-            lblFecha.Location = new Point(458, 61);
+            lblFecha.Location = new Point(517, 85);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(84, 38);
+            lblFecha.Size = new Size(105, 46);
             lblFecha.TabIndex = 1;
             lblFecha.Text = "Fecha de Vencimiento";
             // 
@@ -161,18 +164,20 @@
             // 
             tbCupo.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tbCupo.Font = new Font("Segoe UI", 10F);
-            tbCupo.Location = new Point(163, 68);
+            tbCupo.Location = new Point(185, 93);
+            tbCupo.Margin = new Padding(3, 4, 3, 4);
             tbCupo.Name = "tbCupo";
-            tbCupo.Size = new Size(194, 25);
+            tbCupo.Size = new Size(222, 30);
             tbCupo.TabIndex = 2;
             // 
             // dtpFecha
             // 
             dtpFecha.Anchor = AnchorStyles.None;
             dtpFecha.CalendarFont = new Font("Segoe UI", 10F);
-            dtpFecha.Location = new Point(563, 69);
+            dtpFecha.Location = new Point(641, 94);
+            dtpFecha.Margin = new Padding(3, 4, 3, 4);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(194, 23);
+            dtpFecha.Size = new Size(221, 27);
             dtpFecha.TabIndex = 3;
             // 
             // cbComision
@@ -180,9 +185,10 @@
             cbComision.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             cbComision.Font = new Font("Segoe UI", 10F);
             cbComision.FormattingEnabled = true;
-            cbComision.Location = new Point(163, 148);
+            cbComision.Location = new Point(185, 201);
+            cbComision.Margin = new Padding(3, 4, 3, 4);
             cbComision.Name = "cbComision";
-            cbComision.Size = new Size(194, 25);
+            cbComision.Size = new Size(222, 31);
             cbComision.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -197,22 +203,24 @@
             tableLayoutPanel3.Controls.Add(btnAceptar, 3, 3);
             tableLayoutPanel3.Controls.Add(btnCancelar, 1, 3);
             tableLayoutPanel3.Dock = DockStyle.Top;
-            tableLayoutPanel3.Location = new Point(0, 303);
+            tableLayoutPanel3.Location = new Point(0, 404);
+            tableLayoutPanel3.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 4;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
-            tableLayoutPanel3.Size = new Size(800, 106);
+            tableLayoutPanel3.Size = new Size(914, 141);
             tableLayoutPanel3.TabIndex = 2;
             // 
             // btnAgregarProfesor
             // 
             btnAgregarProfesor.Anchor = AnchorStyles.None;
-            btnAgregarProfesor.Location = new Point(334, 13);
+            btnAgregarProfesor.Location = new Point(381, 18);
+            btnAgregarProfesor.Margin = new Padding(3, 4, 3, 4);
             btnAgregarProfesor.Name = "btnAgregarProfesor";
-            btnAgregarProfesor.Size = new Size(131, 25);
+            btnAgregarProfesor.Size = new Size(150, 33);
             btnAgregarProfesor.TabIndex = 0;
             btnAgregarProfesor.Text = "Agregar Profesor";
             btnAgregarProfesor.UseVisualStyleBackColor = true;
@@ -221,9 +229,10 @@
             // btnAceptar
             // 
             btnAceptar.Anchor = AnchorStyles.Left;
-            btnAceptar.Location = new Point(523, 76);
+            btnAceptar.Location = new Point(596, 103);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(82, 25);
+            btnAceptar.Size = new Size(94, 33);
             btnAceptar.TabIndex = 2;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -232,23 +241,25 @@
             // btnCancelar
             // 
             btnCancelar.Anchor = AnchorStyles.Right;
-            btnCancelar.Location = new Point(195, 76);
+            btnCancelar.Location = new Point(222, 103);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(82, 25);
+            btnCancelar.Size = new Size(94, 33);
             btnCancelar.TabIndex = 1;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             // 
             // FormNuevoCurso
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(914, 600);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormNuevoCurso";
-            Text = "FormNuevoCurso";
+            Text = "Nuevo Curso";
             Load += FormNuevoCurso_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

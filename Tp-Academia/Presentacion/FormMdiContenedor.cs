@@ -156,7 +156,9 @@ namespace Presentacion
                     toolStripLabel7.Visible = true;
                     toolStripLabel8.Visible = true;
                     toolStripLabel9.Visible = true;
-                    toolStripLabel10.Visible = true; // Mis cursos
+                    toolStripLabel10.Visible = false; // Mis cursos
+                    toolStripLabel11.Visible = false; // Mis cursos inscripto
+                    toolStripLabel12.Visible = false;
                 }
                 else
                 {
@@ -164,6 +166,11 @@ namespace Presentacion
                     if (this.Usuario.Rol == "Profesor")
                     {
                         toolStripLabel10.Visible = true; // Mis cursos
+                    }
+                    else if (this.Usuario.Rol == "Alumno")
+                    {
+                        toolStripLabel11.Visible = true; // Mis cursos inscripto
+                        toolStripLabel12.Visible = true; // Inscripciones
                     }
                 }
             }
@@ -178,6 +185,8 @@ namespace Presentacion
                 toolStripLabel8.Visible = false;
                 toolStripLabel9.Visible = false;
                 toolStripLabel10.Visible = false; // Mis cursos
+                toolStripLabel11.Visible = false; // Mis cursos inscripto
+                toolStripLabel12.Visible = false; // Inscripciones
             }
 
 
@@ -254,6 +263,38 @@ namespace Presentacion
             else
             {
                 formListadoMaterias.BringToFront();
+            }
+        }
+
+        private void toolStripLabel11_Click(object sender, EventArgs e)
+        {
+            Form formListadoCursos = IsOpen(typeof(FormMisCursos));
+            if (formListadoCursos == null)
+            {
+                FormMisCursos fmc = new FormMisCursos();
+                fmc.MdiParent = this;
+                fmc.Usuario = this.Usuario;
+                fmc.Show();
+            }
+            else
+            {
+                formListadoCursos.BringToFront();
+            }
+        }
+
+        private void toolStripLabel12_Click(object sender, EventArgs e)
+        {
+            Form form = IsOpen(typeof(FormMisCursos));
+            if (form == null)
+            {
+                FormListadoCursos formListadoCursos = new FormListadoCursos();
+                formListadoCursos.MdiParent = this;
+                formListadoCursos.Usuario = this.Usuario;
+                formListadoCursos.Show();
+            }
+            else
+            {
+                form.BringToFront();
             }
         }
     }

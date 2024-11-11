@@ -201,7 +201,7 @@
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormModificarPlan";
-            Text = "FormModificarPlan";
+            Text = "Modificar Plan";
             Load += FormModificarPlan_Load;
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
