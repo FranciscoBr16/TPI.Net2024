@@ -87,6 +87,7 @@
             // dgvEspecialidades
             // 
             dgvEspecialidades.Anchor = AnchorStyles.Top;
+            dgvEspecialidades.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvEspecialidades.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEspecialidades.Columns.AddRange(new DataGridViewColumn[] { Id, Descripcion, colBtnModificarEsp, colBtnEliminarEsp });
             dgvEspecialidades.Location = new Point(124, 3);
@@ -103,7 +104,7 @@
             Id.MinimumWidth = 6;
             Id.Name = "Id";
             Id.ReadOnly = true;
-            Id.Width = 125;
+            Id.Width = 139;
             // 
             // Descripcion
             // 
@@ -122,7 +123,7 @@
             colBtnModificarEsp.ReadOnly = true;
             colBtnModificarEsp.Text = "Modificar";
             colBtnModificarEsp.UseColumnTextForButtonValue = true;
-            colBtnModificarEsp.Width = 125;
+            colBtnModificarEsp.Width = 24;
             // 
             // colBtnEliminarEsp
             // 
@@ -132,7 +133,7 @@
             colBtnEliminarEsp.ReadOnly = true;
             colBtnEliminarEsp.Text = "Eliminar";
             colBtnEliminarEsp.UseColumnTextForButtonValue = true;
-            colBtnEliminarEsp.Width = 125;
+            colBtnEliminarEsp.Width = 24;
             // 
             // tableLayoutPanel1
             // 

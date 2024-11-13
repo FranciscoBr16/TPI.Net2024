@@ -167,7 +167,7 @@
             cbEspecialidades.FormattingEnabled = true;
             cbEspecialidades.Location = new Point(215, 76);
             cbEspecialidades.Name = "cbEspecialidades";
-            cbEspecialidades.Size = new Size(217, 28);
+            cbEspecialidades.Size = new Size(258, 28);
             cbEspecialidades.TabIndex = 48;
             // 
             // lblFecha
@@ -185,7 +185,7 @@
             dtpFecha.Anchor = AnchorStyles.Left;
             dtpFecha.Location = new Point(215, 137);
             dtpFecha.Name = "dtpFecha";
-            dtpFecha.Size = new Size(250, 27);
+            dtpFecha.Size = new Size(258, 27);
             dtpFecha.TabIndex = 50;
             // 
             // FormNuevoPlan

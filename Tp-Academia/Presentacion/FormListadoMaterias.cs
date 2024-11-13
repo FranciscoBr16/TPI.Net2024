@@ -24,7 +24,7 @@ namespace Presentacion
         private void btnNuevaMateria_Click(object sender, EventArgs e)
         {
             FormNuevaMateria formNuevo = new FormNuevaMateria();
-            ListarMaterias();
+            formNuevo.FormClosing += FormModificar_FormClosing;
             formNuevo.ShowDialog();
         }
 

@@ -22,6 +22,7 @@ namespace Presentacion
         private void btnNuevaEspecialidad_Click(object sender, EventArgs e)
         {
             FormNuevaEspecialidad formNuevo = new FormNuevaEspecialidad();
+            formNuevo.FormClosing += formModificar_FormClosing;
             formNuevo.ShowDialog();
         }
 

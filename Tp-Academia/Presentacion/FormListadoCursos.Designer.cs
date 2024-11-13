@@ -65,7 +65,7 @@
             // 
             // dgvCursos
             // 
-            dgvCursos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCursos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvCursos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCursos.Columns.AddRange(new DataGridViewColumn[] { Id, cupo, Fecha, IdMateria, Materia, Profesor, Comision, colBtnModificar, colBtnEliminar, ColBtnInscripcion });
             dgvCursos.Dock = DockStyle.Top;
@@ -127,6 +127,7 @@
             Id.Name = "Id";
             Id.ReadOnly = true;
             Id.Resizable = DataGridViewTriState.False;
+            Id.Width = 51;
             // 
             // cupo
             // 
@@ -135,6 +136,7 @@
             cupo.MinimumWidth = 6;
             cupo.Name = "cupo";
             cupo.ReadOnly = true;
+            cupo.Width = 73;
             // 
             // Fecha
             // 
@@ -143,6 +145,7 @@
             Fecha.MinimumWidth = 6;
             Fecha.Name = "Fecha";
             Fecha.ReadOnly = true;
+            Fecha.Width = 148;
             // 
             // IdMateria
             // 
@@ -151,16 +154,16 @@
             IdMateria.MinimumWidth = 6;
             IdMateria.Name = "IdMateria";
             IdMateria.ReadOnly = true;
+            IdMateria.Width = 98;
             // 
             // Materia
             // 
-            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            Materia.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Materia.DataPropertyName = "MateriaDescripcion";
             Materia.HeaderText = "Materia";
             Materia.MinimumWidth = 6;
             Materia.Name = "Materia";
             Materia.ReadOnly = true;
-            Materia.Width = 89;
             // 
             // Profesor
             // 
@@ -189,6 +192,7 @@
             colBtnModificar.ReadOnly = true;
             colBtnModificar.Text = "Modificar";
             colBtnModificar.UseColumnTextForButtonValue = true;
+            colBtnModificar.Width = 24;
             // 
             // colBtnEliminar
             // 
@@ -198,6 +202,7 @@
             colBtnEliminar.ReadOnly = true;
             colBtnEliminar.Text = "Eliminar";
             colBtnEliminar.UseColumnTextForButtonValue = true;
+            colBtnEliminar.Width = 24;
             // 
             // ColBtnInscripcion
             // 
@@ -207,6 +212,7 @@
             ColBtnInscripcion.ReadOnly = true;
             ColBtnInscripcion.Text = "Inscribirse";
             ColBtnInscripcion.UseColumnTextForButtonValue = true;
+            ColBtnInscripcion.Width = 24;
             // 
             // FormListadoCursos
             // 

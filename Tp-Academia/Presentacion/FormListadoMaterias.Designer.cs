@@ -63,13 +63,14 @@
             // 
             // dgvMaterias
             // 
-            dgvMaterias.Anchor = AnchorStyles.Top;
+            dgvMaterias.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvMaterias.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvMaterias.Columns.AddRange(new DataGridViewColumn[] { Id, Horas_semanales, Nombre, Descripcion, colAnio, Id_Plan, colBtnModificar, colBtnEliminar });
-            dgvMaterias.Location = new Point(64, 3);
+            dgvMaterias.Dock = DockStyle.Fill;
+            dgvMaterias.Location = new Point(59, 3);
             dgvMaterias.Name = "dgvMaterias";
             dgvMaterias.RowHeadersWidth = 51;
-            dgvMaterias.Size = new Size(1007, 408);
+            dgvMaterias.Size = new Size(1018, 447);
             dgvMaterias.TabIndex = 8;
             dgvMaterias.CellMouseClick += dgvMaterias_CellMouseClick;
             // 
@@ -81,7 +82,7 @@
             Id.Name = "Id";
             Id.ReadOnly = true;
             Id.Resizable = DataGridViewTriState.False;
-            Id.Width = 125;
+            Id.Width = 51;
             // 
             // Horas_semanales
             // 
@@ -90,7 +91,7 @@
             Horas_semanales.MinimumWidth = 6;
             Horas_semanales.Name = "Horas_semanales";
             Horas_semanales.ReadOnly = true;
-            Horas_semanales.Width = 125;
+            Horas_semanales.Width = 137;
             // 
             // Nombre
             // 
@@ -99,16 +100,16 @@
             Nombre.MinimumWidth = 6;
             Nombre.Name = "Nombre";
             Nombre.ReadOnly = true;
-            Nombre.Width = 125;
+            Nombre.Width = 93;
             // 
             // Descripcion
             // 
+            Descripcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Descripcion.DataPropertyName = "Descripcion";
             Descripcion.HeaderText = "Descripcion";
             Descripcion.MinimumWidth = 6;
             Descripcion.Name = "Descripcion";
             Descripcion.ReadOnly = true;
-            Descripcion.Width = 125;
             // 
             // colAnio
             // 
@@ -117,7 +118,7 @@
             colAnio.MinimumWidth = 6;
             colAnio.Name = "colAnio";
             colAnio.ReadOnly = true;
-            colAnio.Width = 125;
+            colAnio.Width = 65;
             // 
             // Id_Plan
             // 
@@ -126,7 +127,7 @@
             Id_Plan.MinimumWidth = 6;
             Id_Plan.Name = "Id_Plan";
             Id_Plan.ReadOnly = true;
-            Id_Plan.Width = 125;
+            Id_Plan.Width = 77;
             // 
             // colBtnModificar
             // 
@@ -136,7 +137,7 @@
             colBtnModificar.ReadOnly = true;
             colBtnModificar.Text = "Modificar";
             colBtnModificar.UseColumnTextForButtonValue = true;
-            colBtnModificar.Width = 125;
+            colBtnModificar.Width = 24;
             // 
             // colBtnEliminar
             // 
@@ -146,7 +147,7 @@
             colBtnEliminar.ReadOnly = true;
             colBtnEliminar.Text = "Eliminar";
             colBtnEliminar.UseColumnTextForButtonValue = true;
-            colBtnEliminar.Width = 125;
+            colBtnEliminar.Width = 24;
             // 
             // tableLayoutPanel5
             // 

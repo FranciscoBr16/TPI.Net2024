@@ -54,10 +54,10 @@
             dtpFechaNac = new DateTimePicker();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
             lblEspecialidad = new Label();
             cbEspecialidades = new ComboBox();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            tableLayoutPanel4 = new TableLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
@@ -356,6 +356,26 @@
             tableLayoutPanel2.Size = new Size(809, 283);
             tableLayoutPanel2.TabIndex = 32;
             // 
+            // lblEspecialidad
+            // 
+            lblEspecialidad.Anchor = AnchorStyles.None;
+            lblEspecialidad.AutoSize = true;
+            lblEspecialidad.Font = new Font("Segoe UI", 7F);
+            lblEspecialidad.Location = new Point(426, 132);
+            lblEspecialidad.Name = "lblEspecialidad";
+            lblEspecialidad.Size = new Size(72, 15);
+            lblEspecialidad.TabIndex = 31;
+            lblEspecialidad.Text = "Especialidad";
+            // 
+            // cbEspecialidades
+            // 
+            cbEspecialidades.Anchor = AnchorStyles.None;
+            cbEspecialidades.FormattingEnabled = true;
+            cbEspecialidades.Location = new Point(514, 126);
+            cbEspecialidades.Name = "cbEspecialidades";
+            cbEspecialidades.Size = new Size(238, 28);
+            cbEspecialidades.TabIndex = 32;
+            // 
             // tableLayoutPanel3
             // 
             tableLayoutPanel3.ColumnCount = 5;
@@ -390,31 +410,11 @@
             tableLayoutPanel4.Size = new Size(809, 39);
             tableLayoutPanel4.TabIndex = 34;
             // 
-            // lblEspecialidad
-            // 
-            lblEspecialidad.Anchor = AnchorStyles.None;
-            lblEspecialidad.AutoSize = true;
-            lblEspecialidad.Font = new Font("Segoe UI", 7F);
-            lblEspecialidad.Location = new Point(426, 132);
-            lblEspecialidad.Name = "lblEspecialidad";
-            lblEspecialidad.Size = new Size(72, 15);
-            lblEspecialidad.TabIndex = 31;
-            lblEspecialidad.Text = "Especialidad";
-            // 
-            // cbEspecialidades
-            // 
-            cbEspecialidades.Anchor = AnchorStyles.None;
-            cbEspecialidades.FormattingEnabled = true;
-            cbEspecialidades.Location = new Point(514, 122);
-            cbEspecialidades.Name = "cbEspecialidades";
-            cbEspecialidades.Size = new Size(238, 28);
-            cbEspecialidades.TabIndex = 32;
-            // 
             // FormNuevaPersona
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(809, 589);
+            ClientSize = new Size(809, 506);
             Controls.Add(tableLayoutPanel4);
             Controls.Add(tableLayoutPanel3);
             Controls.Add(tableLayoutPanel1);

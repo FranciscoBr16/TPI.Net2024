@@ -56,6 +56,8 @@ namespace Presentacion
                 else if (radiobProfesor.Checked)
                 {
                     string rol = "Profesor";
+                    int especialidadId = Convert.ToInt32(cbEspecialidades.SelectedValue);
+                    Plan pl = await PlanApiClient.GetPlanNuevoDeLaEspecialidad(especialidadId);
 
                     Persona profesorNuevo = new Persona
                     {
@@ -69,7 +71,8 @@ namespace Presentacion
                         Direccion = txbDireccion.Text,
                         DNI = txbDni.Text,
                         Fecha_nac = dtpFechaNac.Value,
-                        Fecha_ingreso = fechaHoy
+                        Fecha_ingreso = fechaHoy,
+                        PlanId = pl.Id
                     };
                     int legajo = await PersonaApiClient.AddAsync(profesorNuevo);
 

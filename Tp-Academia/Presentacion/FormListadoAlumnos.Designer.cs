@@ -32,6 +32,7 @@
             tableLayoutPanel4 = new TableLayoutPanel();
             lblAlumnos = new Label();
             dgvAlumnos = new DataGridView();
+            tableLayoutPanel1 = new TableLayoutPanel();
             colLegajo = new DataGridViewTextBoxColumn();
             colNombre = new DataGridViewTextBoxColumn();
             colApellido = new DataGridViewTextBoxColumn();
@@ -41,7 +42,6 @@
             colAnioIngreso = new DataGridViewTextBoxColumn();
             colBtnModificar = new DataGridViewButtonColumn();
             colBtnEliminar = new DataGridViewButtonColumn();
-            tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAlumnos).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -60,7 +60,7 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel4.Size = new Size(1520, 83);
+            tableLayoutPanel4.Size = new Size(1006, 83);
             tableLayoutPanel4.TabIndex = 4;
             // 
             // lblAlumnos
@@ -68,7 +68,7 @@
             lblAlumnos.Anchor = AnchorStyles.None;
             lblAlumnos.AutoSize = true;
             lblAlumnos.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblAlumnos.Location = new Point(705, 25);
+            lblAlumnos.Location = new Point(448, 25);
             lblAlumnos.Name = "lblAlumnos";
             lblAlumnos.Size = new Size(108, 32);
             lblAlumnos.TabIndex = 0;
@@ -76,15 +76,30 @@
             // 
             // dgvAlumnos
             // 
-            dgvAlumnos.Anchor = AnchorStyles.Top;
             dgvAlumnos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAlumnos.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colAnioIngreso, colBtnModificar, colBtnEliminar });
-            dgvAlumnos.Location = new Point(87, 3);
+            dgvAlumnos.Dock = DockStyle.Fill;
+            dgvAlumnos.Location = new Point(23, 3);
             dgvAlumnos.Name = "dgvAlumnos";
             dgvAlumnos.RowHeadersWidth = 51;
-            dgvAlumnos.Size = new Size(1344, 527);
+            dgvAlumnos.Size = new Size(959, 527);
             dgvAlumnos.TabIndex = 3;
             dgvAlumnos.CellMouseClick += dgvAlumnos_CellMouseClick;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 96F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
+            tableLayoutPanel1.Controls.Add(dgvAlumnos, 1, 0);
+            tableLayoutPanel1.Dock = DockStyle.Top;
+            tableLayoutPanel1.Location = new Point(0, 83);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel1.Size = new Size(1006, 533);
+            tableLayoutPanel1.TabIndex = 5;
             // 
             // colLegajo
             // 
@@ -97,21 +112,21 @@
             // 
             // colNombre
             // 
+            colNombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colNombre.DataPropertyName = "Nombre";
             colNombre.HeaderText = "Nombre";
             colNombre.MinimumWidth = 6;
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
-            colNombre.Width = 125;
             // 
             // colApellido
             // 
+            colApellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colApellido.DataPropertyName = "Apellido";
             colApellido.HeaderText = "Apellido";
             colApellido.MinimumWidth = 6;
             colApellido.Name = "colApellido";
             colApellido.ReadOnly = true;
-            colApellido.Width = 125;
             // 
             // colUsuario
             // 
@@ -133,11 +148,11 @@
             // 
             // colCorreo
             // 
+            colCorreo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colCorreo.DataPropertyName = "Mail";
             colCorreo.HeaderText = "Correo";
             colCorreo.MinimumWidth = 6;
             colCorreo.Name = "colCorreo";
-            colCorreo.Width = 125;
             // 
             // colAnioIngreso
             // 
@@ -169,26 +184,11 @@
             colBtnEliminar.UseColumnTextForButtonValue = true;
             colBtnEliminar.Width = 125;
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 96F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 2F));
-            tableLayoutPanel1.Controls.Add(dgvAlumnos, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 83);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1520, 533);
-            tableLayoutPanel1.TabIndex = 5;
-            // 
             // FormListadoAlumnos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1520, 947);
+            ClientSize = new Size(1006, 673);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(tableLayoutPanel4);
             Name = "FormListadoAlumnos";
@@ -208,6 +208,7 @@
         private TableLayoutPanel tableLayoutPanel4;
         private Label lblAlumnos;
         private DataGridView dgvAlumnos;
+        private TableLayoutPanel tableLayoutPanel1;
         private DataGridViewTextBoxColumn colLegajo;
         private DataGridViewTextBoxColumn colNombre;
         private DataGridViewTextBoxColumn colApellido;
@@ -217,6 +218,5 @@
         private DataGridViewTextBoxColumn colAnioIngreso;
         private DataGridViewButtonColumn colBtnModificar;
         private DataGridViewButtonColumn colBtnEliminar;
-        private TableLayoutPanel tableLayoutPanel1;
     }
 }

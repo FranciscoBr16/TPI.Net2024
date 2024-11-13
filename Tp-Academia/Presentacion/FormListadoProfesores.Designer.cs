@@ -90,6 +90,7 @@
             // dgvProfesores
             // 
             dgvProfesores.Anchor = AnchorStyles.Top;
+            dgvProfesores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProfesores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProfesores.Columns.AddRange(new DataGridViewColumn[] { colLegajo, colNombre, colApellido, colUsuario, colDireccion, colCorreo, colBtnModificar, colBtnEliminar });
             dgvProfesores.Location = new Point(68, 3);
@@ -106,25 +107,25 @@
             colLegajo.MinimumWidth = 6;
             colLegajo.Name = "colLegajo";
             colLegajo.ReadOnly = true;
-            colLegajo.Width = 125;
+            colLegajo.Width = 83;
             // 
             // colNombre
             // 
+            colNombre.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colNombre.DataPropertyName = "Nombre";
             colNombre.HeaderText = "Nombre";
             colNombre.MinimumWidth = 6;
             colNombre.Name = "colNombre";
             colNombre.ReadOnly = true;
-            colNombre.Width = 125;
             // 
             // colApellido
             // 
+            colApellido.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colApellido.DataPropertyName = "Apellido";
             colApellido.HeaderText = "Apellido";
             colApellido.MinimumWidth = 6;
             colApellido.Name = "colApellido";
             colApellido.ReadOnly = true;
-            colApellido.Width = 125;
             // 
             // colUsuario
             // 
@@ -133,7 +134,7 @@
             colUsuario.MinimumWidth = 6;
             colUsuario.Name = "colUsuario";
             colUsuario.ReadOnly = true;
-            colUsuario.Width = 125;
+            colUsuario.Width = 88;
             // 
             // colDireccion
             // 
@@ -142,15 +143,15 @@
             colDireccion.MinimumWidth = 6;
             colDireccion.Name = "colDireccion";
             colDireccion.ReadOnly = true;
-            colDireccion.Width = 125;
+            colDireccion.Width = 101;
             // 
             // colCorreo
             // 
+            colCorreo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             colCorreo.DataPropertyName = "Mail";
             colCorreo.HeaderText = "Correo";
             colCorreo.MinimumWidth = 6;
             colCorreo.Name = "colCorreo";
-            colCorreo.Width = 125;
             // 
             // colBtnModificar
             // 
@@ -160,7 +161,7 @@
             colBtnModificar.ReadOnly = true;
             colBtnModificar.Text = "Modificar";
             colBtnModificar.UseColumnTextForButtonValue = true;
-            colBtnModificar.Width = 125;
+            colBtnModificar.Width = 24;
             // 
             // colBtnEliminar
             // 
@@ -170,7 +171,7 @@
             colBtnEliminar.ReadOnly = true;
             colBtnEliminar.Text = "Eliminar";
             colBtnEliminar.UseColumnTextForButtonValue = true;
-            colBtnEliminar.Width = 125;
+            colBtnEliminar.Width = 24;
             // 
             // FormListadoProfesores
             // 
@@ -205,6 +206,5 @@
         private DataGridViewTextBoxColumn colCorreo;
         private DataGridViewButtonColumn colBtnModificar;
         private DataGridViewButtonColumn colBtnEliminar;
-
     }
 }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Numerics;
 
 namespace Presentacion
 {
@@ -450,9 +451,10 @@ namespace Presentacion
                     Direccion = txbDireccion.Text,
                     DNI = txbDni.Text,
                     Fecha_nac = dtpFechaNac.Value,
-                    PlanId = ((Plan)cbIdPlan.SelectedItem).Id
+                    
                 };
-
+                if (PersonaForm.PlanId.HasValue)
+                { per.PlanId = ((Plan)cbIdPlan.SelectedItem).Id; }
                 await PersonaApiClient.UpdateAsync(per);
                 MessageBox.Show("Cambios guardados exitosamente.");
                 this.Close();
