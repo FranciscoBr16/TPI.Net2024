@@ -259,6 +259,7 @@
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormNuevoCurso";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Nuevo Curso";
             Load += FormNuevoCurso_Load;
             tableLayoutPanel1.ResumeLayout(false);

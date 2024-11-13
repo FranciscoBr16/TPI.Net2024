@@ -284,7 +284,7 @@ namespace Presentacion
 
         private void toolStripLabel12_Click(object sender, EventArgs e)
         {
-            Form form = IsOpen(typeof(FormMisCursos));
+            Form form = IsOpen(typeof(FormListadoCursos));
             if (form == null)
             {
                 FormListadoCursos formListadoCursos = new FormListadoCursos();
