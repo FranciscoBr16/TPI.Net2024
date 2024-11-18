@@ -41,12 +41,14 @@ namespace Data
             modelBuilder.Entity<Docente_curso>()
                 .HasOne(dc => dc.Docente)
                 .WithMany()
-                .HasForeignKey(dc => dc.DocenteId);
+                .HasForeignKey(dc => dc.DocenteId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Docente_curso>()
                 .HasOne(dc => dc.Curso)
                 .WithMany()
-                .HasForeignKey(dc => dc.CursoId);
+                .HasForeignKey(dc => dc.CursoId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Plan>()
                 .HasOne(a => a.Especialidad)
@@ -87,14 +89,14 @@ namespace Data
                .HasOne(c => c.Alumno)
                .WithMany(c => c.Inscripciones)
                .HasForeignKey(c => c.AlumnoLegajo)
-               .OnDelete(DeleteBehavior.Cascade)
+               .OnDelete(DeleteBehavior.NoAction)
                ;
 
             modelBuilder.Entity<Inscripcion>()
                .HasOne(c => c.Curso)
                .WithMany(c => c.Inscripciones)
                .HasForeignKey(c => c.CursoId)
-               .OnDelete(DeleteBehavior.Cascade)
+               .OnDelete(DeleteBehavior.NoAction)
                ;
         }
         public AcademiaContext()
