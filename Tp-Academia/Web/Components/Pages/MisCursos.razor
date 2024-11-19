@@ -1,5 +1,9 @@
 ﻿@page "/mis_cursos"
 @inject NavigationManager Navigation
+@inject IJSRuntime JSRuntime
+
+
+
 @rendermode InteractiveServer
 <div class="container">
 <h3>Mis Cursos</h3>
@@ -49,6 +53,9 @@
                 }
             </tbody>
         </table>
+            <div>
+                <td><button class="btn btn-secondary" @onclick="() => ReporteGeneral()">Generar PDF</button></td>
+            </div>
     }
 }
 else
@@ -101,6 +108,110 @@ else
                 });
         }
     }
+
+    private async Task ReporteGeneral()
+    {
+        try
+        {
+          
+            var cursos = cursosParaMostrar;
+
+            if (cursos.Count == 0)
+            {
+                errorMessage = "No hay cursos para incluir en el reporte.";
+                return;
+            }
+
+            // Crear el contenido del PDF
+            var pdfBytes = GenerateGeneralPDF(cursos);
+
+            // Descargar el PDF en el navegador
+            var fileName = "Reporte_General_Cursos.pdf";
+            var base64 = Convert.ToBase64String(pdfBytes);
+
+            // Enviar a navegador como URL de descarga
+            await JSRuntime.InvokeVoidAsync("downloadFile", fileName, "application/pdf", base64);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al generar el reporte general: {ex.Message}";
+        }
+    }
+    
+    private byte[] GenerateGeneralPDF(List<CursoMostrado> cursos)
+    {
+        using var stream = new MemoryStream();
+
+        QuestPDF.Fluent.Document.Create(container =>
+        {
+            container.Page(page =>
+            {
+                page.Size(595, 842); 
+                page.Margin(2, Unit.Centimetre);
+                page.DefaultTextStyle(x => x.FontSize(12));
+
+                page.Content().Column(column =>
+                {
+                
+                    column.Item().Text("Reporte General de Cursos").FontSize(18).Bold().AlignCenter();
+                    column.Item().Text($"Fecha de generación: {DateTime.Now:dd/MM/yyyy}");
+                    column.Spacing(10);
+
+                    
+                    var usuario = CustomAppContext.Usuario;
+                    var nombreApe = usuario.Nombre + " " + usuario.Apellido;
+                    if (usuario != null)
+                    {
+                        column.Item().Text($"Alumno: {nombreApe}").Bold();
+                        column.Item().Text($"Legajo: {usuario.Legajo}");
+                    }
+                    column.Spacing(15);
+
+                    
+                    column.Item().Table(table =>
+                    {
+                        // Definir columnas
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.RelativeColumn(1); // Id Inscripción
+                            columns.RelativeColumn(2); // Materia
+                            columns.RelativeColumn(2); // Profesor
+                            columns.RelativeColumn(2); // Comisión
+                            columns.RelativeColumn(2); // Condición
+                            columns.RelativeColumn(1); // Nota
+                        });
+
+                        // Encabezados
+                        table.Header(header =>
+                        {
+                            header.Cell().Text("Id").Bold();
+                            header.Cell().Text("Materia").Bold();
+                            header.Cell().Text("Profesor").Bold();
+                            header.Cell().Text("Comisión").Bold();
+                            header.Cell().Text("Condición").Bold();
+                            header.Cell().Text("Nota").Bold();
+                        });
+
+                        // Datos de los cursos
+                        foreach (var curso in cursos)
+                        {
+                            table.Cell().Text(curso.Id.ToString());
+                            table.Cell().Text(curso.MateriaDescripcion);
+                            table.Cell().Text(curso.NombreProfesor);
+                            table.Cell().Text(curso.ComisionDescripcion);
+                            table.Cell().Text(curso.Condicion);
+                            table.Cell().Text(curso.Nota.ToString());
+                        }
+                    });
+                });
+            });
+        }).GeneratePdf(stream);
+
+        return stream.ToArray();
+    }
+
+
+
 
     private async Task DarseDeBaja(int id)
     {

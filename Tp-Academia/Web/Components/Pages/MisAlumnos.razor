@@ -1,6 +1,7 @@
 ﻿@page "/AlumnosCursos"
 @inject NavigationManager NavigationManager
 @rendermode InteractiveServer
+@inject IJSRuntime JSRuntime
 
 <div class="container">
     @if (CustomAppContext.Usuario != null)
@@ -41,6 +42,10 @@
                     }
                 </tbody>
             </table>
+
+            <div>
+                <td><button class="btn btn-secondary" @onclick="() => ReporteGeneral()">Generar PDF</button></td>
+            </div>
         }
 
         @if (mostrarModal)
@@ -81,6 +86,7 @@
     private AlumnoParaMostrar alumnoSeleccionado;
     private int notaNueva;
     private string condicion;
+    private string errorMessage;
 
     protected override async Task OnInitializedAsync()
     {
@@ -97,6 +103,7 @@
 
     private async Task ListarAlumnos()
     {
+
         IEnumerable<Inscripcion> ins = await InscripcionApiClient.GetInscripcionesDelCurso(CustomAppContext.IdCurso);
 
         AlumnosParaMostrar.Clear();
@@ -156,4 +163,99 @@
         public string Condicion { get; set; }
         public int IdCurso { get; set; }
     }
+
+    private async Task ReporteGeneral()
+    {
+        try
+        {
+            if (AlumnosParaMostrar.Count == 0)
+            {
+                errorMessage = "No hay alumnos para incluir en el reporte.";
+                return;
+            }
+
+            // Crear el contenido del PDF
+            var pdfBytes = GenerateGeneralPDF(AlumnosParaMostrar);
+
+            // Descargar el PDF en el navegador
+            var fileName = "Reporte_Alumnos_Curso.pdf";
+            var base64 = Convert.ToBase64String(pdfBytes);
+
+            // Enviar a navegador como URL de descarga
+            await JSRuntime.InvokeVoidAsync("downloadFile", fileName, "application/pdf", base64);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error al generar el reporte general: {ex.Message}";
+        }
+    }
+
+    private byte[] GenerateGeneralPDF(List<AlumnoParaMostrar> alumnos)
+    {
+        using var stream = new MemoryStream();
+
+        QuestPDF.Fluent.Document.Create(container =>
+        {
+            container.Page(page =>
+            {
+                page.Size(595, 842); // Tamaño A4
+                page.Margin(2, Unit.Centimetre);
+                page.DefaultTextStyle(x => x.FontSize(12));
+
+                page.Content().Column(column =>
+                {
+                    // Título
+                    column.Item().Text("Reporte General de Alumnos").FontSize(18).Bold().AlignCenter();
+                    column.Item().Text($"Fecha de generación: {DateTime.Now:dd/MM/yyyy}");
+                    column.Spacing(10);
+
+                    // Datos del Curso (si es necesario)
+                    column.Item().Text($"Curso: {CustomAppContext.IdCurso}").Bold();
+                    column.Item().Text($"Profesor: {CustomAppContext.Usuario.Nombre +" "+ CustomAppContext.Usuario.Apellido}");
+                    column.Spacing(15);
+
+                    // Tabla de Alumnos
+                    column.Item().Table(table =>
+                    {
+                        // Definir columnas
+                        table.ColumnsDefinition(columns =>
+                        {
+                            columns.RelativeColumn(1); // Legajo
+                            columns.RelativeColumn(2); // Nombre
+                            columns.RelativeColumn(2); // Apellido
+                            columns.RelativeColumn(3); // Correo
+                            columns.RelativeColumn(1); // Nota
+                            columns.RelativeColumn(1); // Condición
+                        });
+
+                        // Encabezados
+                        table.Header(header =>
+                        {
+                            header.Cell().Text("Legajo").Bold();
+                            header.Cell().Text("Nombre").Bold();
+                            header.Cell().Text("Apellido").Bold();
+                            header.Cell().Text("Correo").Bold();
+                            header.Cell().Text("Nota").Bold();
+                            header.Cell().Text("Condición").Bold();
+                        });
+
+                        // Datos de los alumnos
+                        foreach (var alumno in alumnos)
+                        {
+                            table.Cell().Text(alumno.Legajo.ToString());
+                            table.Cell().Text(alumno.Nombre);
+                            table.Cell().Text(alumno.Apellido);
+                            table.Cell().Text(alumno.Mail);
+                            table.Cell().Text(alumno.Nota.ToString());
+                            table.Cell().Text(alumno.Condicion);
+                        }
+                    });
+                });
+            });
+        }).GeneratePdf(stream);
+
+        return stream.ToArray();
+    }
+
+
 }
