@@ -1,0 +1,117 @@
+﻿@page "/mis_materias"
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+@code {
+        
+    private List<MateriaParaMostrar> MateriasParaMostrar = new List<MateriaParaMostrar>();
+
+        protected override async Task OnInitializedAsync()
+        {
+
+            if (CustomAppContext.Usuario == null)
+            {
+                NavigationManager.NavigateTo("/login");
+            }
+            else if (CustomAppContext.Usuario.Rol == "Profesor")
+            {
+                await ListarCursos();
+            }
+        }   
+
+        private async Task ListarCursos()
+        {
+            IEnumerable<Curso> listaCursos = await CursoApiClient.GetCursosDelProfesorAsync(CustomAppContext.Usuario.Legajo);
+
+            MateriasParaMostrar.Clear();
+
+            foreach (var i in listaCursos)
+            {
+
+                var materia = await MateriaApiClient.GetAsync(i.MateriaId);
+                var comision = await ComisionApiClient.GetAsync(i.ComisionId);
+                var inscripciones = await InscripcionApiClient.GetInscripcionesDelCurso(i.Id);
+                int contador = inscripciones.Count();
+
+                MateriasParaMostrar.Add(new MateriaParaMostrar
+                {
+                    Id = i.Id,
+                    Cupo = i.Cupo,
+                    Fecha_Vencimiento_Inscripcion = i.Fecha_Vencimiento_Inscripcion,
+                    CantidadAlumnos = contador,
+                    MateriaId = i.MateriaId,
+                    MateriaDescripcion = materia.Nombre,
+                    ComisionDescripcion = comision.Descripcion
+                });
+            }
+        }
+
+        public class MateriaParaMostrar
+        {
+            public int Id { get; set; }
+            public int Cupo { get; set; }
+            public DateTime Fecha_Vencimiento_Inscripcion { get; set; }
+            public int CantidadAlumnos { get; set; }
+            public int MateriaId { get; set; }
+            public string MateriaDescripcion { get; set; }
+            public string ComisionDescripcion { get; set; }
+        }
+}
+
+<div class="container">
+    @if (CustomAppContext.Usuario != null)
+    {
+
+        <h3>Inscripciones Disponibles</h3>
+        @if (MateriasParaMostrar.Count() == 0)
+        {
+            <h5>No existen cursos para mostrar</h5>
+        }
+        else
+        {
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Cupo</th>
+                        <th>Fecha Vencimiento</th>
+                        <th>Alumnos Inscriptos</th>
+                        <th>Materia Id</th>
+                        <th>Materia</th>
+                        <th>Comision</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var curso in MateriasParaMostrar)
+                    {
+                        <tr>
+                            <td>@curso.Id</td>
+                            <td>@curso.Cupo</td>
+                            <td>@curso.Fecha_Vencimiento_Inscripcion</td>
+                            <td>@curso.CantidadAlumnos</td>
+                            <td>@curso.MateriaId</td>
+                            <td>@curso.MateriaDescripcion</td>
+                            <td>@curso.ComisionDescripcion</td>
+                            <td><button class="btn btn-secondary" @onclick="() => VerAlumnos(curso.Id)">Ver Alumnos</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }       }
+    else
+    {
+        <p>Cargando...</p>
+    }
+</div>
+
+@code {
+    private async Task VerAlumnos(int cursoId)
+    {
+        CustomAppContext.IdCurso = cursoId;
+        NavigationManager.NavigateTo("/AlumnosCursos");
+
+    }
+}

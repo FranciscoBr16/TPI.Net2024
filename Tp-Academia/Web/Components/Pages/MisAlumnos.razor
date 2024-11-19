@@ -1,0 +1,159 @@
+﻿@page "/AlumnosCursos"
+@inject NavigationManager NavigationManager
+@rendermode InteractiveServer
+
+<div class="container">
+    @if (CustomAppContext.Usuario != null)
+    {
+        <h3>Alumnos</h3>
+        @if (AlumnosParaMostrar.Count() == 0)
+        {
+            <h5>No existen Alumnos para mostrar</h5>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Legajo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Nota</th>
+                        <th>Condicion</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var alumno in AlumnosParaMostrar)
+                    {
+                        <tr>
+                            <td>@alumno.Id</td>
+                            <td>@alumno.Legajo</td>
+                            <td>@alumno.Nombre</td>
+                            <td>@alumno.Apellido</td>
+                            <td>@alumno.Mail</td>
+                            <td>@alumno.Nota</td>
+                            <td>@alumno.Condicion</td>
+                            <td><button class="btn btn-secondary" @onclick="() => AbrirModal(alumno)">Editar</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        @if (mostrarModal)
+        {
+            <div class="modal d-block" tabindex="-1" style="background-color: rgba(0, 0, 0, 0.5);">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Cargar Nota</h5>
+                            <button type="button" class="btn-close" @onclick="CerrarModal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p><strong>Alumno:</strong> @alumnoSeleccionado.Nombre @alumnoSeleccionado.Apellido</p>
+                            <p><strong>Legajo:</strong> @alumnoSeleccionado.Legajo</p>
+                            <label for="nota">Nota:</label>
+                            <input type="number" id="nota" class="form-control" @bind="notaNueva" min="0" max="10" />
+                            <label for="Condicion">Condicion:</label>
+                            <input type="text" id="condicion" class="form-control" @bind="condicion" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" @onclick="GuardarNota">Guardar</button>
+                            <button type="button" class="btn btn-secondary" @onclick="CerrarModal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <p>Cargando...</p>
+    }
+</div>
+
+@code {
+    private List<AlumnoParaMostrar> AlumnosParaMostrar = new List<AlumnoParaMostrar>();
+    private bool mostrarModal = false;
+    private AlumnoParaMostrar alumnoSeleccionado;
+    private int notaNueva;
+    private string condicion;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (CustomAppContext.Usuario.Rol != "Profesor")
+        {
+            CustomAppContext.Usuario = null;
+            NavigationManager.NavigateTo("/login");
+        }
+        else if (CustomAppContext.Usuario.Rol == "Profesor")
+        {
+            await ListarAlumnos();
+        }
+    }
+
+    private async Task ListarAlumnos()
+    {
+        IEnumerable<Inscripcion> ins = await InscripcionApiClient.GetInscripcionesDelCurso(CustomAppContext.IdCurso);
+
+        AlumnosParaMostrar.Clear();
+
+        foreach (var i in ins)
+        {
+            var persona = await PersonaApiClient.GetAsync(i.AlumnoLegajo);
+
+            AlumnosParaMostrar.Add(new AlumnoParaMostrar
+                {
+                    Id = i.Id,
+                    Legajo = persona.Legajo,
+                    Nombre = persona.Nombre,
+                    Apellido = persona.Apellido,
+                    Mail = persona.Mail,
+                    Nota = i.Nota,
+                    Condicion = i.Condicion,
+                    IdCurso = CustomAppContext.IdCurso
+                });
+        }
+    }
+
+    private void AbrirModal(AlumnoParaMostrar alumno)
+    {
+        alumnoSeleccionado = alumno;
+        notaNueva = alumno.Nota; 
+        condicion = alumno.Condicion;
+        mostrarModal = true;
+    }
+
+    private void CerrarModal()
+    {
+        mostrarModal = false;
+        alumnoSeleccionado = null;
+    }
+
+    private async Task GuardarNota()
+    {
+        if (alumnoSeleccionado != null)
+        {
+            alumnoSeleccionado.Nota = notaNueva;
+            Inscripcion insNueva = new Inscripcion { Id = alumnoSeleccionado.Id, CursoId = alumnoSeleccionado.IdCurso, AlumnoLegajo = alumnoSeleccionado.Legajo, Condicion = condicion , Nota = notaNueva };
+            await InscripcionApiClient.UpdateAsync(insNueva);
+            mostrarModal = false;
+            await ListarAlumnos(); 
+        }
+    }
+
+    public class AlumnoParaMostrar
+    {
+        public int Id { get; set; }
+        public int Legajo { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Mail { get; set; }
+        public int Nota { get; set; }
+        public string Condicion { get; set; }
+        public int IdCurso { get; set; }
+    }
+}
