@@ -21,7 +21,8 @@ namespace Presentacion
 
         private async void btnBaja_Click(object sender, EventArgs e)
         {
-            if (SelectedItem() != null) {
+            if (SelectedItem() != null)
+            {
                 var i = SelectedItem();
                 Inscripcion ins = await InscripcionApiClient.GetAsync(i.Id);
                 DateTime f = ins.Fecha.AddDays(15);
@@ -31,7 +32,9 @@ namespace Presentacion
                     MessageBox.Show("Te has dado de baja");
                     await ListarTodosLosCursos();
                 }
-                else { MessageBox.Show("No puedes darte de baja de ese curso, la fecha ya expiro");
+                else
+                {
+                    MessageBox.Show("No puedes darte de baja de ese curso, la fecha ya expiro");
                     return;
                 }
             }
@@ -74,7 +77,7 @@ namespace Presentacion
                     Condicion = i.Condicion,
                     Nota = i.Nota
                 });
-                
+
             }
             dgvCursos.AutoGenerateColumns = false;
             dgvCursos.DataSource = cursosParaMostrar.ToList();
@@ -86,6 +89,11 @@ namespace Presentacion
                 return (CursoMostrado)dgvCursos.SelectedRows[0].DataBoundItem;
             }
             return null;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ListarTodosLosCursos();
         }
     }
 
